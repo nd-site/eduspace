@@ -11,27 +11,9 @@ const quizList = [
         tag: "Mẫu"
     },
     {
-        title: "Toán Học Chương 1: Đạo Hàm",
-        url: "quiz-dao-ham.html",
-        description: "Kiểm tra kiến thức về quy tắc tính đạo hàm và ứng dụng.",
-        tag: "Toán 12"
+        title: "Đề cương GDQP-AN 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/gdqp/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Giáo dục Quốc phòng và An ninh lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "GDQP-AN",
     },
-    {
-        title: "Vật Lý: Dao Động Cơ",
-        url: "quiz-physics.html",
-        description: "", // Không có ghi chú thì để trống hoặc xóa dòng này
-        tag: "Vật Lý"
-    },
-    {
-        title: "Tiếng Anh: Grammar Review",
-        url: "quiz-english.html",
-        description: "Tổng hợp các thì cơ bản và cấu trúc câu đặc biệt.",
-        tag: "Ngoại Ngữ"
-    },
-    {
-        title: "Lịch Sử Thế Giới",
-        url: "quiz-history.html",
-        description: "Giai đoạn sau chiến tranh thế giới thứ hai.",
-        tag: "Lịch Sử"
-    }
 ];
