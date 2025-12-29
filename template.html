@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-    <link rel="icon" href="/logo.png" type="image/png" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
@@ -73,10 +74,6 @@
             color: white;
         }
 
-        .option-card.selected span:last-child {
-            color: var(--primary);
-        }
-
         .btn-action {
             background: var(--primary);
             color: white;
@@ -100,11 +97,6 @@
             font-weight: 600;
         }
 
-        .input-pill:focus {
-            border-color: var(--primary);
-            background: #f0f7ff;
-        }
-
         .fade-in {
             animation: fadeIn 0.4s ease-out;
         }
@@ -122,6 +114,10 @@
 
         .card-correct { background: #f0fdf4 !important; border-color: #22c55e !important; color: #15803d !important; }
         .card-wrong { background: #fef2f2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
+
+        .nav-btn {
+            @apply flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors;
+        }
     </style>
 </head>
 <body>
@@ -130,7 +126,23 @@
 
     <div class="app-layout">
         <div class="w-full max-w-xl">
-            
+            <!-- Navigation Bar -->
+            <nav class="flex items-center gap-4 mb-8 justify-center">
+                <a href="/eduspace" class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Quay lại
+                </a>
+                <div class="w-px h-3 bg-slate-200"></div>
+                <a href="/index.html" class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Trang chủ
+                </a>
+            </nav>
+
             <!-- START SCREEN -->
             <div id="start-screen" class="glass-card round-card p-8 text-center fade-in">
                 <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-5">
@@ -198,7 +210,6 @@
                 <div id="result-icon" class="w-20 h-20 pill-shape flex items-center justify-center mx-auto mb-6 text-3xl shadow-lg border-4 border-white"></div>
                 <h2 class="text-2xl font-black text-slate-800 mb-1">Hoàn thành!</h2>
                 <p id="total-completion" class="text-blue-500 text-[10px] font-black mb-6 uppercase tracking-[0.2em]"></p>
-                
                 <div class="grid grid-cols-2 gap-3 mb-4">
                     <div class="bg-blue-50/50 p-5 pill-shape border border-blue-100">
                         <p class="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-1">Điểm trắc nghiệm</p>
@@ -209,30 +220,21 @@
                         <p id="score-time" class="text-2xl font-black text-slate-600">00:00</p>
                     </div>
                 </div>
-                
                 <div id="extra-stats" class="mb-8 space-y-2"></div>
-
                 <button onclick="location.reload()" class="btn-action pill-shape py-3.5 px-10 font-bold w-full max-w-xs text-sm">Luyện tập lại</button>
             </div>
-
             <footer class="mt-10 text-center text-slate-300 text-[9px] font-bold uppercase tracking-[0.4em]">
-                &copy; 2025 PREMIUM EDUSPACE
+                &copy; 2025 EDUSPACE BY ND LABS
             </footer>
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
-        /**
-         * logic trắc nghiệm đa dạng:
-         * - type: "multiple" (Mặc định)
-         * - type: "truefalse" (Đúng/Sai)
-         * - type: "short" (Trả lời ngắn, chuẩn hóa dấu . ,)
-         * - type: "essay" (Tự luận, hiện đáp án tham khảo)
-         */
         let currentIndex = 0;
         let selectedIdx = null;
         let correctCount = 0;
-        let objectiveCount = 0; // Số câu có thể chấm điểm (MC, TF, Short)
+        let objectiveCount = 0;
         let timerInterval;
         let seconds = 0;
 
@@ -242,6 +244,18 @@
                 document.getElementById('start-info').innerText = quizData.config.info;
             }
         };
+
+        function renderMath() {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
 
         function startQuiz() {
             document.getElementById('start-screen').classList.add('hidden');
@@ -263,21 +277,17 @@
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
             selectedIdx = null;
-
             document.getElementById('submit-btn').disabled = (type !== 'essay'); 
             document.getElementById('submit-btn').classList.remove('hidden');
             document.getElementById('skip-btn').classList.toggle('hidden', type !== 'essay');
             document.getElementById('explanation-container').classList.add('hidden');
             document.getElementById('ui-progress').innerText = `CÂU ${currentIndex + 1}/${quizData.questions.length}`;
-            
             document.getElementById('question-content').innerHTML = `
                 <p class="text-[9px] font-black text-blue-500 uppercase tracking-[0.2em]">Câu ${currentIndex + 1} &bull; ${getTypeLabel(type)}</p>
                 <div class="text-lg md:text-xl text-slate-800 font-bold leading-snug">${q.question}</div>
             `;
-
             const container = document.getElementById('options-container');
             container.innerHTML = '';
-            
             if (type === 'multiple' || type === 'truefalse') {
                 const options = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
                 options.forEach((opt, i) => {
@@ -299,18 +309,11 @@
             } else if (type === 'short') {
                 container.innerHTML = `<input type="text" id="short-answer" placeholder="Nhập câu trả lời của bạn..." class="input-pill" autocomplete="off">`;
                 const input = document.getElementById('short-answer');
-                input.oninput = () => {
-                    document.getElementById('submit-btn').disabled = input.value.trim() === '';
-                };
+                input.oninput = () => { document.getElementById('submit-btn').disabled = input.value.trim() === ''; };
             } else if (type === 'essay') {
                 container.innerHTML = `<textarea id="essay-answer" placeholder="Viết câu trả lời hoặc để trống để xem đáp án..." class="input-pill !rounded-[24px] min-h-[120px] resize-none"></textarea>`;
             }
-
-            if (window.renderMathInElement) {
-                renderMathInElement(document.getElementById('question-card'), {
-                    delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]
-                });
-            }
+            renderMath();
         }
 
         function getTypeLabel(type) {
@@ -322,13 +325,11 @@
             }
         }
 
-        // Logic chấm điểm và hiện giải thích
         function handleSubmit(isSkipped = false) {
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
             let isCorrect = false;
             let displayResult = true;
-
             if (type === 'multiple' || type === 'truefalse') {
                 objectiveCount++;
                 isCorrect = selectedIdx === q.correct;
@@ -349,7 +350,6 @@
                 const userVal = document.getElementById('short-answer').value.trim().replace(/,/g, '.');
                 const correctVal = String(q.correct).trim().replace(/,/g, '.');
                 isCorrect = userVal === correctVal;
-                
                 const input = document.getElementById('short-answer');
                 input.disabled = true;
                 input.classList.add(isCorrect ? 'card-correct' : 'card-wrong');
@@ -360,12 +360,10 @@
                     input.parentNode.appendChild(correctHint);
                 }
             } else if (type === 'essay') {
-                displayResult = false; // Tự luận không hiện "Chính xác/Chưa đúng"
+                displayResult = false;
                 document.getElementById('essay-answer').disabled = true;
             }
-
             if (isCorrect) correctCount++;
-
             const badge = document.getElementById('result-badge');
             if (displayResult) {
                 badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
@@ -374,18 +372,15 @@
                 badge.innerText = "Tham khảo";
                 badge.className = "pill-shape px-3.5 py-1 text-[9px] font-black uppercase text-white shadow-sm bg-blue-500";
             }
-
             document.getElementById('explanation-text').innerHTML = q.explanation || (type === 'essay' ? q.suggested : "Hãy xem kỹ lời giải phía trên.");
             document.getElementById('explanation-container').classList.remove('hidden');
             document.getElementById('submit-btn').classList.add('hidden');
             document.getElementById('skip-btn').classList.add('hidden');
-            
-            if (window.renderMathInElement) renderMathInElement(document.getElementById('explanation-container'));
+            renderMath();
         }
 
         document.getElementById('submit-btn').onclick = () => handleSubmit(false);
         document.getElementById('skip-btn').onclick = () => handleSubmit(true);
-
         document.getElementById('next-btn').onclick = function() {
             currentIndex++;
             if (currentIndex < quizData.questions.length) {
@@ -400,32 +395,21 @@
             clearInterval(timerInterval);
             document.getElementById('main-quiz').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-            
-            // Tính % hoàn thành tổng thể
             const completionPercent = Math.round((currentIndex / quizData.questions.length) * 100);
             document.getElementById('total-completion').innerText = `HOÀN THÀNH ${completionPercent}% BÀI TẬP`;
-            
-            // Hiển thị điểm trắc nghiệm riêng
             document.getElementById('score-correct').innerText = objectiveCount > 0 ? `${correctCount}/${objectiveCount}` : "N/A";
             document.getElementById('score-time').innerText = document.getElementById('timer-text').innerText;
-            
             const stats = document.getElementById('extra-stats');
             stats.innerHTML = '';
             if (objectiveCount < quizData.questions.length) {
                 const essayNum = quizData.questions.length - objectiveCount;
                 stats.innerHTML = `<p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">+ ${essayNum} câu tự luận đã xem</p>`;
             }
-
             const icon = document.getElementById('result-icon');
             const ratio = objectiveCount > 0 ? (correctCount / objectiveCount) : 1;
-            
-            if (ratio === 1) {
-                icon.innerHTML = '👑'; icon.classList.add('bg-yellow-50');
-            } else if (ratio >= 0.5) {
-                icon.innerHTML = '⭐'; icon.classList.add('bg-blue-50');
-            } else {
-                icon.innerHTML = '📚'; icon.classList.add('bg-slate-50');
-            }
+            if (ratio === 1) { icon.innerHTML = '👑'; icon.classList.add('bg-yellow-50'); }
+            else if (ratio >= 0.5) { icon.innerHTML = '⭐'; icon.classList.add('bg-blue-50'); }
+            else { icon.innerHTML = '📚'; icon.classList.add('bg-slate-50'); }
         }
     </script>
 </body>

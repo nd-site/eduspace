@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduspace by ND Labs - Danh Sách Bài Tập</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --primary: #0070f3;
+            --bg-main: #f0f7ff;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: #0f172a;
+        }
+
+        .bg-blob {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 112, 243, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .pill-shape { border-radius: 9999px; }
+        .round-card { border-radius: 32px; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid #ffffff;
+            box-shadow: 0 20px 40px -12px rgba(0, 112, 243, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px -12px rgba(0, 112, 243, 0.15);
+        }
+
+        .btn-start {
+            background: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-start:hover {
+            background: #0060d3;
+            box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
+        }
+
+        .tag-pill {
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 9999px;
+        }
+
+        .nav-btn {
+            @apply flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    <div class="bg-blob" style="top: -200px; right: -200px;"></div>
+    <div class="bg-blob" style="bottom: -200px; left: -200px;"></div>
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Navigation Bar -->
+        <nav class="flex items-center gap-4 mb-8">
+            <a href="/eduspace" class="nav-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Quay lại
+            </a>
+            <div class="w-px h-3 bg-slate-200"></div>
+            <a href="/index.html" class="nav-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Trang chủ
+            </a>
+        </nav>
+
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="/logo.png" alt="Logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'">
+                    <span class="text-blue-600 font-black tracking-tighter text-xl">EDUSPACE</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Hệ thống <span class="text-blue-600">Luyện tập</span></h1>
+                <p class="text-slate-500 mt-3 font-medium">Chọn một bài kiểm tra bên dưới để bắt đầu thử thách bản thân.</p>
+            </div>
+            <div class="bg-white/50 backdrop-blur p-2 pill-shape border border-white flex gap-2">
+                <div class="px-6 py-3 text-center">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Trạng thái</p>
+                    <p class="text-emerald-500 font-bold text-sm">Sẵn sàng</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="mb-10">
+            <div class="glass-card pill-shape px-6 py-4 flex items-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-input" placeholder="Tìm kiếm bài kiểm tra..." class="bg-transparent border-none outline-none w-full font-semibold text-slate-700">
+            </div>
+        </div>
+
+        <!-- Quiz List Grid -->
+        <div id="quiz-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Rendered by JavaScript -->
+        </div>
+    </div>
+
+    <script src="list_data.js"></script>
+    <script>
+        const grid = document.getElementById('quiz-grid');
+        const searchInput = document.getElementById('search-input');
+
+        function filterQuizzes() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const filteredList = quizList.filter(quiz => {
+                const titleMatch = quiz.title.toLowerCase().includes(searchTerm);
+                const descMatch = (quiz.description || "").toLowerCase().includes(searchTerm);
+                const tagMatch = (quiz.tag || "").toLowerCase().includes(searchTerm);
+                return titleMatch || descMatch || tagMatch;
+            });
+            renderQuizzes(filteredList);
+        }
+
+        function renderQuizzes(listToRender) {
+            grid.innerHTML = '';
+            if (typeof listToRender === 'undefined' || listToRender.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-20 text-slate-400 font-bold uppercase tracking-widest">Không tìm thấy bài tập phù hợp</div>';
+                return;
+            }
+            listToRender.forEach(quiz => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card glass-card round-card p-8 flex flex-col h-full';
+                const descriptionHtml = quiz.description 
+                    ? `<p class="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">${quiz.description}</p>`
+                    : `<div class="flex-grow"></div>`;
+                card.innerHTML = `
+                    <div class="flex items-start justify-between mb-6">
+                        <span class="tag-pill">${quiz.tag || 'BÀI TẬP'}</span>
+                        <div class="w-10 h-10 bg-blue-50 pill-shape flex items-center justify-center text-blue-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2H7a1 1 0 100-2h.01zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-tight">${quiz.title}</h3>
+                    ${descriptionHtml}
+                    <a href="${quiz.url}" class="btn-start pill-shape py-3.5 px-6 text-center font-bold text-sm uppercase tracking-widest">
+                        Làm bài ngay
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        searchInput.addEventListener('input', filterQuizzes);
+        window.onload = () => renderQuizzes(quizList);
+    </script>
+</body>
+</html>
