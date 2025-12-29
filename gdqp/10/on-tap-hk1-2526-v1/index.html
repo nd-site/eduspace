@@ -26,7 +26,7 @@
             try {
                 // 1. Lấy nội dung giao diện từ template.html
                 // Lưu ý: fetch('/') có thể lỗi nếu chạy trực tiếp từ file (file://)
-                const response = await fetch('/template.html');
+                const response = await fetch('/eduspace/template.html');
                 if (!response.ok) throw new Error("Không thể tải template.html");
                 
                 const htmlText = await response.text();
