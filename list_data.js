@@ -42,6 +42,11 @@ const quizList = [
         tag: "Hóa Học",
     },
     {
+        title: "Hành trình văn minh nhân loại - Lịch Sử 10",
+        url: "/eduspace/lichsu/10/hanh-trinh-van-minh-nhan-loai",
+        tag: "Lịch Sử",
+    },
+    {
         title: "Mẫu",
         url: "/eduspace/mau",
         description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
@@ -49,3 +54,4 @@ const quizList = [
     },
 
 ];
+
