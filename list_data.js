@@ -52,10 +52,38 @@ const quizList = [
         subject: "Hóa Học"
     },
     {
+        title: "Đề cương Hóa Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/hoahoc/10/tinh-luong-ion-du-2",
+        description: "Tổng hợp các câu hỏi 'Tính lượng ion dư 2' ôn tập học kỳ I môn Hóa Học lớp 10 năm học 2025-2026",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Đề cương Hóa Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/hoahoc/10/tinh-luong-ion-du-3",
+        description: "Tổng hợp các câu hỏi 'Tính lượng ion dư 3' ôn tập học kỳ I môn Hóa Học lớp 10 năm học 2025-2026",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Đề cương Hóa Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/hoahoc/10/tinh-luong-ion-du-4",
+        description: "Tổng hợp các câu hỏi 'Tính lượng ion dư 4' ôn tập học kỳ I môn Hóa Học lớp 10 năm học 2025-2026",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa Học"
+    },
+    {
         title: "Mẫu",
         url: "/eduspace/mau",
         description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
         tag: "Mẫu",
         type: "quiz"
     }
+
 ];
