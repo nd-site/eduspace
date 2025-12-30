@@ -42,8 +42,7 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
-        buttonText: "Thử sức ngay",
-        isHot: true
+        buttonText: "Thử sức ngay"
     },
     {
         title: "Đề cương Hóa Học 10 - Học kỳ I năm học 2025-2026",
@@ -121,4 +120,5 @@ const quizList = [
         isHot: true
     }
     */
+
 ];
