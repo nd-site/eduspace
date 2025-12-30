@@ -4,6 +4,8 @@
  * - class: Số lớp (vd: "10")
  * - subject: Tên môn học
  * - buttonText: Tên nút tùy biến (để trống sẽ dùng mặc định theo type)
+ * - isHot: true (nếu muốn đánh dấu "HOT" cho mục này)
+ * - isComingSoon: true (nếu muốn đánh dấu "SẮP RA MẮT" cho mục này)
  */
 const quizList = [
     {
@@ -40,7 +42,8 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
-        buttonText: "Thử sức ngay"
+        buttonText: "Thử sức ngay",
+        isHot: true
     },
     {
         title: "Đề cương Hóa Học 10 - Học kỳ I năm học 2025-2026",
@@ -76,14 +79,46 @@ const quizList = [
         tag: "Hóa Học",
         type: "quiz",
         class: "10",
-        subject: "Hóa Học"
+        subject: "Hóa Học",
+        isHot: true
     },
+    {
+        title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Tin Học lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin Học",
+        isComingSoon: true
+    },
+    {
+        title: "Đề cương Lịch Sử 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/lichsu/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử",
+        isComingSoon: true
+    },
+    {
+        title: "Kiểm tra Hành trình văn minh nhân loại - Lịch Sử 10",
+        url: "/eduspace/lichsu/10/hanh-trinh-van-minh-nhan-loai/kiem-tra",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử",
+        isHot: true
+    },
+    /**
     {
         title: "Mẫu",
         url: "/eduspace/mau",
         description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
         tag: "Mẫu",
-        type: "quiz"
+        type: "quiz",
+        isHot: true
     }
-
+    */
 ];
