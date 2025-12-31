@@ -3,414 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/logo.png">
+    <title id="page-title">AI Smart Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-        
-        :root {
-            --primary: #0070f3;
-            --primary-light: #3291ff;
-            --bg-main: #f0f7ff;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-main);
-            color: #0f172a;
-            margin: 0;
-            padding: 0;
-        }
-
-        .bg-blob {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 112, 243, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(60px);
-        }
-
-        .app-layout {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 1.5rem 1rem;
-        }
-
-        .pill-shape { border-radius: 9999px; }
+        :root { --primary: #0070f3; --primary-light: #3291ff; --bg-main: #f0f7ff; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-main); color: #0f172a; overflow-x: hidden; }
+        .bg-blob { position: fixed; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0, 112, 243, 0.08) 0%, rgba(255, 255, 255, 0) 70%); border-radius: 50%; z-index: -1; filter: blur(60px); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border: 1px solid #ffffff; box-shadow: 0 20px 40px -12px rgba(0, 112, 243, 0.08); }
         .round-card { border-radius: 32px; }
+        .pill-shape { border-radius: 9999px; }
+        
+        .option-card { transition: all 0.2s; cursor: pointer; border: 2px solid #f1f5f9; background: #ffffff; border-radius: 9999px; }
+        .option-card.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); }
+        .option-card.selected span:first-child { background: var(--primary); color: white; }
+        
+        .btn-nav-blue { border: 2px solid var(--primary); color: var(--primary); font-weight: 800; transition: all 0.2s; }
+        .btn-nav-blue:hover:not(:disabled) { background: var(--primary); color: white; }
+        .btn-nav-blue:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid #ffffff;
-            box-shadow: 0 20px 40px -12px rgba(0, 112, 243, 0.08);
-        }
+        .btn-main { background: var(--primary); color: white; transition: all 0.3s; box-shadow: 0 8px 16px -4px rgba(0, 112, 243, 0.3); }
+        .btn-main:hover:not(:disabled) { transform: translateY(-2px); background: #0060d3; }
 
-        .option-card {
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            border: 2px solid #f1f5f9;
-            background: #ffffff;
-            border-radius: 9999px;
-        }
+        #custom-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: white; border-radius: 24px; padding: 32px; width: 100%; max-width: 450px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
 
-        .option-card:hover, .option-card.selected {
-            transform: scale(1.015);
-            border-color: var(--primary-light);
-            background: #f0f7ff;
-        }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 18px; height: 18px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .input-pill { width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 2px solid #f1f5f9; outline: none; transition: all 0.3s; }
+        .input-pill:focus { border-color: var(--primary-light); }
 
-        .option-card.selected span:first-child {
-            background: var(--primary);
-            color: white;
-        }
+        /* Ô nhập trả lời ngắn cực gọn */
+        .input-short { width: 100px; padding: 0.5rem 0.5rem; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; }
 
-        .btn-action {
-            background: var(--primary);
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 16px -4px rgba(0, 112, 243, 0.3);
-        }
-
-        .btn-action:hover:not(:disabled) {
-            transform: translateY(-2px);
-            background: #0060d3;
-            box-shadow: 0 12px 20px -4px rgba(0, 112, 243, 0.4);
-        }
-
-        .input-pill {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 9999px;
-            border: 2px solid #f1f5f9;
-            outline: none;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .timer-badge {
-            background: #ffffff;
-            border: 1px solid #e5eef9;
-            color: var(--primary);
-        }
-
-        .card-correct { background: #f0fdf4 !important; border-color: #22c55e !important; color: #15803d !important; }
-        .card-wrong { background: #fef2f2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
-
-        .nav-btn {
-            @apply flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors;
-        }
+        .btn-icon-nav { padding: 8px; border-radius: 12px; transition: all 0.2s; color: #64748b; }
+        .btn-icon-nav:hover { background: #f1f5f9; color: var(--primary); }
     </style>
 </head>
 <body>
     <div class="bg-blob" style="top: -150px; right: -150px;"></div>
     <div class="bg-blob" style="bottom: -150px; left: -150px;"></div>
 
-    <div class="app-layout">
-        <div class="w-full max-w-xl">
-            <!-- Navigation Bar -->
-            <nav class="flex items-center gap-4 mb-8 justify-center">
-                <a href="/eduspace" class="nav-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Quay lại
-                </a>
-                <div class="w-px h-3 bg-slate-200"></div>
-                <a href="/index.html" class="nav-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    Trang chủ
-                </a>
-            </nav>
+    <div id="custom-modal">
+        <div class="modal-content fade-in">
+            <div id="modal-icon" class="text-4xl mb-4">🔑</div>
+            <h3 id="modal-title" class="text-xl font-extrabold text-slate-800 mb-2"></h3>
+            <div id="modal-text" class="text-slate-500 mb-6 text-sm text-left leading-relaxed"></div>
+            <div id="modal-actions" class="flex flex-col gap-2">
+                <button id="modal-confirm" class="btn-main pill-shape py-3 font-bold text-sm">Đã hiểu</button>
+                <button id="modal-cancel" class="text-slate-400 font-bold text-xs py-2 hidden">Hủy bỏ</button>
+            </div>
+        </div>
+    </div>
 
+    <div class="app-layout flex justify-center py-10 px-4">
+        <div class="w-full max-w-xl">
             <!-- START SCREEN -->
-            <div id="start-screen" class="glass-card round-card p-8 text-center fade-in">
-                <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+            <div id="start-screen" class="glass-card round-card p-10 text-center fade-in relative">
+                <div class="absolute top-6 left-6 flex gap-2">
+                    <a href="/eduspace" class="btn-icon-nav" title="Về Eduspace">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    </a>
+                    <a href="/" class="btn-icon-nav" title="Quay lại">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    </a>
                 </div>
-                <h1 id="start-subject" class="text-2xl font-extrabold text-slate-800 mb-2 tracking-tight">Đang nạp...</h1>
-                <p id="start-info" class="text-slate-500 text-sm mb-8 font-medium">Bấm bắt đầu để thử thách bản thân ngay nhé!</p>
-                <button onclick="startQuiz()" class="btn-action pill-shape py-3.5 px-10 font-bold text-base w-full sm:w-auto">
-                    Bắt đầu làm bài
-                </button>
+
+                <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-6 mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+                
+                <h2 id="quiz-title-display" class="text-2xl font-extrabold text-slate-800 mb-6 uppercase tracking-tight italic">AI Smart Quiz</h2>
+                
+                <div class="mb-6 space-y-4">
+                    <div class="relative">
+                        <input type="password" id="api-key-input" placeholder="Nhập Gemini API Key của bạn" class="input-pill text-center border-slate-200 text-sm shadow-sm">
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 font-bold text-[11px] uppercase tracking-wider hover:underline flex items-center gap-1">Lấy Key tại Google AI Studio</a>
+                        <button onclick="showHelp()" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest hover:text-slate-600 transition-colors">Cách lấy API Key & Tại sao?</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3 px-6 mt-8">
+                    <button onclick="initQuiz('practice')" class="btn-main pill-shape py-4 px-10 font-bold text-sm w-full">Luyện tập</button>
+                    <button onclick="initQuiz('test')" class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-4 px-10 font-bold text-sm w-full">Kiểm tra (Tính giờ)</button>
+                </div>
             </div>
 
             <!-- MAIN QUIZ -->
             <div id="main-quiz" class="hidden">
-                <header class="flex items-center justify-between mb-5 glass-card pill-shape p-2.5 pl-5 pr-5">
-                    <div id="ui-timer" class="timer-badge pill-shape px-3.5 py-1.5 font-bold text-xs flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span id="timer-text">00:00</span>
+                <header class="flex items-center justify-between mb-5 glass-card pill-shape p-2 px-4">
+                    <div class="flex items-center gap-1">
+                        <a href="/eduspace" class="btn-icon-nav" title="Trang chủ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                        </a>
+                        <button onclick="goBackToStart()" class="btn-icon-nav" title="Quay lại màn hình chính">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" /></svg>
+                        </button>
                     </div>
-                    <div id="ui-progress" class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">
-                        Câu 0/0
+
+                    <div id="ui-timer" class="text-blue-600 font-bold text-sm flex items-center gap-2">
+                        <span id="timer-text" class="tabular-nums">00:00</span>
                     </div>
+                    <div id="ui-progress" class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">Câu 0/0</div>
                 </header>
 
-                <main id="game-container">
-                    <div id="question-card" class="glass-card round-card p-6 md:p-10 fade-in">
-                        <div id="question-content" class="space-y-3"></div>
-                        <div id="options-container" class="grid grid-cols-1 gap-3.5 mt-8"></div>
+                <main id="quiz-container">
+                    <div id="question-card" class="glass-card round-card p-6 md:p-10 fade-in min-h-[420px] flex flex-col">
+                        <div id="question-header"></div>
+                        <div id="options-container" class="grid grid-cols-1 gap-3 mt-8 flex-1"></div>
                         
-                        <div id="action-area" class="mt-8 flex justify-end gap-3">
-                            <button id="skip-btn" class="hidden text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-blue-500 transition-colors px-6">
-                                Xem đáp án
-                            </button>
-                            <button id="submit-btn" class="btn-action pill-shape py-3 px-10 disabled:opacity-30 font-bold uppercase tracking-widest text-xs w-full sm:w-auto">
-                                Kiểm tra
-                            </button>
+                        <div id="action-area" class="mt-8 flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex gap-2">
+                                <button id="prev-btn" class="hidden btn-nav-blue pill-shape px-5 py-2 text-[10px] uppercase tracking-widest">Quay lại</button>
+                                <button id="next-nav-btn" class="hidden btn-nav-blue pill-shape px-5 py-2 text-[10px] uppercase tracking-widest">Tiếp theo</button>
+                            </div>
+                            <div class="flex items-center gap-2 ml-auto">
+                                <button id="submit-btn" class="btn-main pill-shape py-3 px-8 font-bold uppercase tracking-widest text-[11px] min-w-[140px]">Kiểm tra</button>
+                                <button id="finish-test-btn" class="hidden btn-main pill-shape py-3 px-8 font-bold uppercase tracking-widest text-[11px] !bg-blue-600">Nộp bài</button>
+                            </div>
                         </div>
 
-                        <div id="explanation-container" class="mt-8 hidden">
-                            <div class="bg-slate-50/50 round-card p-6 border border-slate-100">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span id="result-badge" class="pill-shape px-3.5 py-1 text-[9px] font-black uppercase text-white shadow-sm"></span>
-                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Lời giải chi tiết</span>
-                                </div>
+                        <div id="explanation-container" class="mt-8 hidden fade-in">
+                            <div class="bg-slate-50 round-card p-6 border border-slate-100">
+                                <span id="result-badge" class="pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white mb-4 inline-block"></span>
                                 <div id="explanation-text" class="text-slate-600 text-sm leading-relaxed mb-6"></div>
-                                <button id="next-btn" class="w-full btn-action pill-shape py-3.5 font-bold flex items-center justify-center gap-2 text-sm">
-                                    <span>Câu tiếp theo</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </button>
+                                <button id="next-btn" class="w-full btn-main pill-shape py-4 font-bold text-sm">Câu tiếp theo</button>
                             </div>
                         </div>
                     </div>
                 </main>
             </div>
 
-            <!-- RESULT SCREEN -->
             <div id="result-screen" class="hidden glass-card round-card p-10 text-center fade-in">
-                <div id="result-icon" class="w-20 h-20 pill-shape flex items-center justify-center mx-auto mb-6 text-3xl shadow-lg border-4 border-white"></div>
-                <h2 class="text-2xl font-black text-slate-800 mb-1">Hoàn thành!</h2>
-                <p id="total-completion" class="text-blue-500 text-[10px] font-black mb-6 uppercase tracking-[0.2em]"></p>
-                <div class="grid grid-cols-2 gap-3 mb-4">
-                    <div class="bg-blue-50/50 p-5 pill-shape border border-blue-100">
-                        <p class="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-1">Điểm trắc nghiệm</p>
-                        <p id="score-correct" class="text-2xl font-black text-blue-600">0</p>
-                    </div>
-                    <div class="bg-slate-50/50 p-5 pill-shape border border-slate-100">
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Thời gian</p>
-                        <p id="score-time" class="text-2xl font-black text-slate-600">00:00</p>
-                    </div>
+                <div id="result-icon" class="w-20 h-20 pill-shape flex items-center justify-center mx-auto mb-6 text-4xl bg-blue-50">🏆</div>
+                <h2 class="text-3xl font-black text-slate-800 mb-1">Kết quả</h2>
+                <p id="result-mode-label" class="text-blue-500 text-[10px] font-black mb-8 uppercase tracking-widest"></p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-blue-50 p-6 pill-shape border border-blue-100"><p class="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-1">Điểm</p><p id="final-score" class="text-2xl font-black text-blue-600">0/0</p></div>
+                    <div class="bg-slate-50 p-6 pill-shape border border-slate-100"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Thời gian</p><p id="final-time" class="text-2xl font-black text-slate-600">00:00</p></div>
                 </div>
-                <div id="extra-stats" class="mb-8 space-y-2"></div>
-                <button onclick="location.reload()" class="btn-action pill-shape py-3.5 px-10 font-bold w-full max-w-xs text-sm">Luyện tập lại</button>
+                <button onclick="location.reload()" class="btn-main pill-shape py-4 px-10 font-bold w-full text-sm">Quay lại</button>
             </div>
-            <footer class="mt-10 text-center text-slate-300 text-[9px] font-bold uppercase tracking-[0.4em]">
-                &copy; 2025 EDUSPACE BY ND LABS
-            </footer>
         </div>
     </div>
 
     <script src="data.js"></script>
     <script>
+        let apiKey = "";
+        let quizMode = 'practice';
         let currentIndex = 0;
-        let selectedIdx = null;
-        let correctCount = 0;
-        let objectiveCount = 0;
+        let timerSeconds = 0;
         let timerInterval;
-        let seconds = 0;
+        let userAnswers = [];
+        let sessionScore = 0;
 
-        window.onload = function() {
-            if (typeof quizData !== 'undefined') {
-                document.getElementById('start-subject').innerText = quizData.config.subject;
-                document.getElementById('start-info').innerText = quizData.config.info;
+        // Cập nhật tên từ file data.js
+        window.onload = () => {
+            if (typeof quizData !== 'undefined' && quizData.title) {
+                document.getElementById('quiz-title-display').innerText = quizData.title;
+                document.getElementById('page-title').innerText = quizData.title;
             }
         };
 
-        function renderMath() {
-            if (window.renderMathInElement) {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false}
-                    ],
-                    throwOnError: false
-                });
-            }
+        function showModal(title, text, type = 'info', onConfirm = null) {
+            const modal = document.getElementById('custom-modal');
+            const confirmBtn = document.getElementById('modal-confirm');
+            const cancelBtn = document.getElementById('modal-cancel');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-text').innerHTML = text;
+            document.getElementById('modal-icon').innerText = type === 'warn' ? '⚠️' : (type === 'help' ? '💡' : '🔔');
+            cancelBtn.classList.toggle('hidden', type !== 'confirm');
+            modal.style.display = 'flex';
+            confirmBtn.onclick = () => { modal.style.display = 'none'; if(onConfirm) onConfirm(); };
+            cancelBtn.onclick = () => { modal.style.display = 'none'; };
         }
 
-        function startQuiz() {
+        function showHelp() {
+            showModal("Về API Key", "Mọi yêu cầu chấm điểm được thực hiện trực tiếp từ trình duyệt của bạn qua API Gemini. Key không được lưu trữ.", 'help');
+        }
+
+        function goBackToStart() {
+            showModal("Xác nhận thoát", "Bạn có chắc muốn thoát và quay về màn hình bắt đầu?", "confirm", () => {
+                clearInterval(timerInterval);
+                document.getElementById('main-quiz').classList.add('hidden');
+                document.getElementById('start-screen').classList.remove('hidden');
+            });
+        }
+
+        function initQuiz(mode) {
+            apiKey = document.getElementById('api-key-input').value.trim();
+            quizMode = mode;
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('main-quiz').classList.remove('hidden');
+            userAnswers = new Array(quizData.questions.length).fill(null);
+            currentIndex = 0;
+            sessionScore = 0;
+            
+            if (quizMode === 'test') {
+                timerSeconds = quizData.config.testDuration || 600;
+                document.getElementById('prev-btn').classList.remove('hidden');
+                document.getElementById('next-nav-btn').classList.remove('hidden');
+                document.getElementById('finish-test-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            } else {
+                timerSeconds = 0;
+                document.getElementById('prev-btn').classList.add('hidden');
+                document.getElementById('next-nav-btn').classList.add('hidden');
+                document.getElementById('finish-test-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            }
             startTimer();
             loadQuestion();
         }
 
         function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            const display = document.getElementById('timer-text');
             timerInterval = setInterval(() => {
-                seconds++;
-                const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-                const s = (seconds % 60).toString().padStart(2, '0');
-                document.getElementById('timer-text').innerText = `${m}:${s}`;
+                quizMode === 'test' ? timerSeconds-- : timerSeconds++;
+                if (timerSeconds < 0 && quizMode === 'test') { finishTest(); return; }
+                const m = Math.floor(Math.abs(timerSeconds) / 60).toString().padStart(2, '0');
+                const s = (Math.abs(timerSeconds) % 60).toString().padStart(2, '0');
+                display.innerText = `${m}:${s}`;
             }, 1000);
         }
 
         function loadQuestion() {
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
-            selectedIdx = null;
-            document.getElementById('submit-btn').disabled = (type !== 'essay'); 
-            document.getElementById('submit-btn').classList.remove('hidden');
-            document.getElementById('skip-btn').classList.toggle('hidden', type !== 'essay');
+            document.getElementById('ui-progress').innerText = `Câu ${currentIndex + 1}/${quizData.questions.length}`;
             document.getElementById('explanation-container').classList.add('hidden');
-            document.getElementById('ui-progress').innerText = `CÂU ${currentIndex + 1}/${quizData.questions.length}`;
-            document.getElementById('question-content').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-[0.2em]">Câu ${currentIndex + 1} &bull; ${getTypeLabel(type)}</p>
-                <div class="text-lg md:text-xl text-slate-800 font-bold leading-snug">${q.question}</div>
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextNavBtn = document.getElementById('next-nav-btn');
+
+            if (quizMode === 'practice') {
+                submitBtn.classList.remove('hidden');
+                submitBtn.disabled = (userAnswers[currentIndex] === null || userAnswers[currentIndex] === "");
+            } else {
+                prevBtn.disabled = currentIndex === 0;
+                nextNavBtn.disabled = currentIndex === quizData.questions.length - 1;
+            }
+
+            document.getElementById('question-header').innerHTML = `
+                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} &bull; ${q.points} điểm</p>
+                <div class="text-xl text-slate-800 font-extrabold leading-tight">${q.question}</div>
             `;
+
             const container = document.getElementById('options-container');
             container.innerHTML = '';
+
             if (type === 'multiple' || type === 'truefalse') {
-                const options = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
-                options.forEach((opt, i) => {
+                const opts = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
+                opts.forEach((opt, i) => {
                     const btn = document.createElement('div');
-                    btn.className = 'option-card p-3 pl-5 pr-5 flex items-center gap-4 group';
-                    btn.innerHTML = `
-                        <span class="w-9 h-9 shrink-0 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[11px] group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">${type === 'truefalse' ? (i === 0 ? '✓' : '✕') : String.fromCharCode(65 + i)}</span>
-                        <span class="font-bold text-slate-600 text-[15px] flex-1 transition-colors">${opt}</span>
-                    `;
-                    btn.onclick = () => {
-                        if (!document.getElementById('explanation-container').classList.contains('hidden')) return;
-                        selectedIdx = i;
-                        document.getElementById('submit-btn').disabled = false;
-                        document.querySelectorAll('.option-card').forEach(o => o.classList.remove('selected'));
-                        btn.classList.add('selected');
-                    };
+                    btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
+                    btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span><span class="font-bold text-sm flex-1">${opt}</span>`;
+                    btn.onclick = () => { if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; selectAns(i); };
                     container.appendChild(btn);
                 });
-            } else if (type === 'short') {
-                container.innerHTML = `<input type="text" id="short-answer" placeholder="Nhập câu trả lời của bạn..." class="input-pill" autocomplete="off">`;
-                const input = document.getElementById('short-answer');
-                input.oninput = () => { document.getElementById('submit-btn').disabled = input.value.trim() === ''; };
-            } else if (type === 'essay') {
-                container.innerHTML = `<textarea id="essay-answer" placeholder="Viết câu trả lời hoặc để trống để xem đáp án..." class="input-pill !rounded-[24px] min-h-[120px] resize-none"></textarea>`;
-            }
-            renderMath();
-        }
+            } else if (type === 'short' || type === 'essay') {
+                const isShort = type === 'short';
+                const el = isShort 
+                    ? `<div class="flex justify-center"><input type="text" id="ans-input" maxlength="4" class="input-pill input-short shadow-inner" placeholder="____"></div>` 
+                    : `<textarea id="ans-input" class="input-pill !rounded-[24px] min-h-[140px] resize-none p-6 font-medium text-slate-700" placeholder="Viết câu trả lời..."></textarea>`;
+                
+                container.innerHTML = el;
+                const input = document.getElementById('ans-input');
+                if (userAnswers[currentIndex] !== null) input.value = userAnswers[currentIndex];
 
-        function getTypeLabel(type) {
-            switch(type) {
-                case 'truefalse': return 'Đúng / Sai';
-                case 'short': return 'Trả lời ngắn';
-                case 'essay': return 'Tự luận';
-                default: return 'Trắc nghiệm';
-            }
-        }
-
-        function handleSubmit(isSkipped = false) {
-            const q = quizData.questions[currentIndex];
-            const type = q.type || 'multiple';
-            let isCorrect = false;
-            let displayResult = true;
-            if (type === 'multiple' || type === 'truefalse') {
-                objectiveCount++;
-                isCorrect = selectedIdx === q.correct;
-                const items = document.querySelectorAll('.option-card');
-                items.forEach((item, i) => {
-                    const label = item.querySelector('span:first-child');
-                    if (i === q.correct) {
-                        item.classList.add('card-correct');
-                        label.classList.add('!bg-emerald-500', '!text-white');
-                    } else if (i === selectedIdx) {
-                        item.classList.add('card-wrong');
-                        label.classList.add('!bg-rose-500', '!text-white');
+                input.oninput = (e) => {
+                    let val = e.target.value;
+                    if (isShort) {
+                        val = val.replace(/[^0-9\-.,]/g, '');
+                        e.target.value = val;
                     }
-                    item.style.pointerEvents = 'none';
-                });
-            } else if (type === 'short') {
-                objectiveCount++;
-                const userVal = document.getElementById('short-answer').value.trim().replace(/,/g, '.');
-                const correctVal = String(q.correct).trim().replace(/,/g, '.');
-                isCorrect = userVal === correctVal;
-                const input = document.getElementById('short-answer');
-                input.disabled = true;
-                input.classList.add(isCorrect ? 'card-correct' : 'card-wrong');
-                if (!isCorrect) {
-                    const correctHint = document.createElement('p');
-                    correctHint.className = 'mt-2 text-[11px] font-bold text-emerald-600 px-4';
-                    correctHint.innerText = `Đáp án đúng: ${q.correct}`;
-                    input.parentNode.appendChild(correctHint);
-                }
-            } else if (type === 'essay') {
-                displayResult = false;
-                document.getElementById('essay-answer').disabled = true;
+                    userAnswers[currentIndex] = val;
+                    if(quizMode === 'practice') {
+                        submitBtn.disabled = val.trim().length === 0;
+                    }
+                };
             }
-            if (isCorrect) correctCount++;
-            const badge = document.getElementById('result-badge');
-            if (displayResult) {
-                badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
-                badge.className = `pill-shape px-3.5 py-1 text-[9px] font-black uppercase text-white shadow-sm ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
-            } else {
-                badge.innerText = "Tham khảo";
-                badge.className = "pill-shape px-3.5 py-1 text-[9px] font-black uppercase text-white shadow-sm bg-blue-500";
-            }
-            document.getElementById('explanation-text').innerHTML = q.explanation || (type === 'essay' ? q.suggested : "Hãy xem kỹ lời giải phía trên.");
-            document.getElementById('explanation-container').classList.remove('hidden');
-            document.getElementById('submit-btn').classList.add('hidden');
-            document.getElementById('skip-btn').classList.add('hidden');
             renderMath();
         }
 
-        document.getElementById('submit-btn').onclick = () => handleSubmit(false);
-        document.getElementById('skip-btn').onclick = () => handleSubmit(true);
-        document.getElementById('next-btn').onclick = function() {
-            currentIndex++;
-            if (currentIndex < quizData.questions.length) {
-                loadQuestion();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        function selectAns(idx) {
+            userAnswers[currentIndex] = idx;
+            document.querySelectorAll('.option-card').forEach((o, i) => o.classList.toggle('selected', i === idx));
+            if (quizMode === 'practice') document.getElementById('submit-btn').disabled = false;
+        }
+
+        async function handlePractice() {
+            const q = quizData.questions[currentIndex];
+            const badge = document.getElementById('result-badge');
+            const expText = document.getElementById('explanation-text');
+            const submitBtn = document.getElementById('submit-btn');
+            let earned = 0, isCorrect = false;
+
+            if (q.type === 'essay') {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<div class="spinner"></div>`;
+                const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested);
+                earned = res.score * q.points;
+                badge.innerText = `Điểm: ${Math.round(res.score*100)}%`;
+                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
+                expText.innerHTML = res.feedback;
+                submitBtn.innerHTML = "Kiểm tra";
             } else {
-                showFinalResult();
+                if (q.type === 'short') {
+                    const cleanU = (userAnswers[currentIndex]||'').trim().replace(/,/g, '.');
+                    const cleanC = String(q.correct).trim().replace(/,/g, '.');
+                    isCorrect = cleanU === cleanC;
+                }
+                else isCorrect = userAnswers[currentIndex] === q.correct;
+                
+                if (isCorrect) earned = q.points;
+                badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
+                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
+                expText.innerHTML = q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct}`;
+            }
+
+            sessionScore += earned;
+            document.getElementById('explanation-container').classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+        }
+
+        async function gradeAI(q, u, s) {
+            if (!apiKey) return { score: 0.5, feedback: "Hệ thống: Vui lòng nhập API Key để AI chấm điểm." };
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `Chấm điểm: Q:"${q}", Ans:"${u}", Guide:"${s}". JSON: {score:0-1, feedback:string HTML tiếng Việt}` }] }], generationConfig: { responseMimeType: "application/json" } })
+                });
+                const d = await res.json();
+                return JSON.parse(d.candidates[0].content.parts[0].text);
+            } catch (e) { return { score: 0, feedback: "Lỗi kết nối AI. Kiểm tra lại Key của bạn." }; }
+        }
+
+        async function finishTest() {
+            clearInterval(timerInterval);
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = `<div class="glass-card round-card p-20 flex flex-col items-center justify-center"><div class="spinner !border-blue-500 !w-10 !h-10 mb-4"></div><p class="font-bold text-slate-400 uppercase tracking-widest text-[10px]">Đang chấm điểm AI...</p></div>`;
+            
+            let total = 0;
+            for (let i = 0; i < quizData.questions.length; i++) {
+                const q = quizData.questions[i];
+                const u = userAnswers[i];
+                if (!u && u !== 0) continue;
+                if (q.type === 'essay') { const res = await gradeAI(q.question, u, q.suggested); total += res.score * q.points; }
+                else if (q.type === 'short') {
+                    if (String(u).trim().replace(/,/g, '.') === String(q.correct).trim().replace(/,/g, '.')) total += q.points;
+                }
+                else if (u === q.correct) total += q.points;
+            }
+            
+            document.getElementById('main-quiz').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${Math.round(total*10)/10}/${quizData.questions.reduce((a,b)=>a+b.points,0)}`;
+            document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
+        }
+
+        function nextStep() {
+            if (currentIndex < quizData.questions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            } else {
+                if (quizMode === 'test') {
+                    showModal("Nộp bài", "Bạn đã hoàn thành câu hỏi cuối cùng. Nộp bài ngay?", "confirm", finishTest);
+                } else {
+                    document.getElementById('main-quiz').classList.add('hidden');
+                    document.getElementById('result-screen').classList.remove('hidden');
+                    document.getElementById('final-score').innerText = `${Math.round(sessionScore*10)/10}/${quizData.questions.reduce((a,b)=>a+b.points,0)}`;
+                    document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
+                }
+            }
+        }
+
+        window.onkeydown = (e) => {
+            if (document.getElementById('main-quiz').classList.contains('hidden')) return;
+            if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+                if (e.key === 'Enter') {
+                    if (quizMode === 'practice') {
+                        const expVisible = !document.getElementById('explanation-container').classList.contains('hidden');
+                        if (expVisible) nextStep(); else if (!document.getElementById('submit-btn').disabled) handlePractice();
+                    } else { nextStep(); }
+                }
+                return;
+            }
+            if (['1','2','3','4'].includes(e.key)) {
+                const idx = parseInt(e.key) - 1;
+                const q = quizData.questions[currentIndex];
+                const opts = q.type === 'truefalse' ? 2 : (q.options?.length || 0);
+                if (idx < opts) selectAns(idx);
+            }
+            if (e.key === 'Enter') {
+                const expVisible = !document.getElementById('explanation-container').classList.contains('hidden');
+                if (expVisible) nextStep(); else if (quizMode === 'practice' && !document.getElementById('submit-btn').disabled) handlePractice();
+                else if (quizMode === 'test') nextStep();
             }
         };
 
-        function showFinalResult() {
-            clearInterval(timerInterval);
-            document.getElementById('main-quiz').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            const completionPercent = Math.round((currentIndex / quizData.questions.length) * 100);
-            document.getElementById('total-completion').innerText = `HOÀN THÀNH ${completionPercent}% BÀI TẬP`;
-            document.getElementById('score-correct').innerText = objectiveCount > 0 ? `${correctCount}/${objectiveCount}` : "N/A";
-            document.getElementById('score-time').innerText = document.getElementById('timer-text').innerText;
-            const stats = document.getElementById('extra-stats');
-            stats.innerHTML = '';
-            if (objectiveCount < quizData.questions.length) {
-                const essayNum = quizData.questions.length - objectiveCount;
-                stats.innerHTML = `<p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">+ ${essayNum} câu tự luận đã xem</p>`;
-            }
-            const icon = document.getElementById('result-icon');
-            const ratio = objectiveCount > 0 ? (correctCount / objectiveCount) : 1;
-            if (ratio === 1) { icon.innerHTML = '👑'; icon.classList.add('bg-yellow-50'); }
-            else if (ratio >= 0.5) { icon.innerHTML = '⭐'; icon.classList.add('bg-blue-50'); }
-            else { icon.innerHTML = '📚'; icon.classList.add('bg-slate-50'); }
-        }
+        document.getElementById('submit-btn').onclick = handlePractice;
+        document.getElementById('next-btn').onclick = nextStep;
+        document.getElementById('prev-btn').onclick = () => { if(currentIndex > 0) { currentIndex--; loadQuestion(); } };
+        document.getElementById('next-nav-btn').onclick = nextStep;
+        document.getElementById('finish-test-btn').onclick = () => showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
+
+        function renderMath() { if (window.renderMathInElement) renderMathInElement(document.body, { delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}] }); }
     </script>
 </body>
-</html>
+    </html>
