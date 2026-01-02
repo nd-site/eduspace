@@ -99,7 +99,7 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
-        isComingSoon: true
+        isHot: true
     },
     {
         title: "Kiểm tra Hành trình văn minh nhân loại - Lịch Sử 10",
@@ -122,3 +122,4 @@ const quizList = [
     */
 
 ];
+
