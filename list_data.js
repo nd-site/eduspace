@@ -8,6 +8,27 @@
  * - isComingSoon: true (nếu muốn đánh dấu "SẮP RA MẮT" cho mục này)
  */
 const quizList = [
+    /**
+    {
+        title: "Mẫu",
+        url: "/eduspace/mau",
+        description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
+        tag: "Mẫu",
+        type: "quiz",
+        isHot: true
+    }
+    */
+
+    {
+        title: "Đề cương Lịch Sử 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/lichsu/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử",
+        isHot: true
+    },
     {
         title: "Đề cương GDQP-AN 10 - Học kỳ I năm học 2025-2026",
         url: "/eduspace/gdqp/10/on-tap-hk1-2526-v1",
@@ -92,34 +113,13 @@ const quizList = [
         isComingSoon: true
     },
     {
-        title: "Đề cương Lịch Sử 10 - Học kỳ I năm học 2025-2026",
-        url: "/eduspace/lichsu/10/on-tap-hk1-2526-v1",
-        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
-        tag: "Lịch Sử",
-        type: "quiz",
-        class: "10",
-        subject: "Lịch Sử",
-        isHot: true
-    },
-    {
         title: "Kiểm tra Hành trình văn minh nhân loại - Lịch Sử 10",
         url: "/eduspace/lichsu/10/hanh-trinh-van-minh-nhan-loai/kiem-tra",
         tag: "Lịch Sử",
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
-        isHot: true
     },
-    /**
-    {
-        title: "Mẫu",
-        url: "/eduspace/mau",
-        description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
-        tag: "Mẫu",
-        type: "quiz",
-        isHot: true
-    }
-    */
-
 ];
+
 
