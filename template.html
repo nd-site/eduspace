@@ -35,118 +35,55 @@
        
         .input-pill { width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 2px solid #f1f5f9; outline: none; transition: all 0.3s; }
         .input-pill:focus { border-color: var(--primary-light); }
-        .short-ans-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            margin: 2rem auto 0;
-        }
-        .input-short {
-            width: 180px;
-            padding: 1rem 0;
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: 8px;
-            text-align: center;
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 9999px;
-            color: var(--primary);
-            caret-color: var(--primary);
-            outline: none;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-        }
-        .input-short:focus {
-            border-color: var(--primary-light);
-            background: #fff;
-            box-shadow: 0 10px 25px -5px rgba(0, 112, 243, 0.15);
-        }
-        .short-ans-guide {
-            margin-top: 12px;
-            font-size: 11px;
-            font-weight: 800;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            white-space: nowrap;
-        }
+        .short-ans-container { display: flex; flex-direction: column; align-items: center; width: 100%; margin: 2rem auto 0; }
+        .input-short { width: 180px; padding: 1rem 0; font-size: 1.75rem; font-weight: 800; letter-spacing: 8px; text-align: center; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9999px; color: var(--primary); caret-color: var(--primary); outline: none; transition: all 0.2s ease; text-transform: uppercase; }
+        .input-short:focus { border-color: var(--primary-light); background: #fff; box-shadow: 0 10px 25px -5px rgba(0, 112, 243, 0.15); }
+        .short-ans-guide { margin-top: 12px; font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; }
         .btn-icon-nav { padding: 8px; border-radius: 12px; transition: all 0.2s; color: #64748b; }
         .btn-icon-nav:hover { background: #f1f5f9; color: var(--primary); }
         .q-image-container { width: 100%; max-height: 250px; overflow: hidden; border-radius: 16px; margin-bottom: 1.5rem; background: #f1f5f9; display: flex; justify-content: center; }
         .q-image-container img { height: 100%; object-fit: contain; }
 
-        /* ── Style cho câu hỏi nhiều phát biểu Đúng/Sai ── */
-        .tf-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border-radius: 16px;
-            background: white;
-            border: 2px solid #f1f5f9;
-            transition: all 0.2s;
-            margin-bottom: 12px;
-        }
+        /* Nút Đúng/Sai */
+        .tf-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; background: white; border: 2px solid #f1f5f9; transition: all 0.2s; margin-bottom: 12px; }
         .tf-row:hover { border-color: #cbd5e1; }
+        .tf-label { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f1f5f9; color: #64748b; font-weight: 800; font-size: 13px; border-radius: 9999px; }
+        .tf-content { flex: 1; font-size: 15px; font-weight: 600; line-height: 1.4; color: #1e293b; }
+        .tf-btn { min-width: 72px; height: 36px; padding: 0 12px; border-radius: 9999px; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: all 0.18s; cursor: pointer; user-select: none; background: #ffffff; border: 2px solid #cbd5e1; color: #475569; }
+        .tf-btn:hover:not(.selected) { border-color: #94a3b8; background: #f8fafc; }
+        .tf-btn.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); font-weight: 800; }
 
-        .tf-label {
-            width: 32px;
-            height: 32px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f1f5f9;
-            color: #64748b;
-            font-weight: 800;
-            font-size: 13px;
-            border-radius: 9999px;
-        }
+        /* Thanh tiến trình câu */
+        #question-progress-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 1.5rem; padding: 8px; background: rgba(255,255,255,0.6); border-radius: 16px; }
+        .question-progress-item { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: white; background: #cbd5e1; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+        .question-progress-item.current { border-color: var(--primary); background: var(--primary); transform: scale(1.15); }
+        .question-progress-item.answered { background: #94a3b8; }
+        .question-progress-item.correct { background: #10b981; }
+        .question-progress-item.incorrect { background: #ef4444; }
+        .question-progress-item:hover { transform: scale(1.1); }
 
-        .tf-content {
-            flex: 1;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: #1e293b;
-        }
-
-        .tf-btn {
-            min-width: 72px;
-            height: 36px;
-            padding: 0 12px;
-            border-radius: 9999px;
-            font-size: 13px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.18s;
-            cursor: pointer;
-            user-select: none;
-            background: #ffffff;
-            border: 2px solid #cbd5e1;
-            color: #475569;
-        }
-
-        .tf-btn:hover:not(.selected) {
-            border-color: #94a3b8;
-            background: #f8fafc;
-        }
-
-        .tf-btn.selected {
-            border-color: var(--primary);
-            background: #f0f7ff;
-            color: var(--primary);
-            font-weight: 800;
-        }
+        /* Kết quả chi tiết - đẹp hơn, không tràn */
+        #detail-result-container { margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-height: 60vh; overflow-y: auto; scrollbar-width: thin; }
+        #detail-result-container::-webkit-scrollbar { width: 6px; }
+        #detail-result-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .detail-question { margin-bottom: 1.5rem; padding: 1.25rem; background: #f8fafc; border-radius: 16px; border-left: 6px solid #cbd5e1; transition: all 0.3s; }
+        .detail-question.correct { border-left-color: #10b981; background: #f0fdf4; }
+        .detail-question.incorrect { border-left-color: #ef4444; background: #fef2f2; }
+        .detail-question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .detail-question-header h4 { font-size: 1.25rem; font-weight: 700; }
+        .detail-score { font-size: 1.25rem; font-weight: 800; color: #3b82f6; }
+        .detail-your-answer, .detail-correct-answer { margin: 0.75rem 0; padding: 0.75rem 1rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem; line-height: 1.5; word-break: break-word; white-space: pre-wrap; max-width: 100%; overflow-x: auto; }
+        .detail-your-answer { background: #e0f2fe; color: #1e40af; }
+        .detail-correct-answer { background: #ecfdf5; color: #065f46; }
+        .detail-explanation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #4b5563; font-size: 0.95rem; line-height: 1.6; }
+        .fixed-restart-btn { position: fixed; bottom: 30px; right: 30px; z-index: 100; width: auto; padding: 0.75rem 1.5rem; font-size: 0.95rem; font-weight: 700; border-radius: 9999px; box-shadow: 0 4px 12px rgba(0,112,243,0.3); transition: all 0.3s; }
+        .fixed-restart-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,112,243,0.4); }
     </style>
 </head>
 <body>
     <div class="bg-blob" style="top: -150px; right: -150px;"></div>
     <div class="bg-blob" style="bottom: -150px; left: -150px;"></div>
+
     <div id="custom-modal">
         <div class="modal-content fade-in">
             <div id="modal-icon" class="text-4xl mb-4">🔑</div>
@@ -158,6 +95,7 @@
             </div>
         </div>
     </div>
+
     <div class="app-layout flex justify-center py-10 px-4">
         <div class="w-full max-w-xl">
             <!-- START SCREEN -->
@@ -202,6 +140,9 @@
                     </div>
                     <div id="ui-progress" class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">Câu 0/0</div>
                 </header>
+
+                <div id="question-progress-bar" class="flex flex-wrap gap-2 mb-4 justify-center"></div>
+
                 <main id="quiz-container">
                     <div id="question-card" class="glass-card round-card p-6 md:p-10 fade-in min-h-[420px] flex flex-col">
                         <div id="question-header"></div>
@@ -228,15 +169,36 @@
                 </main>
             </div>
 
-            <div id="result-screen" class="hidden glass-card round-card p-10 text-center fade-in">
-                <div id="result-icon" class="w-20 h-20 pill-shape flex items-center justify-center mx-auto mb-6 text-4xl bg-blue-50">🏆</div>
-                <h2 class="text-3xl font-black text-slate-800 mb-1">Kết quả</h2>
-                <p class="text-blue-500 text-[10px] font-black mb-8 uppercase tracking-widest">EduSpace by ND Labs</p>
-                <div class="grid grid-cols-2 gap-4 mb-8">
-                    <div class="bg-blue-50 p-6 pill-shape border border-blue-100"><p class="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-1">Điểm</p><p id="final-score" class="text-2xl font-black text-blue-600">0/0</p></div>
-                    <div class="bg-slate-50 p-6 pill-shape border border-slate-100"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Thời gian</p><p id="final-time" class="text-2xl font-black text-slate-600">00:00</p></div>
+            <!-- KẾT QUẢ ĐẸP HƠN -->
+            <div id="result-screen" class="hidden glass-card round-card p-8 md:p-10 fade-in">
+                <div class="flex flex-col items-center mb-8">
+                    <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-5xl shadow-lg mb-4">🏆</div>
+                    <h2 class="text-4xl font-black text-slate-800 mb-1">Kết quả của bạn</h2>
+                    <p class="text-blue-600 font-bold text-lg">Hoàn thành xuất sắc!</p>
                 </div>
-                <button onclick="location.reload()" class="btn-main pill-shape py-4 px-10 font-bold w-full text-sm">Làm lại</button>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200 shadow-sm text-center">
+                        <p class="text-sm font-bold text-blue-600 uppercase tracking-wider mb-1">Điểm số</p>
+                        <p id="final-score" class="text-5xl font-black text-blue-700">0</p>
+                        <p class="text-sm text-blue-500 mt-1">/ tổng điểm</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <p class="text-sm font-bold text-slate-600 uppercase tracking-wider mb-1">Thời gian</p>
+                        <p id="final-time" class="text-5xl font-black text-slate-700">00:00</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200 shadow-sm text-center">
+                        <p class="text-sm font-bold text-green-600 uppercase tracking-wider mb-1">Tỷ lệ đúng</p>
+                        <p id="final-percent" class="text-5xl font-black text-green-700">0%</p>
+                    </div>
+                </div>
+
+                <div id="detail-result-container">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">Chi tiết từng câu</h3>
+                    <div id="detail-questions-list" class="space-y-6"></div>
+                </div>
+
+                <button id="restart-btn" class="btn-main fixed-restart-btn">Làm lại</button>
             </div>
         </div>
     </div>
@@ -257,32 +219,17 @@
                         explanation: "EduSpace là nền tảng học tập thông minh phát triển bởi ND Labs."
                     },
                     {
-                        type: "truefalse",
-                        question: "Hãy đánh giá tính đúng/sai của các phát biểu sau:",
-                        statements: [
-                            "Trái Đất là hành tinh lớn nhất trong Hệ Mặt Trời.",
-                            "Nước sôi ở 100°C dưới áp suất khí quyển chuẩn.",
-                            "1 + 1 = 3 trong một số hệ số học modulo.",
-                            "Mặt Trăng là vệ tinh tự nhiên duy nhất của Trái Đất."
-                        ],
-                        correctAnswers: [false, true, true, true],
-                        points: 20,
-                        explanation: "A sai vì Sao Mộc mới là hành tinh lớn nhất. B đúng. C đúng trong một số trường hợp. D đúng."
-                    },
-                    {
                         type: "short",
                         question: "Nhập mã số may mắn của bạn (tối đa 4 ký tự):",
-                        correct: "2025",
+                        correct: "2024",
                         points: 10,
-                        explanation: "Mã số đúng là 2025."
+                        explanation: "Mã số đúng là 2024."
                     }
                 ]
             };
         }
     </script>
-
     <script src="data.js"></script>
-
     <script>
         let apiKey = "";
         let quizMode = 'practice';
@@ -291,11 +238,29 @@
         let timerInterval;
         let userAnswers = [];
         let sessionScore = 0;
+        let questionResults = []; // true = đúng, false = sai, null = chưa kiểm tra
+        let questionEarned = []; // điểm đạt được từng câu
 
         window.onload = () => {
             if (typeof quizData !== 'undefined') {
                 document.getElementById('quiz-title-display').innerText = quizData.title || "EduSpace by ND Labs";
                 document.getElementById('page-title').innerText = quizData.title || "EduSpace by ND Labs";
+            }
+            // Load API Key from localStorage
+            const storedApiKey = localStorage.getItem('geminiApiKey');
+            if (storedApiKey) {
+                document.getElementById('api-key-input').value = storedApiKey;
+            }
+
+            // Load progress for this quiz
+            const storedProgress = localStorage.getItem(`quizProgress_${quizData.title}`);
+            if (storedProgress) {
+                const progress = JSON.parse(storedProgress);
+                userAnswers = progress.userAnswers || [];
+                sessionScore = progress.sessionScore || 0;
+                questionResults = progress.questionResults || [];
+                questionEarned = progress.questionEarned || [];
+                currentIndex = progress.currentIndex || 0;
             }
         };
 
@@ -319,6 +284,7 @@
         function goBackToStart() {
             showModal("Xác nhận", "Dữ liệu đang làm sẽ bị mất. Bạn muốn thoát?", "confirm", () => {
                 clearInterval(timerInterval);
+                localStorage.removeItem(`quizProgress_${quizData.title}`); // Xóa progress khi thoát
                 document.getElementById('main-quiz').classList.add('hidden');
                 document.getElementById('start-screen').classList.remove('hidden');
             });
@@ -326,26 +292,10 @@
 
         function initQuiz(mode) {
             apiKey = document.getElementById('api-key-input').value.trim();
+            localStorage.setItem('geminiApiKey', apiKey); // Lưu API key
             quizMode = mode;
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('main-quiz').classList.remove('hidden');
-            userAnswers = new Array(quizData.questions.length).fill(null);
-            currentIndex = 0;
-            sessionScore = 0;
-           
-            if (quizMode === 'test') {
-                timerSeconds = quizData.config.testDuration || 600;
-                document.getElementById('prev-btn').classList.remove('hidden');
-                document.getElementById('next-nav-btn').classList.remove('hidden');
-                document.getElementById('finish-test-btn').classList.remove('hidden');
-                document.getElementById('submit-btn').classList.add('hidden');
-            } else {
-                timerSeconds = 0;
-                document.getElementById('prev-btn').classList.add('hidden');
-                document.getElementById('next-nav-btn').classList.add('hidden');
-                document.getElementById('finish-test-btn').classList.add('hidden');
-                document.getElementById('submit-btn').classList.remove('hidden');
-            }
             startTimer();
             loadQuestion();
         }
@@ -370,6 +320,27 @@
             return 0;
         }
 
+        function renderQuestionProgress() {
+            const bar = document.getElementById('question-progress-bar');
+            bar.innerHTML = '';
+            quizData.questions.forEach((q, i) => {
+                const item = document.createElement('div');
+                item.className = 'question-progress-item';
+                item.textContent = i + 1;
+
+                if (i === currentIndex) item.classList.add('current');
+                if (userAnswers[i] !== null && userAnswers[i] !== undefined) item.classList.add('answered');
+                if (questionResults[i] === true) item.classList.add('correct');
+                if (questionResults[i] === false) item.classList.add('incorrect');
+
+                item.onclick = () => {
+                    currentIndex = i;
+                    loadQuestion();
+                };
+                bar.appendChild(item);
+            });
+        }
+
         function loadQuestion() {
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
@@ -379,84 +350,32 @@
             const submitBtn = document.getElementById('submit-btn');
             const prevBtn = document.getElementById('prev-btn');
             const nextNavBtn = document.getElementById('next-nav-btn');
-
             if (quizMode === 'practice') {
                 submitBtn.classList.remove('hidden');
-                submitBtn.disabled = !hasUserAnsweredCurrent();
+                submitBtn.disabled = (userAnswers[currentIndex] === null || userAnswers[currentIndex] === "");
             } else {
                 prevBtn.disabled = currentIndex === 0;
                 nextNavBtn.disabled = currentIndex === quizData.questions.length - 1;
             }
-
+            // Xử lý hình ảnh nếu có trong data
             let imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Question image" onerror="this.parentElement.style.display='none'"></div>` : '';
-
             document.getElementById('question-header').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} • ${q.points || 0} điểm</p>
+                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} &bull; ${q.points || 0} điểm</p>
                 ${imgHtml}
                 <div class="text-xl text-slate-800 font-extrabold leading-tight">${q.question}</div>
             `;
-
             const container = document.getElementById('options-container');
             container.innerHTML = '';
-            container.className = type === 'truefalse' ? 'mt-6 flex flex-col gap-3 flex-1' : 'grid grid-cols-1 gap-3 mt-8 flex-1';
-
-            if (type === 'multiple') {
-                q.options.forEach((opt, i) => {
+            if (type === 'multiple' || type === 'truefalse') {
+                const opts = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
+                opts.forEach((opt, i) => {
                     const btn = document.createElement('div');
                     btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
                     btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span><span class="font-bold text-sm flex-1">${opt}</span>`;
                     btn.onclick = () => { if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; selectAns(i); };
                     container.appendChild(btn);
                 });
-            } 
-            else if (type === 'truefalse') {
-                if (!userAnswers[currentIndex] || !Array.isArray(userAnswers[currentIndex])) {
-                    userAnswers[currentIndex] = Array(4).fill(null);
-                }
-
-                const statements = q.statements || ["Ý A", "Ý B", "Ý C", "Ý D"];
-
-                statements.forEach((text, idx) => {
-                    const row = document.createElement('div');
-                    row.className = 'tf-row';
-
-                    const label = document.createElement('span');
-                    label.className = 'tf-label';
-                    label.textContent = String.fromCharCode(65 + idx);
-
-                    const content = document.createElement('span');
-                    content.className = 'tf-content';
-                    content.innerHTML = text;
-
-                    const trueBtn = document.createElement('div');
-                    trueBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === true ? 'selected' : ''}`;
-                    trueBtn.textContent = 'ĐÚNG';
-
-                    const falseBtn = document.createElement('div');
-                    falseBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === false ? 'selected' : ''}`;
-                    falseBtn.textContent = 'SAI';
-
-                    trueBtn.onclick = () => {
-                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
-                            userAnswers[currentIndex][idx] = true;
-                            updateTFVisual(idx);
-                            if (quizMode === 'practice') submitBtn.disabled = false;
-                        }
-                    };
-
-                    falseBtn.onclick = () => {
-                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
-                            userAnswers[currentIndex][idx] = false;
-                            updateTFVisual(idx);
-                            if (quizMode === 'practice') submitBtn.disabled = false;
-                        }
-                    };
-
-                    row.append(label, content, trueBtn, falseBtn);
-                    container.appendChild(row);
-                });
-            } 
-            else if (type === 'short' || type === 'essay') {
+            } else if (type === 'short' || type === 'essay') {
                 const isShort = type === 'short';
                 if (isShort) {
                     container.innerHTML = `
@@ -481,6 +400,7 @@
                 input.focus();
             }
             renderMath();
+            renderQuestionProgress();
         }
 
         function updateTFVisual(idx) {
@@ -515,17 +435,17 @@
             const expText = document.getElementById('explanation-text');
             const submitBtn = document.getElementById('submit-btn');
             let earned = 0;
+            let isCorrectThisTime = false;
 
             if (q.type === 'truefalse') {
                 let correctCount = 0;
                 const correctAnswers = q.correctAnswers || Array(4).fill(false);
-
                 userAnswers[currentIndex].forEach((userChoice, i) => {
                     if (userChoice !== null && userChoice === correctAnswers[i]) correctCount++;
                 });
-
                 const percent = getTFScorePercent(correctCount);
                 earned = percent * (q.points || 0);
+                isCorrectThisTime = percent >= 0.5;
 
                 badge.innerText = `Đúng ${correctCount}/4 → ${Math.round(percent * 100)}%`;
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${percent >= 0.5 ? 'bg-emerald-500' : percent > 0 ? 'bg-amber-500' : 'bg-rose-500'}`;
@@ -545,10 +465,11 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = `<div class="spinner"></div>`;
                 const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested || "");
-                earned = res.score * (q.points || 0);
-                badge.innerText = `Điểm: ${Math.round(res.score * 100)}%`;
+                earned = Math.round(res.score * (q.points || 0) * 10) / 10;
+                isCorrectThisTime = res.score >= 0.6;
+                badge.innerText = `Điểm: ${earned} / ${q.points}`;
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
-                expText.innerHTML = res.feedback || "Không có phản hồi.";
+                expText.innerHTML = res.feedback || "Không có phản hồi từ AI.";
                 submitBtn.innerHTML = "Kiểm tra";
             } 
             else {
@@ -561,15 +482,20 @@
                     isCorrect = userAnswers[currentIndex] === q.correct;
                 }
                 earned = isCorrect ? (q.points || 0) : 0;
+                isCorrectThisTime = isCorrect;
                 badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
                 expText.innerHTML = q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct || ''}`;
             }
 
             sessionScore += earned;
+            questionResults[currentIndex] = isCorrectThisTime;
+            questionEarned[currentIndex] = earned;
             document.getElementById('explanation-container').classList.remove('hidden');
             submitBtn.classList.add('hidden');
             renderMath();
+            renderQuestionProgress();
+            saveProgress();
         }
 
         async function gradeAI(q, u, s) {
@@ -579,7 +505,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Chấm thang 0-1 và nhận xét ngắn gọn bằng HTML tiếng Việt. Trả về JSON: {"score": 0.8, "feedback": "..."}` }] }],
+                        contents: [{ parts: [{ text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Chấm thang 0-1 (số thập phân) và đưa ra nhận xét ngắn gọn bằng HTML tiếng Việt. Trả về JSON: {"score": 0.8, "feedback": "..."}` }] }],
                         generationConfig: { responseMimeType: "application/json" }
                     })
                 });
@@ -596,9 +522,15 @@
             container.innerHTML = `<div class="glass-card round-card p-20 flex flex-col items-center justify-center"><div class="spinner !border-blue-500 !w-10 !h-10 mb-4"></div><p class="font-bold text-slate-400 uppercase tracking-widest text-[10px]">Đang tổng hợp điểm...</p></div>`;
            
             let total = 0;
+            let totalPoints = 0;
+            quizData.questions.forEach(q => totalPoints += q.points || 0);
+
             for (let i = 0; i < quizData.questions.length; i++) {
                 const q = quizData.questions[i];
                 const u = userAnswers[i];
+                let earned = 0;
+                let isCorrect = false;
+
                 if (q.type === 'truefalse') {
                     if (!Array.isArray(u)) continue;
                     let correctCount = 0;
@@ -606,41 +538,111 @@
                     u.forEach((choice, idx) => {
                         if (choice !== null && choice === correct[idx]) correctCount++;
                     });
-                    total += getTFScorePercent(correctCount) * (q.points || 0);
+                    const percent = getTFScorePercent(correctCount);
+                    earned = percent * (q.points || 0);
+                    isCorrect = percent >= 0.5;
                 }
                 else if (q.type === 'essay') {
                     if (u) {
                         const res = await gradeAI(q.question, u, q.suggested || "");
-                        total += res.score * (q.points || 0);
+                        earned = Math.round(res.score * (q.points || 0) * 10) / 10;
+                        isCorrect = res.score >= 0.6;
                     }
                 }
                 else if (q.type === 'short') {
-                    if (u && String(u).trim().toLowerCase() === String(q.correct).trim().toLowerCase())
-                        total += q.points || 0;
+                    if (u && String(u).trim().toLowerCase() === String(q.correct).trim().toLowerCase()) {
+                        earned = q.points || 0;
+                        isCorrect = true;
+                    }
                 }
                 else if (u === q.correct) {
-                    total += q.points || 0;
+                    earned = q.points || 0;
+                    isCorrect = true;
                 }
+
+                total += earned;
+                questionResults[i] = isCorrect;
+                questionEarned[i] = earned;
             }
-           
+
+            document.getElementById('final-score').innerText = `${Math.round(total*10)/10} / ${totalPoints}`;
+            document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
+            document.getElementById('final-percent').innerText = totalPoints > 0 ? Math.round((total / totalPoints) * 100) + '%' : '0%';
+
+            renderDetailResults();
+
             document.getElementById('main-quiz').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-            document.getElementById('final-score').innerText = `${Math.round(total*10)/10}/${quizData.questions.reduce((a,b)=>a+(b.points||0),0)}`;
-            document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
+            // Clear progress after finish
+            localStorage.removeItem(`quizProgress_${quizData.title}`);
+            // Thêm nút làm lại nổi
+            document.getElementById('restart-btn').onclick = () => location.reload();
+        }
+
+        function renderDetailResults() {
+            const list = document.getElementById('detail-questions-list');
+            list.innerHTML = '';
+
+            quizData.questions.forEach((q, i) => {
+                const earned = questionEarned[i] || 0;
+                const statusClass = questionResults[i] === true ? 'correct' : (questionResults[i] === false ? 'incorrect' : '');
+                const icon = questionResults[i] === true ? '✅' : (questionResults[i] === false ? '❌' : '❓');
+
+                const div = document.createElement('div');
+                div.className = `detail-question ${statusClass}`;
+                div.innerHTML = `
+                    <div class="detail-question-header">
+                        <h4>Câu ${i+1} ${icon}</h4>
+                        <span class="detail-score">${earned} / ${q.points || 0}</span>
+                    </div>
+                    <p class="font-medium mb-3">${q.question}</p>
+                    <p class="detail-your-answer">Bạn chọn: ${formatUserAnswer(q, userAnswers[i])}</p>
+                    <p class="detail-correct-answer">Đáp án đúng: ${formatCorrectAnswer(q)}</p>
+                    <div class="detail-explanation">${q.explanation || 'Không có giải thích chi tiết.'}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function formatUserAnswer(q, ans) {
+            if (ans === null || ans === undefined) return 'Chưa trả lời';
+            if (q.type === 'multiple') return q.options[ans] || '—';
+            if (q.type === 'truefalse') {
+                if (!Array.isArray(ans)) return 'Chưa chọn';
+                return ans.map((v,i) => v === null ? '—' : (v ? 'ĐÚNG' : 'SAI')).join(', ');
+            }
+            return ans.toString() || '—';
+        }
+
+        function formatCorrectAnswer(q) {
+            if (q.type === 'multiple') return q.options[q.correct];
+            if (q.type === 'truefalse') return q.correctAnswers.map(v => v ? 'ĐÚNG' : 'SAI').join(', ');
+            if (q.type === 'short') return q.correct;
+            if (q.type === 'essay') return 'Xem gợi ý trong đề';
+            return '—';
+        }
+
+        function saveProgress() {
+            const progress = {
+                userAnswers,
+                sessionScore,
+                questionResults,
+                questionEarned,
+                currentIndex
+            };
+            localStorage.setItem(`quizProgress_${quizData.title}`, JSON.stringify(progress));
         }
 
         function nextStep() {
             if (currentIndex < quizData.questions.length - 1) {
                 currentIndex++;
                 loadQuestion();
+                saveProgress();
             } else {
                 if (quizMode === 'test') {
                     showModal("Nộp bài", "Bạn đã hoàn thành các câu hỏi. Nộp bài ngay?", "confirm", finishTest);
                 } else {
-                    document.getElementById('main-quiz').classList.add('hidden');
-                    document.getElementById('result-screen').classList.remove('hidden');
-                    document.getElementById('final-score').innerText = `${Math.round(sessionScore*10)/10}/${quizData.questions.reduce((a,b)=>a+(b.points||0),0)}`;
-                    document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
+                    finishTest();
                 }
             }
         }
@@ -661,7 +663,7 @@
 
         document.getElementById('submit-btn').onclick = handlePractice;
         document.getElementById('next-btn-exp').onclick = nextStep;
-        document.getElementById('prev-btn').onclick = () => { if(currentIndex > 0) { currentIndex--; loadQuestion(); } };
+        document.getElementById('prev-btn').onclick = () => { if(currentIndex > 0) { currentIndex--; loadQuestion(); saveProgress(); } };
         document.getElementById('next-nav-btn').onclick = nextStep;
         document.getElementById('finish-test-btn').onclick = () => showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
 
