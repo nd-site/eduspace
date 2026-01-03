@@ -62,22 +62,18 @@
         .question-progress-item.incorrect { background: #ef4444; }
         .question-progress-item:hover { transform: scale(1.1); }
 
-        /* Kết quả chi tiết - đẹp hơn, không tràn */
-        #detail-result-container { margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-height: 60vh; overflow-y: auto; scrollbar-width: thin; }
-        #detail-result-container::-webkit-scrollbar { width: 6px; }
-        #detail-result-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        /* Kết quả chi tiết - đẹp hơn */
+        #detail-result-container { margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .detail-question { margin-bottom: 1.5rem; padding: 1.25rem; background: #f8fafc; border-radius: 16px; border-left: 6px solid #cbd5e1; transition: all 0.3s; }
         .detail-question.correct { border-left-color: #10b981; background: #f0fdf4; }
         .detail-question.incorrect { border-left-color: #ef4444; background: #fef2f2; }
         .detail-question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
         .detail-question-header h4 { font-size: 1.25rem; font-weight: 700; }
-        .detail-score { font-size: 1.25rem; font-weight: 800; color: #3b82f6; }
-        .detail-your-answer, .detail-correct-answer { margin: 0.75rem 0; padding: 0.75rem 1rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem; line-height: 1.5; word-break: break-word; white-space: pre-wrap; max-width: 100%; overflow-x: auto; }
+        .detail-score { font-size: 1.25rem; font-weight: 800; }
+        .detail-your-answer, .detail-correct-answer { margin: 0.75rem 0; padding: 0.75rem; border-radius: 10px; font-weight: 600; }
         .detail-your-answer { background: #e0f2fe; color: #1e40af; }
         .detail-correct-answer { background: #ecfdf5; color: #065f46; }
-        .detail-explanation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #4b5563; font-size: 0.95rem; line-height: 1.6; }
-        .fixed-restart-btn { position: fixed; bottom: 30px; right: 30px; z-index: 100; width: auto; padding: 0.75rem 1.5rem; font-size: 0.95rem; font-weight: 700; border-radius: 9999px; box-shadow: 0 4px 12px rgba(0,112,243,0.3); transition: all 0.3s; }
-        .fixed-restart-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,112,243,0.4); }
+        .detail-explanation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #4b5563; }
     </style>
 </head>
 <body>
@@ -108,10 +104,8 @@
                 <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-4 mt-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                 </div>
-               
                 <h2 id="quiz-title-display" class="text-2xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">EduSpace by ND Labs</h2>
                 <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em] mb-8">AI Smart Quiz Platform</p>
-               
                 <div class="mb-6 space-y-4">
                     <div class="relative">
                         <input type="password" id="api-key-input" placeholder="Nhập Gemini API Key" class="input-pill text-center border-slate-200 text-sm shadow-sm">
@@ -198,38 +192,60 @@
                     <div id="detail-questions-list" class="space-y-6"></div>
                 </div>
 
-                <button id="restart-btn" class="btn-main fixed-restart-btn">Làm lại</button>
+                <button onclick="location.reload()" class="btn-main pill-shape py-5 px-12 font-bold text-lg w-full mt-10 shadow-lg">Làm lại bài kiểm tra</button>
             </div>
         </div>
     </div>
 
-    <!-- Giả lập file data.js nếu chưa có -->
+    <!-- Giả lập data nếu chưa có data.js -->
     <script>
         if (typeof quizData === 'undefined') {
             window.quizData = {
-                title: "EduSpace by ND Labs",
-                config: { testDuration: 1200 },
+                title: "Kiểm tra mẫu 4 dạng câu hỏi",
+                config: { testDuration: 1800 },
                 questions: [
                     {
                         type: "multiple",
-                        question: "EduSpace là sản phẩm của đơn vị nào?",
-                        options: ["ND Labs", "AI Studio", "Google", "OpenAI"],
-                        correct: 0,
+                        question: "Hành tinh lớn nhất Hệ Mặt Trời là gì?",
+                        options: ["Trái Đất", "Sao Hỏa", "Sao Mộc", "Sao Thổ"],
+                        correct: 2,
                         points: 10,
-                        explanation: "EduSpace là nền tảng học tập thông minh phát triển bởi ND Labs."
+                        explanation: "Sao Mộc là hành tinh lớn nhất."
+                    },
+                    {
+                        type: "truefalse",
+                        question: "Đánh giá tính đúng/sai của các phát biểu sau:",
+                        statements: [
+                            "Tế bào động vật có thành tế bào bằng cellulose.",
+                            "Ribosome là nơi tổng hợp protein.",
+                            "ADN chỉ tồn tại trong nhân tế bào.",
+                            "Quang hợp chỉ xảy ra ở lá cây."
+                        ],
+                        correctAnswers: [false, true, false, false],
+                        points: 20,
+                        explanation: "A sai, B đúng, C sai, D sai."
                     },
                     {
                         type: "short",
-                        question: "Nhập mã số may mắn của bạn (tối đa 4 ký tự):",
-                        correct: "2024",
+                        question: "Nhập mã số bí mật (4 chữ số):",
+                        correct: "2026",
                         points: 10,
-                        explanation: "Mã số đúng là 2024."
+                        explanation: "Mã đúng là 2026."
+                    },
+                    {
+                        type: "essay",
+                        question: "Giải thích ngắn gọn về quá trình quang hợp ở thực vật.",
+                        suggested: "Quang hợp là quá trình thực vật sử dụng ánh sáng mặt trời, nước và CO2 để tạo ra glucose và oxy theo phương trình 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (dưới tác dụng của diệp lục và ánh sáng).",
+                        points: 30,
+                        explanation: "Câu trả lời sẽ được AI chấm điểm dựa trên độ chính xác và đầy đủ."
                     }
                 ]
             };
         }
     </script>
-    <script src="data.js"></script>
+
+    <script src="data.js"></script> <!-- Nếu có file data.js riêng thì giữ dòng này -->
+
     <script>
         let apiKey = "";
         let quizMode = 'practice';
@@ -245,22 +261,6 @@
             if (typeof quizData !== 'undefined') {
                 document.getElementById('quiz-title-display').innerText = quizData.title || "EduSpace by ND Labs";
                 document.getElementById('page-title').innerText = quizData.title || "EduSpace by ND Labs";
-            }
-            // Load API Key from localStorage
-            const storedApiKey = localStorage.getItem('geminiApiKey');
-            if (storedApiKey) {
-                document.getElementById('api-key-input').value = storedApiKey;
-            }
-
-            // Load progress for this quiz
-            const storedProgress = localStorage.getItem(`quizProgress_${quizData.title}`);
-            if (storedProgress) {
-                const progress = JSON.parse(storedProgress);
-                userAnswers = progress.userAnswers || [];
-                sessionScore = progress.sessionScore || 0;
-                questionResults = progress.questionResults || [];
-                questionEarned = progress.questionEarned || [];
-                currentIndex = progress.currentIndex || 0;
             }
         };
 
@@ -284,7 +284,6 @@
         function goBackToStart() {
             showModal("Xác nhận", "Dữ liệu đang làm sẽ bị mất. Bạn muốn thoát?", "confirm", () => {
                 clearInterval(timerInterval);
-                localStorage.removeItem(`quizProgress_${quizData.title}`); // Xóa progress khi thoát
                 document.getElementById('main-quiz').classList.add('hidden');
                 document.getElementById('start-screen').classList.remove('hidden');
             });
@@ -292,10 +291,28 @@
 
         function initQuiz(mode) {
             apiKey = document.getElementById('api-key-input').value.trim();
-            localStorage.setItem('geminiApiKey', apiKey); // Lưu API key
             quizMode = mode;
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('main-quiz').classList.remove('hidden');
+            userAnswers = new Array(quizData.questions.length).fill(null);
+            questionResults = new Array(quizData.questions.length).fill(null);
+            questionEarned = new Array(quizData.questions.length).fill(0);
+            currentIndex = 0;
+            sessionScore = 0;
+           
+            if (quizMode === 'test') {
+                timerSeconds = quizData.config.testDuration || 600;
+                document.getElementById('prev-btn').classList.remove('hidden');
+                document.getElementById('next-nav-btn').classList.remove('hidden');
+                document.getElementById('finish-test-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            } else {
+                timerSeconds = 0;
+                document.getElementById('prev-btn').classList.add('hidden');
+                document.getElementById('next-nav-btn').classList.add('hidden');
+                document.getElementById('finish-test-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            }
             startTimer();
             loadQuestion();
         }
@@ -346,36 +363,88 @@
             const type = q.type || 'multiple';
             document.getElementById('ui-progress').innerText = `Câu ${currentIndex + 1}/${quizData.questions.length}`;
             document.getElementById('explanation-container').classList.add('hidden');
-           
+
             const submitBtn = document.getElementById('submit-btn');
             const prevBtn = document.getElementById('prev-btn');
             const nextNavBtn = document.getElementById('next-nav-btn');
+
             if (quizMode === 'practice') {
                 submitBtn.classList.remove('hidden');
-                submitBtn.disabled = (userAnswers[currentIndex] === null || userAnswers[currentIndex] === "");
+                submitBtn.disabled = !hasUserAnsweredCurrent();
             } else {
                 prevBtn.disabled = currentIndex === 0;
                 nextNavBtn.disabled = currentIndex === quizData.questions.length - 1;
             }
-            // Xử lý hình ảnh nếu có trong data
+
             let imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Question image" onerror="this.parentElement.style.display='none'"></div>` : '';
+
             document.getElementById('question-header').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} &bull; ${q.points || 0} điểm</p>
+                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} • ${q.points || 0} điểm</p>
                 ${imgHtml}
                 <div class="text-xl text-slate-800 font-extrabold leading-tight">${q.question}</div>
             `;
+
             const container = document.getElementById('options-container');
             container.innerHTML = '';
-            if (type === 'multiple' || type === 'truefalse') {
-                const opts = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
-                opts.forEach((opt, i) => {
+            container.className = type === 'truefalse' ? 'mt-6 flex flex-col gap-3 flex-1' : 'grid grid-cols-1 gap-3 mt-8 flex-1';
+
+            if (type === 'multiple') {
+                q.options.forEach((opt, i) => {
                     const btn = document.createElement('div');
                     btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
                     btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span><span class="font-bold text-sm flex-1">${opt}</span>`;
                     btn.onclick = () => { if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; selectAns(i); };
                     container.appendChild(btn);
                 });
-            } else if (type === 'short' || type === 'essay') {
+            } 
+            else if (type === 'truefalse') {
+                if (!userAnswers[currentIndex] || !Array.isArray(userAnswers[currentIndex])) {
+                    userAnswers[currentIndex] = Array(4).fill(null);
+                }
+
+                const statements = q.statements || ["Ý A", "Ý B", "Ý C", "Ý D"];
+
+                statements.forEach((text, idx) => {
+                    const row = document.createElement('div');
+                    row.className = 'tf-row';
+
+                    const label = document.createElement('span');
+                    label.className = 'tf-label';
+                    label.textContent = String.fromCharCode(65 + idx);
+
+                    const content = document.createElement('span');
+                    content.className = 'tf-content';
+                    content.innerHTML = text;
+
+                    const trueBtn = document.createElement('div');
+                    trueBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === true ? 'selected' : ''}`;
+                    trueBtn.textContent = 'ĐÚNG';
+
+                    const falseBtn = document.createElement('div');
+                    falseBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === false ? 'selected' : ''}`;
+                    falseBtn.textContent = 'SAI';
+
+                    trueBtn.onclick = () => {
+                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
+                            userAnswers[currentIndex][idx] = true;
+                            updateTFVisual(idx);
+                            if (quizMode === 'practice') submitBtn.disabled = false;
+                        }
+                    };
+
+                    falseBtn.onclick = () => {
+                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
+                            userAnswers[currentIndex][idx] = false;
+                            updateTFVisual(idx);
+                            if (quizMode === 'practice') submitBtn.disabled = false;
+                        }
+                    };
+
+                    row.append(label, content, trueBtn, falseBtn);
+                    container.appendChild(row);
+                });
+            } 
+            else if (type === 'short' || type === 'essay') {
                 const isShort = type === 'short';
                 if (isShort) {
                     container.innerHTML = `
@@ -465,7 +534,7 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = `<div class="spinner"></div>`;
                 const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested || "");
-                earned = Math.round(res.score * (q.points || 0) * 10) / 10;
+                earned = Math.round(res.score * q.points * 10) / 10;
                 isCorrectThisTime = res.score >= 0.6;
                 badge.innerText = `Điểm: ${earned} / ${q.points}`;
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
@@ -495,7 +564,6 @@
             submitBtn.classList.add('hidden');
             renderMath();
             renderQuestionProgress();
-            saveProgress();
         }
 
         async function gradeAI(q, u, s) {
@@ -520,7 +588,7 @@
             clearInterval(timerInterval);
             const container = document.getElementById('quiz-container');
             container.innerHTML = `<div class="glass-card round-card p-20 flex flex-col items-center justify-center"><div class="spinner !border-blue-500 !w-10 !h-10 mb-4"></div><p class="font-bold text-slate-400 uppercase tracking-widest text-[10px]">Đang tổng hợp điểm...</p></div>`;
-           
+
             let total = 0;
             let totalPoints = 0;
             quizData.questions.forEach(q => totalPoints += q.points || 0);
@@ -565,18 +633,16 @@
                 questionEarned[i] = earned;
             }
 
+            // Hiển thị tổng
             document.getElementById('final-score').innerText = `${Math.round(total*10)/10} / ${totalPoints}`;
             document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
             document.getElementById('final-percent').innerText = totalPoints > 0 ? Math.round((total / totalPoints) * 100) + '%' : '0%';
 
+            // Render chi tiết
             renderDetailResults();
 
             document.getElementById('main-quiz').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-            // Clear progress after finish
-            localStorage.removeItem(`quizProgress_${quizData.title}`);
-            // Thêm nút làm lại nổi
-            document.getElementById('restart-btn').onclick = () => location.reload();
         }
 
         function renderDetailResults() {
@@ -622,22 +688,10 @@
             return '—';
         }
 
-        function saveProgress() {
-            const progress = {
-                userAnswers,
-                sessionScore,
-                questionResults,
-                questionEarned,
-                currentIndex
-            };
-            localStorage.setItem(`quizProgress_${quizData.title}`, JSON.stringify(progress));
-        }
-
         function nextStep() {
             if (currentIndex < quizData.questions.length - 1) {
                 currentIndex++;
                 loadQuestion();
-                saveProgress();
             } else {
                 if (quizMode === 'test') {
                     showModal("Nộp bài", "Bạn đã hoàn thành các câu hỏi. Nộp bài ngay?", "confirm", finishTest);
@@ -663,7 +717,7 @@
 
         document.getElementById('submit-btn').onclick = handlePractice;
         document.getElementById('next-btn-exp').onclick = nextStep;
-        document.getElementById('prev-btn').onclick = () => { if(currentIndex > 0) { currentIndex--; loadQuestion(); saveProgress(); } };
+        document.getElementById('prev-btn').onclick = () => { if(currentIndex > 0) { currentIndex--; loadQuestion(); } };
         document.getElementById('next-nav-btn').onclick = nextStep;
         document.getElementById('finish-test-btn').onclick = () => showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
 
