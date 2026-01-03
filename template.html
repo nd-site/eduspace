@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         :root { --primary: #0070f3; --primary-light: #3291ff; --bg-main: #f0f7ff; }
@@ -17,43 +16,38 @@
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border: 1px solid #ffffff; box-shadow: 0 20px 40px -12px rgba(0, 112, 243, 0.08); }
         .round-card { border-radius: 32px; }
         .pill-shape { border-radius: 9999px; }
-        
+       
         .option-card { transition: all 0.2s; cursor: pointer; border: 2px solid #f1f5f9; background: #ffffff; border-radius: 9999px; }
         .option-card.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); }
         .option-card.selected span:first-child { background: var(--primary); color: white; }
-        
+       
         .btn-nav-blue { border: 2px solid var(--primary); color: var(--primary); font-weight: 800; transition: all 0.2s; }
         .btn-nav-blue:hover:not(:disabled) { background: var(--primary); color: white; }
         .btn-nav-blue:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
-
         .btn-main { background: var(--primary); color: white; transition: all 0.3s; box-shadow: 0 8px 16px -4px rgba(0, 112, 243, 0.3); }
         .btn-main:hover:not(:disabled) { transform: translateY(-2px); background: #0060d3; }
-
         #custom-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: white; border-radius: 24px; padding: 32px; width: 100%; max-width: 450px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
-
         .fade-in { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 18px; height: 18px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
+       
         .input-pill { width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 2px solid #f1f5f9; outline: none; transition: all 0.3s; }
         .input-pill:focus { border-color: var(--primary-light); }
-
-        /* Ô nhập trả lời ngắn cực gọn style con nhộng - ĐÃ CẬP NHẬT */
-        .short-ans-container { 
-            display: flex; 
+        .short-ans-container {
+            display: flex;
             flex-direction: column;
-            align-items: center; 
-            width: 100%; 
-            margin: 2rem auto 0; 
+            align-items: center;
+            width: 100%;
+            margin: 2rem auto 0;
         }
-        .input-short { 
-            width: 180px; 
-            padding: 1rem 0; 
-            font-size: 1.75rem; 
-            font-weight: 800; 
-            letter-spacing: 8px; 
+        .input-short {
+            width: 180px;
+            padding: 1rem 0;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: 8px;
             text-align: center;
             background: #f8fafc;
             border: 2px solid #e2e8f0;
@@ -64,33 +58,95 @@
             transition: all 0.2s ease;
             text-transform: uppercase;
         }
-        .input-short:focus { 
-            border-color: var(--primary-light); 
-            background: #fff; 
-            box-shadow: 0 10px 25px -5px rgba(0, 112, 243, 0.15); 
+        .input-short:focus {
+            border-color: var(--primary-light);
+            background: #fff;
+            box-shadow: 0 10px 25px -5px rgba(0, 112, 243, 0.15);
         }
-        .short-ans-guide { 
+        .short-ans-guide {
             margin-top: 12px;
-            font-size: 11px; 
-            font-weight: 800; 
-            color: #94a3b8; 
+            font-size: 11px;
+            font-weight: 800;
+            color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            white-space: nowrap; /* Ngăn xuống dòng */
+            white-space: nowrap;
         }
-
         .btn-icon-nav { padding: 8px; border-radius: 12px; transition: all 0.2s; color: #64748b; }
         .btn-icon-nav:hover { background: #f1f5f9; color: var(--primary); }
-
-        /* Style cho ảnh câu hỏi */
         .q-image-container { width: 100%; max-height: 250px; overflow: hidden; border-radius: 16px; margin-bottom: 1.5rem; background: #f1f5f9; display: flex; justify-content: center; }
         .q-image-container img { height: 100%; object-fit: contain; }
+
+        /* ── Style cho câu hỏi nhiều phát biểu Đúng/Sai ── */
+        .tf-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: white;
+            border: 2px solid #f1f5f9;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+        .tf-row:hover { border-color: #cbd5e1; }
+
+        .tf-label {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: #64748b;
+            font-weight: 800;
+            font-size: 13px;
+            border-radius: 9999px;
+        }
+
+        .tf-content {
+            flex: 1;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #1e293b;
+        }
+
+        .tf-btn {
+            min-width: 72px;
+            height: 36px;
+            padding: 0 12px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s;
+            cursor: pointer;
+            user-select: none;
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            color: #475569;
+        }
+
+        .tf-btn:hover:not(.selected) {
+            border-color: #94a3b8;
+            background: #f8fafc;
+        }
+
+        .tf-btn.selected {
+            border-color: var(--primary);
+            background: #f0f7ff;
+            color: var(--primary);
+            font-weight: 800;
+        }
     </style>
 </head>
 <body>
     <div class="bg-blob" style="top: -150px; right: -150px;"></div>
     <div class="bg-blob" style="bottom: -150px; left: -150px;"></div>
-
     <div id="custom-modal">
         <div class="modal-content fade-in">
             <div id="modal-icon" class="text-4xl mb-4">🔑</div>
@@ -102,7 +158,6 @@
             </div>
         </div>
     </div>
-
     <div class="app-layout flex justify-center py-10 px-4">
         <div class="w-full max-w-xl">
             <!-- START SCREEN -->
@@ -112,14 +167,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                     </a>
                 </div>
-
                 <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-4 mt-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                 </div>
-                
+               
                 <h2 id="quiz-title-display" class="text-2xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">EduSpace by ND Labs</h2>
                 <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em] mb-8">AI Smart Quiz Platform</p>
-                
+               
                 <div class="mb-6 space-y-4">
                     <div class="relative">
                         <input type="password" id="api-key-input" placeholder="Nhập Gemini API Key" class="input-pill text-center border-slate-200 text-sm shadow-sm">
@@ -129,7 +183,6 @@
                         <button onclick="showHelp()" class="text-slate-400 font-bold text-[10px] uppercase tracking-widest hover:text-slate-600 transition-colors">Cách lấy API Key & Tại sao?</button>
                     </div>
                 </div>
-
                 <div class="flex flex-col gap-3 px-6 mt-8">
                     <button onclick="initQuiz('practice')" class="btn-main pill-shape py-4 px-10 font-bold text-sm w-full">Luyện tập</button>
                     <button onclick="initQuiz('test')" class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-4 px-10 font-bold text-sm w-full">Kiểm tra (Tính giờ)</button>
@@ -144,18 +197,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                         </button>
                     </div>
-
                     <div id="ui-timer" class="text-blue-600 font-bold text-sm flex items-center gap-2">
                         <span id="timer-text" class="tabular-nums">00:00</span>
                     </div>
                     <div id="ui-progress" class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">Câu 0/0</div>
                 </header>
-
                 <main id="quiz-container">
                     <div id="question-card" class="glass-card round-card p-6 md:p-10 fade-in min-h-[420px] flex flex-col">
                         <div id="question-header"></div>
                         <div id="options-container" class="grid grid-cols-1 gap-3 mt-8 flex-1"></div>
-                        
+                       
                         <div id="action-area" class="mt-8 flex flex-wrap items-center justify-between gap-4">
                             <div class="flex gap-2">
                                 <button id="prev-btn" class="hidden btn-nav-blue pill-shape px-5 py-2 text-[10px] uppercase tracking-widest">Quay lại</button>
@@ -166,7 +217,6 @@
                                 <button id="finish-test-btn" class="hidden btn-main pill-shape py-3 px-8 font-bold uppercase tracking-widest text-[11px] !bg-blue-600">Nộp bài</button>
                             </div>
                         </div>
-
                         <div id="explanation-container" class="mt-8 hidden fade-in">
                             <div class="bg-slate-50 round-card p-6 border border-slate-100">
                                 <span id="result-badge" class="pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white mb-4 inline-block"></span>
@@ -207,16 +257,30 @@
                         explanation: "EduSpace là nền tảng học tập thông minh phát triển bởi ND Labs."
                     },
                     {
+                        type: "truefalse",
+                        question: "Hãy đánh giá tính đúng/sai của các phát biểu sau:",
+                        statements: [
+                            "Trái Đất là hành tinh lớn nhất trong Hệ Mặt Trời.",
+                            "Nước sôi ở 100°C dưới áp suất khí quyển chuẩn.",
+                            "1 + 1 = 3 trong một số hệ số học modulo.",
+                            "Mặt Trăng là vệ tinh tự nhiên duy nhất của Trái Đất."
+                        ],
+                        correctAnswers: [false, true, true, true],
+                        points: 20,
+                        explanation: "A sai vì Sao Mộc mới là hành tinh lớn nhất. B đúng. C đúng trong một số trường hợp. D đúng."
+                    },
+                    {
                         type: "short",
                         question: "Nhập mã số may mắn của bạn (tối đa 4 ký tự):",
-                        correct: "2024",
+                        correct: "2025",
                         points: 10,
-                        explanation: "Mã số đúng là 2024."
+                        explanation: "Mã số đúng là 2025."
                     }
                 ]
             };
         }
     </script>
+
     <script src="data.js"></script>
 
     <script>
@@ -268,7 +332,7 @@
             userAnswers = new Array(quizData.questions.length).fill(null);
             currentIndex = 0;
             sessionScore = 0;
-            
+           
             if (quizMode === 'test') {
                 timerSeconds = quizData.config.testDuration || 600;
                 document.getElementById('prev-btn').classList.remove('hidden');
@@ -298,46 +362,101 @@
             }, 1000);
         }
 
+        function getTFScorePercent(correctCount) {
+            if (correctCount === 1) return 0.10;
+            if (correctCount === 2) return 0.25;
+            if (correctCount === 3) return 0.50;
+            if (correctCount === 4) return 1.00;
+            return 0;
+        }
+
         function loadQuestion() {
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
             document.getElementById('ui-progress').innerText = `Câu ${currentIndex + 1}/${quizData.questions.length}`;
             document.getElementById('explanation-container').classList.add('hidden');
-            
+           
             const submitBtn = document.getElementById('submit-btn');
             const prevBtn = document.getElementById('prev-btn');
             const nextNavBtn = document.getElementById('next-nav-btn');
 
             if (quizMode === 'practice') {
                 submitBtn.classList.remove('hidden');
-                submitBtn.disabled = (userAnswers[currentIndex] === null || userAnswers[currentIndex] === "");
+                submitBtn.disabled = !hasUserAnsweredCurrent();
             } else {
                 prevBtn.disabled = currentIndex === 0;
                 nextNavBtn.disabled = currentIndex === quizData.questions.length - 1;
             }
 
-            // Xử lý hình ảnh nếu có trong data
             let imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Question image" onerror="this.parentElement.style.display='none'"></div>` : '';
 
             document.getElementById('question-header').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} &bull; ${q.points || 0} điểm</p>
+                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} • ${q.points || 0} điểm</p>
                 ${imgHtml}
                 <div class="text-xl text-slate-800 font-extrabold leading-tight">${q.question}</div>
             `;
 
             const container = document.getElementById('options-container');
             container.innerHTML = '';
+            container.className = type === 'truefalse' ? 'mt-6 flex flex-col gap-3 flex-1' : 'grid grid-cols-1 gap-3 mt-8 flex-1';
 
-            if (type === 'multiple' || type === 'truefalse') {
-                const opts = type === 'truefalse' ? ['Đúng', 'Sai'] : q.options;
-                opts.forEach((opt, i) => {
+            if (type === 'multiple') {
+                q.options.forEach((opt, i) => {
                     const btn = document.createElement('div');
                     btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
                     btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span><span class="font-bold text-sm flex-1">${opt}</span>`;
                     btn.onclick = () => { if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; selectAns(i); };
                     container.appendChild(btn);
                 });
-            } else if (type === 'short' || type === 'essay') {
+            } 
+            else if (type === 'truefalse') {
+                if (!userAnswers[currentIndex] || !Array.isArray(userAnswers[currentIndex])) {
+                    userAnswers[currentIndex] = Array(4).fill(null);
+                }
+
+                const statements = q.statements || ["Ý A", "Ý B", "Ý C", "Ý D"];
+
+                statements.forEach((text, idx) => {
+                    const row = document.createElement('div');
+                    row.className = 'tf-row';
+
+                    const label = document.createElement('span');
+                    label.className = 'tf-label';
+                    label.textContent = String.fromCharCode(65 + idx);
+
+                    const content = document.createElement('span');
+                    content.className = 'tf-content';
+                    content.innerHTML = text;
+
+                    const trueBtn = document.createElement('div');
+                    trueBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === true ? 'selected' : ''}`;
+                    trueBtn.textContent = 'ĐÚNG';
+
+                    const falseBtn = document.createElement('div');
+                    falseBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === false ? 'selected' : ''}`;
+                    falseBtn.textContent = 'SAI';
+
+                    trueBtn.onclick = () => {
+                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
+                            userAnswers[currentIndex][idx] = true;
+                            updateTFVisual(idx);
+                            if (quizMode === 'practice') submitBtn.disabled = false;
+                        }
+                    };
+
+                    falseBtn.onclick = () => {
+                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
+                            userAnswers[currentIndex][idx] = false;
+                            updateTFVisual(idx);
+                            if (quizMode === 'practice') submitBtn.disabled = false;
+                        }
+                    };
+
+                    row.append(label, content, trueBtn, falseBtn);
+                    container.appendChild(row);
+                });
+            } 
+            else if (type === 'short' || type === 'essay') {
                 const isShort = type === 'short';
                 if (isShort) {
                     container.innerHTML = `
@@ -349,10 +468,9 @@
                 } else {
                     container.innerHTML = `<textarea id="ans-input" class="input-pill !rounded-[24px] min-h-[140px] resize-none p-6 font-medium text-slate-700" placeholder="Viết câu trả lời..."></textarea>`;
                 }
-                
+               
                 const input = document.getElementById('ans-input');
                 if (userAnswers[currentIndex] !== null) input.value = userAnswers[currentIndex];
-
                 input.oninput = (e) => {
                     let val = e.target.value;
                     userAnswers[currentIndex] = val;
@@ -363,6 +481,26 @@
                 input.focus();
             }
             renderMath();
+        }
+
+        function updateTFVisual(idx) {
+            const rows = document.querySelectorAll('.tf-row');
+            if (!rows[idx]) return;
+            const trueBtn = rows[idx].querySelectorAll('.tf-btn')[0];
+            const falseBtn = rows[idx].querySelectorAll('.tf-btn')[1];
+            trueBtn.classList.toggle('selected', userAnswers[currentIndex][idx] === true);
+            falseBtn.classList.toggle('selected', userAnswers[currentIndex][idx] === false);
+        }
+
+        function hasUserAnsweredCurrent() {
+            const q = quizData.questions[currentIndex];
+            if (q.type === 'truefalse') {
+                return userAnswers[currentIndex] && userAnswers[currentIndex].some(v => v !== null);
+            } else if (q.type === 'multiple') {
+                return userAnswers[currentIndex] !== null;
+            } else {
+                return (userAnswers[currentIndex] || '').trim().length > 0;
+            }
         }
 
         function selectAns(idx) {
@@ -376,29 +514,56 @@
             const badge = document.getElementById('result-badge');
             const expText = document.getElementById('explanation-text');
             const submitBtn = document.getElementById('submit-btn');
-            let earned = 0, isCorrect = false;
+            let earned = 0;
 
-            if (q.type === 'essay') {
+            if (q.type === 'truefalse') {
+                let correctCount = 0;
+                const correctAnswers = q.correctAnswers || Array(4).fill(false);
+
+                userAnswers[currentIndex].forEach((userChoice, i) => {
+                    if (userChoice !== null && userChoice === correctAnswers[i]) correctCount++;
+                });
+
+                const percent = getTFScorePercent(correctCount);
+                earned = percent * (q.points || 0);
+
+                badge.innerText = `Đúng ${correctCount}/4 → ${Math.round(percent * 100)}%`;
+                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${percent >= 0.5 ? 'bg-emerald-500' : percent > 0 ? 'bg-amber-500' : 'bg-rose-500'}`;
+
+                let html = '<div class="space-y-3">';
+                q.statements.forEach((st, i) => {
+                    const user = userAnswers[currentIndex][i] === null ? '—' : (userAnswers[currentIndex][i] ? 'ĐÚNG' : 'SAI');
+                    const right = correctAnswers[i] ? 'ĐÚNG' : 'SAI';
+                    const color = user === right ? 'text-emerald-600' : 'text-rose-600';
+                    html += `<p><strong>${String.fromCharCode(65 + i)}.</strong> ${st}<br><span class="${color}">Bạn chọn: ${user} | Đáp án: ${right}</span></p>`;
+                });
+                html += '</div>';
+                if (q.explanation) html += `<div class="mt-4 pt-4 border-t border-slate-200">${q.explanation}</div>`;
+                expText.innerHTML = html;
+            } 
+            else if (q.type === 'essay') {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = `<div class="spinner"></div>`;
-                const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested);
-                earned = res.score * q.points;
-                badge.innerText = `Điểm: ${Math.round(res.score*100)}%`;
+                const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested || "");
+                earned = res.score * (q.points || 0);
+                badge.innerText = `Điểm: ${Math.round(res.score * 100)}%`;
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
-                expText.innerHTML = res.feedback;
+                expText.innerHTML = res.feedback || "Không có phản hồi.";
                 submitBtn.innerHTML = "Kiểm tra";
-            } else {
+            } 
+            else {
+                let isCorrect = false;
                 if (q.type === 'short') {
-                    const cleanU = (userAnswers[currentIndex]||'').trim().toLowerCase();
+                    const cleanU = (userAnswers[currentIndex] || '').trim().toLowerCase();
                     const cleanC = String(q.correct).trim().toLowerCase();
                     isCorrect = cleanU === cleanC;
+                } else {
+                    isCorrect = userAnswers[currentIndex] === q.correct;
                 }
-                else isCorrect = userAnswers[currentIndex] === q.correct;
-                
-                if (isCorrect) earned = q.points;
+                earned = isCorrect ? (q.points || 0) : 0;
                 badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
-                expText.innerHTML = q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct}`;
+                expText.innerHTML = q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct || ''}`;
             }
 
             sessionScore += earned;
@@ -408,35 +573,56 @@
         }
 
         async function gradeAI(q, u, s) {
-            if (!apiKey) return { score: 0.5, feedback: "<p class='text-amber-600'>Hệ thống: Vui lòng nhập API Key để AI chấm điểm chính xác hơn.</p>" };
+            if (!apiKey) return { score: 0.5, feedback: "<p class='text-amber-600'>Vui lòng nhập API Key để AI chấm điểm chính xác hơn.</p>" };
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Hãy chấm trên thang điểm 0-1 (số thập phân) và đưa ra nhận xét ngắn gọn bằng HTML tiếng Việt (dùng thẻ <p>, <b>). Trả về JSON: {"score": 0.8, "feedback": "..."}` }] }], generationConfig: { responseMimeType: "application/json" } })
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Chấm thang 0-1 và nhận xét ngắn gọn bằng HTML tiếng Việt. Trả về JSON: {"score": 0.8, "feedback": "..."}` }] }],
+                        generationConfig: { responseMimeType: "application/json" }
+                    })
                 });
                 const d = await res.json();
                 return JSON.parse(d.candidates[0].content.parts[0].text);
-            } catch (e) { return { score: 0, feedback: "Lỗi kết nối AI. Vui lòng kiểm tra API Key." }; }
+            } catch (e) {
+                return { score: 0, feedback: "Lỗi kết nối AI. Vui lòng kiểm tra API Key." };
+            }
         }
 
         async function finishTest() {
             clearInterval(timerInterval);
             const container = document.getElementById('quiz-container');
             container.innerHTML = `<div class="glass-card round-card p-20 flex flex-col items-center justify-center"><div class="spinner !border-blue-500 !w-10 !h-10 mb-4"></div><p class="font-bold text-slate-400 uppercase tracking-widest text-[10px]">Đang tổng hợp điểm...</p></div>`;
-            
+           
             let total = 0;
             for (let i = 0; i < quizData.questions.length; i++) {
                 const q = quizData.questions[i];
                 const u = userAnswers[i];
-                if (u === null) continue;
-                if (q.type === 'essay') { const res = await gradeAI(q.question, u, q.suggested); total += res.score * q.points; }
-                else if (q.type === 'short') {
-                    if (String(u).trim().toLowerCase() === String(q.correct).trim().toLowerCase()) total += q.points;
+                if (q.type === 'truefalse') {
+                    if (!Array.isArray(u)) continue;
+                    let correctCount = 0;
+                    const correct = q.correctAnswers || [];
+                    u.forEach((choice, idx) => {
+                        if (choice !== null && choice === correct[idx]) correctCount++;
+                    });
+                    total += getTFScorePercent(correctCount) * (q.points || 0);
                 }
-                else if (u === q.correct) total += q.points;
+                else if (q.type === 'essay') {
+                    if (u) {
+                        const res = await gradeAI(q.question, u, q.suggested || "");
+                        total += res.score * (q.points || 0);
+                    }
+                }
+                else if (q.type === 'short') {
+                    if (u && String(u).trim().toLowerCase() === String(q.correct).trim().toLowerCase())
+                        total += q.points || 0;
+                }
+                else if (u === q.correct) {
+                    total += q.points || 0;
+                }
             }
-            
+           
             document.getElementById('main-quiz').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
             document.getElementById('final-score').innerText = `${Math.round(total*10)/10}/${quizData.questions.reduce((a,b)=>a+(b.points||0),0)}`;
@@ -459,7 +645,6 @@
             }
         }
 
-        // Sự kiện phím bấm
         window.onkeydown = (e) => {
             if (document.getElementById('main-quiz').classList.contains('hidden')) return;
             if (e.key === 'Enter') {
@@ -480,15 +665,15 @@
         document.getElementById('next-nav-btn').onclick = nextStep;
         document.getElementById('finish-test-btn').onclick = () => showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
 
-        function renderMath() { 
+        function renderMath() {
             if (window.renderMathInElement) {
-                renderMathInElement(document.body, { 
+                renderMathInElement(document.body, {
                     delimiters: [
-                        {left: '$$', right: '$$', display: true}, 
+                        {left: '$$', right: '$$', display: true},
                         {left: '$', right: '$', display: false}
                     ],
                     throwOnError: false
-                }); 
+                });
             }
         }
     </script>
