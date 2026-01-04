@@ -1,73 +1,116 @@
-// data.js mẫu - EduSpace by ND Labs
-// Bao gồm đủ 4 loại câu hỏi: multiple, truefalse, short, essay
-
+// data.js - File dữ liệu mẫu cho EduSpace Quiz
 window.quizData = {
-    title: "Kiểm tra tổng hợp - Mẫu đầy đủ 4 dạng",
+    title: "Bài kiểm tra mẫu - Hỗ trợ bảng, ảnh & công thức (2026)",
     config: {
-        testDuration: 1800  // 30 phút (tính bằng giây)
+        testDuration: 1800  // 30 phút cho chế độ kiểm tra
     },
     questions: [
-        // 1. Câu trắc nghiệm (multiple) - chọn 1 đáp án
         {
             type: "multiple",
-            question: "Hành tinh nào trong Hệ Mặt Trời có khối lượng lớn nhất?",
-            options: [
-                "Trái Đất",
-                "Sao Hỏa",
-                "Sao Mộc",
-                "Sao Thổ"
-            ],
-            correct: 2,  // chỉ số bắt đầu từ 0 → Sao Mộc
+            question: `
+                <p>Dựa vào bảng dữ liệu dưới đây, hành tinh nào có <strong>khối lượng lớn nhất</strong> trong Hệ Mặt Trời?</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hành tinh</th>
+                            <th>Khối lượng (×10²⁴ kg)</th>
+                            <th>Đường kính trung bình (km)</th>
+                            <th>Số vệ tinh tự nhiên</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Trái Đất</td><td>5.972</td><td>12.742</td><td>1</td></tr>
+                        <tr><td>Sao Hỏa</td><td>0.642</td><td>6.779</td><td>2</td></tr>
+                        <tr><td>Sao Mộc</td><td>1898</td><td>139.820</td><td>95</td></tr>
+                        <tr><td>Sao Thổ</td><td>568</td><td>116.460</td><td>146</td></tr>
+                    </tbody>
+                </table>
+            `,
+            image: "https://science.nasa.gov/wp-content/uploads/2023/09/jupiter-marble-beauty-16x9-1.jpg?w=2048",
+            options: ["Trái Đất", "Sao Hỏa", "Sao Mộc", "Sao Thổ"],
+            correct: 2,
             points: 10,
-            explanation: "Sao Mộc là hành tinh lớn nhất và nặng nhất trong Hệ Mặt Trời, với khối lượng gấp khoảng 318 lần Trái Đất."
+            explanation: `
+                <p>Đáp án đúng là <strong>Sao Mộc</strong> với khối lượng khoảng <strong>1.898 × 10²⁷ kg</strong> – lớn gấp hơn 300 lần Trái Đất.</p>
+                <img src="https://science.nasa.gov/wp-content/uploads/2023/09/jupiter-marble-beauty-16x9-1.jpg?w=1024" alt="Hình ảnh Sao Mộc từ tàu Juno">
+                <p>Bảng trên cho thấy rõ sự chênh lệch lớn về khối lượng giữa các hành tinh khí khổng lồ (Sao Mộc, Sao Thổ) và các hành tinh đất đá.</p>
+            `
         },
-
-        // 2. Câu đúng/sai nhiều phát biểu (truefalse) - 4 ý
         {
             type: "truefalse",
-            question: "Hãy đánh giá tính đúng/sai của các phát biểu sau về sinh học lớp 10:",
+            question: "Đánh giá tính đúng/sai của các phát biểu sau về quang hợp ở thực vật:",
             statements: [
-                "Tế bào động vật có thành tế bào làm bằng cellulose.",
-                "Ribosome là nơi tổng hợp protein trong tế bào.",
-                "ADN chỉ tồn tại trong nhân tế bào.",
-                "Quang hợp chỉ xảy ra ở lá cây."
+                "Quang hợp chỉ diễn ra ở lá cây nhờ diệp lục.",
+                "Phản ứng quang hợp cần ánh sáng, CO₂ và nước để tạo ra glucose và oxy.",
+                "Phương trình tổng quát của quang hợp là: $$6CO_2 + 6H_2O \\rightarrow C_6H_{12}O_6 + 6O_2$$.",
+                "Thực vật không thực hiện quang hợp vào ban đêm."
             ],
-            correctAnswers: [false, true, false, false],
+            correctAnswers: [false, true, true, true],
             points: 20,
-            explanation: "A sai: thành tế bào động vật không có cellulose (chỉ có ở thực vật). B đúng. C sai: ADN còn có trong ty thể và lục lạp. D sai: quang hợp có thể xảy ra ở thân, rễ một số loài."
+            explanation: `
+                <ul>
+                    <li><strong>A. Sai</strong>: Quang hợp còn xảy ra ở thân non, cành xanh có diệp lục.</li>
+                    <li><strong>B. Đúng</strong>: Đây là các yếu tố cần thiết.</li>
+                    <li><strong>C. Đúng</strong>: Phương trình cân bằng chính xác (có xúc tác ánh sáng và diệp lục).</li>
+                    <li><strong>D. Đúng</strong>: Ban đêm thực vật chủ yếu hô hấp, không quang hợp do thiếu ánh sáng.</li>
+                </ul>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Photosynthesis_equation.svg/1280px-Photosynthesis_equation.svg.png" alt="Phương trình quang hợp">
+            `
         },
-
-        // 3. Câu trả lời ngắn (short) - nhập chuỗi ngắn
         {
             type: "short",
-            question: "Nhập mã số bí mật của bài kiểm tra hôm nay (4 chữ số):",
-            correct: "2510",
+            question: "Năm hiện tại là năm bao nhiêu? (Nhập 4 chữ số)",
+            correct: "2026",
             points: 10,
-            explanation: "Mã số đúng là 2510."
+            explanation: "Đúng rồi! Năm hiện tại là <strong>2026</strong>."
         },
-
-        // 4. Câu tự luận (essay) - chấm bằng AI
-        {
-            type: "essay",
-            question: "Giải thích hiện tượng quang hợp ở thực vật và nêu ý nghĩa của nó đối với sự sống trên Trái Đất.",
-            suggested: "Quang hợp là quá trình thực vật sử dụng ánh sáng mặt trời, nước và CO2 để tạo ra glucose và oxy. Phương trình: 6CO2 + 6H2O → C6H12O6 + 6O2 (dưới tác dụng của ánh sáng và diệp lục). Ý nghĩa: cung cấp oxy cho hô hấp, tạo chất hữu cơ làm thức ăn cho chuỗi thức ăn, giảm khí CO2 gây hiệu ứng nhà kính.",
-            points: 30,
-            explanation: "Câu trả lời sẽ được AI chấm điểm dựa trên độ chính xác, đầy đủ và rõ ràng."
-        },
-
-        // Thêm một câu multiple nữa để đủ 5 câu ví dụ
         {
             type: "multiple",
-            question: "Đơn vị đo lực trong hệ SI là gì?",
+            question: `
+                <p>Quan sát hình ảnh bên dưới và chọn phát biểu <strong>đúng</strong> nhất:</p>
+            `,
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1024px-The_Earth_seen_from_Apollo_17.jpg",
             options: [
-                "Joule",
-                "Newton",
-                "Watt",
-                "Pascal"
+                "Đây là hình ảnh Trái Đất chụp từ Mặt Trăng bởi phi hành gia Apollo 17.",
+                "Đây là hình ảnh Sao Hỏa chụp bởi tàu Curiosity.",
+                "Đây là hình ảnh giả lập từ phần mềm mô phỏng.",
+                "Đây là hình ảnh Sao Kim chụp bởi tàu Magellan."
             ],
-            correct: 1,
+            correct: 0,
+            points: 15,
+            explanation: `
+                <p>Đúng! Đây là bức ảnh nổi tiếng <strong>"The Blue Marble"</strong> được chụp bởi phi hành đoàn Apollo 17 vào ngày 7/12/1972 – một trong những hình ảnh Trái Đất đẹp và đầy đủ nhất từ không gian.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/1280px-The_Earth_seen_from_Apollo_17.jpg" alt="The Blue Marble - Apollo 17">
+            `
+        },
+        {
+            type: "essay",
+            question: "Giải thích ngắn gọn vai trò của ti thể (mitochondria) trong tế bào nhân chuẩn. (Tối đa 150 từ)",
+            suggested: "Ti thể là bào quan sản xuất năng lượng chính của tế bào, thường được gọi là 'nhà máy năng lượng'. Chúng thực hiện hô hấp tế bào, chuyển hóa glucose và oxy thành ATP thông qua chuỗi hô hấp và phosphoryl hóa oxy hóa. Ti thể có DNA riêng và có thể tự nhân đôi. Chúng rất quan trọng với các tế bào cần nhiều năng lượng như cơ bắp và thần kinh.",
+            points: 30,
+            explanation: `
+                <p>Câu trả lời sẽ được AI chấm dựa trên các ý chính:</p>
+                <ul>
+                    <li>Ti thể là nơi sản xuất ATP (năng lượng)</li>
+                    <li>Thực hiện hô hấp tế bào / chuỗi hô hấp</li>
+                    <li>Có DNA riêng, tự nhân đôi</li>
+                    <li>Quan trọng với tế bào tiêu thụ nhiều năng lượng</li>
+                </ul>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Mitochondrion_structure.svg/800px-Mitochondrion_structure.svg.png" alt="Cấu trúc ti thể">
+            `
+        },
+        {
+            type: "multiple",
+            question: "Công thức tính vận tốc trung bình trong chuyển động thẳng đều là:",
+            options: [
+                "$$v = \\frac{s}{t}$$",
+                "$$v = \\frac{\\Delta s}{\\Delta t}$$",
+                "$$v = s \\times t$$",
+                "$$v = \\frac{t}{s}$$"
+            ],
+            correct: 0,
             points: 10,
-            explanation: "Lực được đo bằng Newton (N). 1 N = 1 kg·m/s²."
+            explanation: "Đáp án đúng là $$v = \\frac{s}{t}$$ (quãng đường chia cho thời gian). Đây là công thức cơ bản của chuyển động thẳng đều."
         }
     ]
 };
