@@ -5,7 +5,7 @@ window.quizData = {
     questions: [
         {
             type: "multiple",
-            question: "Câu 1. Hệ thống chữ viết cổ nhất của người Ai Cập được gọi là",
+            question: "Hệ thống chữ viết cổ nhất của người Ai Cập được gọi là",
             points: 10,
             options: ["A. chữ tượng thanh.", "B. chữ tượng hình.", "C. chữ tượng ý.", "D. chữ cái Rô-ma."],
             correct: 1,
@@ -13,7 +13,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 2. Công trình kiến trúc nổi tiếng nhất của văn minh Ai Cập thời cổ đại là",
+            question: "Công trình kiến trúc nổi tiếng nhất của văn minh Ai Cập thời cổ đại là",
             points: 10,
             options: ["A. Vạn Lý Trường Thành.", "B. Kim tự tháp và tượng Nhân sư ở Ghi-da.", "C. Tháp nghiêng Pisa.", "D. Quần thể đền Ăng-co."],
             correct: 1,
@@ -21,7 +21,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 3. Tiêu biểu nhất cho nền văn học Trung Hoa thời cổ - trung đại là loại hình nào?",
+            question: "Tiêu biểu nhất cho nền văn học Trung Hoa thời cổ - trung đại là loại hình nào?",
             points: 10,
             options: ["A. Truyền thuyết, truyện ngắn.", "B. Thơ Đường, tiểu thuyết.", "C. Thơ ca, truyện ngụ ngôn.", "D. Văn học viết, thần thoại."],
             correct: 1,
@@ -29,7 +29,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 4. Chọn từ thích hợp điền vào chỗ để hoàn thiện khái niệm sau: \"........ là sự tiến bộ về vật chất và tinh thần của xã hội loài người; là trạng thái phát triển cao của nền văn hóa, khi xã hội loài người vượt qua trình độ của thời kì dã man\".",
+            question: "Chọn từ thích hợp điền vào chỗ để hoàn thiện khái niệm sau: \"........ là sự tiến bộ về vật chất và tinh thần của xã hội loài người; là trạng thái phát triển cao của nền văn hóa, khi xã hội loài người vượt qua trình độ của thời kì dã man\".",
             points: 10,
             options: ["A. Văn minh.", "B. Văn tự.", "C. Văn vật.", "D. Văn hiến."],
             correct: 0,
@@ -37,7 +37,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 5. Bốn trung tâm văn minh lớn ở phương Đông thời kì cổ đại là",
+            question: "Bốn trung tâm văn minh lớn ở phương Đông thời kì cổ đại là",
             points: 10,
             options: ["A. Trung Hoa, Ai Cập, Lưỡng Hà và La Mã.", "B. Hy Lạp, La Mã, Lưỡng Hà và Ấn Độ.", "C. Ai Cập, Ấn Độ, Trung Hoa và Hy Lạp.", "D. Ai Cập, Lưỡng Hà, Ấn Độ và Trung Hoa."],
             correct: 3,
@@ -45,7 +45,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 6. Những tôn giáo nào sau đây có nguồn gốc từ Ấn Độ?",
+            question: "Những tôn giáo nào sau đây có nguồn gốc từ Ấn Độ?",
             points: 10,
             options: ["A. Phật giáo và Hin-đu giáo.", "B. Hồi giáo và Ki-tô giáo.", "C. Đạo giáo và Hồi giáo.", "D. Nho giáo và Phật giáo."],
             correct: 0,
@@ -53,7 +53,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 7. Nho giáo, Đạo giáo, Mặc gia... là những học thuyết thuộc nền văn minh nào?",
+            question: "Nho giáo, Đạo giáo, Mặc gia... là những học thuyết thuộc nền văn minh nào?",
             points: 10,
             options: ["A. Ấn Độ.", "B. Trung Hoa.", "C. Ai Cập.", "D. Lưỡng Hà."],
             correct: 1,
@@ -61,7 +61,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 8. Tác phẩm văn học nổi tiếng thời Minh – Thanh của Trung Hoa là",
+            question: "Tác phẩm văn học nổi tiếng thời Minh – Thanh của Trung Hoa là",
             points: 10,
             options: ["A. Ramayana.", "B. Truyện Kiều.", "C. Tam quốc diễn nghĩa.", "D. I-li-át."],
             correct: 2,
@@ -69,7 +69,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 9. Bốn phát minh lớn về kĩ thuật của người Trung Hoa thời cổ - trung đại là gì?",
+            question: "Bốn phát minh lớn về kĩ thuật của người Trung Hoa thời cổ - trung đại là gì?",
             points: 10,
             options: ["A. Giấy, bút, mực, nghiên.", "B. Làm giấy, kĩ thuật in, la bàn, thuốc súng.", "C. Toán học, địa lí, y học, thiên văn.", "D. Đạo giáo, Nho giáo, Pháp gia, Mặc gia."],
             correct: 1,
@@ -77,7 +77,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 10. Những công trình kiến trúc nổi tiếng nhất của Trung Hoa cổ - trung đại là:",
+            question: "Những công trình kiến trúc nổi tiếng nhất của Trung Hoa cổ - trung đại là:",
             points: 10,
             options: ["A. Tháp nghiêng Pisa, Kim tự tháp Ghi-da.", "B. Quần thể đền Ăng-co, Tượng Nhân sư.", "C. Vạn Lý Trường Thành, Tử Cấm Thành, Di Hòa Viên.", "D. Thánh đường Sophia, Đấu trường La Mã."],
             correct: 2,
@@ -85,7 +85,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 11. Nói đến nền văn minh cổ đại phương Tây là nói đến nền văn minh của",
+            question: "Nói đến nền văn minh cổ đại phương Tây là nói đến nền văn minh của",
             points: 10,
             options: ["A. Trung Quốc.", "B. Hy Lạp - La Mã.", "C. Ấn Độ.", "D. Ai Cập."],
             correct: 1,
@@ -93,7 +93,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 12. Đến khoảng cuối thế kỉ IV TCN, bảng chữ cái Hy Lạp hoàn thiện với bao nhiêu chữ cái?",
+            question: "Đến khoảng cuối thế kỉ IV TCN, bảng chữ cái Hy Lạp hoàn thiện với bao nhiêu chữ cái?",
             points: 10,
             options: ["A. 22.", "B. 23.", "C. 24.", "D. 25."],
             correct: 2,
@@ -101,7 +101,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 13. Chữ La-tinh được xây dựng dựa trên cơ sở của chữ viết nào?",
+            question: "Chữ La-tinh được xây dựng dựa trên cơ sở của chữ viết nào?",
             points: 10,
             options: ["A. Chữ tượng hình Ai Cập.", "B. Chữ Hy Lạp.", "C. Chữ Ba Tư.", "D. Chữ Hán."],
             correct: 1,
@@ -109,7 +109,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 14. Hai bộ sử thi đặt nền móng cho văn học Hy Lạp – La Mã thời cổ đại là:",
+            question: "Hai bộ sử thi đặt nền móng cho văn học Hy Lạp – La Mã thời cổ đại là:",
             points: 10,
             options: ["A. I-li-át và Ô-đi-xê.", "B. Chiến tranh và hòa bình và I-li-át.", "C. Ô-đi-xê và Prometheus.", "D. I-li-át và Thần khúc."],
             correct: 0,
@@ -117,7 +117,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 15. Đấu trường Cô-li-dê là công trình kiến trúc tiêu biểu của nền văn minh nào?",
+            question: "Đấu trường Cô-li-dê là công trình kiến trúc tiêu biểu của nền văn minh nào?",
             points: 10,
             options: ["A. Hy Lạp.", "B. Ba Tư.", "C. La Mã.", "D. Ai Cập."],
             correct: 2,
@@ -125,7 +125,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 16. Tác phẩm nghệ thuật Lực sĩ ném đĩa thuộc thể loại:",
+            question: "Tác phẩm nghệ thuật Lực sĩ ném đĩa thuộc thể loại:",
             points: 10,
             options: ["A. Hội họa.", "B. Văn học.", "C. Kịch.", "D. Điêu khắc."],
             correct: 3,
@@ -133,7 +133,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 17. Trong văn minh phương Tây thời cổ - trung đại, người La Mã đã tính được một năm có",
+            question: "Trong văn minh phương Tây thời cổ - trung đại, người La Mã đã tính được một năm có",
             points: 10,
             options: ["A. 364 ngày.", "B. 365 ngày.", "C. 365 ngày và 1/4 ngày.", "D. 366 ngày."],
             correct: 2,
@@ -141,7 +141,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 18. Ai là người được xem là “cha đẻ của nền Y học phương Tây\"?",
+            question: "Ai là người được xem là “cha đẻ của nền Y học phương Tây\"?",
             points: 10,
             options: ["A. Ta-lét.", "B. Hi-pô-crát.", "C. Pi-ta-go.", "D. Pli-ni-út."],
             correct: 1,
@@ -149,7 +149,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 19. Các nhà khoa học Hy Lạp như Pi-ta-go, Ơ-clit... có đóng góp nổi bật nhất trong ngành nào?",
+            question: "Các nhà khoa học Hy Lạp như Pi-ta-go, Ơ-clit... có đóng góp nổi bật nhất trong ngành nào?",
             points: 10,
             options: ["A. Sinh học.", "B. Địa lí.", "C. Toán học.", "D. Hóa học."],
             correct: 2,
@@ -157,7 +157,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 20. Ai là người chế tạo kính thiên văn để quan sát bầu trời trong thời Phục hưng?",
+            question: "Ai là người chế tạo kính thiên văn để quan sát bầu trời trong thời Phục hưng?",
             points: 10,
             options: ["A. Ni-cô-lai Cô-péc-ních.", "B. Gioóc-đa-nô Bru-nô.", "C. Ga-li-lê-ô Ga-li-lê.", "D. Đê-các-tơ."],
             correct: 2,
@@ -165,7 +165,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 21. Danh họa nào đã vẽ bức tranh “Nàng Mô-na Li-sa\"?",
+            question: "Danh họa nào đã vẽ bức tranh “Nàng Mô-na Li-sa\"?",
             points: 10,
             options: ["A. Mi-ken-lăng-giơ.", "B. Ra-pha-en.", "C. Bô-ca-xi-ô.", "D. Lê-ô-na đờ Vanh-xi."],
             correct: 3,
@@ -173,7 +173,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 22. Tư tưởng thời Phục hưng đã góp phần",
+            question: "Tư tưởng thời Phục hưng đã góp phần",
             points: 10,
             options: ["A. Tạo nền tảng cho cách mạng tư sản.", "B. Thúc đẩy chế độ phong kiến phát triển.", "C. Làm tăng quyền lực Giáo hội.", "D. Cản trở sự phát triển khoa học."],
             correct: 0,
@@ -181,7 +181,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 23. Đâu là những thể loại tạo nguồn cảm hứng phong phú cho nền văn học cổ đại Hy Lạp - La Mã?",
+            question: "Đâu là những thể loại tạo nguồn cảm hứng phong phú cho nền văn học cổ đại Hy Lạp - La Mã?",
             points: 10,
             options: ["A. Thần thoại, thơ, văn xuôi, kịch.", "B. Kí sự, thần thoại, truyện cười.", "C. Văn học dân gian, truyện ngắn.", "D. Tiểu thuyết, thơ ca, kịch."],
             correct: 0,
@@ -189,7 +189,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 24. Trong nghệ thuật, người Hy Lạp – La Mã cổ đại đã đạt được những thành tựu rực rỡ trong lĩnh vực nào dưới đây?",
+            question: "Trong nghệ thuật, người Hy Lạp – La Mã cổ đại đã đạt được những thành tựu rực rỡ trong lĩnh vực nào dưới đây?",
             points: 10,
             options: ["A. Xây chùa.", "B. Kiến trúc.", "C. Sân khấu.", "D. Dân gian."],
             correct: 1,
@@ -197,7 +197,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 25. Năm 776 TCN, tại đền thờ thần Dớt ở Ô-lim-pi-a (Hy Lạp) đã diễn ra sự kiện nào dưới đây?",
+            question: "Năm 776 TCN, tại đền thờ thần Dớt ở Ô-lim-pi-a (Hy Lạp) đã diễn ra sự kiện nào dưới đây?",
             points: 10,
             options: ["A. Chính quyền La Mã chính thức công nhận Cơ Đốc giáo.", "B. Các cuộc đấu tranh của nô lệ và dân nghèo bùng nổ.", "C. Đại hội thể thao Pa-na-the-nai-a tại A-ten.", "D. Đại hội Ô-lim-píc theo định kì 4 năm 1 lần."],
             correct: 3,
@@ -205,7 +205,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 26. Người Hy Lạp cổ đại đã có hiểu biết về Trái Đất và hệ Mặt Trời như thế nào?",
+            question: "Người Hy Lạp cổ đại đã có hiểu biết về Trái Đất và hệ Mặt Trời như thế nào?",
             points: 10,
             options: ["A. Trái Đất có hình đĩa dẹt và Trái Đất chuyển động quanh Mặt Trời.", "B. Trái Đất có hình cầu và Mặt Trời chuyển động quanh Trái Đất.", "C. Trái Đất có hình cầu và Trái Đất chuyển động quanh Mặt Trăng.", "D. Trái Đất có hình đĩa dẹt và Trái Đất chuyển động quanh Mặt Trời."],
             correct: 1,
@@ -213,7 +213,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 27. Ý không phản ánh đúng nguyên nhân xuất hiện của phong trào Văn hóa Phục hưng là",
+            question: "Ý không phản ánh đúng nguyên nhân xuất hiện của phong trào Văn hóa Phục hưng là",
             points: 10,
             options: ["A. Ý thức hệ phong kiến và giáo lí của Giáo hội Cơ Đốc mang nặng những quan điểm lỗi thời.", "B. Tầng lớp tư sản mới ra đời có thế lực về kinh tế xong lại chưa có địa vị xã hội tương ứng.", "C. Con người bước đầu có những nhận thức khoa học về bản chất của thế giới xung quanh.", "D. Sự xuất hiện trào lưu Triết học Ánh sáng thế kỉ XVIII đã tạo tiền đề cho phong trào."],
             correct: 3,
@@ -221,7 +221,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 28. Đâu là đặc điểm nổi bật của quá trình hình thành và phát triển của triết học Hy Lạp - La Mã cổ đại?",
+            question: "Đâu là đặc điểm nổi bật của quá trình hình thành và phát triển của triết học Hy Lạp - La Mã cổ đại?",
             points: 10,
             options: ["A. Gắn liền với cuộc đấu tranh giữa hai trường phái chủ nghĩa duy vật và chủ nghĩa duy tâm.", "B. Hy Lạp – La Mã là quê hương của triết học phương Tây với nhiều nhà triết học nổi tiếng.", "C. Là nền tảng cho nhiều thành tựu về tư tưởng, văn học phương Tây thời cận và hiện đại.", "D. Ra đời và phát triển trong bối cảnh các cuộc đấu tranh của nô lệ và dân nghèo diễn ra mạnh mẽ."],
             correct: 0,
@@ -229,7 +229,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 29. Lê-ô-na đờ Vanh-xi là một trong những nhà danh họa nổi tiếng của thời kì văn hóa",
+            question: "Lê-ô-na đờ Vanh-xi là một trong những nhà danh họa nổi tiếng của thời kì văn hóa",
             points: 10,
             options: ["A. Cổ đại Hy Lạp - La Mã.", "B. Phục hưng.", "C. Phương Tây hiện đại.", "D. Phương Đông cổ đại."],
             correct: 1,
@@ -237,7 +237,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 30. Phong trào văn hóa Phục hưng được hiểu là",
+            question: "Phong trào văn hóa Phục hưng được hiểu là",
             points: 10,
             options: ["A. Khôi phục lại những gì đã mất của văn hóa phương Đông cổ đại.", "B. Khôi phục lại tinh hoa văn hóa của các quốc gia cổ đại phương Đông.", "C. Phục hưng lại các giá trị văn hóa của nền văn minh Hy Lạp - La Mã cổ đại.", "D. Phục hưng giá trị văn hóa Hy Lạp-La Mã cổ đại và sáng tạo nền văn hóa mới của giai cấp tư sản."],
             correct: 3,
@@ -245,7 +245,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 31. Thành tựu kĩ thuật nổi bật của thời Phục hưng là",
+            question: "Thành tựu kĩ thuật nổi bật của thời Phục hưng là",
             points: 10,
             options: ["A. Chế tạo máy móc, sử dụng sức nước trong sản xuất.", "B. Sản xuất vũ khí hạt nhân.", "C. Phát minh ra giấy.", "D. Phát minh tàu thủy chạy bằng điện."],
             correct: 0,
@@ -253,7 +253,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 32. Quan điểm tư tưởng nổi bật của các nhà tư tưởng thời Phục hưng là",
+            question: "Quan điểm tư tưởng nổi bật của các nhà tư tưởng thời Phục hưng là",
             points: 10,
             options: ["A. Thờ ơ với chính trị.", "B. Tôn vinh thần linh, bài trừ khoa học.", "C. Bảo vệ chế độ phong kiến.", "D. Đề cao con người, tự do cá nhân và phản đối phong kiến."],
             correct: 3,
@@ -261,7 +261,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 33. Nội dung nào dưới đây phản ánh đúng nhất ý nghĩa to lớn những cống hiến về khoa học, kĩ thuật của người Hy Lạp – La Mã cổ đại?",
+            question: "Nội dung nào dưới đây phản ánh đúng nhất ý nghĩa to lớn những cống hiến về khoa học, kĩ thuật của người Hy Lạp – La Mã cổ đại?",
             points: 10,
             options: ["A. Đặt nền tảng cho sự phát triển mạnh mẽ của các ngành khoa học, kĩ thuật của thế giới sau này.", "B. Là cơ sở để các nhà khoa học có tên tuổi phát huy tài năng của mình cống hiến cho nhân loại.", "C. Từ đây những hiểu biết có từ hàng ngàn năm trước mới thực sự trở thành ngành khoa học.", "D. Mở ra những hiểu biết mới về tri thức mà trước đây con người chưa biết hoặc còn mơ hồ."],
             correct: 0,
@@ -269,7 +269,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 34. Các nền văn minh cổ đại phương Đông và văn minh cổ đại phương Tây đều",
+            question: "Các nền văn minh cổ đại phương Đông và văn minh cổ đại phương Tây đều",
             points: 10,
             options: ["A. đạt được nhiều thành tựu rực rỡ trên nhiều lĩnh vực và có độ chính xác cao.", "B. đạt được nhiều thành tựu và để lại những giá trị lớn cho nền văn minh nhân loại.", "C. thể hiện sự sáng tạo của con người trong lĩnh vực toán học là vốn quý nhất.", "D. bắt nguồn từ những lưu vực sông lớn với nghề nông nghiệp là chủ yếu."],
             correct: 1,
@@ -277,7 +277,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 35. Vì sao phong trào Văn hóa Phục hưng được đánh giá là một “Cuộc cách mạng tiến bộ vĩ đại\"?",
+            question: "Vì sao phong trào Văn hóa Phục hưng được đánh giá là một “Cuộc cách mạng tiến bộ vĩ đại\"?",
             points: 10,
             options: ["A. Là cuộc đấu tranh công khai đầu tiên của giai cấp tư sản chống thế lực phong kiến suy tàn.", "B. Mở ra những vùng đất mới, con đường mới và những dân tộc mới.", "C. Thị trường thế giới được mở rộng, thúc đẩy hàng hải quốc tế phát triển.", "D. Thúc đẩy quá trình khủng hoảng, tan rã của chủ nghĩa tư bản ở châu Âu."],
             correct: 0,
@@ -285,7 +285,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 36. Quốc gia khởi đầu trong cuộc cách mạng công nghiệp lần thứ nhất là",
+            question: "Quốc gia khởi đầu trong cuộc cách mạng công nghiệp lần thứ nhất là",
             points: 10,
             options: ["A. Anh.", "B. Mỹ.", "C. Đức.", "D. Pháp."],
             correct: 0,
@@ -293,7 +293,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 37. Ở thế kỉ XVIII, những tiến bộ về kĩ thuật ở Anh chủ yếu diễn ra trong các ngành nào?",
+            question: "Ở thế kỉ XVIII, những tiến bộ về kĩ thuật ở Anh chủ yếu diễn ra trong các ngành nào?",
             points: 10,
             options: ["A. Dệt, luyện kim và phát minh máy móc.", "B. Ngành luyện kim, khai thác mỏ và dệt.", "C. Dệt, cơ khí, luyện kim và giao thông vận tải.", "D. Khai thác mỏ, dệt và giao thông vận tải."],
             correct: 2,
@@ -301,7 +301,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 38. Ngành đầu tiên có tiến bộ về kĩ thuật trong Cách mạng công nghiệp lần thứ nhất là ngành nào?",
+            question: "Ngành đầu tiên có tiến bộ về kĩ thuật trong Cách mạng công nghiệp lần thứ nhất là ngành nào?",
             points: 10,
             options: ["A. Luyện kim.", "B. Dệt.", "C. Giao thông vận tải.", "D. Nông nghiệp."],
             correct: 1,
@@ -309,7 +309,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 39. Ai là người phát minh ra máy kéo sợi Gien-ni (Jenny)?",
+            question: "Ai là người phát minh ra máy kéo sợi Gien-ni (Jenny)?",
             points: 10,
             options: ["A. Giêm Oát.", "B. Ri-chác Ác-rai.", "C. Ét-mơn Các-rai.", "D. Giêm Ha-gri-vơ."],
             correct: 3,
@@ -317,7 +317,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 40. Ai là người phát minh ra máy hơi nước trong Cách mạng công nghiệp lần thứ nhất?",
+            question: "Ai là người phát minh ra máy hơi nước trong Cách mạng công nghiệp lần thứ nhất?",
             points: 10,
             options: ["A. Giêm Oát (James Watt).", "B. Tô-mát Ê-đi-xon.", "C. Ri-chác Ác-rai.", "D. Hen-ri Pho."],
             correct: 0,
@@ -325,7 +325,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 41. Năm 1807, Rô-bớt Phơn-tơn đã chế tạo thành công",
+            question: "Năm 1807, Rô-bớt Phơn-tơn đã chế tạo thành công",
             points: 10,
             options: ["A. đầu máy xe lửa chạy trên đường ray đầu tiên.", "B. tàu thủy chở khách đầu tiên.", "C. máy kéo sợi chạy bằng sức mước.", "D. máy bay chạy bằng động cơ xăng."],
             correct: 1,
@@ -333,7 +333,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 42. Cách mạng công nghiệp lần thứ hai bắt đầu vào khoảng thời gian nào?",
+            question: "Cách mạng công nghiệp lần thứ hai bắt đầu vào khoảng thời gian nào?",
             points: 10,
             options: ["A. Nửa sau thế kỉ XIX.", "B. Đầu thế kỉ XIX.", "C. Nửa sau thế kỉ XVIII.", "D. Cuối thế kỉ XX."],
             correct: 0,
@@ -341,7 +341,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 43. Cách mạng công nghiệp lần thứ nhất bắt đầu vào khoảng thời gian nào?",
+            question: "Cách mạng công nghiệp lần thứ nhất bắt đầu vào khoảng thời gian nào?",
             points: 10,
             options: ["A. Nửa sau thế kỉ XIX.", "B. Đầu thế kỉ XIX.", "C. Nửa sau thế kỉ XVIII.", "D. Cuối thế kỉ XX."],
             correct: 2,
@@ -349,7 +349,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 44. Mai-cơn Pha-ra-đây có đóng góp trong lĩnh vực nào?",
+            question: "Mai-cơn Pha-ra-đây có đóng góp trong lĩnh vực nào?",
             points: 10,
             options: ["A. Động cơ đốt trong.", "B. Hóa học.", "C. Luyện kim.", "D. Phát minh về điện."],
             correct: 3,
@@ -357,7 +357,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 45. Hai anh em nhà Rai nổi tiếng với phát minh nào?",
+            question: "Hai anh em nhà Rai nổi tiếng với phát minh nào?",
             points: 10,
             options: ["A. Xe lửa.", "B. Tàu thủy chạy điện.", "C. Xe đạp đầu tiên.", "D. Máy bay chạy bằng động cơ xăng."],
             correct: 3,
@@ -365,7 +365,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 46. Cuộc cách mạng công nghiệp thời cận đại đã hình thành hai giai cấp đối kháng nào?",
+            question: "Cuộc cách mạng công nghiệp thời cận đại đã hình thành hai giai cấp đối kháng nào?",
             points: 10,
             options: ["A. Phong kiến và nông dân.", "B. Tư sản và vô sản.", "C. Quý tộc và bình dân.", "D. Tăng lữ và nô lệ."],
             correct: 1,
@@ -373,7 +373,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 47. Trong cuộc cách mạng công nghiệp lần thứ nhất ở thế kỉ XVIII - XIX, phát minh kĩ thuật nào đã tạo ra bước chuyển căn bản trong nền sản xuất tư bản chủ nghĩa?",
+            question: "Trong cuộc cách mạng công nghiệp lần thứ nhất ở thế kỉ XVIII - XIX, phát minh kĩ thuật nào đã tạo ra bước chuyển căn bản trong nền sản xuất tư bản chủ nghĩa?",
             points: 10,
             options: ["A. Phương pháp sử dụng lò cao trong luyện kim.", "B. Máy kéo sợi Gien-ni.", "C. Máy bay chạy bằng động cơ xăng.", "D. Máy hơi nước."],
             correct: 3,
@@ -381,7 +381,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 48. Nội dung nào dưới đây phản ánh không đúng ý nghĩa của việc phát minh ra máy hơi nước ở Anh (1784)?",
+            question: "Nội dung nào dưới đây phản ánh không đúng ý nghĩa của việc phát minh ra máy hơi nước ở Anh (1784)?",
             points: 10,
             options: ["A. Lao động bằng tay được thay thế dần bằng máy móc.", "B. Tốc độ sản xuất và năng suất lao động tăng vượt bậc.", "C. Tạo ra động lực mới, khởi đầu quá trình công nghiệp hóa.", "D. Biến nước Anh trở thành “công xưởng của thế giới\"."],
             correct: 3,
@@ -389,7 +389,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 49. Tác dụng của việc phát minh ra phương pháp sử dụng lò cao trong luyện kim ở cuộc cách mạng công nghiệp lần thứ hai là",
+            question: "Tác dụng của việc phát minh ra phương pháp sử dụng lò cao trong luyện kim ở cuộc cách mạng công nghiệp lần thứ hai là",
             points: 10,
             options: ["A. thúc đẩy việc ứng dụng điện vào cuộc sống.", "B. dẫn đến sự ra đời của các nguyên liệu mới.", "C. dẫn đến sự ra đời và phát triển của động cơ học.", "D. đẩy mạnh quá trình sử dụng công nghệ thông tin."],
             correct: 1,
@@ -397,7 +397,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 50. Nội dung nào không phản ánh đúng hệ quả tích cực của cuộc cách mạng công nghiệp thời kì cận đại?",
+            question: "Nội dung nào không phản ánh đúng hệ quả tích cực của cuộc cách mạng công nghiệp thời kì cận đại?",
             points: 10,
             options: ["A. Thúc đẩy sự phát triển của lực lượng sản xuất.", "B. Nhiều trung tâm công nghiệp mới hình thành.", "C. Thúc đẩy chuyển biến mạnh mẽ trong nông nghiệp.", "D. Giải quyết triệt để mâu thuẫn trong xã hội tư bản."],
             correct: 3,
@@ -405,7 +405,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 51. Đặc trưng cơ bản của cuộc cách mạng công nghiệp thời cận đại là",
+            question: "Đặc trưng cơ bản của cuộc cách mạng công nghiệp thời cận đại là",
             points: 10,
             options: ["A. sử dụng năng lượng nước, hơi nước và cơ giới hóa sản xuất.", "B. ứng dụng điện tử và công nghệ thông tin để tự động hóa sản xuất.", "C. sử dụng năng lượng điện với sự ra đời của công nghệ in 3D.", "D. quy trình, phương thức sản xuất được tối ưu hóa dựa trên nền tảng công nghệ số."],
             correct: 0,
@@ -413,7 +413,7 @@ window.quizData = {
         },
         {
             type: "multiple",
-            question: "Câu 52. Những điều kiện cần và đủ để nước Anh tiến hành cách mạng công nghiệp từ nửa sau thế kỷ XVIII là",
+            question: "Những điều kiện cần và đủ để nước Anh tiến hành cách mạng công nghiệp từ nửa sau thế kỷ XVIII là",
             points: 10,
             options: ["A. tư bản, công nhân lao động làm thuê.", "B. tư bản và các thiết bị máy móc hiện đại.", "C. kĩ thuật, đội ngũ công nhân làm thuê đông.", "D. tư bản, nhân công và sự phát triển kĩ thuật."],
             correct: 3,
@@ -683,25 +683,25 @@ window.quizData = {
 
         {
             type: "essay",
-            question: "Câu 1: Thành tựu chữ viết của nền văn minh Hy Lạp – La Mã cổ đại.",
+            question: "Thành tựu chữ viết của nền văn minh Hy Lạp – La Mã cổ đại.",
             points: 30,
             suggested: "Chữ viết là một trong những thành tựu rực rỡ và có sức sống bền bỉ nhất của văn minh Hy Lạp – La Mã, đặt nền móng cho hệ thống chữ viết hiện đại của thế giới phương Tây.\nNguồn gốc và sự hình thành: Trên cơ sở tiếp thu chữ cái của người Phê-ni-xi (Phoenicia), người Hy Lạp đã sáng tạo ra hệ thống chữ cái gồm 24 ký tự. Sau đó, người La Mã đã tiếp thu chữ cái Hy Lạp để xây dựng nên hệ chữ Latinh (A, B, C...).\nĐặc điểm nổi bật:\nĐây là hệ thống chữ cái ghi âm đơn giản, khoa học và linh hoạt.\nNgười Hy Lạp đã có đóng góp quan trọng khi bổ sung hệ thống nguyên âm vào bảng chữ cái, giúp ngôn ngữ trở nên rõ ràng và đầy đủ hơn.\nGiá trị và ảnh hưởng:\nĐối với khoa học: Hệ chữ cái Latinh là phương tiện để ghi chép và truyền bá tri thức khoa học, triết học, văn học rực rỡ của cổ đại.\nĐối với đời sống hiện đại: Hệ chữ Latinh cùng với chữ số La Mã (I, II, III...) đã trở thành cơ sở cho chữ viết của nhiều quốc gia hiện nay (trong đó có chữ Quốc ngữ của Việt Nam). Các thuật ngữ khoa học, y học, pháp luật ngày nay vẫn sử dụng gốc chữ Latinh."
         },
         {
             type: "essay",
-            question: "Câu 2: Thành tựu cơ bản của Cách mạng công nghiệp lần thứ nhất.",
+            question: "Thành tựu cơ bản của Cách mạng công nghiệp lần thứ nhất.",
             points: 30,
             suggested: "Cách mạng công nghiệp lần thứ nhất diễn ra đầu tiên ở Anh (nửa sau thế kỷ XVIII) với nội dung cốt lõi là chuyển từ lao động thủ công sang lao động bằng máy móc.\nTrong ngành dệt: Năm 1764, Giêm Ha-gri-vơ sáng tạo ra máy kéo sợi Gien-ni. Sau đó là sự ra đời của máy kéo sợi chạy bằng sức nước của Ác-rai và máy dệt của Ét-mơn Các-rai (1785), giúp năng suất ngành dệt tăng lên hàng trăm lần.\nCải tiến động cơ đốt ngoài: Năm 1784, Giêm Oát (James Watt) đã hoàn thiện máy hơi nước. Đây là thành tựu quan trọng nhất, giúp máy móc có thể hoạt động ở bất cứ đâu và bất cứ lúc nào, không còn lệ thuộc vào sức người, sức súc vật hay sức nước.\nTrong giao thông vận tải: Máy hơi nước đã thúc đẩy sự ra đời của tàu thủy chạy bằng hơi nước (Phun-tơn - 1807) và đầu máy xe lửa hơi nước (Sti-phen-sơn - 1814), làm thay đổi diện mạo ngành vận tải thế giới.\nNgành luyện kim: Các phát minh về phương pháp nấu quặng sắt thành sắt luyện và thép đã cung cấp nguyên liệu quan trọng để chế tạo máy móc và xây dựng đường sắt."
         },
         {
             type: "essay",
-            question: "Câu 3: Thành tựu cơ bản của Cách mạng công nghiệp lần thứ hai.",
+            question: "Thành tựu cơ bản của Cách mạng công nghiệp lần thứ hai.",
             points: 30,
             suggested: "Cách mạng công nghiệp lần thứ hai diễn ra từ nửa sau thế kỷ XIX đến đầu thế kỷ XX, với đặc trưng là sự chuyển sang sản xuất dựa trên năng lượng điện và sự phát triển của các ngành công nghiệp nặng.\nNăng lượng điện: Đây là thành tựu quan trọng nhất. Sự phát minh ra máy phát điện, động cơ điện và việc sử dụng điện năng vào sản xuất, đời sống đã mở ra \"Kỷ nguyên điện lực\". Các tên tuổi lớn gồm có T. Ê-đi-xơn, N. Tét-la...\nĐộng cơ đốt trong: Sự ra đời của động cơ đốt trong (chạy bằng xăng hoặc dầu) đã thúc đẩy sự phát triển của ngành công nghiệp ô tô, máy bay và làm tăng tốc độ vận chuyển hàng hóa, hành khách.\nNgành hóa chất: Phát triển mạnh mẽ phục vụ cho nông nghiệp (phân bón), công nghiệp dệt (thuốc nhuộm) và y tế (thuốc chữa bệnh).\nLuyện kim: Quy trình Bessemer và Martin giúp sản xuất thép với số lượng lớn, chất lượng cao và giá thành rẻ, tạo điều kiện xây dựng các công trình khổng lồ (đường ray, nhà chọc trời, tàu chiến).\nThông tin liên lạc: Sự ra đời của máy điện tín và điện thoại giúp việc truyền tin trở nên nhanh chóng và xóa tan khoảng cách địa lý."
         },
         {
             type: "essay",
-            question: "Câu 4: Ý nghĩa của các cuộc cách mạng công nghiệp thời cận đại.",
+            question: "Ý nghĩa của các cuộc cách mạng công nghiệp thời cận đại.",
             points: 30,
             suggested: "Các cuộc cách mạng công nghiệp thời cận đại đã tạo ra những biến đổi sâu sắc và toàn diện trên mọi lĩnh vực của đời sống nhân loại:\nVề kinh tế:\nLàm thay đổi diện mạo của các nước tư bản, thúc đẩy lực lượng sản xuất phát triển vượt bậc.\nChuyển nền sản xuất từ công trường thủ công lên sản xuất cơ khí lớn (đại công nghiệp).\nThúc đẩy quá trình đô thị hóa, nhiều trung tâm công nghiệp và thành phố lớn ra đời.\nVề xã hội:\nLàm thay đổi cơ cấu xã hội, hình thành hai giai cấp cơ bản đối lập là giai cấp tư sản (nắm tư liệu sản xuất) và giai cấp vô sản (làm thuê).\nGây ra những mâu thuẫn xã hội dẫn đến các cuộc đấu tranh của giai cấp công nhân.\nVề văn hóa và lối sống:\nNâng cao mức sống của con người, thay đổi phương thức làm việc và sinh hoạt (nhanh hơn, hiệu quả hơn).\nThúc đẩy sự giao lưu quốc tế thông qua các phương tiện giao thông và liên lạc hiện đại.\nVề mặt tiêu cực: Gây ra các vấn đề về ô nhiễm môi trường, sự bóc lột lao động (đặc biệt là phụ nữ và trẻ em) và là nguyên nhân dẫn đến các cuộc chiến tranh xâm lược thuộc địa để tìm kiếm thị trường và nguyên liệu."
         }
