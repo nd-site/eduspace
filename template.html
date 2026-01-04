@@ -35,16 +35,54 @@
        
         .input-pill { width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 2px solid #f1f5f9; outline: none; transition: all 0.3s; }
         .input-pill:focus { border-color: var(--primary-light); }
-        .short-ans-container { display: flex; flex-direction: column; align-items: center; width: 100%; margin: 2rem auto 0; }
-        .input-short { width: 180px; padding: 1rem 0; font-size: 1.75rem; font-weight: 800; letter-spacing: 8px; text-align: center; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9999px; color: var(--primary); caret-color: var(--primary); outline: none; transition: all 0.2s ease; text-transform: uppercase; }
-        .input-short:focus { border-color: var(--primary-light); background: #fff; box-shadow: 0 10px 25px -5px rgba(0, 112, 243, 0.15); }
-        .short-ans-guide { margin-top: 12px; font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; }
+       
+        /* Short answer */
+        .short-ans-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin: 3rem auto 2rem; }
+        .input-short { 
+            width: 220px; 
+            padding: 1.25rem 0; 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            letter-spacing: 14px; 
+            text-align: center; 
+            background: white; 
+            border: 3px solid #e2e8f0; 
+            border-radius: 9999px; 
+            color: var(--primary); 
+            caret-color: var(--primary); 
+            outline: none; 
+            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.12); 
+            text-transform: uppercase;
+        }
+        .input-short:focus { border-color: var(--primary-light); box-shadow: 0 10px 30px rgba(0, 112, 243, 0.2); }
+
+        /* Essay */
+        #options-container textarea#ans-input {
+            width: 100%;
+            max-width: 680px;
+            min-height: 220px;
+            margin: 2rem auto 1rem;
+            display: block;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding: 1.5rem 1.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: all 0.2s;
+        }
+        #options-container textarea#ans-input:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 8px 25px rgba(0, 112, 243, 0.15);
+            outline: none;
+        }
+
         .btn-icon-nav { padding: 8px; border-radius: 12px; transition: all 0.2s; color: #64748b; }
         .btn-icon-nav:hover { background: #f1f5f9; color: var(--primary); }
-        .q-image-container { width: 100%; max-height: 250px; overflow: hidden; border-radius: 16px; margin-bottom: 1.5rem; background: #f1f5f9; display: flex; justify-content: center; }
-        .q-image-container img { height: 100%; object-fit: contain; }
+        .q-image-container { width: 100%; max-height: 260px; overflow: hidden; border-radius: 16px; margin-bottom: 1.5rem; background: #f1f5f9; display: flex; justify-content: center; align-items: center; }
+        .q-image-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        /* Nút Đúng/Sai */
+        /* Đúng/Sai */
         .tf-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; background: white; border: 2px solid #f1f5f9; transition: all 0.2s; margin-bottom: 12px; }
         .tf-row:hover { border-color: #cbd5e1; }
         .tf-label { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f1f5f9; color: #64748b; font-weight: 800; font-size: 13px; border-radius: 9999px; }
@@ -53,16 +91,66 @@
         .tf-btn:hover:not(.selected) { border-color: #94a3b8; background: #f8fafc; }
         .tf-btn.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); font-weight: 800; }
 
-        /* Thanh tiến trình câu */
-        #question-progress-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 1.5rem; padding: 8px; background: rgba(255,255,255,0.6); border-radius: 16px; }
-        .question-progress-item { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: white; background: #cbd5e1; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
-        .question-progress-item.current { border-color: var(--primary); background: var(--primary); transform: scale(1.15); }
+        /* Thanh tiến trình câu - CẬP NHẬT MỚI */
+        #question-progress-bar {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 12px 0;
+            background: rgba(255,255,255,0.7);
+            border-radius: 16px;
+            scrollbar-width: none; /* Firefox */
+            position: relative;
+        }
+        #question-progress-bar::-webkit-scrollbar { display: none; } /* Chrome, Safari */
+
+        /* Hiệu ứng mờ dần hai bên */
+        #question-progress-bar::before,
+        #question-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        #question-progress-bar::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
+        }
+        #question-progress-bar::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+        }
+
+        .question-progress-item {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .question-progress-item.current { border-color: var(--primary); background: var(--primary); transform: scale(1.2); }
         .question-progress-item.answered { background: #94a3b8; }
         .question-progress-item.correct { background: #10b981; }
         .question-progress-item.incorrect { background: #ef4444; }
-        .question-progress-item:hover { transform: scale(1.1); }
+        .question-progress-item:hover { transform: scale(1.15); }
 
-        /* Kết quả chi tiết - đẹp hơn */
+        /* Kết quả chi tiết */
         #detail-result-container { margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .detail-question { margin-bottom: 1.5rem; padding: 1.25rem; background: #f8fafc; border-radius: 16px; border-left: 6px solid #cbd5e1; transition: all 0.3s; }
         .detail-question.correct { border-left-color: #10b981; background: #f0fdf4; }
@@ -74,6 +162,17 @@
         .detail-your-answer { background: #e0f2fe; color: #1e40af; }
         .detail-correct-answer { background: #ecfdf5; color: #065f46; }
         .detail-explanation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #4b5563; }
+
+        /* Bảng & ảnh */
+        .question-content table, .explanation-content table { margin: 1rem auto; border-collapse: collapse; font-size: 0.95rem; width: 100%; }
+        .question-content th, .question-content td, .explanation-content th, .explanation-content td { border: 1px solid #cbd5e1; padding: 0.6rem 1rem; }
+        .question-content th, .explanation-content th { background: #f1f5f9; font-weight: 700; }
+        .question-content tr:nth-child(even), .explanation-content tr:nth-child(even) { background: #f8fafc; }
+        .question-content img, .explanation-content img { max-height: 220px; max-width: 100%; object-fit: contain; border-radius: 8px; margin: 1rem auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+
+        /* Option container */
+        #options-container { display: flex !important; flex-direction: column !important; gap: 16px !important; margin-top: 2rem !important; }
+        .option-card { padding: 1.25rem 1.5rem; min-height: 68px; align-items: center; font-size: 1.05rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -135,12 +234,12 @@
                     <div id="ui-progress" class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">Câu 0/0</div>
                 </header>
 
-                <div id="question-progress-bar" class="flex flex-wrap gap-2 mb-4 justify-center"></div>
+                <div id="question-progress-bar" class="flex gap-3 mb-4"></div>
 
                 <main id="quiz-container">
                     <div id="question-card" class="glass-card round-card p-6 md:p-10 fade-in min-h-[420px] flex flex-col">
                         <div id="question-header"></div>
-                        <div id="options-container" class="grid grid-cols-1 gap-3 mt-8 flex-1"></div>
+                        <div id="options-container" class="flex flex-col gap-4 mt-8 flex-1"></div>
                        
                         <div id="action-area" class="mt-8 flex flex-wrap items-center justify-between gap-4">
                             <div class="flex gap-2">
@@ -155,7 +254,7 @@
                         <div id="explanation-container" class="mt-8 hidden fade-in">
                             <div class="bg-slate-50 round-card p-6 border border-slate-100">
                                 <span id="result-badge" class="pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white mb-4 inline-block"></span>
-                                <div id="explanation-text" class="text-slate-600 text-sm leading-relaxed mb-6"></div>
+                                <div id="explanation-text" class="explanation-content text-slate-600 text-sm leading-relaxed mb-6"></div>
                                 <button id="next-btn-exp" class="w-full btn-main pill-shape py-4 font-bold text-sm">Câu tiếp theo</button>
                             </div>
                         </div>
@@ -163,7 +262,7 @@
                 </main>
             </div>
 
-            <!-- KẾT QUẢ ĐẸP HƠN -->
+            <!-- KẾT QUẢ -->
             <div id="result-screen" class="hidden glass-card round-card p-8 md:p-10 fade-in">
                 <div class="flex flex-col items-center mb-8">
                     <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-5xl shadow-lg mb-4">🏆</div>
@@ -197,11 +296,10 @@
         </div>
     </div>
 
-    <!-- Giả lập data nếu chưa có data.js -->
     <script>
         if (typeof quizData === 'undefined') {
             window.quizData = {
-                title: "Kiểm tra mẫu 4 dạng câu hỏi",
+                title: "Bài kiểm tra mẫu - Cập nhật 2026",
                 config: { testDuration: 1800 },
                 questions: [
                     {
@@ -213,21 +311,8 @@
                         explanation: "Sao Mộc là hành tinh lớn nhất."
                     },
                     {
-                        type: "truefalse",
-                        question: "Đánh giá tính đúng/sai của các phát biểu sau:",
-                        statements: [
-                            "Tế bào động vật có thành tế bào bằng cellulose.",
-                            "Ribosome là nơi tổng hợp protein.",
-                            "ADN chỉ tồn tại trong nhân tế bào.",
-                            "Quang hợp chỉ xảy ra ở lá cây."
-                        ],
-                        correctAnswers: [false, true, false, false],
-                        points: 20,
-                        explanation: "A sai, B đúng, C sai, D sai."
-                    },
-                    {
                         type: "short",
-                        question: "Nhập mã số bí mật (4 chữ số):",
+                        question: "Nhập mã số bí mật (tối đa 4 ký tự):",
                         correct: "2026",
                         points: 10,
                         explanation: "Mã đúng là 2026."
@@ -235,16 +320,16 @@
                     {
                         type: "essay",
                         question: "Giải thích ngắn gọn về quá trình quang hợp ở thực vật.",
-                        suggested: "Quang hợp là quá trình thực vật sử dụng ánh sáng mặt trời, nước và CO2 để tạo ra glucose và oxy theo phương trình 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (dưới tác dụng của diệp lục và ánh sáng).",
+                        suggested: "Quang hợp là quá trình thực vật sử dụng ánh sáng mặt trời, nước và CO2 để tạo ra glucose và oxy.",
                         points: 30,
-                        explanation: "Câu trả lời sẽ được AI chấm điểm dựa trên độ chính xác và đầy đủ."
+                        explanation: "Câu trả lời sẽ được AI chấm điểm."
                     }
                 ]
             };
         }
     </script>
 
-    <script src="data.js"></script> <!-- Nếu có file data.js riêng thì giữ dòng này -->
+    <script src="data.js"></script>
 
     <script>
         let apiKey = "";
@@ -254,8 +339,8 @@
         let timerInterval;
         let userAnswers = [];
         let sessionScore = 0;
-        let questionResults = []; // true = đúng, false = sai, null = chưa kiểm tra
-        let questionEarned = []; // điểm đạt được từng câu
+        let questionResults = [];
+        let questionEarned = [];
 
         window.onload = () => {
             if (typeof quizData !== 'undefined') {
@@ -278,7 +363,7 @@
         }
 
         function showHelp() {
-            showModal("Về API Key", "API Key giúp AI chấm điểm câu hỏi tự luận và đưa ra giải thích chi tiết. Dữ liệu được xử lý trực tiếp trên trình duyệt của bạn.", 'help');
+            showModal("Về API Key", "API Key giúp AI chấm điểm câu hỏi tự luận và đưa ra giải thích chi tiết.", 'help');
         }
 
         function goBackToStart() {
@@ -361,6 +446,7 @@
         function loadQuestion() {
             const q = quizData.questions[currentIndex];
             const type = q.type || 'multiple';
+
             document.getElementById('ui-progress').innerText = `Câu ${currentIndex + 1}/${quizData.questions.length}`;
             document.getElementById('explanation-container').classList.add('hidden');
 
@@ -376,24 +462,36 @@
                 nextNavBtn.disabled = currentIndex === quizData.questions.length - 1;
             }
 
-            let imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Question image" onerror="this.parentElement.style.display='none'"></div>` : '';
+            let imgHtml = q.image ? `
+                <div class="q-image-container">
+                    <img src="${q.image}" alt="Hình ảnh câu ${currentIndex + 1}" 
+                         onerror="this.src='https://via.placeholder.com/600x300?text=Hinh+Anh+Khong+Ton+Tai';">
+                </div>` : '';
+
+            const questionText = q.question || '';
 
             document.getElementById('question-header').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-2">Câu ${currentIndex + 1} • ${q.points || 0} điểm</p>
+                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-3">
+                    Câu ${currentIndex + 1} • ${q.points || 0} điểm
+                </p>
                 ${imgHtml}
-                <div class="text-xl text-slate-800 font-extrabold leading-tight">${q.question}</div>
+                <div class="question-content text-xl font-extrabold leading-tight prose prose-slate max-w-none">
+                    ${questionText}
+                </div>
             `;
 
             const container = document.getElementById('options-container');
             container.innerHTML = '';
-            container.className = type === 'truefalse' ? 'mt-6 flex flex-col gap-3 flex-1' : 'grid grid-cols-1 gap-3 mt-8 flex-1';
 
             if (type === 'multiple') {
                 q.options.forEach((opt, i) => {
                     const btn = document.createElement('div');
                     btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
                     btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span><span class="font-bold text-sm flex-1">${opt}</span>`;
-                    btn.onclick = () => { if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; selectAns(i); };
+                    btn.onclick = () => { 
+                        if(quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return; 
+                        selectAns(i); 
+                    };
                     container.appendChild(btn);
                 });
             } 
@@ -450,24 +548,37 @@
                     container.innerHTML = `
                         <div class="short-ans-container">
                             <input type="text" id="ans-input" maxlength="4" class="input-short" placeholder="••••">
-                            <div class="short-ans-guide">Tối đa 4 ký tự</div>
                         </div>
                     `;
                 } else {
-                    container.innerHTML = `<textarea id="ans-input" class="input-pill !rounded-[24px] min-h-[140px] resize-none p-6 font-medium text-slate-700" placeholder="Viết câu trả lời..."></textarea>`;
+                    container.innerHTML = `
+                        <textarea id="ans-input" placeholder="Viết câu trả lời của bạn tại đây..."></textarea>
+                    `;
                 }
                
                 const input = document.getElementById('ans-input');
-                if (userAnswers[currentIndex] !== null) input.value = userAnswers[currentIndex];
+                if (userAnswers[currentIndex] !== null) {
+                    input.value = userAnswers[currentIndex];
+                }
+
+                if (isShort) {
+                    input.onkeypress = (e) => {
+                        const allowed = /[0-9\.\-,]/;
+                        if (!allowed.test(e.key)) {
+                            e.preventDefault();
+                        }
+                    };
+                }
+
                 input.oninput = (e) => {
-                    let val = e.target.value;
-                    userAnswers[currentIndex] = val;
-                    if(quizMode === 'practice') {
-                        submitBtn.disabled = val.trim().length === 0;
+                    userAnswers[currentIndex] = e.target.value;
+                    if (quizMode === 'practice') {
+                        submitBtn.disabled = e.target.value.trim().length === 0;
                     }
                 };
                 input.focus();
             }
+
             renderMath();
             renderQuestionProgress();
         }
@@ -527,7 +638,7 @@
                     html += `<p><strong>${String.fromCharCode(65 + i)}.</strong> ${st}<br><span class="${color}">Bạn chọn: ${user} | Đáp án: ${right}</span></p>`;
                 });
                 html += '</div>';
-                if (q.explanation) html += `<div class="mt-4 pt-4 border-t border-slate-200">${q.explanation}</div>`;
+                if (q.explanation) html += `<div class="mt-6 pt-4 border-t border-slate-200 explanation-content">${q.explanation}</div>`;
                 expText.innerHTML = html;
             } 
             else if (q.type === 'essay') {
@@ -538,7 +649,7 @@
                 isCorrectThisTime = res.score >= 0.6;
                 badge.innerText = `Điểm: ${earned} / ${q.points}`;
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
-                expText.innerHTML = res.feedback || "Không có phản hồi từ AI.";
+                expText.innerHTML = `<div class="explanation-content">${res.feedback || "Không có phản hồi từ AI."}</div>`;
                 submitBtn.innerHTML = "Kiểm tra";
             } 
             else {
@@ -554,7 +665,7 @@
                 isCorrectThisTime = isCorrect;
                 badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
                 badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
-                expText.innerHTML = q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct || ''}`;
+                expText.innerHTML = `<div class="explanation-content">${q.explanation || `Đáp án đúng: ${q.options?.[q.correct] || q.correct || ''}`}</div>`;
             }
 
             sessionScore += earned;
@@ -633,12 +744,10 @@
                 questionEarned[i] = earned;
             }
 
-            // Hiển thị tổng
             document.getElementById('final-score').innerText = `${Math.round(total*10)/10} / ${totalPoints}`;
             document.getElementById('final-time').innerText = document.getElementById('timer-text').innerText;
             document.getElementById('final-percent').innerText = totalPoints > 0 ? Math.round((total / totalPoints) * 100) + '%' : '0%';
 
-            // Render chi tiết
             renderDetailResults();
 
             document.getElementById('main-quiz').classList.add('hidden');
@@ -661,10 +770,10 @@
                         <h4>Câu ${i+1} ${icon}</h4>
                         <span class="detail-score">${earned} / ${q.points || 0}</span>
                     </div>
-                    <p class="font-medium mb-3">${q.question}</p>
+                    <div class="question-content font-medium mb-3">${q.question}</div>
                     <p class="detail-your-answer">Bạn chọn: ${formatUserAnswer(q, userAnswers[i])}</p>
                     <p class="detail-correct-answer">Đáp án đúng: ${formatCorrectAnswer(q)}</p>
-                    <div class="detail-explanation">${q.explanation || 'Không có giải thích chi tiết.'}</div>
+                    <div class="detail-explanation explanation-content">${q.explanation || 'Không có giải thích chi tiết.'}</div>
                 `;
                 list.appendChild(div);
             });
