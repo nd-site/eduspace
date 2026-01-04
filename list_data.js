@@ -30,6 +30,16 @@ const quizList = [
         isHot: true
     },
     {
+        title: "Đề cương Sinh Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/sinhhoc/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Sinh Học lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Sinh Học",
+        type: "quiz",
+        class: "10",
+        subject: "Sinh Học",
+        isHot: true
+    },
+    {
         title: "Đề cương GDQP-AN 10 - Học kỳ I năm học 2025-2026",
         url: "/eduspace/gdqp/10/on-tap-hk1-2526-v1",
         description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Giáo dục Quốc phòng và An ninh lớp 10 năm học 2025-2026 'Bản 1'",
@@ -121,5 +131,3 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
-
-
