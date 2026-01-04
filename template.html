@@ -16,11 +16,11 @@
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border: 1px solid #ffffff; box-shadow: 0 20px 40px -12px rgba(0, 112, 243, 0.08); }
         .round-card { border-radius: 32px; }
         .pill-shape { border-radius: 9999px; }
-       
+
         .option-card { transition: all 0.2s; cursor: pointer; border: 2px solid #f1f5f9; background: #ffffff; border-radius: 9999px; }
         .option-card.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); }
         .option-card.selected span:first-child { background: var(--primary); color: white; }
-       
+
         .btn-nav-blue { border: 2px solid var(--primary); color: var(--primary); font-weight: 800; transition: all 0.2s; }
         .btn-nav-blue:hover:not(:disabled) { background: var(--primary); color: white; }
         .btn-nav-blue:disabled { opacity: 0.3; cursor: not-allowed; border-color: #cbd5e1; color: #cbd5e1; }
@@ -32,31 +32,28 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 18px; height: 18px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-       
+
         .input-pill { width: 100%; padding: 0.75rem 1.5rem; border-radius: 9999px; border: 2px solid #f1f5f9; outline: none; transition: all 0.3s; }
         .input-pill:focus { border-color: var(--primary-light); }
-       
-        /* Short answer */
+
         .short-ans-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin: 3rem auto 2rem; }
-        .input-short { 
-            width: 220px; 
-            padding: 1.25rem 0; 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            letter-spacing: 14px; 
-            text-align: center; 
-            background: white; 
-            border: 3px solid #e2e8f0; 
-            border-radius: 9999px; 
-            color: var(--primary); 
-            caret-color: var(--primary); 
-            outline: none; 
-            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.12); 
-            text-transform: uppercase;
+        .input-short {
+            width: 220px;
+            padding: 1.25rem 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 14px;
+            text-align: center;
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 9999px;
+            color: var(--primary);
+            caret-color: var(--primary);
+            outline: none;
+            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.12);
         }
         .input-short:focus { border-color: var(--primary-light); box-shadow: 0 10px 30px rgba(0, 112, 243, 0.2); }
 
-        /* Essay */
         #options-container textarea#ans-input {
             width: 100%;
             max-width: 680px;
@@ -82,7 +79,6 @@
         .q-image-container { width: 100%; max-height: 260px; overflow: hidden; border-radius: 16px; margin-bottom: 1.5rem; background: #f1f5f9; display: flex; justify-content: center; align-items: center; }
         .q-image-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        /* Đúng/Sai */
         .tf-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 16px; background: white; border: 2px solid #f1f5f9; transition: all 0.2s; margin-bottom: 12px; }
         .tf-row:hover { border-color: #cbd5e1; }
         .tf-label { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f1f5f9; color: #64748b; font-weight: 800; font-size: 13px; border-radius: 9999px; }
@@ -91,40 +87,26 @@
         .tf-btn:hover:not(.selected) { border-color: #94a3b8; background: #f8fafc; }
         .tf-btn.selected { border-color: var(--primary); background: #f0f7ff; color: var(--primary); font-weight: 800; }
 
-        /* Thanh tiến trình câu - CẬP NHẬT MỚI */
+        /* Thanh tiến trình - LUÔN BẮT ĐẦU TỪ ĐẦU KHI DÀI */
         #question-progress-bar {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: auto;
             gap: 12px;
-            justify-content: center;
+            justify-content: flex-start;   /* bắt đầu từ trái (đầu) khi dài */
             margin-bottom: 1.5rem;
-            padding: 12px 0;
+            padding: 12px 20px;            /* padding hai bên để đẹp */
             background: rgba(255,255,255,0.7);
             border-radius: 16px;
-            scrollbar-width: none; /* Firefox */
-            position: relative;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
         }
-        #question-progress-bar::-webkit-scrollbar { display: none; } /* Chrome, Safari */
-
-        /* Hiệu ứng mờ dần hai bên */
-        #question-progress-bar::before,
-        #question-progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 60px;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
+        #question-progress-bar::-webkit-scrollbar {
+            height: 6px;
         }
-        #question-progress-bar::before {
-            left: 0;
-            background: linear-gradient(to right, rgba(255,255,255,0.9), transparent);
-        }
-        #question-progress-bar::after {
-            right: 0;
-            background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+        #question-progress-bar::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
         }
 
         .question-progress-item {
@@ -163,14 +145,12 @@
         .detail-correct-answer { background: #ecfdf5; color: #065f46; }
         .detail-explanation { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #4b5563; }
 
-        /* Bảng & ảnh */
         .question-content table, .explanation-content table { margin: 1rem auto; border-collapse: collapse; font-size: 0.95rem; width: 100%; }
         .question-content th, .question-content td, .explanation-content th, .explanation-content td { border: 1px solid #cbd5e1; padding: 0.6rem 1rem; }
         .question-content th, .explanation-content th { background: #f1f5f9; font-weight: 700; }
         .question-content tr:nth-child(even), .explanation-content tr:nth-child(even) { background: #f8fafc; }
         .question-content img, .explanation-content img { max-height: 220px; max-width: 100%; object-fit: contain; border-radius: 8px; margin: 1rem auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
 
-        /* Option container */
         #options-container { display: flex !important; flex-direction: column !important; gap: 16px !important; margin-top: 2rem !important; }
         .option-card { padding: 1.25rem 1.5rem; min-height: 68px; align-items: center; font-size: 1.05rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     </style>
@@ -301,30 +281,14 @@
             window.quizData = {
                 title: "Bài kiểm tra mẫu - Cập nhật 2026",
                 config: { testDuration: 1800 },
-                questions: [
-                    {
-                        type: "multiple",
-                        question: "Hành tinh lớn nhất Hệ Mặt Trời là gì?",
-                        options: ["Trái Đất", "Sao Hỏa", "Sao Mộc", "Sao Thổ"],
-                        correct: 2,
-                        points: 10,
-                        explanation: "Sao Mộc là hành tinh lớn nhất."
-                    },
-                    {
-                        type: "short",
-                        question: "Nhập mã số bí mật (tối đa 4 ký tự):",
-                        correct: "2026",
-                        points: 10,
-                        explanation: "Mã đúng là 2026."
-                    },
-                    {
-                        type: "essay",
-                        question: "Giải thích ngắn gọn về quá trình quang hợp ở thực vật.",
-                        suggested: "Quang hợp là quá trình thực vật sử dụng ánh sáng mặt trời, nước và CO2 để tạo ra glucose và oxy.",
-                        points: 30,
-                        explanation: "Câu trả lời sẽ được AI chấm điểm."
-                    }
-                ]
+                questions: Array.from({length: 50}, (_, i) => ({
+                    type: "multiple",
+                    question: `Câu hỏi mẫu số ${i+1}`,
+                    options: ["A", "B", "C", "D"],
+                    correct: 0,
+                    points: 10,
+                    explanation: "Đây là đáp án mẫu."
+                }))
             };
         }
     </script>
@@ -384,7 +348,7 @@
             questionEarned = new Array(quizData.questions.length).fill(0);
             currentIndex = 0;
             sessionScore = 0;
-           
+
             if (quizMode === 'test') {
                 timerSeconds = quizData.config.testDuration || 600;
                 document.getElementById('prev-btn').classList.remove('hidden');
@@ -441,6 +405,9 @@
                 };
                 bar.appendChild(item);
             });
+
+            // LUÔN scroll về đầu (câu 1) khi load mới
+            bar.scrollLeft = 0;
         }
 
         function loadQuestion() {
@@ -566,16 +533,29 @@
                         const allowed = /[0-9\.\-,]/;
                         if (!allowed.test(e.key)) {
                             e.preventDefault();
+                            return false;
+                        }
+                    };
+
+                    input.oninput = (e) => {
+                        let val = e.target.value.replace(/[^0-9\.\-,]/g, '');
+                        if (val.length > 4) val = val.slice(0, 4);
+                        e.target.value = val;
+                        userAnswers[currentIndex] = val;
+
+                        if (quizMode === 'practice') {
+                            submitBtn.disabled = val.trim().length === 0;
+                        }
+                    };
+                } else {
+                    input.oninput = (e) => {
+                        userAnswers[currentIndex] = e.target.value;
+                        if (quizMode === 'practice') {
+                            submitBtn.disabled = e.target.value.trim().length === 0;
                         }
                     };
                 }
 
-                input.oninput = (e) => {
-                    userAnswers[currentIndex] = e.target.value;
-                    if (quizMode === 'practice') {
-                        submitBtn.disabled = e.target.value.trim().length === 0;
-                    }
-                };
                 input.focus();
             }
 
