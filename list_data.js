@@ -110,7 +110,6 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Hóa Học",
-        isHot: true
     },
     {
         title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
@@ -131,3 +130,4 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
