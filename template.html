@@ -200,7 +200,7 @@
                 </div>
                 <div class="flex flex-col gap-3 px-6 mt-8">
                     <button onclick="initQuiz('practice')" class="btn-main pill-shape py-4 px-10 font-bold text-sm w-full">Luyện tập</button>
-                    <button onclick="initQuiz('test')" class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-4 px-10 font-bold text-sm w-full">Kiểm tra (Tính giờ)</button>
+                    <button onclick="initQuiz('test')" class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-4 px-10 font-bold text-sm w-full">Kiểm tra</button>
                 </div>
             </div>
 
@@ -258,7 +258,7 @@
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200 shadow-sm text-center">
                         <p class="text-sm font-bold text-blue-600 uppercase tracking-wider mb-1">Điểm số</p>
                         <p id="final-score" class="text-5xl font-black text-blue-700">0</p>
-                        <p class="text-sm text-blue-500 mt-1">/ tổng điểm</p>
+                        <p class="text-sm text-blue-500 mt-1"></p>
                     </div>
                     <div class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
                         <p class="text-sm font-bold text-slate-600 uppercase tracking-wider mb-1">Thời gian</p>
@@ -331,7 +331,7 @@
         }
 
         function showHelp() {
-            showModal("Về API Key", "API Key giúp AI chấm điểm câu hỏi tự luận và đưa ra giải thích chi tiết.", 'help');
+            showModal("Về API Key", "API Key giúp AI chấm điểm câu hỏi tự luận và đưa ra giải thích chi tiết. Ngoài ra API key còn giúp người dùng trò chuyện với EduAI Assistant về các kiến thức người dùng thắc mắc trong chế độ luyện tập.", 'help');
         }
 
         function goBackToStart() {
@@ -924,4 +924,3 @@
     </div>
 </body>
 </html>
-
