@@ -26,8 +26,7 @@ const quizList = [
         tag: "Lịch Sử",
         type: "quiz",
         class: "10",
-        subject: "Lịch Sử",
-        isHot: true
+        subject: "Lịch Sử"
     },
     {
         title: "Đề cương Sinh Học 10 - Học kỳ I năm học 2025-2026",
@@ -130,4 +129,5 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
 
