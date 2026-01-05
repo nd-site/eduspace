@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSpace AI Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thư viện đọc file Word .docx -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+        .drop-zone { border: 2px dashed #cbd5e1; transition: all 0.3s ease; }
+        .drop-zone.active { border-color: #3b82f6; background: #eff6ff; }
+        .loader { border-top-color: #3b82f6; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div class="bg-blue-600 p-8 text-white text-center">
+                <h1 class="text-3xl font-bold mb-2">Trình Tạo Đề EduSpace AI</h1>
+                <p class="opacity-90">Tải file đề (Word/Văn bản) để AI tự động chuyển đổi sang data.js</p>
+            </div>
+
+            <div class="p-8 space-y-6">
+                <!-- API Key Section -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-700">Gemini API Key:</label>
+                    <input type="password" id="apiKey" class="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm" placeholder="Nhập API Key từ Google AI Studio...">
+                </div>
+
+                <!-- File Upload Section -->
+                <div id="dropZone" class="drop-zone rounded-2xl p-10 text-center cursor-pointer">
+                    <input type="file" id="fileInput" class="hidden" accept=".docx,.txt">
+                    <div id="fileInfo" class="space-y-3">
+                        <div class="text-4xl">📄</div>
+                        <p class="text-slate-600 font-medium">Kéo thả file .docx hoặc .txt vào đây</p>
+                        <p class="text-xs text-slate-400">Hoặc click để chọn file từ máy tính</p>
+                    </div>
+                </div>
+
+                <!-- Preview Area -->
+                <div class="hidden" id="previewContainer">
+                    <label class="text-sm font-semibold text-slate-700 block mb-2">Nội dung đã trích xuất:</label>
+                    <div id="textPreview" class="bg-slate-50 p-4 rounded-xl text-sm text-slate-600 max-h-40 overflow-y-auto border border-slate-100 italic"></div>
+                </div>
+
+                <!-- Action Button -->
+                <button onclick="generateQuiz()" id="mainBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl shadow-lg transition-all flex justify-center items-center gap-2 group">
+                    <span>BẮT ĐẦU CHUYỂN ĐỔI</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                </button>
+
+                <div id="loadingStatus" class="hidden flex flex-col items-center gap-3">
+                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-slate-200 h-10 w-10"></div>
+                    <p class="text-sm font-semibold text-blue-600">AI đang phân tích và cấu trúc lại dữ liệu...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center text-slate-400 text-sm">
+            Tương thích hoàn toàn với <b>template.html</b>. Lưu file tải về dưới tên <b>data.js</b>.
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const textPreview = document.getElementById('textPreview');
+        const previewContainer = document.getElementById('previewContainer');
+        let extractedText = "";
+
+        // Xử lý sự kiện kéo thả
+        dropZone.onclick = () => fileInput.click();
+        dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('active'); };
+        dropZone.ondragleave = () => dropZone.classList.remove('active');
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('active');
+            handleFile(e.dataTransfer.files[0]);
+        };
+
+        fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+        // Hàm đọc file
+        async function handleFile(file) {
+            if (!file) return;
+            document.getElementById('fileInfo').innerHTML = `<strong>${file.name}</strong><br><span class="text-xs text-blue-500">Đã sẵn sàng để đọc</span>`;
+            
+            if (file.name.endsWith('.docx')) {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const arrayBuffer = e.target.result;
+                    const result = await mammoth.extractRawText({ arrayBuffer: arrayBuffer });
+                    extractedText = result.value;
+                    showPreview();
+                };
+                reader.readAsArrayBuffer(file);
+            } else {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    extractedText = e.target.result;
+                    showPreview();
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function showPreview() {
+            previewContainer.classList.remove('hidden');
+            textPreview.innerText = extractedText.substring(0, 500) + "...";
+        }
+
+        async function generateQuiz() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            if (!apiKey) return alert("Vui lòng nhập API Key!");
+            if (!extractedText) return alert("Vui lòng tải file lên trước!");
+
+            const mainBtn = document.getElementById('mainBtn');
+            const loadingStatus = document.getElementById('loadingStatus');
+
+            mainBtn.classList.add('hidden');
+            loadingStatus.classList.remove('hidden');
+
+            const systemPrompt = `Bạn là một chuyên gia định dạng dữ liệu JSON cho hệ thống học tập EduSpace.
+Nhiệm vụ: Chuyển đổi văn bản đề thi sau đây thành biến 'quizData' trong Javascript.
+
+CẤU TRÚC PHẢI TUÂN THỦ:
+1. 'title': Tự đặt tên bài thi dựa trên nội dung.
+2. 'config': { 'testDuration': 1800 } (Mặc định 1800 giây).
+3. 'questions': Mảng các câu hỏi, mỗi câu hỏi thuộc 1 trong 4 loại:
+   - 'multiple': Trắc nghiệm (options[], correct: index 0-3).
+   - 'truefalse': Đúng/Sai (statements[], correctAnswers: [true, false...]).
+   - 'short': Trả lời ngắn (correct: "đáp án").
+   - 'essay': Tự luận (suggested: "hướng dẫn chấm").
+
+YÊU CẦU KỸ THUẬT:
+- Dùng HTML cho định dạng văn bản trong câu hỏi nếu cần.
+- Công thức Toán bọc trong $ (Ví dụ: $E = mc^2$).
+- CHỈ TRẢ VỀ CODE JAVASCRIPT BẮT ĐẦU BẰNG 'const quizData ='. KHÔNG CÓ MARKDOWN (\`\`\`).`;
+
+            try {
+                // Triển khai Exponential Backoff (Retry 5 lần)
+                const fetchWithRetry = async (url, options, retries = 5, backoff = 1000) => {
+                    try {
+                        const res = await fetch(url, options);
+                        if (!res.ok) throw new Error('API Error');
+                        return res;
+                    } catch (err) {
+                        if (retries <= 0) throw err;
+                        await new Promise(resolve => setTimeout(resolve, backoff));
+                        return fetchWithRetry(url, options, retries - 1, backoff * 2);
+                    }
+                };
+
+                const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `Văn bản đề thi: """${extractedText}"""` }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                let finalCode = data.candidates[0]?.content?.parts?.[0]?.text || "";
+                
+                // Loại bỏ rác nếu AI trả về markdown
+                finalCode = finalCode.replace(/```javascript/g, "").replace(/```/g, "").trim();
+
+                if (!finalCode.includes('quizData')) {
+                    throw new Error("Dữ liệu AI trả về không đúng định dạng quizData.");
+                }
+
+                // Tải xuống file
+                const blob = new Blob([finalCode], { type: 'text/javascript' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'data.js';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                alert("Thành công! File data.js đã được tải về.");
+            } catch (error) {
+                console.error(error);
+                alert("Lỗi: " + error.message + ". Vui lòng kiểm tra lại API Key hoặc nội dung file.");
+            } finally {
+                mainBtn.classList.remove('hidden');
+                loadingStatus.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
