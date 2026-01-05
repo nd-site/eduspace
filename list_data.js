@@ -18,7 +18,17 @@ const quizList = [
         isHot: true
     }
     */
-
+    {
+        title: "Đề kiểm tra viết Tiếng Anh 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/tienganh/10/de-viet-doan-van-hk1-2526-v1",
+        description: "Đề kiểm tra viết Tiếng Anh lớp 10 học kỳ I năm học 2025-2026 với yêu cầu viết đoạn văn về lợi ích của một phát minh.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "10",
+        subject: "Tiếng Anh",
+        buttonText: "Kiểm tra viết",
+        isHot: true
+    },
     {
         title: "Đề cương Lịch Sử 10 - Học kỳ I năm học 2025-2026",
         url: "/eduspace/lichsu/10/on-tap-hk1-2526-v1",
@@ -26,7 +36,7 @@ const quizList = [
         tag: "Lịch Sử",
         type: "quiz",
         class: "10",
-        subject: "Lịch Sử"
+        subject: "Lịch Sử",
     },
     {
         title: "Đề cương Sinh Học 10 - Học kỳ I năm học 2025-2026",
@@ -108,7 +118,7 @@ const quizList = [
         tag: "Hóa Học",
         type: "quiz",
         class: "10",
-        subject: "Hóa Học",
+        subject: "Hóa Học"
     },
     {
         title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
@@ -129,5 +139,3 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
-
-
