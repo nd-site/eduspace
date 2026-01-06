@@ -1,7 +1,7 @@
 const quizData = {
   title: "Đề cương Địa Lý 10 Cuối Học Kì I (Cấu tạo, Khí quyển và Thủy quyển)",
   config: {
-    testDuration: 1800
+    testDuration: 3600
   },
   questions: [
     // --- Multiple Choice (Cấu tạo Trái Đất) ---
