@@ -1,7 +1,7 @@
 const quizData = {
   "title": "Đề cương Địa Lý 10 cuối HKI 25-26",
   "config": {
-    "testDuration": 1800
+    "testDuration": 3600
   },
   "questions": [
     // MCQs
