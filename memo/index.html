@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSpace - Thử Thách Trí Nhớ</title>
+    <title>EduSpace Memo by ND Labs - Thử Thách Trí Nhớ</title>
     <link rel="icon" href="/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -16,9 +16,6 @@
             background-color: #f0fdfa;
         }
 
-        .eduspace-primary { color: #0284c7; }
-        .bg-eduspace { background-color: #0284c7; }
-        
         .bg-gradient-edu { background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%); }
 
         .input-box {
@@ -59,10 +56,8 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Header với Logo và Trang chủ -->
     <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-teal-100 py-3 px-6 flex justify-between items-center">
         <div class="flex items-center space-x-3">
-            <!-- Logo tại /logo.png -->
             <img src="/logo.png" alt="EduSpace Logo" class="h-10 w-auto object-contain" onerror="this.src='https://ui-avatars.com/api/?name=Edu+Space&background=0ea5e9&color=fff&rounded=true'">
             <div class="hidden sm:block">
                 <h1 class="text-xl font-extrabold tracking-tight text-slate-800">EduSpace <span class="text-teal-500 font-medium">Memo</span></h1>
@@ -70,7 +65,6 @@
         </div>
         
         <div class="flex items-center space-x-6">
-            <!-- Nút Trang chủ tại /eduspace -->
             <a href="/eduspace" class="flex items-center space-x-2 text-slate-600 hover:text-teal-600 font-semibold transition-colors">
                 <i class="fas fa-home"></i>
                 <span class="hidden md:inline">Trang chủ</span>
@@ -87,9 +81,14 @@
         <div id="setup-screen" class="flex-grow flex flex-col justify-center items-center py-10">
             <div class="w-full bg-white rounded-3xl shadow-xl p-8 border border-teal-50">
                 <h2 class="text-2xl font-bold text-slate-800 mb-2">Hôm nay bạn học gì?</h2>
-                <p class="text-slate-500 text-sm mb-6">Dán đoạn văn bản vào đây. Hệ thống sẽ tự hiển thị nghĩa khi bạn học.</p>
+                <p class="text-slate-500 text-sm mb-6">Dán đoạn văn bản vào đây. Sử dụng Gemini API để tự động dịch nghĩa.</p>
                 
-                <textarea id="text-input" class="w-full h-64 p-5 rounded-2xl border-2 border-slate-100 focus:border-teal-400 focus:outline-none transition-all text-slate-700 leading-relaxed custom-scrollbar bg-slate-50/50" placeholder="The smartphone is one of the most important inventions..."></textarea>
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Gemini API Key</label>
+                    <input type="password" id="api-key-input" class="w-full p-3 rounded-xl border border-slate-100 focus:border-teal-400 focus:outline-none bg-slate-50/50 text-sm" placeholder="Dán API Key của bạn tại đây...">
+                </div>
+
+                <textarea id="text-input" class="w-full h-48 p-5 rounded-2xl border-2 border-slate-100 focus:border-teal-400 focus:outline-none transition-all text-slate-700 leading-relaxed custom-scrollbar bg-slate-50/50" placeholder="Ví dụ: Learning is a lifelong journey..."></textarea>
                 
                 <button onclick="startLearning()" class="w-full mt-6 bg-gradient-edu text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-teal-200 hover:scale-[1.02] active:scale-95 transition-all">
                     BẮT ĐẦU HỌC NGAY
@@ -113,7 +112,6 @@
             </div>
 
             <div id="main-card" class="bg-white rounded-[2.5rem] shadow-2xl p-8 border border-teal-50 text-center relative overflow-hidden">
-                
                 <div class="mb-6">
                     <span class="text-slate-400 text-[10px] uppercase tracking-[0.25em] font-black opacity-80">Ký tự cần gõ</span>
                     <div id="first-letter-hint" class="text-7xl font-black text-teal-500 mt-2 drop-shadow-sm">-</div>
@@ -130,8 +128,8 @@
 
                 <div class="mb-8 flex flex-col items-center">
                     <div class="w-12 h-1 bg-slate-100 rounded-full mb-4"></div>
-                    <p class="text-[10px] text-teal-600 font-bold uppercase tracking-wider mb-1">Ý nghĩa / Gợi ý</p>
-                    <p id="word-translation" class="text-xl font-bold text-slate-700 italic px-4">Đang tải...</p>
+                    <p class="text-[10px] text-teal-600 font-bold uppercase tracking-wider mb-1">Ý nghĩa (AI Gợi ý)</p>
+                    <p id="word-translation" class="text-xl font-bold text-slate-700 italic px-4">Đang tải nghĩa...</p>
                 </div>
 
                 <div class="flex justify-between gap-1">
@@ -143,7 +141,7 @@
 
             <div class="mt-8 text-center">
                 <button id="ai-help-btn" class="bg-white hover:bg-teal-50 px-8 py-3 rounded-2xl text-sm text-teal-600 border border-teal-100 transition-all shadow-sm font-bold group">
-                    <i class="fas fa-sparkles mr-2 text-amber-400 group-hover:rotate-12 transition"></i>AI Giải thích chi tiết
+                    <i class="fas fa-sparkles mr-2 text-amber-400 group-hover:rotate-12 transition"></i>Giải thích ngữ pháp & ngữ cảnh
                 </button>
             </div>
         </div>
@@ -155,7 +153,7 @@
             <div class="bg-gradient-edu p-5 flex justify-between items-center text-white">
                 <div class="flex items-center space-x-3">
                     <i class="fas fa-magic"></i>
-                    <span class="font-bold tracking-tight uppercase text-sm">EduSpace AI</span>
+                    <span class="font-bold tracking-tight uppercase text-sm">EduSpace AI Detail</span>
                 </div>
                 <button onclick="toggleModal(false)" class="bg-white/10 hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition">
                     <i class="fas fa-times"></i>
@@ -169,13 +167,9 @@
     </div>
 
     <script>
-        const quickDict = {
-            "the": "mạo từ xác định", "smartphone": "điện thoại thông minh", "is": "thì, là", "one": "một", "of": "của", "most": "nhất", "important": "quan trọng", "inventions": "phát minh", "in": "trong", "our": "của chúng ta", "life": "cuộc sống", "it": "nó", "really": "thực sự", "changed": "thay đổi", "way": "cách", "people": "con người", "live": "sống", "work": "làm việc", "firstly": "đầu tiên là", "allow": "cho phép", "us": "chúng ta", "to": "để", "communicate": "giao tiếp", "easily": "dễ dàng", "with": "với", "others": "người khác", "example": "ví dụ", "can": "có thể", "make": "làm, thực hiện", "phone": "điện thoại", "calls": "cuộc gọi", "send": "gửi", "messages": "tin nhắn", "social": "xã hội", "media": "truyền thông", "apps": "ứng dụng", "talk": "nói chuyện", "friends": "bạn bè", "family": "gia đình"
-        };
-
-        const apiKey = "";
         let words = [];
         let currentIndex = 0;
+        let userApiKey = "";
 
         const input = document.getElementById('word-input');
         const firstLetterHint = document.getElementById('first-letter-hint');
@@ -187,10 +181,13 @@
         const progressBar = document.getElementById('progress-bar');
         const historyContainer = document.getElementById('history-container');
         const textInput = document.getElementById('text-input');
+        const apiKeyInput = document.getElementById('api-key-input');
 
         window.onload = () => {
             const savedText = localStorage.getItem('eduSpaceLearnContent');
+            const savedKey = localStorage.getItem('eduSpaceApiKey');
             if (savedText) textInput.value = savedText;
+            if (savedKey) apiKeyInput.value = savedKey;
         };
 
         function showInputScreen() {
@@ -200,26 +197,55 @@
 
         function startLearning() {
             const text = textInput.value.trim();
+            userApiKey = apiKeyInput.value.trim();
+            
             if (!text) return alert("Vui lòng nhập văn bản!");
+            if (!userApiKey) return alert("Vui lòng nhập Gemini API Key để sử dụng tính năng gợi ý!");
+
             localStorage.setItem('eduSpaceLearnContent', text);
+            localStorage.setItem('eduSpaceApiKey', userApiKey);
+            
             words = text.split(/\s+/).filter(w => w.length > 0);
             currentIndex = 0;
             totalStepsEl.textContent = words.length;
+            
             document.getElementById('setup-screen').classList.add('hidden-screen');
             document.getElementById('learning-screen').classList.remove('hidden-screen');
             updateTargetWord();
         }
 
+        async function fetchTranslation(word) {
+            if (!userApiKey) return "Cần API Key";
+            translationDisplay.textContent = "Đang tra nghĩa...";
+            
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${userApiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        contents: [{ parts: [{ text: `Chỉ trả về nghĩa tiếng Việt ngắn gọn (1-3 từ) của từ này: "${word}"` }] }]
+                    })
+                });
+                const data = await response.json();
+                const result = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "Không rõ nghĩa";
+                translationDisplay.textContent = result;
+            } catch (e) {
+                translationDisplay.textContent = "Lỗi kết nối AI";
+            }
+        }
+
         function updateTargetWord() {
             if (currentIndex >= words.length) {
-                alert("Chúc mừng! Bạn đã hoàn thành.");
+                alert("Chúc mừng! Bạn đã hoàn thành bài học.");
                 showInputScreen();
                 return;
             }
             const target = words[currentIndex];
             firstLetterHint.textContent = target.charAt(0);
-            const cleanKey = target.toLowerCase().replace(/[.,!?;:]/g, "");
-            translationDisplay.textContent = quickDict[cleanKey] || "Chưa có nghĩa nhanh (Dùng AI)";
+            
+            // Gọi AI lấy nghĩa cho từ hiện tại
+            fetchTranslation(target);
+
             currentStepEl.textContent = currentIndex + 1;
             progressBar.style.width = Math.round((currentIndex / words.length) * 100) + '%';
             renderHistory();
@@ -269,19 +295,20 @@
             const word = words[currentIndex];
             toggleModal(true);
             const content = document.getElementById('ai-content');
-            content.innerHTML = "Đang tra cứu...";
+            content.innerHTML = '<div class="text-center py-10"><i class="fas fa-spinner fa-spin text-2xl mb-2"></i><p>AI đang phân tích ngữ cảnh...</p></div>';
+            
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${userApiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
-                        contents: [{ parts: [{ text: `Giải thích cực ngắn nghĩa của từ "${word}" trong tiếng Việt.` }] }]
+                        contents: [{ parts: [{ text: `Giải thích từ "${word}" trong đoạn văn bản tôi đang học. Đưa ra nghĩa, loại từ và ví dụ.` }] }]
                     })
                 });
                 const data = await response.json();
                 content.innerHTML = marked.parse(data.candidates[0].content.parts[0].text);
             } catch (e) {
-                content.innerHTML = "Lỗi kết nối AI.";
+                content.innerHTML = "Lỗi kết nối AI hoặc sai Key.";
             }
         }
 
