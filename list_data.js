@@ -18,6 +18,17 @@ const quizList = [
         isHot: true
     }
     */
+
+    
+    {
+        title: "Học bảng tuần hoàn các nguyên tố hóa học",
+        url: "/eduspace/hoc-bang-tuan-hoan-hoa-hoc",
+        description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
+        tag: "Hóa Học",
+        type: "quiz",
+        buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
+        isHot: true
+    },
     {
         title: "Thử thách trí nhớ của bạn!",
         url: "/eduspace/memo",
@@ -36,7 +47,6 @@ const quizList = [
         class: "10",
         subject: "Tiếng Anh",
         buttonText: "Kiểm tra viết",
-        isHot: true
     },
     {
         title: "Đề cương Lịch Sử 10 - Học kỳ I năm học 2025-2026",
