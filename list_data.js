@@ -19,7 +19,13 @@ const quizList = [
     }
     */
 
-    
+    {
+        title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
+        url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
+        tag: "Địa Lý",
+        type: "quiz",
+        isHot
+    },
     {
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
         url: "/eduspace/hoc-bang-tuan-hoan-hoa-hoc",
@@ -158,3 +164,4 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
