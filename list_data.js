@@ -19,6 +19,15 @@ const quizList = [
     }
     */
     {
+        title: "Thử thách trí nhớ của bạn!",
+        url: "/eduspace/memo",
+        description: "Bài kiểm tra giúp bạn rèn luyện và thử thách trí nhớ của mình qua các câu hỏi thú vị.",
+        tag: "Trí nhớ",
+        type: "quiz",
+        buttonText: "Bắt đầu thử thách",
+        isHot: true
+    },
+    {
         title: "Đề kiểm tra viết Tiếng Anh 10 - Học kỳ I năm học 2025-2026",
         url: "/eduspace/tienganh/10/de-viet-doan-van-hk1-2526-v1",
         description: "Đề kiểm tra viết Tiếng Anh lớp 10 học kỳ I năm học 2025-2026 với yêu cầu viết đoạn văn về lợi ích của một phát minh.",
