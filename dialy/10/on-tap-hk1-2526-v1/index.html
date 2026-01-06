@@ -97,4 +97,42 @@
         loadViewer();
     </script>
 </body>
+</html>                    });
+                    
+                    // Sao chép nội dung
+                    newScript.text = oldScript.text;
+                    
+                    // Đợi nạp nếu là script ngoài, hoặc chạy ngay nếu inline
+                    if (newScript.src) {
+                        await new Promise((resolve) => {
+                            newScript.onload = resolve;
+                            newScript.onerror = resolve;
+                            document.body.appendChild(newScript);
+                        });
+                    } else {
+                        document.body.appendChild(newScript);
+                    }
+                }
+
+                // 7. Kích hoạt sự kiện load nếu template cần
+                window.dispatchEvent(new Event('load'));
+                if (typeof window.onload === 'function') {
+                    window.onload();
+                }
+
+            } catch (error) {
+                console.error("Lỗi khi nạp giao diện:", error);
+                document.getElementById('app-root').innerHTML = `
+                    <div class="p-8 text-red-600 font-bold text-center">
+                        Lỗi: ${error.message}<br>
+                        <small class="font-normal text-gray-500">Đảm bảo bạn đang chạy trên Server hoặc template.html nằm cùng thư mục.</small>
+                    </div>
+                `;
+            }
+        }
+
+        // Khởi chạy
+        loadViewer();
+    </script>
+</body>
 </html>
