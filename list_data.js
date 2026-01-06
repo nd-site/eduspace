@@ -24,7 +24,9 @@ const quizList = [
         url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
         tag: "Địa Lý",
         type: "quiz",
-        isHot
+        subject: "Hóa Học",
+        class: "10",
+        isHot,
     },
     {
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
@@ -164,4 +166,5 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
 
