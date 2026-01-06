@@ -26,7 +26,7 @@ const quizList = [
         type: "quiz",
         subject: "Hóa Học",
         class: "10",
-        isHot,
+        isHot: true,
     },
     {
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
@@ -166,5 +166,6 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
 
 
