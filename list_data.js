@@ -25,6 +25,7 @@ const quizList = [
         tag: "Trợ Lý",
         tag: "AI",
         tag: "Công Cụ",
+        buttonText: "Trò chuyện với EduAI",
         isHot: true
     },
     {
@@ -184,3 +185,4 @@ const quizList = [
     },
 
 ];
+
