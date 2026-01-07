@@ -20,13 +20,14 @@ const quizList = [
     */
 
     {
-        title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
-        url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
-        tag: "Địa Lý",
+        title: "Đề cương ôn tập Vật lý 10 - Học kì I năm học 2025-2026",
+        url: "/eduspace/vatly/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Vật Lý lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Vật Lý",
         type: "quiz",
-        subject: "Hóa Học",
         class: "10",
-        isHot: true,
+        subject: "Vật Lý",
+        isHot: true
     },
     {
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
@@ -38,13 +39,21 @@ const quizList = [
         isHot: true
     },
     {
+        title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
+        url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
+        tag: "Địa Lý",
+        type: "quiz",
+        subject: "Hóa Học",
+        class: "10",
+        isHot: true,
+    },
+    {
         title: "Thử thách trí nhớ của bạn!",
         url: "/eduspace/memo",
         description: "Bài kiểm tra giúp bạn rèn luyện và thử thách trí nhớ của mình qua các câu hỏi thú vị.",
         tag: "Trí nhớ",
         type: "quiz",
         buttonText: "Bắt đầu thử thách",
-        isHot: true
     },
     {
         title: "Đề kiểm tra viết Tiếng Anh 10 - Học kỳ I năm học 2025-2026",
@@ -166,6 +175,3 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
-
-
-
