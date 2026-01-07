@@ -20,10 +20,9 @@ const quizList = [
     */
 
     {
-        title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo Dục",
+        title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo dục",
         url: "/eduspace/assistant",
-        tag: "Trợ Lý",
-        tag: "AI",
+        description: "EduAI Assistant by ND Labs là trợ lý ảo AI về lĩnh vực Giáo dục.",
         tag: "Công Cụ",
         buttonText: "Trò chuyện với EduAI",
         isHot: true
@@ -41,9 +40,9 @@ const quizList = [
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
         url: "/eduspace/hoc-bang-tuan-hoan-hoa-hoc",
         description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
-        tag: "Hóa Học",
         tag: "Công Cụ",
         type: "quiz",
+        subject: "Hóa Học",
         buttonText: "Tạo 'chuỗi kỷ lục' ngay!"
     },
     {
@@ -185,4 +184,5 @@ const quizList = [
     },
 
 ];
+
 
