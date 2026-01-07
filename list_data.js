@@ -20,23 +20,30 @@ const quizList = [
     */
 
     {
+        title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo Dục",
+        url: "/eduspace/assistant",
+        tag: "Trợ Lý",
+        tag: "AI",
+        tag: "Công Cụ",
+        isHot: true
+    },
+    {
         title: "Đề cương ôn tập Vật lý 10 - Học kì I năm học 2025-2026",
         url: "/eduspace/vatly/10/on-tap-hk1-2526-v1",
         description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Vật Lý lớp 10 năm học 2025-2026 'Bản 1'",
         tag: "Vật Lý",
         type: "quiz",
         class: "10",
-        subject: "Vật Lý",
-        isHot: true
+        subject: "Vật Lý"
     },
     {
         title: "Học bảng tuần hoàn các nguyên tố hóa học",
         url: "/eduspace/hoc-bang-tuan-hoan-hoa-hoc",
         description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
         tag: "Hóa Học",
+        tag: "Công Cụ",
         type: "quiz",
-        buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
-        isHot: true
+        buttonText: "Tạo 'chuỗi kỷ lục' ngay!"
     },
     {
         title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
@@ -45,7 +52,6 @@ const quizList = [
         type: "quiz",
         subject: "Hóa Học",
         class: "10",
-        isHot: true,
     },
     {
         title: "Thử thách trí nhớ của bạn!",
@@ -156,6 +162,7 @@ const quizList = [
         class: "10",
         subject: "Hóa Học"
     },
+/**
     {
         title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
         url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
@@ -166,6 +173,7 @@ const quizList = [
         subject: "Tin Học",
         isComingSoon: true
     },
+*/
     {
         title: "Kiểm tra Hành trình văn minh nhân loại - Lịch Sử 10",
         url: "/eduspace/lichsu/10/hanh-trinh-van-minh-nhan-loai/kiem-tra",
@@ -174,4 +182,5 @@ const quizList = [
         class: "10",
         subject: "Lịch Sử",
     },
+
 ];
