@@ -1,4 +1,4 @@
- * HƯỚNG DẪN NHẬP LIỆU:
+/* HƯỚNG DẪN NHẬP LIỆU:
  * - type: 'quiz' (màu xanh dương) hoặc 'lesson' (màu xanh lá)
  * - class: Số lớp (vd: "10")
  * - subject: Tên môn học
@@ -187,6 +187,7 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
 
 
 
