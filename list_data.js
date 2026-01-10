@@ -1,4 +1,3 @@
-/**
  * HƯỚNG DẪN NHẬP LIỆU:
  * - type: 'quiz' (màu xanh dương) hoặc 'lesson' (màu xanh lá)
  * - class: Số lớp (vd: "10")
@@ -8,7 +7,8 @@
  * - isComingSoon: true (nếu muốn đánh dấu "SẮP RA MẮT" cho mục này)
  */
 const quizList = [
-    /**
+/** Mẫu */
+/**
     {
         title: "Mẫu",
         url: "/eduspace/mau",
@@ -17,8 +17,23 @@ const quizList = [
         type: "quiz",
         isHot: true
     }
-    */
+*/
 
+/** isComingSoon */
+/**
+    {
+        title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
+        url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Tin Học lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin Học",
+        isComingSoon: true
+    },
+*/
+
+/** isHot */
     {
         title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo dục",
         url: "/eduspace/assistant",
@@ -27,6 +42,8 @@ const quizList = [
         buttonText: "Trò chuyện với EduAI",
         isHot: true
     },
+
+/** isCourse */
     {
         title: "Đề cương ôn tập Vật lý 10 - Học kì I năm học 2025-2026",
         url: "/eduspace/vatly/10/on-tap-hk1-2526-v1",
@@ -88,7 +105,6 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Sinh Học",
-        isHot: true
     },
     {
         title: "Đề cương GDQP-AN 10 - Học kỳ I năm học 2025-2026",
@@ -162,18 +178,6 @@ const quizList = [
         class: "10",
         subject: "Hóa Học"
     },
-/**
-    {
-        title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
-        url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
-        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Tin Học lớp 10 năm học 2025-2026 'Bản 1'",
-        tag: "Tin Học",
-        type: "quiz",
-        class: "10",
-        subject: "Tin Học",
-        isComingSoon: true
-    },
-*/
     {
         title: "Kiểm tra Hành trình văn minh nhân loại - Lịch Sử 10",
         url: "/eduspace/lichsu/10/hanh-trinh-van-minh-nhan-loai/kiem-tra",
@@ -182,7 +186,7 @@ const quizList = [
         class: "10",
         subject: "Lịch Sử",
     },
-
 ];
+
 
 
