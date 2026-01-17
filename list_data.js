@@ -32,6 +32,16 @@ const quizList = [
         isComingSoon: true
     },
 */
+    {
+        title: "Học tất cả các nguyên tố hóa học trong bảng tuần hoàn",
+        url: "/eduspace/BTH/",
+        description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
+        tag: "Công Cụ",
+        type: "quiz",
+        subject: "Hóa Học",
+        buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
+        isComingSoon: true
+    },
 
 /** isHot */
     {
@@ -40,6 +50,16 @@ const quizList = [
         description: "EduAI Assistant by ND Labs là trợ lý ảo AI về lĩnh vực Giáo dục.",
         tag: "Công Cụ",
         buttonText: "Trò chuyện với EduAI",
+        isHot: true
+    },
+    {
+        title: "Học các nguyên tố hóa học phổ biến",
+        url: "/eduspace/BTH/phobien",
+        description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
+        tag: "Công Cụ",
+        type: "quiz",
+        subject: "Hóa Học",
+        buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
         isHot: true
     },
 
@@ -52,15 +72,6 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Vật Lý"
-    },
-    {
-        title: "Học bảng tuần hoàn các nguyên tố hóa học",
-        url: "/eduspace/hoc-bang-tuan-hoan-hoa-hoc",
-        description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
-        tag: "Công Cụ",
-        type: "quiz",
-        subject: "Hóa Học",
-        buttonText: "Tạo 'chuỗi kỷ lục' ngay!"
     },
     {
         title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
@@ -187,7 +198,3 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
-
-
-
-
