@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVoc - Smart Vocabulary by ND Labs</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0070f3',
+                        secondary: '#64748b',
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="max-w-6xl mx-auto py-10 px-6">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 animate-up">
+            <div class="flex items-start gap-5">
+                <div class="logo-container group cursor-pointer h-16 w-16 bg-white rounded-3xl flex items-center justify-center shadow-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
+                    onclick="window.location.href='/eduspace'">
+                    <img id="main-logo" src="/logo.png" alt="EduSpace Logo" class="w-10 h-10 object-contain text-xs">
+                </div>
+                <div>
+                    <h1 class="text-4xl font-black text-slate-900 tracking-tighter leading-none mb-2">
+                        Edu<span class="text-indigo-600">Voc</span>
+                    </h1>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black uppercase tracking-[0.2em] text-slate-400">ND Labs</span>
+                        <div class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div>
+                        <span class="text-xs font-bold text-slate-500">Intelligent Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button id="reset-data-btn"
+                    class="px-6 py-3 bg-red-50 text-red-600 rounded-2xl font-bold text-sm hover:bg-red-500 hover:text-white transition-all shadow-sm">Reset</button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="mb-12 animate-up" style="animation-delay: 0.1s;">
+            <div class="flex flex-wrap gap-4 items-center">
+                <button
+                    class="nav-item active px-8 py-3.5 round-card glass-card text-sm font-black text-slate-500 hover:text-blue-600 transition-all"
+                    data-tab="data-tab">
+                    📂 QUẢN LÝ DỮ LIỆU
+                </button>
+                <button
+                    class="nav-item px-8 py-3.5 round-card glass-card text-sm font-black text-slate-500 hover:text-blue-600 transition-all"
+                    data-tab="practice-tab">
+                    🎮 CHẾ ĐỘ LUYỆN TẬP
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- TAB 1: DATA & CONFIG -->
+            <div id="data-tab" class="tab-content active animate-up" style="animation-delay: 0.2s;">
+                <!-- Configuration Section -->
+                <section class="grid grid-cols-1 gap-8">
+                    <div class="glass-card round-card p-8">
+                        <h2 class="text-xl font-bold text-slate-800 mb-6">Cấu hình API Gemini</h2>
+                        <div class="space-y-4">
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">API Key
+                                của bạn (lấy tại aistudio.google.com):</label>
+                            <div class="flex gap-4 items-center">
+                                <div class="relative flex-1">
+                                    <input type="password" id="gemini-api-key" placeholder="Nhập API Key..."
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 focus:ring-2 focus:ring-blue-500 outline-none font-medium transition-all">
+                                    <button type="button" onclick="toggleApiKey()"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-blue-600 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <button id="save-api-btn"
+                                    class="hidden px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 hover:scale-105 transition-all">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card round-card p-8 overflow-hidden">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                            <div>
+                                <h2 class="text-xl font-bold text-slate-800">Danh sách từ vựng</h2>
+                                <p class="text-sm text-slate-500 font-medium">Quản lý kho từ vựng cá nhân của bạn</p>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="relative group">
+                                    <input type="text" id="vocab-search" placeholder="Tìm từ vựng..."
+                                        class="bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-5 pl-16 text-sm focus:ring-2 focus:ring-blue-500 outline-none w-full md:w-72 transition-all group-hover:bg-white shadow-sm">
+                                    <span
+                                        class="search-icon-container absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <button id="fill-ai-btn"
+                                    class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-100 hover:scale-105 transition-all">✨
+                                    Tự động điền AI</button>
+                                <input type="file" id="import-file" accept=".json" class="hidden">
+                                <button id="import-btn"
+                                    class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition-all">Nhập
+                                    File</button>
+                                <button id="export-btn"
+                                    class="px-5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition-all">Xuất
+                                    File</button>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto rounded-2xl border border-slate-100 mb-6">
+                            <table id="vocab-table" class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr
+                                        class="bg-slate-50 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                        <th class="px-6 py-4">Tiếng Anh</th>
+                                        <th class="px-6 py-4">Phiên âm</th>
+                                        <th class="px-6 py-4">Loại từ</th>
+                                        <th class="px-6 py-4">Tiếng Việt</th>
+                                        <th class="px-6 py-4">Ví dụ sử dụng</th>
+                                        <th class="px-6 py-4 text-center">Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <!-- Rows dynamic -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <button id="add-row-btn"
+                            class="w-full py-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-slate-500 font-bold hover:bg-slate-100 hover:border-blue-300 hover:text-blue-600 transition-all">
+                            + Thêm từ vựng mới
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TAB 2: PRACTICE -->
+            <div id="practice-tab" class="tab-content">
+                <div id="game-setup">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Chế độ luyện tập</h2>
+                        <p class="text-slate-500 font-medium">Chọn một hình thức để bắt đầu nâng tầm vốn từ của bạn</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" id="game-mode-grid">
+                        <!-- Cards for game modes -->
+                        <div class="mode-card glass-card p-6 round-card cursor-pointer group active"
+                            data-mode="mc-mixed">
+                            <div
+                                class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.477 2.387a2 2 0 00.547 1.022l2.121 2.121a2 2 0 002.828 0l2.121-2.121a2 2 0 000-2.828l-2.121-2.121z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 3h6v6" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 14L21 3" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 14l3-3m-3 3l3 3m-3-3h12" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Trắc nghiệm Hỗn hợp</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2">Kết hợp Anh-Việt, Việt-Anh và Phiên âm để ghi
+                                nhớ
+                                toàn diện.</p>
+                            <div class="mt-4 flex items-center text-blue-600 font-bold text-sm">
+                                <span>Chọn chế độ này</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mode-card glass-card p-6 round-card cursor-pointer group"
+                            data-mode="input-viet-eng">
+                            <div
+                                class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Tự luận: Gõ đáp án</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2">Luyện kỹ năng viết và nhớ chính xác từng ký
+                                tự
+                                của từ vựng.</p>
+                            <div class="mt-4 flex items-center text-emerald-600 font-bold text-sm">
+                                <span>Chọn chế độ này</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mode-card glass-card p-6 round-card cursor-pointer group hot-card"
+                            data-mode="reorder-sentence">
+                            <div
+                                class="w-12 h-12 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16m-7 6h7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Sắp xếp câu (Hot)</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2">Sắp xếp các từ để tạo thành câu ví dụ hoàn
+                                chỉnh.
+                                Hiểu ngữ cảnh sâu sắc.</p>
+                            <div class="mt-4 flex items-center text-red-600 font-bold text-sm">
+                                <span>Thử ngay</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mode-card glass-card p-6 round-card cursor-pointer group" data-mode="listening-mc">
+                            <div
+                                class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Luyện nghe (Audio)</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2">Nghe AI phát âm và chọn nghĩa tiếng Việt
+                                chính
+                                xác.</p>
+                            <div class="mt-4 flex items-center text-purple-600 font-bold text-sm">
+                                <span>Chọn chế độ này</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mode-card glass-card p-6 round-card cursor-pointer group" data-mode="flashcards">
+                            <div
+                                class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9l-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Thẻ Flashcards</h3>
+                            <p class="text-sm text-slate-500 line-clamp-2">Lật thẻ để học từ vựng một cách trực quan và
+                                nhanh chóng.</p>
+                            <div class="mt-4 flex items-center text-amber-600 font-bold text-sm">
+                                <span>Chọn chế độ này</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card settings-card glass-card p-8 round-card mb-12">
+                        <h3 class="text-xl font-bold text-slate-800 mb-6">Cấu hình chi tiết</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div class="form-group">
+                                <label
+                                    class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Số
+                                    lần lặp (0 = vô hạn):</label>
+                                <input type="number" id="repeat-count" value="0" min="0"
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none font-bold">
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Số
+                                    câu hỏi mỗi lượt:</label>
+                                <input type="number" id="stop-count" value="20" min="1"
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none font-bold">
+                            </div>
+                        </div>
+                        <button id="start-game-btn"
+                            class="w-full py-4 text-center font-extrabold text-sm uppercase tracking-widest text-white shadow-lg bg-blue-600 rounded-full hover:shadow-blue-200 hover:scale-[1.02] transition-all pulse-anim">
+                            Bắt Đầu Học Ngay
+                        </button>
+                        <input type="hidden" id="game-mode" value="mc-mixed">
+                    </div>
+                </div>
+
+                <!-- Game Section -->
+                <section id="game-section" class="hidden animate-up">
+                    <div class="glass-card round-card p-4 mb-8 flex items-center justify-between">
+                        <div class="flex items-center gap-6">
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl">🔥</span>
+                                <span id="streak-counter" class="font-black text-slate-700 tracking-tight">Chuỗi:
+                                    0</span>
+                            </div>
+                            <div class="h-6 w-[1px] bg-slate-200"></div>
+                            <div class="font-bold text-slate-500 text-sm" id="progress-text">Câu: 0/0</div>
+                        </div>
+                        <button id="stop-game-btn"
+                            class="px-5 py-2 bg-slate-100 text-slate-600 rounded-xl font-bold text-sm hover:bg-red-50 hover:text-red-500 transition-all">Dừng
+                            học</button>
+                    </div>
+
+                    <div class="h-3 bg-slate-100 rounded-full mb-12 overflow-hidden border border-slate-50">
+                        <div id="progress-bar"
+                            class="h-full bg-gradient-to-r from-blue-600 to-emerald-500 transition-all duration-700 ease-out"
+                            style="width: 0%"></div>
+                    </div>
+
+                    <div
+                        class="glass-card round-card p-12 text-center min-h-[500px] flex flex-col justify-center shadow-xl shadow-blue-50/50">
+                        <div id="question-area" class="mb-12">
+                            <h2 id="question-text" class="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                                Question?</h2>
+                            <p id="question-hint" class="text-slate-400 font-medium italic text-lg"></p>
+                        </div>
+
+                        <div id="options-area" class="hidden">
+                            <!-- Dynamic Buttons -->
+                        </div>
+
+                        <div id="input-area" class="hidden max-w-xl mx-auto w-full">
+                            <div class="flex gap-4">
+                                <input type="text" id="answer-input" placeholder="Gõ đáp án vào đây..."
+                                    autocomplete="off"
+                                    class="flex-1 bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-lg font-bold focus:border-blue-500 focus:bg-white outline-none transition-all">
+                                <button id="submit-answer-btn"
+                                    class="px-8 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-200 hover:scale-105 active:scale-95 transition-all">Kiểm
+                                    tra</button>
+                            </div>
+                        </div>
+
+                        <div id="feedback-area" class="hidden mt-12 pt-12 border-t border-slate-50 animate-up">
+                            <p id="feedback-message" class="text-3xl font-black mb-6"></p>
+                            <div id="correct-answer-display"
+                                class="hidden mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                <p class="text-slate-400 text-sm font-black uppercase tracking-widest mb-1">Đáp án đúng
+                                </p>
+                                <span id="correct-text" class="text-2xl font-bold text-slate-800"></span>
+                            </div>
+                            <button id="next-question-btn"
+                                class="px-12 py-4 bg-slate-900 text-white rounded-full font-bold shadow-xl hover:scale-105 transition-all">Tiếp
+                                tục luyện tập</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+    </div> <!-- End max-width container -->
+
+    <!-- Floating AI Widget -->
+    <div id="ai-floating-widget" class="fixed bottom-8 right-8 z-[9999] flex flex-col items-end gap-5">
+        <!-- Chat Popup -->
+        <div id="ai-chat-popup"
+            class="hidden glass-card round-card w-[380px] h-[550px] shadow-2xl flex flex-col overflow-hidden border border-blue-100/50 animate-fade-in origin-bottom-right">
+            <header class="p-5 bg-blue-600 text-white flex items-center justify-between shadow-lg">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl">🤖</div>
+                    <div>
+                        <h4 class="font-black text-sm uppercase tracking-wider">AI Assistant</h4>
+                        <span class="text-[10px] opacity-70">Gemini 1.5 Flash Active</span>
+                    </div>
+                </div>
+                <button id="close-chat-btn" class="p-2 hover:bg-white/10 rounded-xl transition-colors"
+                    onclick="toggleAIChat()">✕</button>
+            </header>
+
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-5 space-y-5 bg-slate-50/50">
+                <div class="message bot flex gap-3 max-w-[85%] animate-up">
+                    <div
+                        class="avatar w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M12 8V4H8" />
+                            <rect width="16" height="12" x="4" y="8" rx="2" />
+                            <path d="M2 14h2" />
+                            <path d="M20 14h2" />
+                            <path d="M15 13v2" />
+                            <path d="M9 13v2" />
+                        </svg>
+                    </div>
+                    <div
+                        class="msg-content bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-xs text-slate-700 leading-relaxed font-medium">
+                        Xin chào! Tôi là trợ lý AI từ EduSpace. Hãy hỏi tôi bất cứ điều gì về từ vựng nhé!
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-white border-t border-slate-100">
+                <div id="attachment-preview" class="flex gap-2 mb-3 hidden"></div>
+                <div
+                    class="flex items-end gap-2 bg-slate-50 rounded-2xl p-2.5 border border-slate-200 focus-within:border-blue-500 focus-within:bg-white transition-all shadow-inner">
+                    <label for="ai-image-upload"
+                        class="w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-slate-200 rounded-xl transition-colors text-lg opacity-50">📎</label>
+                    <input type="file" id="ai-image-upload" accept="image/*" class="hidden">
+                    <textarea id="chat-input" placeholder="Nhập câu hỏi..." rows="1"
+                        class="flex-1 bg-transparent border-none outline-none py-2 text-sm font-medium text-slate-700 resize-none max-h-32"></textarea>
+                    <button id="send-chat-btn"
+                        class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">➤</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Action Button -->
+        <div id="ai-fab"
+            class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-full shadow-2xl flex items-center justify-center cursor-pointer active:scale-90 transition-all border-4 border-white group relative"
+            onclick="toggleAIChat()">
+            <span class="text-3xl transition-transform group-hover:scale-110 group-hover:rotate-12">🤖</span>
+            <div class="absolute -top-1 -right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full"></div>
+            <div class="absolute inset-0 rounded-full bg-blue-400/20 animate-ping pointer-events-none"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
