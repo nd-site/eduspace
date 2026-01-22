@@ -7,31 +7,31 @@
  * - isComingSoon: true (nếu muốn đánh dấu "SẮP RA MẮT" cho mục này)
  */
 const quizList = [
-/** Mẫu */
-/**
-    {
-        title: "Mẫu",
-        url: "/eduspace/mau",
-        description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
-        tag: "Mẫu",
-        type: "quiz",
-        isHot: true
-    }
-*/
+    /** Mẫu */
+    /**
+        {
+            title: "Mẫu",
+            url: "/eduspace/mau",
+            description: "Bài kiểm tra mẫu để bạn tham khảo cách tạo đề.",
+            tag: "Mẫu",
+            type: "quiz",
+            isHot: true
+        }
+    */
 
-/** isComingSoon */
-/**
-    {
-        title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
-        url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
-        description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Tin Học lớp 10 năm học 2025-2026 'Bản 1'",
-        tag: "Tin Học",
-        type: "quiz",
-        class: "10",
-        subject: "Tin Học",
-        isComingSoon: true
-    },
-*/
+    /** isComingSoon */
+    /**
+        {
+            title: "Đề cương Tin Học 10 - Học kỳ I năm học 2025-2026",
+            url: "/eduspace/tinhoc/10/on-tap-hk1-2526-v1",
+            description: "Tổng hợp các câu hỏi ôn tập học kỳ I môn Tin Học lớp 10 năm học 2025-2026 'Bản 1'",
+            tag: "Tin Học",
+            type: "quiz",
+            class: "10",
+            subject: "Tin Học",
+            isComingSoon: true
+        },
+    */
     {
         title: "Học tất cả các nguyên tố hóa học trong bảng tuần hoàn",
         url: "/eduspace/BTH/",
@@ -43,13 +43,15 @@ const quizList = [
         isComingSoon: true
     },
 
-/** isHot */
+    /** isHot */
     {
-        title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo dục",
-        url: "/eduspace/assistant",
-        description: "EduAI Assistant by ND Labs là trợ lý ảo AI về lĩnh vực Giáo dục.",
+        title: "EduVoc by ND Labs - Học từ vựng tiếng Anh thú vị",
+        url: "/eduspace/tienganh/voc",
+        description: "EduVoc by ND Labs giúp bạn học từ vựng tiếng Anh thú vị hơn bằng nhiều tính năng như flashcard, thử thách nhanh tay, ...",
         tag: "Công Cụ",
-        buttonText: "Trò chuyện với EduAI",
+        type: "lesson",
+        subject: "Tiếng Anh",
+        buttonText: "Học ngay!",
         isHot: true
     },
     {
@@ -63,7 +65,14 @@ const quizList = [
         isHot: true
     },
 
-/** isCourse */
+    /** isCourse */
+    {
+        title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo dục",
+        url: "/eduspace/assistant",
+        description: "EduAI Assistant by ND Labs là trợ lý ảo AI về lĩnh vực Giáo dục.",
+        tag: "Công Cụ",
+        buttonText: "Trò chuyện với EduAI",
+    },
     {
         title: "Đề cương ôn tập Vật lý 10 - Học kì I năm học 2025-2026",
         url: "/eduspace/vatly/10/on-tap-hk1-2526-v1",
