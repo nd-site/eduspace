@@ -45,6 +45,16 @@ const quizList = [
 
     /** isHot */
     {
+        title: "Kiểm tra Lịch Sử bài 7 - Kết nối tri thức",
+        url: "/eduspace/lichsu/10/bai7-kntt",
+        description: "Kiểm tra Lịch Sử bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
+        tag: "Lịch Sử",
+        type: "quiz",
+        subject: "Lịch Sử",
+        buttonText: "Làm bài kiểm tra",
+        isHot: true
+    },
+    {
         title: "EduVoc by ND Labs - Học từ vựng tiếng Anh thú vị",
         url: "/eduspace/tienganh/voc",
         description: "EduVoc by ND Labs giúp bạn học từ vựng tiếng Anh thú vị hơn bằng nhiều tính năng như flashcard, thử thách nhanh tay, ...",
@@ -87,7 +97,7 @@ const quizList = [
         url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
         tag: "Địa Lý",
         type: "quiz",
-        subject: "Hóa Học",
+        subject: "Địa Lý",
         class: "10",
     },
     {
@@ -207,3 +217,4 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
+
