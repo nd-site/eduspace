@@ -1,3 +1,4 @@
+// short 4
 // data.js - Bộ đề kiểm tra về các cuộc cách mạng công nghiệp hiện đại
 window.quizData = {
     title: "Kiểm tra Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
@@ -37,7 +38,7 @@ window.quizData = {
         {
             type: "short",
             question: "Cách mạng công nghiệp lần thứ tư còn được gọi là gì?",
-            correct: "Cách mạng 4.0",
+            correct: "4.0",
             points: 10,
             explanation: "Cách mạng công nghiệp lần thứ tư còn gọi là Cách mạng 4.0."
         },
@@ -122,8 +123,8 @@ window.quizData = {
         },
         {
             type: "short",
-            question: "Ai là người phát minh ra World Wide Web (WWW)?",
-            correct: "Tim Berners-Lee",
+            question: "Tim Berners-Lee phát minh ra World Wide Web (WWW) vào năm bao nhiểu?",
+            correct: "1990",
             points: 10,
             explanation: "Tim Berners-Lee phát minh ra World Wide Web năm 1990."
         },
@@ -210,8 +211,8 @@ window.quizData = {
         },
         {
             type: "short",
-            question: "Nhà du hành vũ trụ đầu tiên đặt chân lên Mặt Trăng là ai?",
-            correct: "Neil Armstrong",
+            question: "Neil Armstrong là nhà du hành vũ trụ đầu tiên đặt chân lên Mặt Trăng, năm đó là năm bao nhiêu?",
+            correct: "1969",
             points: 10,
             explanation: "Neil Armstrong đặt chân lên Mặt Trăng năm 1969."
         },
@@ -293,8 +294,8 @@ window.quizData = {
         },
         {
             type: "short",
-            question: "Tên gọi khác của Cách mạng công nghiệp lần thứ ba là gì?",
-            correct: "Cách mạng kỹ thuật số",
+            question: "Cách mạng kỹ thuật số là CMCN lần thứ mấy?",
+            correct: "3",
             points: 10,
             explanation: "Cách mạng công nghiệp lần thứ ba còn gọi là Cách mạng kỹ thuật số."
         },
