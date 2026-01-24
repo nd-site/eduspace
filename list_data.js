@@ -47,10 +47,11 @@ const quizList = [
     {
         title: "Kiểm tra Lịch Sử bài 7 - Kết nối tri thức",
         url: "/eduspace/lichsu/10/bai7-kntt",
-        description: "Kiểm tra Lịch Sử bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
+        description: "100 câu kiểm tra Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
         tag: "Lịch Sử",
         type: "quiz",
         subject: "Lịch Sử",
+        class: "10",
         buttonText: "Làm bài kiểm tra",
         isHot: true
     },
@@ -217,4 +218,3 @@ const quizList = [
         subject: "Lịch Sử",
     },
 ];
-
