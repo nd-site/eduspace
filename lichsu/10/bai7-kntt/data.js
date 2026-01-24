@@ -1,8 +1,8 @@
 // data.js - Bộ đề kiểm tra về các cuộc cách mạng công nghiệp hiện đại
 window.quizData = {
-    title: "Bài kiểm tra - Các cuộc cách mạng công nghiệp hiện đại (CTGDPT 2018)",
+    title: "Kiểm tra Lịch Sử 10 bài 7 - Các cuộc cách mạng công nghiệp hiện đại - Sách Kết nối tri thức",
     config: {
-        testDuration: 1800  // 30 phút
+        testDuration: 6600  // 1 tiếng 50 phút
     },
     questions: [
         {
@@ -88,7 +88,7 @@ window.quizData = {
             points: 10,
             explanation: "Hiện nay, khoảng 50% công việc có thể được thực hiện bởi rô-bốt."
         },
-                {
+        {
             type: "multiple",
             question: "Công nghệ nào sau đây không thuộc Cách mạng công nghiệp lần thứ tư?",
             options: ["Công nghệ in 3D", "Dữ liệu lớn (Big Data)", "Máy hơi nước", "Internet vạn vật (IoT)"],
