@@ -1,6 +1,6 @@
 // data.js - Bộ đề kiểm tra về các cuộc cách mạng công nghiệp hiện đại
 window.quizData = {
-    title: "Kiểm tra Lịch Sử 10 bài 7 - Các cuộc cách mạng công nghiệp hiện đại - Sách Kết nối tri thức",
+    title: "Kiểm tra Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
     config: {
         testDuration: 6600  // 1 tiếng 50 phút
     },
