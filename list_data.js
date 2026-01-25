@@ -45,6 +45,16 @@ const quizList = [
 
     /** isHot */
     {
+        title: "Học thơ - EduSpace by ND Labs",
+        url: "/eduspace/nguvan/hoc-tho",
+        description: "Học thơ với nhiều tính năng thú vị - EdusSpace by ND Labs",
+        tag: "Ngữ Văn",
+        type: "lesson",
+        subject: "Ngữ Văn",
+        buttonText: "Học thuộc thơ",
+        isHot: true
+    },
+    {
         title: "Học Lịch Sử 10 bài 7 - Kết nối tri thức",
         url: "/eduspace/lichsu/10/bai7-kntt",
         description: "Học Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
