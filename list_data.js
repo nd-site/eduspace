@@ -45,6 +45,16 @@ const quizList = [
 
     /** isHot */
     {
+        title: "Học Lịch Sử 10 bài 7 - Kết nối tri thức",
+        url: "/eduspace/lichsu/10/bai7-kntt",
+        description: "Học Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
+        tag: "Lịch Sử",
+        type: "lesson",
+        subject: "Lịch Sử",
+        class: "10",
+        isHot: true
+    },
+    {
         title: "Kiểm tra Lịch Sử 10 bài 7 - Kết nối tri thức",
         url: "/eduspace/lichsu/10/bai7-kntt",
         description: "100 câu kiểm tra Lịch Sử 10 bài 7 - Các cuộc Cách mạng Công nghiệp thời hiện đại - Sách Kết nối tri thức",
@@ -55,6 +65,8 @@ const quizList = [
         buttonText: "Làm bài kiểm tra",
         isHot: true
     },
+
+    /** isCourse */
     {
         title: "EduVoc by ND Labs - Học từ vựng tiếng Anh thú vị",
         url: "/eduspace/tienganh/voc",
@@ -63,7 +75,6 @@ const quizList = [
         type: "lesson",
         subject: "Tiếng Anh",
         buttonText: "Học ngay!",
-        isHot: true
     },
     {
         title: "Học các nguyên tố hóa học phổ biến",
@@ -73,10 +84,7 @@ const quizList = [
         type: "quiz",
         subject: "Hóa Học",
         buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
-        isHot: true
     },
-
-    /** isCourse */
     {
         title: "EduAI Assistant by ND Labs - Trợ lý AI về Giáo dục",
         url: "/eduspace/assistant",
