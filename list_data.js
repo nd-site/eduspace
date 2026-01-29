@@ -45,6 +45,17 @@ const quizList = [
 
     /** isHot */
     {
+        title: "Moment lực - Vật Lý 10 KNTT",
+        url: "/eduspace/vatly/10/moment-luc",
+        description: "Moment Lực. Cân bằng của vật rắn - Vật Lý 10 sách Kết Nối Tri Thức với Cuộc Sống - EduSpace bt ND Labs",
+        tag: "Vật Lý",
+        type: "quiz",
+        subject: "Vật Lý",
+        isHot: true
+    },
+
+    /** isCourse */
+    {
         title: "Học thơ - EduSpace by ND Labs",
         url: "/eduspace/nguvan/hoc-tho",
         description: "Học thơ với nhiều tính năng thú vị - EdusSpace by ND Labs",
@@ -52,7 +63,6 @@ const quizList = [
         type: "lesson",
         subject: "Ngữ Văn",
         buttonText: "Học thuộc thơ",
-        isHot: true
     },
     {
         title: "Học Lịch Sử 10 bài 7 - Kết nối tri thức",
@@ -62,7 +72,6 @@ const quizList = [
         type: "lesson",
         subject: "Lịch Sử",
         class: "10",
-        isHot: true
     },
     {
         title: "Kiểm tra Lịch Sử 10 bài 7 - Kết nối tri thức",
@@ -73,10 +82,7 @@ const quizList = [
         subject: "Lịch Sử",
         class: "10",
         buttonText: "Làm bài kiểm tra",
-        isHot: true
     },
-
-    /** isCourse */
     {
         title: "EduVoc by ND Labs - Học từ vựng tiếng Anh thú vị",
         url: "/eduspace/tienganh/voc",
