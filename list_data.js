@@ -47,16 +47,24 @@ const quizList = [
 
     // ── HOT ───────────────────────────────────────────────
     {
+        title: "Lịch sử bài 8 - Kết Nối Tri Thức",
+        url: "/eduspace/lichsu/10/bai8-kntt",
+        description: "Lịch sử bài 8: Hành trình phát triển và thành tựu của văn minh Đông Nam Á thời cổ, trung đại - Kết Nối Tri Thức",
+        tag: "Lịch Sử",
+        type: "lesson",
+        subject: "Lịch Sử",
+        isHot: true
+    },
+
+    // ── Lessons & Quizzes ─────────────────────────────────
+    {
         title: "Moment lực - Vật Lý 10 KNTT",
         url: "/eduspace/vatly/10/moment-luc",
         description: "Moment Lực. Cân bằng của vật rắn - Vật Lý 10 sách Kết Nối Tri Thức với Cuộc Sống - EduSpace by ND Labs",
         tag: "Vật Lý",
         type: "quiz",
-        subject: "Vật Lý",
-        isHot: true
+        subject: "Vật Lý"
     },
-
-    // ── Lessons & Quizzes ─────────────────────────────────
     {
         title: "Học thơ - EduSpace by ND Labs",
         url: "/eduspace/nguvan/hoc-tho",
@@ -243,4 +251,5 @@ const quizList = [
         class: "10",
         subject: "Lịch Sử",
     },
+
 ];
