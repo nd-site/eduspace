@@ -257,7 +257,6 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Công Nghệ",
-        isHot: true
     },
     {
         title: "Ôn tập Giữa học kỳ II - Môn: Lịch Sử 10 (2025-2026)",
@@ -267,6 +266,16 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
+        isHot: true
+    },
+    {
+        title: "Ôn tập Giữa học kỳ II - Môn: Vật Lý 10 (Kết nối tri thức) 2025-2026",
+        url: "/eduspace/vatly/10/on-tap-gk2-kntt-v1",
+        description: "Tổng hợp 60 câu trắc nghiệm và 6 bài tự luận ôn tập giữa học kỳ II môn Vật Lý lớp 10 (Kết nối tri thức) năm học 2025-2026. Bài 21–26.",
+        tag: "Vật Lý",
+        type: "quiz",
+        class: "10",
+        subject: "Vật Lý",
         isHot: true
     },
 ];

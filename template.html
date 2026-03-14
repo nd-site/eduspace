@@ -12,8 +12,9 @@
     <!-- Thêm thư viện Marked để xử lý Markdown cho AI -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- EduSpace Configuration & AI Data Modal -->
-    <script src="/eduspace/config.js"></script>
-    <script src="/eduspace/data_modal.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/data_modal.js"></script>
+    <script src="/assets/js/ai.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
@@ -692,96 +693,6 @@
             }
         }
 
-        /* EduAI Chat Widget */
-        #edu-ai-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-
-        #ai-chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 16px;
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #ai-chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #f8fafc;
-        }
-
-        .chat-msg {
-            padding: 10px 14px;
-            border-radius: 15px;
-            max-width: 85%;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .msg-ai {
-            background: white;
-            color: #1e293b;
-            align-self: flex-start;
-            border: 1px solid #e2e8f0;
-        }
-
-        .msg-user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-        }
-
-        #ai-chat-input-area {
-            padding: 12px;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            gap: 8px;
-        }
-
-        #ai-input {
-            flex: 1;
-            padding: 8px 15px;
-            border-radius: 9999px;
-            border: 1px solid #e2e8f0;
-            outline: none;
-            font-size: 13px;
-        }
-
-        .ai-toggle-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
-            background: var(--primary);
-            color: white;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 112, 243, 0.4);
-            z-index: 999;
-        }
 
         /* Keyboard Shortcuts Styles */
         .kbd {
@@ -962,7 +873,7 @@
             animation: pulse-border 2s infinite;
         }
     </style>
-    <script src="/nd-navbar.js" defer></script>
+    <script src="/assets/js/nd-navbar.js" defer></script>
 </head>
 
 <body>
@@ -2689,8 +2600,8 @@
                     document.getElementById('custom-modal').style.display = 'none';
                 } else if (document.getElementById('shortcuts-panel').classList.contains('show')) {
                     document.getElementById('shortcuts-panel').classList.remove('show');
-                } else if (document.getElementById('edu-ai-widget').style.display === 'flex') {
-                    document.getElementById('edu-ai-widget').style.display = 'none';
+                } else if (window.eduspaceAI_UI && document.getElementById('edu-ai-widget') && document.getElementById('edu-ai-widget').style.display === 'flex') {
+                    eduspaceAI_UI.toggle();
                 } else if (isQuizScreen) {
                     goBackToStart();
                 }
@@ -2834,71 +2745,24 @@
             }
         }
 
-        // --- LOGIC EDU AI ---
-        function toggleAIChat() {
-            const widget = document.getElementById('edu-ai-widget');
-            widget.style.display = widget.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        async function sendToAI() {
-            const input = document.getElementById('ai-input');
-            const container = document.getElementById('ai-chat-messages');
-            const text = input.value.trim();
-            const currentApiKey = await window.getGeminiApiKey();
-            if (!text) return;
-
-            // Hiển thị tin nhắn user
-            container.innerHTML += `<div class="chat-msg msg-user">${text}</div>`;
-            input.value = '';
-            container.scrollTop = container.scrollHeight;
-
-            // Lấy ngữ cảnh câu hỏi hiện tại
+        // --- LOGIC EDU AI (Integrated with ai.js) ---
+        window.getAIContext = function () {
+            if (typeof currentIndex === 'undefined' || typeof getActiveQuestions !== 'function') return "";
             const qs = getActiveQuestions();
             const currentQ = qs[currentIndex];
+            if (!currentQ) return "";
             const answerRef = currentQ.type === 'multiple' ? (currentQ.options?.[currentQ.correct] || currentQ.correct) : currentQ.correct;
-            const context = `Người dùng đang làm câu hỏi: "${currentQ.question}". Đáp án đúng: "${answerRef}". Giải thích: "${currentQ.explanation || ''}".`;
-
-            // Loading indicator
-            const loadingId = 'ai-load-' + Date.now();
-            container.innerHTML += `<div class="chat-msg msg-ai" id="${loadingId}"><span style="opacity:0.5">⏳ Đang suy nghĩ...</span></div>`;
-            container.scrollTop = container.scrollHeight;
-
-            try {
-                const model = window.getStableModel?.() || 'gemini-1.5-flash';
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${currentApiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: `Bạn là trợ lý học tập EduAI. Dựa trên ngữ cảnh: ${context}. Hãy trả lời câu hỏi của học sinh: ${text}. Hãy sử dụng Markdown để định dạng câu trả lời.` }] }]
-                    })
-                });
-                const data = await response.json();
-                const aiRaw = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Không có phản hồi từ AI.';
-                const aiResponse = typeof marked !== 'undefined' ? marked.parse(aiRaw) : aiRaw;
-                const loadingEl = document.getElementById(loadingId);
-                if (loadingEl) loadingEl.remove();
-                container.innerHTML += `<div class="chat-msg msg-ai markdown-content">${aiResponse}</div>`;
-                container.scrollTop = container.scrollHeight;
-                renderMath();
-            } catch (e) {
-                const loadingEl = document.getElementById(loadingId);
-                if (loadingEl) loadingEl.outerHTML = `<div class="chat-msg msg-ai text-red-500">Lỗi: Không thể kết nối với AI. (${e.message})</div>`;
-            }
-        }
+            return `Người dùng đang làm câu hỏi: "${currentQ.question}". Đáp án đúng: "${answerRef}". Giải thích: "${currentQ.explanation || ''}".`;
+        };
 
         function updateAIVisibility() {
-            const toggleBtn = document.getElementById('ai-toggle');
             const isResultScreen = !document.getElementById('result-screen').classList.contains('hidden');
             const isQuizScreen = !document.getElementById('main-quiz').classList.contains('hidden');
             const isPractice = (quizMode === 'practice' && isQuizScreen);
             const isThptqg = (quizMode === 'thptqg' && isQuizScreen);
 
-            if (isPractice || isThptqg || isResultScreen) {
-                toggleBtn.style.display = 'flex';
-            } else {
-                toggleBtn.style.display = 'none';
-                document.getElementById('edu-ai-widget').style.display = 'none';
-            }
+            window.eduAIShowOverride = (isPractice || isThptqg || isResultScreen);
+            if (window.eduspaceAI_UI) eduspaceAI_UI.updateVisibility();
         }
 
         // Gắn updateAIVisibility vào các điểm thay đổi màn hình
@@ -2928,30 +2792,6 @@
             });
         };
     </script>
-    <div id="ai-toggle" class="ai-toggle-btn" onclick="toggleAIChat()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-    </div>
-
-    <div id="edu-ai-widget">
-        <div id="ai-chat-header">
-            <div class="flex items-center gap-2">
-                <span class="text-lg">🤖</span>
-                <span>EduAI Assistant</span>
-            </div>
-            <button onclick="toggleAIChat()" class="hover:opacity-70">✕</button>
-        </div>
-        <div id="ai-chat-messages">
-            <div class="chat-msg msg-ai">Chào bạn! Mình là EduAI. Bạn cần mình giải thích gì về câu hỏi này không?</div>
-        </div>
-        <div id="ai-chat-input-area">
-            <input type="text" id="ai-input" placeholder="Nhập câu hỏi..."
-                onkeypress="if(event.key==='Enter') sendToAI()">
-            <button onclick="sendToAI()" class="text-blue-600 font-bold p-2">Gửi</button>
-        </div>
-    </div>
 
     <!-- Keyboard Shortcuts Help -->
     <div id="shortcuts-help">
@@ -3043,7 +2883,7 @@
         </div>
     </div>
     <footer class="fixed bottom-2 w-full text-center text-slate-400 text-xs pointer-events-none z-50">
-        © 2026 ND Labs.
+        © 2026 EduSpace by ND Labs.
     </footer>
 </body>
 

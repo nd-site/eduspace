@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduVoc - Smart Vocabulary by ND Labs</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -31,7 +31,8 @@
             }
         }
     </script>
-    <script src="/nd-navbar.js" defer></script></head>
+    <script src="/assets/js/nd-navbar.js" defer></script>    <script src="/font/font.js"></script>
+</head>
 
 <body>
 
@@ -41,7 +42,7 @@
             <div class="flex items-start gap-5">
                 <div class="logo-container group cursor-pointer h-16 w-16 bg-white rounded-3xl flex items-center justify-center shadow-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
                     onclick="window.location.href='/eduspace'">
-                    <img id="main-logo" src="/logo.png" alt="EduSpace Logo" class="w-10 h-10 object-contain text-xs">
+                    <img id="main-logo" src="/assets/images/logo.png" alt="EduSpace Logo" class="w-10 h-10 object-contain text-xs">
                 </div>
                 <div>
                     <h1 class="text-4xl font-black text-slate-900 tracking-tighter leading-none mb-2">
@@ -388,7 +389,7 @@
         preload="auto"></audio>
 
     <!-- Scripts -->
-    <script src="ai.js"></script>
+    <script src="/assets/js/ai.js"></script>
     <script src="practice.js"></script>
     <script src="script.js"></script>
 </body>

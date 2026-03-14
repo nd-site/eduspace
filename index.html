@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduSpace by ND Labs</title>
-    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <meta property="og:title" content="EduSpace by ND Labs">
     <meta property="og:description" content="Nền tảng học tập & ôn luyện kiến thức toàn diện cho học sinh.">
     <meta property="og:image" content="/banner-eduspace.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/nd-navbar.js" defer></script>
+    <script src="/assets/js/nd-navbar.js" defer></script>
+    <!-- EduAI Dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/data_modal.js"></script>
+    <script src="/assets/js/ai.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
@@ -276,6 +284,7 @@
             box-shadow: 0 4px 10px rgba(0, 112, 243, 0.3);
         }
     </style>
+    <script src="/font/font.js"></script>
 </head>
 
 <body class="min-h-screen py-10 px-6">
@@ -286,7 +295,7 @@
                 <a href="/index.html" class="flex items-center gap-3 mb-6 group w-fit">
                     <div
                         class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-slate-100 transition-transform group-hover:scale-105">
-                        <img src="/logo.png" alt="Logo" class="w-8 h-8 object-contain">
+                        <img src="/assets/images/logo.png" alt="Logo" class="w-8 h-8 object-contain">
                     </div>
                     <span class="text-slate-900 font-extrabold tracking-tight text-2xl">
                         EduSpace
@@ -304,7 +313,7 @@
                         class="inline-flex items-center gap-2 px-6 py-2 bg-indigo-50 text-indigo-600 rounded-full font-bold text-sm border border-indigo-100 hover:bg-indigo-100 transition-colors">
                         🚀 HeartSpace by DNA AI
                     </a>
-                    <a href="https://www.onlineide.pro/playground/python" target="_blank" , rel="noopener noreferrer" ,
+                    <a href="https://www.onlineide.pro/playground/python" target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-6 py-2 bg-blue-50 text-blue-600 rounded-full font-bold text-sm border border-blue-100 hover:bg-blue-100 transition-colors">
                         🐍 Python Online
                     </a>
@@ -354,7 +363,7 @@
         </footer>
     </div>
 
-    <script src="list_data.js"></script>
+    <script src="/eduspace/list_data.js"></script>
     <script>
         const grid = document.getElementById('quiz-grid');
         const searchInput = document.getElementById('search-input');
