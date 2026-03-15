@@ -1982,18 +1982,26 @@
         }
 
         async function gradeAI(q, u, s) {
-            const currentApiKey = await window.getGeminiApiKey();
-            if (!currentApiKey) return { score: 0.5, feedback: "<p class='text-amber-600'>Hệ thống: API Key chưa được cấu hình. Vui lòng liên hệ quản trị viên.</p>" };
             try {
-                const model = window.getStableModel?.() || 'gemini-1.5-flash';
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${currentApiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Hãy chấm trên thang điểm 0-1 (số thập phân) và đưa ra nhận xét ngắn gọn bằng Markdown tiếng Việt (in đậm **...**, xuống dòng). Trả về JSON: {"score": 0.8, "feedback": "..."}` }] }], generationConfig: { responseMimeType: "application/json" } })
+                // Use the centralized eduspaceAI.call for robustness
+                const responseText = await eduspaceAI.call({
+                    contents: [{
+                        parts: [{
+                            text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Hãy chấm trên thang điểm 0-1 (số thập phân) và đưa ra nhận xét ngắn gọn bằng Markdown tiếng Việt (in đậm **...**, xuống dòng). Trả về JSON theo định dạng chuẩn: {"score": 0.8, "feedback": "..."}`
+                        }]
+                    }],
+                    generationConfig: {
+                        responseMimeType: "application/json"
+                    }
                 });
-                const d = await res.json();
-                return JSON.parse(d.candidates[0].content.parts[0].text);
-            } catch (e) { return { score: 0, feedback: "Lỗi kết nối AI. Vui lòng thử lại sau." }; }
+                return JSON.parse(responseText);
+            } catch (e) {
+                console.error("Grade AI Error:", e);
+                return { 
+                    score: 0, 
+                    feedback: "Lỗi kết nối AI hoặc phân tích kết quả: " + e.message 
+                };
+            }
         }
 
         async function finishTest() {
