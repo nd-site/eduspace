@@ -809,7 +809,7 @@ window.quizData = {
         {
             "type": "essay",
             "question": "Đời sống tinh thần của cư dân Văn Lang – Âu Lạc.",
-            "suggested": "Tín ngưỡng:\nThờ các vị thần tự nhiên (Mặt Trời, Sông, Núi) gắn với nông nghiệp.\nThờ cúng tổ tiên và những người có công với cộng đồng.\nTín ngưỡng phồn thực cầu mong sự sinh sôi nảy nở (thể hiện trên mặt trống đồng).\nPhong tục và nghệ thuật:\nCác phong tục riêng biệt: Ăn trầu, nhuộm răng đen, xăm mình, ở nhà sàn.\nTrống đồng Đông Sơn là biểu tượng rực rỡ nhất về nghệ thuật và kỹ thuật chế tác.",
+            "suggested": "- Tín ngưỡng: thờ vị thần tự nhiên và tín ngưỡng phồn thực.\n- Nghệ thuật: trình độ chế tác tinh xảo, kĩ thuật cao, giàu tính nghệ thuật.\n- Âm nhạc: nhiều loại nhạc cụ và hình thức biểu diễn.",
             "points": 25,
             "explanation": "AI sẽ chấm điểm dựa trên các ý chính."
         }
