@@ -266,7 +266,6 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Lịch Sử",
-        isHot: true
     },
     {
         title: "Ôn tập Giữa học kỳ II - Môn: Vật Lý 10 (Kết nối tri thức) 2025-2026",
@@ -276,6 +275,5 @@ const quizList = [
         type: "quiz",
         class: "10",
         subject: "Vật Lý",
-        isHot: true
     },
 ];
