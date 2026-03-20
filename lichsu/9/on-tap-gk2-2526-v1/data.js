@@ -5,7 +5,7 @@ window.quizData = {
     "examLayout": {
       "multiple": { "count": 8, "pointsPerQ": 0.5 },
       "truefalse": { "count": 2, "pointsPerQ": 1.0 },
-      "essay": { "count": 2, "pointsList": { "0": 2.0, "1": 2.0 } }
+      "essay": { "count": 2, "pointsList": { "0": 2.0, "1": 2.0, "2": 2.0, "3": 2.0 } }
     }
   },
   "questions": [
