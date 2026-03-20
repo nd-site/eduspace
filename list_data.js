@@ -276,4 +276,14 @@ const quizList = [
         class: "10",
         subject: "Vật Lý",
     },
-];
+    {
+        title: "Ôn tập Giữa học kỳ II - Môn: Lịch Sử 9 (2025-2026) v1",
+        url: "/eduspace/lichsu/9/on-tap-gk2-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập giữa học kỳ II môn Lịch Sử lớp 9 biên soạn bởi EduSpace by ND Labs theo sách Chân Trời Sáng Tạo năm học 2025-2026",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "9",
+        subject: "Lịch Sử",
+        isHot: true
+    },
+]
