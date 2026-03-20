@@ -4,8 +4,8 @@ window.quizData = {
     "testDuration": 2700, // 45 phút
     "examLayout": {
       "multiple": { "count": 8, "pointsPerQ": 0.5 },
-      "truefalse": { "count": 1, "pointsPerQ": 2.0 },
-      "essay": { "count": 3, "pointsList": { "0": 1.0, "1": 1.5, "2": 1.5 } }
+      "truefalse": { "count": 2, "pointsPerQ": 1.0 },
+      "essay": { "count": 2, "pointsList": { "0": 2.0, "1": 2.0 } }
     }
   },
   "questions": [
