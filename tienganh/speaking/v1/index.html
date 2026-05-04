@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI English Speaking Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .wave-animation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 40px;
+        }
+        .wave-bar {
+            width: 4px;
+            height: 10px;
+            background: #3b82f6;
+            border-radius: 2px;
+            animation: wave 1s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600 mb-2">AI Speaking Coach</h1>
+            <p class="text-gray-600">Luyện nói tiếng Anh lớp 10 - Unit 9: Environment</p>
+        </header>
+
+        <!-- Script Reference -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-100">
+            <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Bài mẫu tham khảo</h2>
+            <p id="sampleText" class="text-gray-700 leading-relaxed italic">
+                (Đừng quên giới thiệu: Tên, tuổi, nơi ở, sở thích lúc rảnh rỗi trước khi vào bài) <br><br>
+                "Good morning teacher and everyone. Today, I would like to talk about some practical solutions to air pollution... [Nội dung giải pháp môi trường]"
+            </p>
+        </div>
+
+        <!-- Recording Interface -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100">
+            <div id="statusText" class="text-lg font-medium text-gray-700 mb-6">Sẵn sàng lắng nghe bạn</div>
+            
+            <div id="visualizer" class="wave-animation mb-8 hidden">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+
+            <button id="recordBtn" class="w-20 h-20 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all transform hover:scale-105 shadow-lg mx-auto">
+                <i id="recordIcon" class="fas fa-microphone text-2xl"></i>
+            </button>
+            
+            <p id="timer" class="mt-4 text-gray-400 font-mono hidden">00:00</p>
+        </div>
+
+        <!-- AI Feedback Section -->
+        <div id="feedbackSection" class="mt-8 hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-blue-100">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">Nhận xét từ AI</h2>
+                </div>
+                
+                <div id="aiResponse" class="prose prose-blue text-gray-700 leading-relaxed">
+                    <!-- Phản hồi sẽ hiển thị ở đây -->
+                </div>
+
+                <button onclick="location.reload()" class="mt-8 text-blue-600 font-semibold hover:underline flex items-center gap-2">
+                    <i class="fas fa-redo"></i> Thử lại lần nữa
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const apiKey = ""; // Sẽ tự động lấy từ môi trường
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'speaking-coach-10';
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let startTime;
+        let timerInterval;
+
+        const recordBtn = document.getElementById('recordBtn');
+        const recordIcon = document.getElementById('recordIcon');
+        const statusText = document.getElementById('statusText');
+        const visualizer = document.getElementById('visualizer');
+        const timerDisplay = document.getElementById('timer');
+        const feedbackSection = document.getElementById('feedbackSection');
+        const aiResponse = document.getElementById('aiResponse');
+
+        recordBtn.onclick = async () => {
+            if (mediaRecorder && mediaRecorder.state === "recording") {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        };
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    processAudio(audioBlob);
+                };
+
+                mediaRecorder.start();
+                
+                // UI Updates
+                recordBtn.classList.replace('bg-blue-600', 'bg-red-500');
+                recordIcon.classList.replace('fa-microphone', 'fa-stop');
+                statusText.innerText = "Đang lắng nghe... Hãy nói đi!";
+                visualizer.classList.remove('hidden');
+                timerDisplay.classList.remove('hidden');
+                
+                startTime = Date.now();
+                timerInterval = setInterval(updateTimer, 1000);
+            } catch (err) {
+                alert("Không thể truy cập Microphone. Vui lòng kiểm tra cài đặt trình duyệt.");
+            }
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            clearInterval(timerInterval);
+            
+            recordBtn.classList.replace('bg-red-500', 'bg-gray-400');
+            recordBtn.disabled = true;
+            statusText.innerText = "AI đang phân tích bài nói của bạn...";
+            visualizer.classList.add('hidden');
+        }
+
+        function updateTimer() {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const mins = Math.floor(elapsed / 60).toString().padStart(2, '0');
+            const secs = (elapsed % 60).toString().padStart(2, '0');
+            timerDisplay.innerText = `${mins}:${secs}`;
+        }
+
+        async function processAudio(blob) {
+            const base64Audio = await blobToBase64(blob);
+            
+            const systemPrompt = `Bạn là một giáo viên tiếng Anh chuyên nghiệp. Hãy nhận xét bài nói của học sinh lớp 10.
+            Yêu cầu bài nói mẫu:
+            1. Phải có giới thiệu bản thân: Tên, tuổi, nơi ở, thời gian rảnh làm gì.
+            2. Nội dung chính: Các giải pháp cho ô nhiễm không khí (ngừng đốt rác, dùng xe điện/xe bus, trồng cây).
+            
+            Tiêu chí nhận xét (Sử dụng tiếng Việt để nhận xét):
+            - Đúng chính tả/Phát âm.
+            - Độ trôi chảy (có vấp hay không).
+            - Độ tự nhiên như giao tiếp.
+            - Đủ các ý (giới thiệu + giải pháp).
+            - Đúng cấu trúc câu.
+            
+            Hãy trình bày nhận xét theo các mục rõ ràng, khen ngợi điểm tốt và chỉ ra điểm cần cải thiện.`;
+
+            const userPrompt = "Hãy phân tích bài nói này của tôi.";
+
+            try {
+                const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            role: "user",
+                            parts: [
+                                { text: userPrompt },
+                                { inlineData: { mimeType: "audio/wav", data: base64Audio.split(',')[1] } }
+                            ]
+                        }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Không thể phân tích dữ liệu lúc này.";
+                
+                displayFeedback(resultText);
+            } catch (err) {
+                aiResponse.innerHTML = `<p class="text-red-500">Lỗi kết nối AI: ${err.message}. Vui lòng thử lại.</p>`;
+                feedbackSection.classList.remove('hidden');
+            }
+        }
+
+        function displayFeedback(text) {
+            feedbackSection.classList.remove('hidden');
+            statusText.innerText = "Đã phân tích xong!";
+            
+            // Format Markdown đơn giản
+            const formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            
+            aiResponse.innerHTML = formattedText;
+            feedbackSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function blobToBase64(blob) {
+            return new Promise((resolve, _) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        async function fetchWithRetry(url, options, retries = 5, backoff = 1000) {
+            try {
+                const res = await fetch(url, options);
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res;
+            } catch (err) {
+                if (retries > 0) {
+                    await new Promise(r => setTimeout(r, backoff));
+                    return fetchWithRetry(url, options, retries - 1, backoff * 2);
+                }
+                throw err;
+            }
+        }
+    </script>
+</body>
+</html>
