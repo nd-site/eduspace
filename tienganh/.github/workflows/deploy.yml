@@ -20,7 +20,7 @@ jobs:
         run: |
           # Tìm tất cả file .html và thay thế cụm __GEMINI_API_KEY__ bằng giá trị thật
           # Lệnh 'find' sẽ quét mọi ngóc ngách trong repo của bạn
-          find . -name "*.html" -exec sed -i "s/__GEMINI_API_KEY__/${{ secrets.GEMINI_API_KEY }}/g" {} +
+          find . -name "*.html" -exec sed -i "s/__GEMINI_API_KEY_PLACEHOLDER__/${{ secrets.GEMINI_API_KEY }}/g" {} +
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
