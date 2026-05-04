@@ -97,7 +97,10 @@
     </div>
 
     <script>
-        const apiKey = "__GEMINI_API_KEY__";
+        // Placeholder cho GitHub Actions. Nếu chạy ở môi trường preview, gán bằng chuỗi rỗng để sử dụng key nội bộ của hệ thống.
+        const rawKey = "__GEMINI_API_KEY_PLACEHOLDER__";
+        const apiKey = rawKey.includes("PLACEHOLDER") ? "" : rawKey;
+
         const audioCache = new Map(); 
         const loadingStates = new Set();
         let isPlayingSequence = false;
@@ -126,7 +129,6 @@
 
         function initScript() {
             container.innerHTML = '';
-            // Don't clear dots on re-render to keep green states
             if (progressContainer.innerHTML === '') {
                 scriptData.forEach((_, index) => {
                     const dot = document.createElement('span');
@@ -160,17 +162,13 @@
             preloadAll();
         }
 
-        // Tạo câu có ô trống để điền
         function createInteractiveSentence(text, sentenceIndex) {
             const words = text.split(' ');
             if (words.length < 4) return text;
-
-            // Chọn ngẫu nhiên một cụm 2-4 từ để ẩn (trừ từ đầu và cuối nếu có thể)
             const blankLength = Math.floor(Math.random() * 2) + 2; 
             const startIndex = Math.floor(Math.random() * (words.length - blankLength - 1)) + 1;
             const targetWords = words.slice(startIndex, startIndex + blankLength).join(' ');
             const cleanTarget = targetWords.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase().trim();
-
             const before = words.slice(0, startIndex).join(' ');
             const after = words.slice(startIndex + blankLength).join(' ');
 
@@ -254,11 +252,9 @@
 
         function playAudio(blob, index, onEndCallback = null) {
             if (currentAudio) { currentAudio.pause(); currentAudio = null; }
-
             document.querySelectorAll('.sentence-item').forEach(el => el.classList.remove('active-sentence', 'is-playing'));
             const el = document.getElementById(`sentence-${index}`);
             if (el) el.classList.add('active-sentence', 'is-playing');
-
             const url = URL.createObjectURL(blob);
             currentAudio = new Audio(url);
             currentAudio.onended = () => {
