@@ -295,7 +295,6 @@ const quizList = [
         tag: "Lịch Sử",
         type: "quiz",
         class: "9",
-        subject: "Lịch Sử",
-        isHot: true
+        subject: "Lịch Sử"
     },
 ]
