@@ -34,7 +34,7 @@ const quizList = [
     */
 
     // ── Coming Soon ───────────────────────────────────────
-    {
+    /*{
         title: "Học tất cả các nguyên tố hóa học trong bảng tuần hoàn",
         url: "/eduspace/BTH/",
         description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
@@ -42,9 +42,21 @@ const quizList = [
         type: "quiz",
         subject: "Hóa Học",
         buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
-    },
+    },*/
 
     // ── HOT ───────────────────────────────────────────────
+    {
+        title: "Đề cương Lịch Sử 10 - Học kỳ II năm học 2025-2026",
+        url: "/eduspace/lichsu/10/on-tap-hk2-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ II môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử",
+        isHot: true
+    },
+
+    // ── Lessons & Quizzes ─────────────────────────────────
     {
         title: "Lịch sử bài 8 - Kết Nối Tri Thức",
         url: "/eduspace/lichsu/10/bai8-kntt",
@@ -52,16 +64,16 @@ const quizList = [
         tag: "Lịch Sử",
         type: "lesson",
         subject: "Lịch Sử",
+        class: "10"
     },
-
-    // ── Lessons & Quizzes ─────────────────────────────────
     {
         title: "Moment lực - Vật Lý 10 KNTT",
         url: "/eduspace/vatly/10/moment-luc",
         description: "Moment Lực. Cân bằng của vật rắn - Vật Lý 10 sách Kết Nối Tri Thức với Cuộc Sống - EduSpace by ND Labs",
         tag: "Vật Lý",
         type: "quiz",
-        subject: "Vật Lý"
+        subject: "Vật Lý",
+        class: "10"
     },
     {
         title: "Học thơ - EduSpace by ND Labs",
