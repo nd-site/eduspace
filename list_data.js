@@ -46,17 +46,26 @@ const quizList = [
 
     // ── HOT ───────────────────────────────────────────────
     {
+        title: "Học bài viết Tiếng Anh 10 - Học kỳ II năm học 2025-2026",
+        url: "/eduspace/tienganh/10/hoc-bai-viet-ck2-2526",
+        description: "Học bài viết Tiếng Anh 10 - Học kỳ II năm học 2025-2026",
+        tag: "Tiếng Anh",
+        type: "lesson",
+        class: "10",
+        subject: "Tiếng Anh",
+        isHot: true
+    },
+
+    // ── Lessons & Quizzes ─────────────────────────────────
+    {
         title: "Đề cương Lịch Sử 10 - Học kỳ II năm học 2025-2026",
         url: "/eduspace/lichsu/10/on-tap-hk2-2526-v1",
         description: "Tổng hợp các câu hỏi ôn tập học kỳ II môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
         tag: "Lịch Sử",
         type: "quiz",
         class: "10",
-        subject: "Lịch Sử",
-        isHot: true
+        subject: "Lịch Sử"
     },
-
-    // ── Lessons & Quizzes ─────────────────────────────────
     {
         title: "Lịch sử bài 8 - Kết Nối Tri Thức",
         url: "/eduspace/lichsu/10/bai8-kntt",
