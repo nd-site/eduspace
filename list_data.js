@@ -647,96 +647,1214 @@ const quizList = [
         class: "11",
         subject: "Công Nghệ",
         subSubject: "Công Nghiệp",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Hóa Học 12 2025-2026",
+        url: "/eduspace/hoahoc/12/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Hóa Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 10 2025-2026",
+        url: "/eduspace/toan/10/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "10",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 11 2025-2026",
+        url: "/eduspace/toan/11/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 12 2025-2026",
+        url: "/eduspace/toan/12/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "12",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 10 2025-2026",
+        url: "/eduspace/tinhoc/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 11 2025-2026",
+        url: "/eduspace/tinhoc/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "11",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 12 2025-2026",
+        url: "/eduspace/tinhoc/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "12",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 10 2025-2026",
+        url: "/eduspace/diali/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "10",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 11 2025-2026",
+        url: "/eduspace/diali/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 12 2025-2026",
+        url: "/eduspace/diali/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "12",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 10 2025-2026",
+        url: "/eduspace/lichsu/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 11 2025-2026",
+        url: "/eduspace/lichsu/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 12 2025-2026",
+        url: "/eduspace/lichsu/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 10 2025-2026",
+        url: "/eduspace/ktpl/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "10",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 11 2025-2026",
+        url: "/eduspace/ktpl/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "11",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 12 2025-2026",
+        url: "/eduspace/ktpl/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "12",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 10 Nông nghiệp 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 10 (Nông nghiệp trồng trọt) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Chăn nuôi 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 11 (Chăn nuôi) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 12 Lâm nghiệp - Thủy sản 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 12 (Lâm nghiệp - Thủy sản) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 10 (Thiết kế và Công nghệ) 2025-2026",
+        url: "/eduspace/congnghe-congnghiep/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 10 (Thiết kế và Công nghệ) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Cơ khí động lực 2025-2026",
+        url: "/eduspace/congnghe-congnghiep/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 11 (Cơ khí động lực) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
     },
     {
         title: "Kiểm tra Cuối Học Kì II – Công nghệ 12 Điện - Điện tử 2025-2026",
         url: "/eduspace/congnghe-congnghiep/12/ck2-2526-kntt-v1",
         description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 12 (Điện - Điện tử) theo chương trình GDPT 2018.",
+    },
+    // ── NĂM HỌC 2025-2026 (TX, GK, CK) ────────────────────
+    // --- CUỐI HỌC KỲ I ---
+    { title: "Kiểm tra Cuối Học Kì I – Ngữ văn 10 (KNTT) – 2025-2026", url: "/eduspace/nguvan/10/ck1-2526-v1", tag: "Ngữ văn", type: "quiz", class: "10", subject: "Ngữ văn" },
+    { title: "Kiểm tra Cuối Học Kì I – Ngữ văn 11 (KNTT) – 2025-2026", url: "/eduspace/nguvan/11/ck1-2526-v1", tag: "Ngữ văn", type: "quiz", class: "11", subject: "Ngữ văn" },
+    { title: "Kiểm tra Cuối Học Kì I – Ngữ văn 12 (KNTT) – 2025-2026", url: "/eduspace/nguvan/12/ck1-2526-v1", tag: "Ngữ văn", type: "quiz", class: "12", subject: "Ngữ văn" },
+    { title: "Kiểm tra Cuối Học Kì I – Toán 10 (KNTT) – 2025-2026", url: "/eduspace/toan/10/ck1-2526-v1", tag: "Toán", type: "quiz", class: "10", subject: "Toán" },
+    { title: "Kiểm tra Cuối Học Kì I – Toán 11 (KNTT) – 2025-2026", url: "/eduspace/toan/11/ck1-2526-v1", tag: "Toán", type: "quiz", class: "11", subject: "Toán" },
+    { title: "Kiểm tra Cuối Học Kì I – Toán 12 (KNTT) – 2025-2026", url: "/eduspace/toan/12/ck1-2526-v1", tag: "Toán", type: "quiz", class: "12", subject: "Toán" },
+    { title: "Kiểm tra Cuối Học Kì I – Tiếng Anh 10 (Global Success) – 2025-2026", url: "/eduspace/tienganh/10/ck1-2526-v1", tag: "Tiếng Anh", type: "quiz", class: "10", subject: "Tiếng Anh" },
+    { title: "Kiểm tra Cuối Học Kì I – Tiếng Anh 11 (Global Success) – 2025-2026", url: "/eduspace/tienganh/11/ck1-2526-v1", tag: "Tiếng Anh", type: "quiz", class: "11", subject: "Tiếng Anh" },
+    { title: "Kiểm tra Cuối Học Kì I – Tiếng Anh 12 (Global Success) – 2025-2026", url: "/eduspace/tienganh/12/ck1-2526-v1", tag: "Tiếng Anh", type: "quiz", class: "12", subject: "Tiếng Anh" },
+    { title: "Kiểm tra Cuối Học Kì I – Vật lí 10 (KNTT) – 2025-2026", url: "/eduspace/vatly/10/ck1-2526-v1", tag: "Vật lí", type: "quiz", class: "10", subject: "Vật lí" },
+    { title: "Kiểm tra Cuối Học Kì I – Vật lí 11 (KNTT) – 2025-2026", url: "/eduspace/vatly/11/ck1-2526-v1", tag: "Vật lí", type: "quiz", class: "11", subject: "Vật lí" },
+    { title: "Kiểm tra Cuối Học Kì I – Vật lí 12 (KNTT) – 2025-2026", url: "/eduspace/vatly/12/ck1-2526-v1", tag: "Vật lí", type: "quiz", class: "12", subject: "Vật lí" },
+    { title: "Kiểm tra Cuối Học Kì I – Hóa học 10 (KNTT) – 2025-2026", url: "/eduspace/hoahoc/10/ck1-2526-v1", tag: "Hóa học", type: "quiz", class: "10", subject: "Hóa học" },
+    { title: "Kiểm tra Cuối Học Kì I – Hóa học 11 (KNTT) – 2025-2026", url: "/eduspace/hoahoc/11/ck1-2526-v1", tag: "Hóa học", type: "quiz", class: "11", subject: "Hóa học" },
+    { title: "Kiểm tra Cuối Học Kì I – Hóa học 12 (KNTT) – 2025-2026", url: "/eduspace/hoahoc/12/ck1-2526-v1", tag: "Hóa học", type: "quiz", class: "12", subject: "Hóa học" },
+    { title: "Kiểm tra Cuối Học Kì I – Sinh học 10 (KNTT) – 2025-2026", url: "/eduspace/sinhhoc/10/ck1-2526-v1", tag: "Sinh học", type: "quiz", class: "10", subject: "Sinh học" },
+    { title: "Kiểm tra Cuối Học Kì I – Sinh học 11 (KNTT) – 2025-2026", url: "/eduspace/sinhhoc/11/ck1-2526-v1", tag: "Sinh học", type: "quiz", class: "11", subject: "Sinh học" },
+    { title: "Kiểm tra Cuối Học Kì I – Sinh học 12 (KNTT) – 2025-2026", url: "/eduspace/sinhhoc/12/ck1-2526-v1", tag: "Sinh học", type: "quiz", class: "12", subject: "Sinh học" },
+    { title: "Kiểm tra Cuối Học Kì I – Lịch sử 10 (KNTT) – 2025-2026", url: "/eduspace/lichsu/10/ck1-2526-v1", tag: "Lịch sử", type: "quiz", class: "10", subject: "Lịch sử" },
+    { title: "Kiểm tra Cuối Học Kì I – Lịch sử 11 (KNTT) – 2025-2026", url: "/eduspace/lichsu/11/ck1-2526-v1", tag: "Lịch sử", type: "quiz", class: "11", subject: "Lịch sử" },
+    { title: "Kiểm tra Cuối Học Kì I – Lịch sử 12 (KNTT) – 2025-2026", url: "/eduspace/lichsu/12/ck1-2526-v1", tag: "Lịch sử", type: "quiz", class: "12", subject: "Lịch sử" },
+    { title: "Kiểm tra Cuối Học Kì I – Địa lí 10 (KNTT) – 2025-2026", url: "/eduspace/diali/10/ck1-2526-v1", tag: "Địa lí", type: "quiz", class: "10", subject: "Địa lí" },
+    { title: "Kiểm tra Cuối Học Kì I – Địa lí 11 (KNTT) – 2025-2026", url: "/eduspace/diali/11/ck1-2526-v1", tag: "Địa lí", type: "quiz", class: "11", subject: "Địa lí" },
+    { title: "Kiểm tra Cuối Học Kì I – Địa lí 12 (KNTT) – 2025-2026", url: "/eduspace/diali/12/ck1-2526-v1", tag: "Địa lí", type: "quiz", class: "12", subject: "Địa lí" },
+    { title: "Kiểm tra Cuối Học Kì I – GDKT-PL 10 (KNTT) – 2025-2026", url: "/eduspace/ktpl/10/ck1-2526-v1", tag: "GDKT-PL", type: "quiz", class: "10", subject: "GDKT-PL" },
+    { title: "Kiểm tra Cuối Học Kì I – GDKT-PL 11 (KNTT) – 2025-2026", url: "/eduspace/ktpl/11/ck1-2526-v1", tag: "GDKT-PL", type: "quiz", class: "11", subject: "GDKT-PL" },
+    { title: "Kiểm tra Cuối Học Kì I – GDKT-PL 12 (KNTT) – 2025-2026", url: "/eduspace/ktpl/12/ck1-2526-v1", tag: "GDKT-PL", type: "quiz", class: "12", subject: "GDKT-PL" },
+    { title: "Kiểm tra Cuối Học Kì I – Công nghệ 10 (KNTT) – 2025-2026", url: "/eduspace/congnghe/10/ck1-2526-v1", tag: "Công nghệ", type: "quiz", class: "10", subject: "Công nghệ" },
+    { title: "Kiểm tra Cuối Học Kì I – Công nghệ 11 (KNTT) – 2025-2026", url: "/eduspace/congnghe/11/ck1-2526-v1", tag: "Công nghệ", type: "quiz", class: "11", subject: "Công nghệ" },
+    { title: "Kiểm tra Cuối Học Kì I – Công nghệ 12 (KNTT) – 2025-2026", url: "/eduspace/congnghe/12/ck1-2526-v1", tag: "Công nghệ", type: "quiz", class: "12", subject: "Công nghệ" },
+    { title: "Kiểm tra Cuối Học Kì I – Tin học 10 (KNTT) – 2025-2026", url: "/eduspace/tinhoc/10/ck1-2526-v1", tag: "Tin học", type: "quiz", class: "10", subject: "Tin học" },
+    { title: "Kiểm tra Cuối Học Kì I – Tin học 11 (KNTT) – 2025-2026", url: "/eduspace/tinhoc/11/ck1-2526-v1", tag: "Tin học", type: "quiz", class: "11", subject: "Tin học" },
+    { title: "Kiểm tra Cuối Học Kì I – Tin học 12 (KNTT) – 2025-2026", url: "/eduspace/tinhoc/12/ck1-2526-v1", tag: "Tin học", type: "quiz", class: "12", subject: "Tin học" },
+
+    // --- GIỮA HỌC KỲ I ---
+    { title: "Kiểm tra Giữa Học Kì I – Ngữ văn 10 (KNTT) – 2025-2026", url: "/eduspace/nguvan/10/gk1-2526-v1", tag: "Ngữ văn", type: "quiz", class: "10", subject: "Ngữ văn" },
+    { title: "Kiểm tra Giữa Học Kì I – Toán 10 (KNTT) – 2025-2026", url: "/eduspace/toan/10/gk1-2526-v1", tag: "Toán", type: "quiz", class: "10", subject: "Toán" },
+    { title: "Kiểm tra Giữa Học Kì I – Tiếng Anh 10 (Global Success) – 2025-2026", url: "/eduspace/tienganh/10/gk1-2526-v1", tag: "Tiếng Anh", type: "quiz", class: "10", subject: "Tiếng Anh" }
+
+
+    ,
+    {
+        title: "Kiểm tra Thường xuyên – Ngữ văn 10 (KNTT) – HK II",
+        url: "/eduspace/nguvan/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Ngữ văn lớp 10.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "10",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Ngữ văn 11 (KNTT) – HK II",
+        url: "/eduspace/nguvan/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Ngữ văn lớp 11.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "11",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Ngữ văn 12 (KNTT) – HK II",
+        url: "/eduspace/nguvan/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Ngữ văn lớp 12.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "12",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Toán 10 (KNTT) – HK II",
+        url: "/eduspace/toan/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Toán lớp 10.",
+        tag: "Toán",
+        type: "quiz",
+        class: "10",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Toán 11 (KNTT) – HK II",
+        url: "/eduspace/toan/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Toán lớp 11.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Toán 12 (KNTT) – HK II",
+        url: "/eduspace/toan/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Toán lớp 12.",
+        tag: "Toán",
+        type: "quiz",
+        class: "12",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tiếng Anh 10 (KNTT) – HK II",
+        url: "/eduspace/tienganh/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tiếng Anh lớp 10.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "10",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tiếng Anh 11 (KNTT) – HK II",
+        url: "/eduspace/tienganh/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tiếng Anh lớp 11.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "11",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tiếng Anh 12 (KNTT) – HK II",
+        url: "/eduspace/tienganh/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tiếng Anh lớp 12.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "12",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Lịch sử 11 (KNTT) – HK II",
+        url: "/eduspace/lichsu/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Lịch sử lớp 11.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Lịch sử 12 (KNTT) – HK II",
+        url: "/eduspace/lichsu/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Lịch sử lớp 12.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Địa lí 10 (KNTT) – HK II",
+        url: "/eduspace/diali/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Địa lí lớp 10.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "10",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Địa lí 11 (KNTT) – HK II",
+        url: "/eduspace/diali/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Địa lí lớp 11.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Địa lí 12 (KNTT) – HK II",
+        url: "/eduspace/diali/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Địa lí lớp 12.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "12",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – GDKT-PL 10 (KNTT) – HK II",
+        url: "/eduspace/ktpl/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn GDKT-PL lớp 10.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "10",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – GDKT-PL 11 (KNTT) – HK II",
+        url: "/eduspace/ktpl/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn GDKT-PL lớp 11.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "11",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – GDKT-PL 12 (KNTT) – HK II",
+        url: "/eduspace/ktpl/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn GDKT-PL lớp 12.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "12",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Vật lí 10 (KNTT) – HK II",
+        url: "/eduspace/vatly/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Vật lí lớp 10.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "10",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Vật lí 11 (KNTT) – HK II",
+        url: "/eduspace/vatly/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Vật lí lớp 11.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "11",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Vật lí 12 (KNTT) – HK II",
+        url: "/eduspace/vatly/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Vật lí lớp 12.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "12",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Hóa học 10 (KNTT) – HK II",
+        url: "/eduspace/hoahoc/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Hóa học lớp 10.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Hóa học 11 (KNTT) – HK II",
+        url: "/eduspace/hoahoc/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Hóa học lớp 11.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "11",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Hóa học 12 (KNTT) – HK II",
+        url: "/eduspace/hoahoc/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Hóa học lớp 12.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Sinh học 10 (KNTT) – HK II",
+        url: "/eduspace/sinhhoc/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Sinh học lớp 10.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "10",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Sinh học 11 (KNTT) – HK II",
+        url: "/eduspace/sinhhoc/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Sinh học lớp 11.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "11",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Sinh học 12 (KNTT) – HK II",
+        url: "/eduspace/sinhhoc/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Sinh học lớp 12.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 10 (KNTT) – HK II",
+        url: "/eduspace/congnghe/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Công nghệ lớp 10.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 11 (KNTT) – HK II",
+        url: "/eduspace/congnghe/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Công nghệ lớp 11.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 12 (KNTT) – HK II",
+        url: "/eduspace/congnghe/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Công nghệ lớp 12.",
         tag: "Công nghệ",
         type: "quiz",
         class: "12",
-        subject: "Công Nghệ",
-        subSubject: "Công Nghiệp",
+        subject: "Công nghệ"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 10 2025-2026",
-        url: "/eduspace/nguvan/10/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
-        tag: "Ngữ Văn",
+        title: "Kiểm tra Thường xuyên – Tin học 10 (KNTT) – HK II",
+        url: "/eduspace/tinhoc/10/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tin học lớp 10.",
+        tag: "Tin học",
         type: "quiz",
         class: "10",
-        subject: "Ngữ Văn"
+        subject: "Tin học"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 11 2025-2026",
-        url: "/eduspace/nguvan/11/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
-        tag: "Ngữ Văn",
+        title: "Kiểm tra Thường xuyên – Tin học 11 (KNTT) – HK II",
+        url: "/eduspace/tinhoc/11/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tin học lớp 11.",
+        tag: "Tin học",
         type: "quiz",
         class: "11",
-        subject: "Ngữ Văn"
+        subject: "Tin học"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 12 2025-2026",
-        url: "/eduspace/nguvan/12/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
-        tag: "Ngữ Văn",
+        title: "Kiểm tra Thường xuyên – Tin học 12 (KNTT) – HK II",
+        url: "/eduspace/tinhoc/12/tx2-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ II môn Tin học lớp 12.",
+        tag: "Tin học",
         type: "quiz",
         class: "12",
-        subject: "Ngữ Văn"
-    },
+        subject: "Tin học"
+    }
+    ,
     {
-        title: "Kiểm tra Cuối Học Kì II – Sinh Học 10 2025-2026",
-        url: "/eduspace/sinhhoc/10/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
-        tag: "Sinh Học",
-        type: "quiz",
-        class: "10",
-        subject: "Sinh Học"
-    },
-    {
-        title: "Kiểm tra Cuối Học Kì II – Sinh Học 11 2025-2026",
-        url: "/eduspace/sinhhoc/11/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
-        tag: "Sinh Học",
+        title: "Kiểm tra Cuối Học Kì I – Ngữ văn 11 (KNTT) – 2025-2026",
+        url: "/eduspace/nguvan/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Ngữ văn lớp 11.",
+        tag: "Ngữ văn",
         type: "quiz",
         class: "11",
-        subject: "Sinh Học"
+        subject: "Ngữ văn"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Sinh Học 12 2025-2026",
-        url: "/eduspace/sinhhoc/12/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
-        tag: "Sinh Học",
+        title: "Kiểm tra Cuối Học Kì I – Ngữ văn 12 (KNTT) – 2025-2026",
+        url: "/eduspace/nguvan/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Ngữ văn lớp 12.",
+        tag: "Ngữ văn",
         type: "quiz",
         class: "12",
-        subject: "Sinh Học"
+        subject: "Ngữ văn"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 10 (Global Success) 2025-2026",
-        url: "/eduspace/tienganh/10/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 10 theo chương trình GDPT 2018 (sách Global Success).",
+        title: "Kiểm tra Cuối Học Kì I – Toán 11 (KNTT) – 2025-2026",
+        url: "/eduspace/toan/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Toán lớp 11.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Toán 12 (KNTT) – 2025-2026",
+        url: "/eduspace/toan/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Toán lớp 12.",
+        tag: "Toán",
+        type: "quiz",
+        class: "12",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Tiếng Anh 11 (KNTT) – 2025-2026",
+        url: "/eduspace/tienganh/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Tiếng Anh lớp 11.",
         tag: "Tiếng Anh",
         type: "quiz",
-        class: "10",
+        class: "11",
         subject: "Tiếng Anh"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 11 (Global Success) 2025-2026",
-        url: "/eduspace/tienganh/11/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 11 theo chương trình GDPT 2018 (sách Global Success).",
+        title: "Kiểm tra Cuối Học Kì I – Tiếng Anh 12 (KNTT) – 2025-2026",
+        url: "/eduspace/tienganh/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Tiếng Anh lớp 12.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "12",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Lịch sử 10 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Lịch sử lớp 10.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Lịch sử 11 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Lịch sử lớp 11.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Lịch sử 12 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Lịch sử lớp 12.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Địa lí 10 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Địa lí lớp 10.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "10",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Địa lí 11 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Địa lí lớp 11.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Địa lí 12 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Địa lí lớp 12.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "12",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – GDKT-PL 10 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn GDKT-PL lớp 10.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "10",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – GDKT-PL 11 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn GDKT-PL lớp 11.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "11",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – GDKT-PL 12 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn GDKT-PL lớp 12.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "12",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Vật lí 10 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Vật lí lớp 10.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "10",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Vật lí 11 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Vật lí lớp 11.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "11",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Vật lí 12 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Vật lí lớp 12.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "12",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Hóa học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Hóa học lớp 10.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Hóa học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Hóa học lớp 11.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "11",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Hóa học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Hóa học lớp 12.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Sinh học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Sinh học lớp 10.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "10",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Sinh học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Sinh học lớp 11.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "11",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Sinh học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Sinh học lớp 12.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Công nghệ 10 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Công nghệ lớp 10.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Công nghệ 11 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Công nghệ lớp 11.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Công nghệ 12 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Công nghệ lớp 12.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Tin học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/10/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Tin học lớp 10.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Tin học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/11/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Tin học lớp 11.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "11",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì I – Tin học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/12/ck1-2526-v1",
+        description: "Đề kiểm tra cuối học kì I môn Tin học lớp 12.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "12",
+        subject: "Tin học"
+    }
+    ,
+    {
+        title: "Kiểm tra Giữa Học Kì I – Ngữ văn 11 (KNTT) – 2025-2026",
+        url: "/eduspace/nguvan/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Ngữ văn lớp 11.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "11",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Ngữ văn 12 (KNTT) – 2025-2026",
+        url: "/eduspace/nguvan/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Ngữ văn lớp 12.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "12",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Toán 11 (KNTT) – 2025-2026",
+        url: "/eduspace/toan/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Toán lớp 11.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Toán 12 (KNTT) – 2025-2026",
+        url: "/eduspace/toan/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Toán lớp 12.",
+        tag: "Toán",
+        type: "quiz",
+        class: "12",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Tiếng Anh 11 (KNTT) – 2025-2026",
+        url: "/eduspace/tienganh/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Tiếng Anh lớp 11.",
         tag: "Tiếng Anh",
         type: "quiz",
         class: "11",
         subject: "Tiếng Anh"
     },
     {
-        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 12 (Global Success) 2025-2026",
-        url: "/eduspace/tienganh/12/ck2-2526-kntt-v1",
-        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 12 theo chương trình GDPT 2018 (sách Global Success).",
+        title: "Kiểm tra Giữa Học Kì I – Tiếng Anh 12 (KNTT) – 2025-2026",
+        url: "/eduspace/tienganh/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Tiếng Anh lớp 12.",
         tag: "Tiếng Anh",
         type: "quiz",
         class: "12",
         subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Lịch sử 10 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Lịch sử lớp 10.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Lịch sử 11 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Lịch sử lớp 11.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Lịch sử 12 (KNTT) – 2025-2026",
+        url: "/eduspace/lichsu/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Lịch sử lớp 12.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Địa lí 10 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Địa lí lớp 10.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "10",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Địa lí 11 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Địa lí lớp 11.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Địa lí 12 (KNTT) – 2025-2026",
+        url: "/eduspace/diali/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Địa lí lớp 12.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "12",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – GDKT-PL 10 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn GDKT-PL lớp 10.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "10",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – GDKT-PL 11 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn GDKT-PL lớp 11.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "11",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – GDKT-PL 12 (KNTT) – 2025-2026",
+        url: "/eduspace/ktpl/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn GDKT-PL lớp 12.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "12",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Vật lí 10 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Vật lí lớp 10.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "10",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Vật lí 11 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Vật lí lớp 11.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "11",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Vật lí 12 (KNTT) – 2025-2026",
+        url: "/eduspace/vatly/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Vật lí lớp 12.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "12",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Hóa học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Hóa học lớp 10.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Hóa học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Hóa học lớp 11.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "11",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Hóa học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/hoahoc/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Hóa học lớp 12.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Sinh học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Sinh học lớp 10.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "10",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Sinh học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Sinh học lớp 11.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "11",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Sinh học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/sinhhoc/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Sinh học lớp 12.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Công nghệ 10 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Công nghệ lớp 10.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Công nghệ 11 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Công nghệ lớp 11.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Công nghệ 12 (KNTT) – 2025-2026",
+        url: "/eduspace/congnghe/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Công nghệ lớp 12.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Tin học 10 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/10/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Tin học lớp 10.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Tin học 11 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/11/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Tin học lớp 11.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "11",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Giữa Học Kì I – Tin học 12 (KNTT) – 2025-2026",
+        url: "/eduspace/tinhoc/12/gk1-2526-v1",
+        description: "Đề kiểm tra giữa học kì I môn Tin học lớp 12.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "12",
+        subject: "Tin học"
+    }
+    ,
+    {
+        title: "Kiểm tra Thường xuyên – Ngữ văn 11 (KNTT) – HK I",
+        url: "/eduspace/nguvan/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Ngữ văn lớp 11.",
+        tag: "Ngữ văn",
+        type: "quiz",
+        class: "11",
+        subject: "Ngữ văn"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Toán 11 (KNTT) – HK I",
+        url: "/eduspace/toan/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Toán lớp 11.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tiếng Anh 11 (KNTT) – HK I",
+        url: "/eduspace/tienganh/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Tiếng Anh lớp 11.",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "11",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Lịch sử 11 (KNTT) – HK I",
+        url: "/eduspace/lichsu/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Lịch sử lớp 11.",
+        tag: "Lịch sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch sử"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Địa lí 11 (KNTT) – HK I",
+        url: "/eduspace/diali/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Địa lí lớp 11.",
+        tag: "Địa lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – GDKT-PL 11 (KNTT) – HK I",
+        url: "/eduspace/ktpl/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn GDKT-PL lớp 11.",
+        tag: "GDKT-PL",
+        type: "quiz",
+        class: "11",
+        subject: "GDKT-PL"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Vật lí 11 (KNTT) – HK I",
+        url: "/eduspace/vatly/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Vật lí lớp 11.",
+        tag: "Vật lí",
+        type: "quiz",
+        class: "11",
+        subject: "Vật lí"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Hóa học 11 (KNTT) – HK I",
+        url: "/eduspace/hoahoc/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Hóa học lớp 11.",
+        tag: "Hóa học",
+        type: "quiz",
+        class: "11",
+        subject: "Hóa học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Sinh học 11 (KNTT) – HK I",
+        url: "/eduspace/sinhhoc/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Sinh học lớp 11.",
+        tag: "Sinh học",
+        type: "quiz",
+        class: "11",
+        subject: "Sinh học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 10 (KNTT) – HK I",
+        url: "/eduspace/congnghe/10/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Công nghệ lớp 10.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 11 (KNTT) – HK I",
+        url: "/eduspace/congnghe/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Công nghệ lớp 11.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Công nghệ 12 (KNTT) – HK I",
+        url: "/eduspace/congnghe/12/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Công nghệ lớp 12.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công nghệ"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tin học 10 (KNTT) – HK I",
+        url: "/eduspace/tinhoc/10/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Tin học lớp 10.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tin học 11 (KNTT) – HK I",
+        url: "/eduspace/tinhoc/11/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Tin học lớp 11.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "11",
+        subject: "Tin học"
+    },
+    {
+        title: "Kiểm tra Thường xuyên – Tin học 12 (KNTT) – HK I",
+        url: "/eduspace/tinhoc/12/tx1-2526-v1",
+        description: "Bài kiểm tra thường xuyên học kỳ I môn Tin học lớp 12.",
+        tag: "Tin học",
+        type: "quiz",
+        class: "12",
+        subject: "Tin học"
     }
 ]
