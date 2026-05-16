@@ -1,7 +1,10 @@
+
+
 /* HƯỚNG DẪN NHẬP LIỆU:
  * - type: 'quiz' (màu xanh dương) hoặc 'lesson' (màu xanh lá)
  * - class: Số lớp (vd: "10")
- * - subject: Tên môn học
+ * - subject: Tên môn học chính (VD: Công Nghệ, Vật Lý, ...)
+ * - subSubject: Tên phân loại con (VD: Công Nghiệp, Nông Nghiệp, ...)
  * - buttonText: Tên nút tùy biến (để trống sẽ dùng mặc định theo type)
  * - isHot: true (nếu muốn đánh dấu "HOT" cho mục này)
  * - isComingSoon: true (nếu muốn đánh dấu "SẮP RA MẮT" cho mục này)
@@ -34,7 +37,7 @@ const quizList = [
     */
 
     // ── Coming Soon ───────────────────────────────────────
-    {
+    /*{
         title: "Học tất cả các nguyên tố hóa học trong bảng tuần hoàn",
         url: "/eduspace/BTH/",
         description: "Bài học tương tác giúp bạn nắm vững bảng tuần hoàn các nguyên tố hóa học một cách dễ dàng và thú vị với 'chuỗi kỷ lục'.",
@@ -42,9 +45,129 @@ const quizList = [
         type: "quiz",
         subject: "Hóa Học",
         buttonText: "Tạo 'chuỗi kỷ lục' ngay!",
-    },
+    },*/
 
     // ── HOT ───────────────────────────────────────────────
+    {
+        title: "Scan2Word by ND Labs",
+        url: "https://scan2word.vercel.app/",
+        description: "Scan2Word by ND Labs - Ứng dụng chuyển đổi hình ảnh thành văn bản bằng AI",
+        tag: "Công Cụ",
+        buttonText: "Trải nghiệm ngay!",
+        isHot: true
+    },
+
+    // ── THI THỬ THPT 2026 (Cấu trúc mới) ─────────────
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Toán",
+        url: "/eduspace/toan/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán theo cấu trúc mới của Bộ GD&ĐT (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Toán",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Ngữ văn",
+        url: "/eduspace/nguvan/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Ngữ văn với cấu trúc Đọc hiểu và Viết (Tự luận).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Ngữ Văn",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tiếng Anh",
+        url: "/eduspace/tienganh/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Tiếng Anh (40 câu trắc nghiệm).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Tiếng Anh",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Vật lý",
+        url: "/eduspace/vatly/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Vật lý theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Vật Lý",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Hóa học",
+        url: "/eduspace/hoahoc/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Hóa học theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Sinh học",
+        url: "/eduspace/sinhhoc/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Sinh học theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Lịch sử",
+        url: "/eduspace/lichsu/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Lịch sử theo cấu trúc mới (Trắc nghiệm I, II).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch Sử",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Địa lý",
+        url: "/eduspace/dialy/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Địa lý theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Địa Lý",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn KT & PL",
+        url: "/eduspace/ktpl/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Giáo dục Kinh tế và Pháp luật theo cấu trúc mới.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Kinh Tế và Pháp Luật",
+        isHot: true
+    },
+
+    // ── Lessons & Quizzes ─────────────────────────────────
+    {
+        title: "Học bài viết Tiếng Anh 10 - Học kỳ II năm học 2025-2026",
+        url: "/eduspace/tienganh/10/hoc-bai-viet-ck2-2526",
+        description: "Học bài viết Tiếng Anh 10 - Học kỳ II năm học 2025-2026",
+        tag: "Tiếng Anh",
+        type: "lesson",
+        class: "10",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Đề cương Lịch Sử 10 - Học kỳ II năm học 2025-2026",
+        url: "/eduspace/lichsu/10/on-tap-hk2-2526-v1",
+        description: "Tổng hợp các câu hỏi ôn tập học kỳ II môn Lịch Sử lớp 10 năm học 2025-2026 'Bản 1'",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử"
+    },
     {
         title: "Lịch sử bài 8 - Kết Nối Tri Thức",
         url: "/eduspace/lichsu/10/bai8-kntt",
@@ -52,16 +175,16 @@ const quizList = [
         tag: "Lịch Sử",
         type: "lesson",
         subject: "Lịch Sử",
+        class: "10"
     },
-
-    // ── Lessons & Quizzes ─────────────────────────────────
     {
         title: "Moment lực - Vật Lý 10 KNTT",
         url: "/eduspace/vatly/10/moment-luc",
         description: "Moment Lực. Cân bằng của vật rắn - Vật Lý 10 sách Kết Nối Tri Thức với Cuộc Sống - EduSpace by ND Labs",
         tag: "Vật Lý",
         type: "quiz",
-        subject: "Vật Lý"
+        subject: "Vật Lý",
+        class: "10"
     },
     {
         title: "Học thơ - EduSpace by ND Labs",
@@ -176,7 +299,7 @@ const quizList = [
         tag: "GDQP-AN",
         type: "quiz",
         class: "10",
-        subject: "GDQP-AN"
+        subject: "Quốc Phòng và An Ninh"
     },
     {
         title: "Đề cương KTPL 10 - Học kỳ I năm học 2025-2026",
@@ -185,7 +308,7 @@ const quizList = [
         tag: "KTPL",
         type: "quiz",
         class: "10",
-        subject: "KTPL"
+        subject: "Kinh Tế và Pháp Luật"
     },
     {
         title: "Hành trình văn minh nhân loại - Lịch Sử 10",
@@ -251,16 +374,17 @@ const quizList = [
     },
     {
         title: "ÔN TẬP GIỮA HỌC KÌ II - MÔN: CÔNG NGHỆ 10 (2025-2026)",
-        url: "/eduspace/congnghe/10/on-tap-gk2-2526-cncn-v1",
+        url: "/eduspace/congnghe/10/on-tap-gk2-2526-cncn-v1/",
         description: "Tổng hợp các câu hỏi ôn tập giữa học kỳ II môn Thiết kế và Công nghệ lớp 10 năm học 2025-2026",
         tag: "Công Nghệ",
         type: "quiz",
         class: "10",
         subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
     },
     {
         title: "Ôn tập Giữa học kỳ II - Môn: Lịch Sử 10 (2025-2026)",
-        url: "/eduspace/lichsu/10/on-tap-gk2-2526-v1",
+        url: "/eduspace/lichsu/10/on-tap-gk2-2526-v1/",
         description: "Tổng hợp các câu hỏi ôn tập giữa học kỳ II môn Lịch Sử lớp 10 năm học 2025-2026",
         tag: "Lịch Sử",
         type: "quiz",
@@ -268,9 +392,9 @@ const quizList = [
         subject: "Lịch Sử",
     },
     {
-        title: "Ôn tập Giữa học kỳ II - Môn: Vật Lý 10 (Kết nối tri thức) 2025-2026",
-        url: "/eduspace/vatly/10/on-tap-gk2-kntt-v1",
-        description: "Tổng hợp 60 câu trắc nghiệm và 6 bài tự luận ôn tập giữa học kỳ II môn Vật Lý lớp 10 (Kết nối tri thức) năm học 2025-2026. Bài 21–26.",
+        title: "Ôn tập Giữa học kỳ II - Môn: Vật Lý 10 2025-2026",
+        url: "/eduspace/vatly/10/on-tap-gk2-kntt-v1/",
+        description: "Tổng hợp 60 câu trắc nghiệm và 6 bài tự luận ôn tập giữa học kỳ II môn Vật Lý lớp 10 năm học 2025-2026. Bài 21–26.",
         tag: "Vật Lý",
         type: "quiz",
         class: "10",
@@ -278,12 +402,341 @@ const quizList = [
     },
     {
         title: "Ôn tập Giữa học kỳ II - Môn: Lịch Sử 9 (2025-2026) v1",
-        url: "/eduspace/lichsu/9/on-tap-gk2-2526-v1",
+        url: "/eduspace/lichsu/9/on-tap-gk2-2526-v1/",
         description: "Tổng hợp các câu hỏi ôn tập giữa học kỳ II môn Lịch Sử lớp 9 biên soạn bởi EduSpace by ND Labs theo sách Chân Trời Sáng Tạo năm học 2025-2026",
         tag: "Lịch Sử",
         type: "quiz",
         class: "9",
-        subject: "Lịch Sử",
-        isHot: true
+        subject: "Lịch Sử"
     },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Vật Lý 10 2025-2026",
+        url: "/eduspace/vatly/10/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Vật Lý lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Vật Lý",
+        type: "quiz",
+        class: "10",
+        subject: "Vật Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Vật Lý 11 2025-2026",
+        url: "/eduspace/vatly/11/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Vật Lý lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Vật Lý",
+        type: "quiz",
+        class: "11",
+        subject: "Vật Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Vật Lý 12 2025-2026",
+        url: "/eduspace/vatly/12/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Vật Lý lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Vật Lý",
+        type: "quiz",
+        class: "12",
+        subject: "Vật Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Hóa Học 10 2025-2026",
+        url: "/eduspace/hoahoc/10/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Hóa Học lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "10",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Hóa Học 11 2025-2026",
+        url: "/eduspace/hoahoc/11/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Hóa Học lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "11",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Hóa Học 12 2025-2026",
+        url: "/eduspace/hoahoc/12/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Hóa Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Hóa Học",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 10 2025-2026",
+        url: "/eduspace/toan/10/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "10",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 11 2025-2026",
+        url: "/eduspace/toan/11/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "11",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Toán 12 2025-2026",
+        url: "/eduspace/toan/12/ck2-2526-kntt-v1/",
+        description: "Đề kiểm tra cuối học kì II môn Toán lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Toán",
+        type: "quiz",
+        class: "12",
+        subject: "Toán"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 10 2025-2026",
+        url: "/eduspace/tinhoc/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "10",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 11 2025-2026",
+        url: "/eduspace/tinhoc/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "11",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tin Học 12 2025-2026",
+        url: "/eduspace/tinhoc/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tin Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Tin Học",
+        type: "quiz",
+        class: "12",
+        subject: "Tin Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 10 2025-2026",
+        url: "/eduspace/diali/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "10",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 11 2025-2026",
+        url: "/eduspace/diali/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "11",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Địa Lí 12 2025-2026",
+        url: "/eduspace/diali/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Địa Lí lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Địa Lí",
+        type: "quiz",
+        class: "12",
+        subject: "Địa Lý"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 10 2025-2026",
+        url: "/eduspace/lichsu/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "10",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 11 2025-2026",
+        url: "/eduspace/lichsu/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "11",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Lịch Sử 12 2025-2026",
+        url: "/eduspace/lichsu/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Lịch Sử lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Lịch Sử",
+        type: "quiz",
+        class: "12",
+        subject: "Lịch Sử"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 10 2025-2026",
+        url: "/eduspace/ktpl/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "10",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 11 2025-2026",
+        url: "/eduspace/ktpl/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "11",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 12 2025-2026",
+        url: "/eduspace/ktpl/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Kinh tế và Pháp luật lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "KTPL",
+        type: "quiz",
+        class: "12",
+        subject: "Kinh Tế và Pháp Luật"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 10 Nông nghiệp 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 10 (Nông nghiệp trồng trọt) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Chăn nuôi 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 11 (Chăn nuôi) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 12 Lâm nghiệp - Thủy sản 2025-2026",
+        url: "/eduspace/congnghe-nongnghiep/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 12 (Lâm nghiệp - Thủy sản) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 10 (Thiết kế và Công nghệ) 2025-2026",
+        url: "/eduspace/congnghe-congnghiep/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 10 (Thiết kế và Công nghệ) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "10",
+        subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Cơ khí động lực 2025-2026",
+        url: "/eduspace/congnghe-congnghiep/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 11 (Cơ khí động lực) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "11",
+        subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Công nghệ 12 Điện - Điện tử 2025-2026",
+        url: "/eduspace/congnghe-congnghiep/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Công nghệ lớp 12 (Điện - Điện tử) theo chương trình GDPT 2018.",
+        tag: "Công nghệ",
+        type: "quiz",
+        class: "12",
+        subject: "Công Nghệ",
+        subSubject: "Công Nghiệp",
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 10 2025-2026",
+        url: "/eduspace/nguvan/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Ngữ Văn",
+        type: "quiz",
+        class: "10",
+        subject: "Ngữ Văn"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 11 2025-2026",
+        url: "/eduspace/nguvan/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Ngữ Văn",
+        type: "quiz",
+        class: "11",
+        subject: "Ngữ Văn"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Ngữ Văn 12 2025-2026",
+        url: "/eduspace/nguvan/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Ngữ Văn lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức).",
+        tag: "Ngữ Văn",
+        type: "quiz",
+        class: "12",
+        subject: "Ngữ Văn"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Sinh Học 10 2025-2026",
+        url: "/eduspace/sinhhoc/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 10 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Sinh Học",
+        type: "quiz",
+        class: "10",
+        subject: "Sinh Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Sinh Học 11 2025-2026",
+        url: "/eduspace/sinhhoc/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 11 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Sinh Học",
+        type: "quiz",
+        class: "11",
+        subject: "Sinh Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Sinh Học 12 2025-2026",
+        url: "/eduspace/sinhhoc/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Sinh Học lớp 12 theo chương trình GDPT 2018 (sách Kết nối tri thức). Gồm trắc nghiệm và tự luận.",
+        tag: "Sinh Học",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh Học"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 10 (Global Success) 2025-2026",
+        url: "/eduspace/tienganh/10/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 10 theo chương trình GDPT 2018 (sách Global Success).",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "10",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 11 (Global Success) 2025-2026",
+        url: "/eduspace/tienganh/11/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 11 theo chương trình GDPT 2018 (sách Global Success).",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "11",
+        subject: "Tiếng Anh"
+    },
+    {
+        title: "Kiểm tra Cuối Học Kì II – Tiếng Anh 12 (Global Success) 2025-2026",
+        url: "/eduspace/tienganh/12/ck2-2526-kntt-v1",
+        description: "Đề kiểm tra cuối học kì II môn Tiếng Anh lớp 12 theo chương trình GDPT 2018 (sách Global Success).",
+        tag: "Tiếng Anh",
+        type: "quiz",
+        class: "12",
+        subject: "Tiếng Anh"
+    }
 ]

@@ -3,7 +3,7 @@
  * This file handles environment variables and runtime settings.
  * NOTE: The placeholder below is replaced by GitHub Actions during deployment.
  * For local development, use localStorage key 'eduspace_api_key_override'.
- * IMPORTANT: Gemini 2.5 Flash is the baseline.
+ * IMPORTANT: Gemini 3.1 Flash Lite is the stable model (GA from 2026-05-07).
  * Do not use versions lower than 2.5.
  */
 
@@ -18,13 +18,15 @@ const EDU_CONFIG = {
     firebaseMessagingSenderId: "__FIREBASE_MESSAGING_SENDER_ID_PLACEHOLDER__",
     firebaseAppId: "__FIREBASE_APP_ID_PLACEHOLDER__",
     firebaseMeasurementId: "__FIREBASE_MEASUREMENT_ID_PLACEHOLDER__",
+    // URL của Firebase Cloud Function geminiProxy (inject bởi GitHub Actions)
+    geminiFunctionUrl: "__GEMINI_FUNCTION_URL_PLACEHOLDER__",
 
     // AI Settings
-    stableModel: "gemini-2.5-flash",
+    stableModel: "gemini-3.1-flash-lite",
 
     // UI Settings
-    version: "2.7.0",
-    lastUpdated: "2026-03-13"
+    version: "2.8.0",
+    lastUpdated: "2026-05-10"
 };
 
 let _cachedKeys = { 
@@ -104,20 +106,23 @@ window.getGeminiApiKey = async () => {
 
 window.getFirebaseApiKey = async () => {
     const keys = await getEduKeys();
-    return keys.firebase || "AIzaSyDIHXhqSNYhIIozxC5dZ-mTcfXAPzPZgog"; // Fallback to leaked key only if absolutely necessary
+    return keys.firebase || null;
 };
 
 window.getFirebaseConfig = async () => {
     const keys = await getEduKeys();
+    // Keys are injected via GitHub Actions Secrets (production)
+    // or via .env file (local development).
+    // NEVER hardcode real API keys here.
     return {
-        apiKey: keys.firebase || "AIzaSyDIHXhqSNYhIIozxC5dZ-mTcfXAPzPZgog",
-        authDomain: keys.fbAuthDomain || "ndlabs-0.firebaseapp.com",
-        databaseURL: keys.fbDatabaseURL || "https://ndlabs-0-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: keys.fbProjectId || "ndlabs-0",
-        storageBucket: keys.fbStorageBucket || "ndlabs-0.firebasestorage.app",
-        messagingSenderId: keys.fbMessagingSenderId || "600040258053",
-        appId: keys.fbAppId || "1:600040258053:web:617a19f62aafeb35d13a6c",
-        measurementId: keys.fbMeasurementId || "G-20W5SZ0BKB"
+        apiKey: keys.firebase || null,
+        authDomain: keys.fbAuthDomain || null,
+        databaseURL: keys.fbDatabaseURL || null,
+        projectId: keys.fbProjectId || null,
+        storageBucket: keys.fbStorageBucket || null,
+        messagingSenderId: keys.fbMessagingSenderId || null,
+        appId: keys.fbAppId || null,
+        measurementId: keys.fbMeasurementId || null
     };
 };
 

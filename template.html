@@ -11,10 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <!-- Thêm thư viện Marked để xử lý Markdown cho AI -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- EduSpace Configuration & AI Data Modal -->
     <script src="/assets/js/config.js"></script>
+    <script type="module" src="/assets/js/firebase-init.js"></script>
     <script src="/assets/js/data_modal.js"></script>
+    <script src="/eduspace/list_data.js"></script>
     <script src="/assets/js/ai.js" defer></script>
+    <script src="/assets/js/contact-admin.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
@@ -72,7 +77,6 @@
         .option-card.selected {
             border-color: var(--primary);
             background: #f0f7ff;
-            color: var(--primary);
         }
 
         .option-card.selected span:first-child {
@@ -99,1140 +103,481 @@
             color: #cbd5e1;
         }
 
-        .btn-main {
-            background: var(--primary);
-            color: white;
-            transition: all 0.3s;
-            box-shadow: 0 8px 16px -4px rgba(0, 112, 243, 0.3);
+        /* Question Map Responsive */
+        #question-map {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
         }
 
-        .btn-main:hover:not(:disabled) {
-            transform: translateY(-2px);
-            background: #0060d3;
-        }
-
-        #custom-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 24px;
-            padding: 32px;
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+        @media (max-width: 768px) {
+            #question-map {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            #question-map div {
+                flex: 0 0 40px;
+                min-width: 40px;
             }
         }
 
-        .spinner {
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 3px solid #fff;
-            width: 18px;
-            height: 18px;
-            animation: spin 1s linear infinite;
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
         }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .input-pill {
-            width: 100%;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            border: 2px solid #f1f5f9;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .input-pill:focus {
-            border-color: var(--primary-light);
-        }
-
-        .short-ans-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 3rem auto 2rem;
-        }
-
-        .input-short {
-            width: 220px;
-            padding: 1.25rem 0;
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: 14px;
-            text-align: center;
-            background: white;
-            border: 3px solid #e2e8f0;
-            border-radius: 9999px;
-            color: var(--primary);
-            caret-color: var(--primary);
-            outline: none;
-            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.12);
-        }
-
-        .input-short:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 10px 30px rgba(0, 112, 243, 0.2);
-        }
-
-        #options-container textarea#ans-input {
-            width: 100%;
-            max-width: 680px;
-            min-height: 220px;
-            margin: 2rem auto 1rem;
-            display: block;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            padding: 1.5rem 1.8rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-            transition: all 0.2s;
-        }
-
-        #options-container textarea#ans-input:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 8px 25px rgba(0, 112, 243, 0.15);
-            outline: none;
-        }
-
-        .btn-icon-nav {
-            padding: 8px;
-            border-radius: 12px;
-            transition: all 0.2s;
-            color: #64748b;
-        }
-
-        .btn-icon-nav:hover {
+        .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f5f9;
-            color: var(--primary);
         }
-
-        .q-image-container {
-            width: 100%;
-            max-height: 260px;
-            overflow: hidden;
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            background: #f1f5f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .q-image-container img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
-
-        .tf-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            border-radius: 16px;
-            background: white;
-            border: 2px solid #f1f5f9;
-            transition: all 0.2s;
-            margin-bottom: 12px;
-        }
-
-        .tf-row:hover {
-            border-color: #cbd5e1;
-        }
-
-        .tf-label {
-            width: 32px;
-            height: 32px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f1f5f9;
-            color: #64748b;
-            font-weight: 800;
-            font-size: 13px;
-            border-radius: 9999px;
-        }
-
-        .tf-content {
-            flex: 1;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: #1e293b;
-        }
-
-        .tf-btn {
-            min-width: 72px;
-            height: 36px;
-            padding: 0 12px;
-            border-radius: 9999px;
-            font-size: 13px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.18s;
-            cursor: pointer;
-            user-select: none;
-            background: #ffffff;
-            border: 2px solid #cbd5e1;
-            color: #475569;
-        }
-
-        .tf-btn:hover:not(.selected) {
-            border-color: #94a3b8;
-            background: #f8fafc;
-        }
-
-        .tf-btn.selected {
-            border-color: var(--primary);
-            background: #f0f7ff;
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        /* Thanh tiến trình */
-        #question-progress-bar {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            gap: 12px;
-            justify-content: flex-start;
-            margin-bottom: 1.5rem;
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 16px;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        #question-progress-bar::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        #question-progress-bar::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 10px;
-        }
-
-        .question-progress-item {
-            width: 40px;
-            height: 40px;
-            flex: 0 0 auto;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            font-weight: bold;
-            color: white;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 2px solid transparent;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .question-progress-item.current {
-            border-color: var(--primary);
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .question-progress-item.answered {
-            background: #94a3b8;
-        }
-
-        .question-progress-item.correct {
-            background: #10b981;
-        }
-
-        .question-progress-item.incorrect {
-            background: #ef4444;
-        }
-
-        .question-progress-item:hover {
-            transform: scale(1.15);
-        }
-
-        /* Kết quả chi tiết */
-        #detail-result-container {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .detail-question {
-            margin-bottom: 1.5rem;
-            padding: 1.25rem;
-            background: #f8fafc;
-            border-radius: 16px;
-            border-left: 6px solid #cbd5e1;
-            transition: all 0.3s;
-        }
-
-        .detail-question.correct {
-            border-left-color: #10b981;
-            background: #f0fdf4;
-        }
-
-        .detail-question.incorrect {
-            border-left-color: #ef4444;
-            background: #fef2f2;
-        }
-
-        .detail-question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .detail-question-header h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .detail-score {
-            font-size: 1.25rem;
-            font-weight: 800;
-        }
-
-        .detail-your-answer,
-        .detail-correct-answer {
-            margin: 0.75rem 0;
-            padding: 0.75rem;
             border-radius: 10px;
-            font-weight: 600;
         }
 
-        .detail-your-answer {
-            background: #e0f2fe;
-            color: #1e40af;
-        }
-
-        .detail-correct-answer {
-            background: #ecfdf5;
-            color: #065f46;
-        }
-
-        .detail-explanation {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-            color: #4b5563;
-        }
-
-        .question-content table,
-        .explanation-content table {
-            margin: 1rem auto;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            width: 100%;
-        }
-
-        .question-content th,
-        .question-content td,
-        .explanation-content th,
-        .explanation-content td {
-            border: 1px solid #cbd5e1;
-            padding: 0.6rem 1rem;
-        }
-
-        .question-content th,
-        .explanation-content th {
-            background: #f1f5f9;
-            font-weight: 700;
-        }
-
-        .question-content tr:nth-child(even),
-        .explanation-content tr:nth-child(even) {
+        /* Media styles */
+        .media-container {
+            margin: 1.5rem 0;
+            border-radius: 1.5rem;
+            overflow: hidden;
             background: #f8fafc;
+            border: 1px solid #e2e8f0;
         }
-
-        .question-content img,
-        .explanation-content img {
-            max-height: 220px;
-            max-width: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-            margin: 1rem auto;
-            display: block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        /* --- MARKDOWN STYLES (Chỉ dành cho nội dung AI) --- */
-        .markdown-content {
-            line-height: 1.7;
-        }
-
-        .markdown-content p {
-            margin-bottom: 0.75rem;
-        }
-
-        .markdown-content strong,
-        .markdown-content b {
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .markdown-content em,
-        .markdown-content i {
-            font-style: italic;
-        }
-
-        .markdown-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .markdown-content ol {
-            list-style-type: decimal;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .markdown-content li {
-            margin-bottom: 0.25rem;
-        }
-
-        .markdown-content code {
-            background: #f1f5f9;
-            color: #ef4444;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9em;
-        }
-
-        .markdown-content pre {
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin-bottom: 1rem;
-        }
-
-        .markdown-content pre code {
-            background: transparent;
-            color: inherit;
-            padding: 0;
-        }
-
-        .markdown-content blockquote {
-            border-left: 4px solid #cbd5e1;
-            padding-left: 1rem;
-            color: #64748b;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .markdown-content a {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        .markdown-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
-        }
-
-        .markdown-content th,
-        .markdown-content td {
-            border: 1px solid #cbd5e1;
-            padding: 0.5rem;
-        }
-
-        .markdown-content th {
-            background: #f1f5f9;
-            font-weight: 700;
-        }
-
-        .markdown-content img {
+        .media-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
+            margin: 0 auto;
             display: block;
         }
-
-        #options-container {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 16px !important;
-            margin-top: 2rem !important;
-        }
-
-        .option-card {
-            padding: 1.25rem 1.5rem;
-            min-height: 68px;
-            align-items: center;
-            font-size: 1.05rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Result Screen Animations */
-        @keyframes slideUpFade {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-up {
-            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-        }
-
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
-
-        .delay-400 {
-            animation-delay: 0.4s;
-        }
-
-        .confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .media-container iframe, 
+        .media-container video {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
+            aspect-ratio: 16/9;
         }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        .media-container audio {
+            width: 100%;
+            padding: 1rem;
         }
-
-        .score-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            position: relative;
-            overflow: hidden;
+        /* Prose styles for Markdown content */
+        .prose-slate p {
+            margin-bottom: 1rem;
         }
-
-        .score-gradient::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 60%);
-            animation: rotateBG 10s linear infinite;
+        .prose-slate p:last-child {
+            margin-bottom: 0;
         }
-
-        @keyframes rotateBG {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+        .prose-slate ul, .prose-slate ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
         }
-
-
-        /* Keyboard Shortcuts Styles */
-        .kbd {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 26px;
-            height: 26px;
-            padding: 0 6px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-bottom: 2px solid #cbd5e1;
-            border-radius: 6px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--primary);
-            /* Blue text to fit the theme */
-            text-transform: uppercase;
-            transition: all 0.15s ease;
-            margin-left: 4px;
-        }
-
-        .kbd.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            border-bottom-color: var(--primary);
-            color: white;
-            transform: translateY(2px);
-            border-bottom-width: 0px;
-            padding-bottom: 2px;
-            /* Compensate for lost border to keep centered */
-        }
-
-        #shortcuts-help {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 998;
-        }
-
-        #shortcuts-toggle {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        #shortcuts-toggle:hover {
-            border-color: var(--primary);
-            background: #f0f7ff;
-        }
-
-        #shortcuts-panel {
-            display: none;
-            position: absolute;
-            bottom: 54px;
-            left: 0;
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e2e8f0;
-            min-width: 320px;
-            max-width: 380px;
-        }
-
-        #shortcuts-panel.show {
-            display: block;
-            animation: fadeIn 0.2s ease-out;
-        }
-
-        #shortcuts-panel h4 {
-            font-size: 14px;
+        .prose-slate strong {
             font-weight: 800;
             color: #0f172a;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-
-        .shortcut-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f1f5f9;
+        .prose-emerald p {
+            margin-bottom: 0.75rem;
         }
-
-        .shortcut-row:last-child {
-            border-bottom: none;
+        .prose-emerald p:last-child {
+            margin-bottom: 0;
         }
-
-        .shortcut-keys {
-            display: flex;
-            gap: 4px;
-            align-items: center;
+        .prose-emerald strong {
+            font-weight: 800;
+            color: #065f46;
         }
-
-        .shortcut-desc {
-            font-size: 13px;
-            color: #64748b;
-            font-weight: 500;
+        .prose-rose strong {
+            font-weight: 800;
+            color: #9f1239;
         }
-
-        .shortcut-section {
-            margin-bottom: 16px;
+        /* Table Styles */
+        .prose-slate table, .prose-emerald table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
-
-        .shortcut-section-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
+        .prose-slate th, .prose-slate td, .prose-emerald th, .prose-emerald td {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            text-align: left;
         }
-
-        /* Option with keyboard hint */
-        .option-card .key-hint {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.5;
-            transition: opacity 0.2s;
-        }
-
-        .option-card {
-            position: relative;
-        }
-
-        .option-card:hover .key-hint {
-            opacity: 1;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* History Screen Styles */
-        .history-item {
-            transition: all 0.2s;
-            border-left: 4px solid transparent;
-        }
-
-        .history-item:hover {
-            background-color: #f8fafc;
-            border-left-color: var(--primary);
-            padding-left: 1.25rem;
-        }
-
-        /* Notice animation */
-        @keyframes pulse-border {
-            0% {
-                border-color: rgba(59, 130, 246, 0.5);
-            }
-
-            50% {
-                border-color: rgba(59, 130, 246, 1);
-            }
-
-            100% {
-                border-color: rgba(59, 130, 246, 0.5);
-            }
-        }
-
-        .notice-card {
-            border: 2px solid var(--primary);
-            animation: pulse-border 2s infinite;
+        .prose-slate th, .prose-emerald th {
+            background: #f8fafc;
+            font-weight: 800;
+            color: #1e293b;
         }
     </style>
-    <script src="/assets/js/nd-navbar.js" defer></script>
 </head>
 
-<body>
-    <div class="bg-blob" style="top: -150px; right: -150px;"></div>
-    <div class="bg-blob" style="bottom: -150px; left: -150px;"></div>
+<body class="relative min-h-screen">
+    <!-- Navbar placeholder — will be injected if not present -->
+    <script src="/assets/js/nd-navbar.js" defer></script>
 
-    <div id="custom-modal">
-        <div class="modal-content fade-in">
-            <div id="modal-icon" class="text-4xl mb-4">🔑</div>
-            <h3 id="modal-title" class="text-xl font-extrabold text-slate-800 mb-2"></h3>
-            <div id="modal-text" class="text-slate-500 mb-6 text-sm text-left leading-relaxed"></div>
-            <div id="modal-actions" class="flex flex-col gap-2">
-                <button id="modal-confirm" class="btn-main pill-shape py-3 font-bold text-sm">Đã hiểu</button>
-                <button id="modal-cancel" class="text-slate-400 font-bold text-xs py-2 hidden">Hủy bỏ</button>
+    <div class="bg-blob" style="top: -10%; right: -5%;"></div>
+    <div class="bg-blob" style="bottom: -10%; left: -5%;"></div>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="max-w-4xl mx-auto px-6 py-6 flex flex-col items-center justify-center min-h-[85vh]">
+        <div class="glass-card round-card p-8 md:p-10 w-full text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="inline-flex items-center gap-3 bg-blue-50 px-4 py-2 rounded-full border border-blue-100 mb-6">
+                <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span class="text-white text-[10px]">✨</span>
+                </div>
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">EduSpace Quiz Platform</span>
+            </div>
+
+            <h1 id="quiz-title-display" class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4 leading-tight">
+                Đang tải dữ liệu...
+            </h1>
+            
+            <p class="text-slate-500 text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+                Hệ thống đang chuẩn bị nội dung câu hỏi và cấu trúc đề thi. Vui lòng đợi trong giây lát để có trải nghiệm tốt nhất.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <button onclick="showTestModeSelector()"
+                    class="w-full md:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95 text-base">
+                    Bắt đầu làm bài
+                </button>
+                <button onclick="openHistory()"
+                    class="w-full md:w-auto px-8 py-4 bg-white border-2 border-slate-200 text-slate-600 font-bold rounded-2xl hover:bg-slate-50 transition-all text-base">
+                    Lịch sử làm bài
+                </button>
+            </div>
+            
+            <div class="mt-8 flex items-center justify-center gap-8 text-slate-400">
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-2xl font-black text-slate-800" id="total-questions-stat">-</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Câu hỏi</span>
+                </div>
+                <div class="w-px h-8 bg-slate-200"></div>
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-2xl font-black text-slate-800" id="total-time-stat">-</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Phút</span>
+                </div>
+                <div class="w-px h-8 bg-slate-200"></div>
+                <div class="flex flex-col items-center gap-1">
+                    <span class="text-2xl font-black text-slate-800">AI</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider">Hỗ trợ</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center flex flex-col items-center gap-4">
+            <button onclick="showHelp()" class="text-blue-500 font-bold hover:underline flex items-center gap-2">
+                <span class="bg-blue-100 p-1 rounded-md">💡</span> Hướng dẫn sử dụng
+            </button>
+            <p class="text-slate-400 text-xs font-medium uppercase tracking-widest">© 2026 EduSpace by ND Labs.</p>
+        </div>
+    </div>
+
+    <!-- Mode Selector -->
+    <div id="test-mode-selector" class="hidden max-w-4xl mx-auto px-6 py-6 flex flex-col items-center justify-center min-h-[85vh]">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Chọn chế độ làm bài</h2>
+            <p class="text-slate-500">Phù hợp với mục tiêu ôn tập hoặc kiểm tra của bạn</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 w-full">
+            <!-- Practice Mode -->
+            <div onclick="selectMode('practice')" class="glass-card round-card p-6 cursor-pointer hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10 transition-all group border-2 border-transparent">
+                <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">
+                    📖
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">Luyện tập</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Làm bài với tính năng kiểm tra đáp án ngay. Có lời giải chi tiết và hỗ trợ từ EduAI Assistant.
+                </p>
+                <div class="flex items-center text-emerald-600 font-bold text-sm">
+                    Chọn chế độ này <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </div>
+
+            <!-- Exam Mode -->
+            <div onclick="selectMode('exam')" class="glass-card round-card p-6 cursor-pointer hover:border-rose-500 hover:shadow-2xl hover:shadow-rose-500/10 transition-all group border-2 border-transparent">
+                <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">
+                    ⏱️
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">Thi thử</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Mô phỏng kỳ thi thực tế. Chỉ biết kết quả sau khi nộp bài. Có đồng hồ đếm ngược áp lực.
+                </p>
+                <div class="flex items-center text-rose-600 font-bold text-sm">
+                    Chọn chế độ này <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="backToStart()" class="mt-8 text-slate-400 font-bold hover:text-slate-600 transition-colors">
+            ← Quay lại
+        </button>
+    </div>
+
+    <!-- Layout Selector -->
+    <div id="layout-selector" class="hidden max-w-4xl mx-auto px-6 py-6 flex flex-col items-center justify-center min-h-[85vh]">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-extrabold text-slate-800 mb-4">Cấu trúc đề</h2>
+            <p class="text-slate-500">Bạn muốn làm theo ma trận hay toàn bộ câu hỏi?</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 w-full">
+            <!-- Matrix -->
+            <div onclick="startQuizWithLayout(true)" class="glass-card round-card p-6 cursor-pointer hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10 transition-all group border-2 border-transparent">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">
+                    📋
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">Theo ma trận đề</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Lọc đúng số câu và giới hạn thời gian đếm ngược theo cấu hình của giáo viên.
+                </p>
+                <div class="flex items-center text-blue-600 font-bold text-sm">
+                    Chọn cấu trúc này <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </div>
+
+            <!-- All questions -->
+            <div onclick="startQuizWithLayout(false)" class="glass-card round-card p-6 cursor-pointer hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all group border-2 border-transparent">
+                <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform">
+                    ♾️
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">Tất cả câu hỏi</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Làm toàn bộ ngân hàng câu hỏi. Thời gian đếm ngược dựa trên tổng số câu.
+                </p>
+                <div class="flex items-center text-emerald-600 font-bold text-sm">
+                    Chọn cấu trúc này <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span>
+                </div>
+            </div>
+        </div>
+        <button onclick="backToModeSelector()" class="mt-8 text-slate-400 font-bold hover:text-slate-600 transition-colors">
+            ← Quay lại
+        </button>
+    </div>
+
+    <!-- Main Quiz Interface -->
+    <div id="main-quiz" class="hidden min-h-screen flex flex-col">
+        <!-- Top Bar -->
+        <div class="sticky top-0 z-[100] glass-card px-4 py-2.5 border-b border-white shadow-md flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button onclick="goBackToStart()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div>
+                    <h2 class="text-lg font-extrabold text-slate-800 leading-tight line-clamp-1" id="active-quiz-title">-</h2>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-500 px-2 py-0.5 bg-blue-50 rounded" id="current-mode-label">LUYỆN TẬP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div id="timer-box" class="bg-slate-900 text-white px-3 py-1.5 rounded-xl font-black font-mono text-base shadow-lg">
+                    00:00
+                </div>
+                <button onclick="submitQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-black px-5 py-2 rounded-xl shadow-lg shadow-blue-500/20 transition-all active:scale-95 text-sm">
+                    Nộp bài
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Layout -->
+        <div class="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr,350px] gap-4 p-4">
+            <!-- Question Content -->
+            <div class="space-y-6">
+                <!-- Progress -->
+                <div class="glass-card round-card p-4">
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">Tiến độ làm bài</span>
+                            <span class="text-lg font-black text-slate-800" id="progress-text">Đã làm: 0/50</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">Điểm hiện tại</span>
+                            <span class="text-lg font-black text-blue-600" id="current-score">0.0</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-blue-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Current Question Card -->
+                <div id="question-card" class="glass-card round-card p-5 md:p-8 relative min-h-0">
+                    <div id="question-type-badge" class="mb-4 inline-block px-3 py-1 bg-slate-100 rounded-lg text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                        Trắc nghiệm nhiều lựa chọn
+                    </div>
+                    
+                    <div id="question-text" class="text-base md:text-lg text-slate-800 leading-normal mb-4 prose-slate max-w-none">
+                        <!-- Question content here -->
+                    </div>
+
+                    <div id="options-container" class="grid grid-cols-1 gap-2.5">
+                        <!-- Options here -->
+                    </div>
+
+                    <!-- Explanation (Hidden by default) -->
+                    <div id="explanation-box" class="hidden mt-10 p-6 rounded-[2rem]">
+                        <h4 id="explanation-header" class="font-black text-sm uppercase tracking-widest mb-3 flex items-center gap-2">
+                            Giải thích chi tiết
+                        </h4>
+                        <div id="explanation-text" class="leading-relaxed text-sm">
+                        </div>
+                        <div id="ai-assistant-link" class="mt-4 pt-4 border-t flex justify-between items-center">
+                            <p id="ai-assistant-prompt" class="text-xs font-medium">Bạn vẫn chưa hiểu? Hãy hỏi EduAI nhé!</p>
+                            <button id="ai-assistant-btn" onclick="askEduAI()" class="text-xs text-white px-3 py-1.5 rounded-full font-bold transition-colors">Hỏi EduAI Assistant</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex items-center justify-between gap-4">
+                    <button onclick="prevQuestion()" id="prev-btn" class="flex-1 py-3 px-6 bg-white border-2 border-slate-200 text-slate-600 font-bold rounded-2xl hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all text-sm">
+                        Câu trước
+                    </button>
+                    <button onclick="checkPracticeAnswer()" id="check-btn" class="hidden flex-1 py-3 px-6 bg-amber-500 text-white font-black rounded-2xl shadow-lg shadow-amber-500/10 hover:bg-amber-600 transition-all text-sm">
+                        Kiểm tra đáp án
+                    </button>
+                    <button onclick="nextQuestion()" id="next-btn" class="flex-1 py-3 px-6 bg-blue-600 text-white font-black rounded-2xl shadow-lg shadow-blue-500/10 hover:bg-blue-700 transition-all text-sm">
+                        Câu tiếp theo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6 order-first lg:order-last">
+                <!-- Question Grid Map -->
+                <div class="glass-card round-card p-4 sticky top-20">
+                    <h3 class="font-black text-slate-800 text-xs uppercase tracking-widest mb-3">Bản đồ câu hỏi</h3>
+                    <div id="question-map" class="flex overflow-x-auto gap-2 pb-2 custom-scrollbar lg:grid lg:grid-cols-5 lg:max-h-[300px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-2 lg:pb-0">
+                        <!-- Map items injected here -->
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-3 text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-blue-600 rounded-sm"></div>
+                            <span>Đang xem</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-slate-800 rounded-sm"></div>
+                            <span>Đã làm</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-slate-100 border border-slate-200 rounded-sm"></div>
+                            <span>Chưa làm</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="app-layout flex justify-center py-10 px-4">
-        <div class="w-full max-w-7xl">
-            <!-- START SCREEN -->
-            <div id="start-screen" class="glass-card round-card p-10 text-center fade-in relative max-w-xl mx-auto">
-                <div class="absolute top-6 left-6 flex gap-2">
-                    <a href="/eduspace" class="btn-icon-nav" title="Về Eduspace">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                        </svg>
-                    </a>
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden fixed inset-0 z-[1000] bg-slate-900/90 backdrop-blur-md overflow-y-auto p-4 md:p-10">
+        <div class="glass-card round-card max-w-4xl mx-auto w-full p-6 md:p-10 text-center animate-in zoom-in-95 duration-300 my-auto mt-10 mb-10">
+            <div class="w-24 h-24 bg-blue-100 text-5xl flex items-center justify-center rounded-full mx-auto mb-8 animate-bounce">
+                🏆
+            </div>
+            <h2 class="text-3xl font-black text-slate-800 mb-2">Hoàn thành bài thi!</h2>
+            <p class="text-slate-500 mb-10">Chúc mừng bạn đã nỗ lực hoàn thành bài kiểm tra.</p>
+            
+            <div class="grid grid-cols-3 gap-6 mb-10">
+                <div class="bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                    <span class="block text-3xl font-black text-blue-600 mb-1" id="res-score">0.0</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tổng điểm</span>
                 </div>
-                <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-4 mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
+                <div class="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
+                    <span class="block text-3xl font-black text-emerald-600 mb-1" id="res-correct">0/0</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Số câu đúng</span>
                 </div>
-                <h2 id="quiz-title-display"
-                    class="text-2xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">EduSpace by ND Labs
-                </h2>
-                <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em] mb-8">AI Smart Quiz Platform
-                </p>
-                <div class="flex flex-col gap-3 px-6 mt-8">
-                    <button onclick="initQuiz('practice')"
-                        class="btn-main pill-shape py-4 px-10 font-bold text-sm w-full flex items-center justify-center gap-3">
-                        <span>Luyện tập</span>
-                        <span class="kbd"
-                            style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); color: white; box-shadow: none;">P</span>
-                    </button>
-                    <button onclick="showTestModeSelector()"
-                        class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-4 px-10 font-bold text-sm w-full flex items-center justify-center gap-3">
-                        <span>Kiểm tra</span>
-                        <span class="kbd">K</span>
-                    </button>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                    <span class="block text-3xl font-black text-slate-800 mb-1" id="res-time">00:00</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Thời gian</span>
                 </div>
+            </div>
 
-                <!-- Lịch sử thu nhỏ trên trang chính -->
-                <div id="history-section" class="mt-10 pt-8 border-t border-slate-100 text-left">
-                    <h3
-                        class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <!-- Chi tiết bài làm -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-10 text-left">
+                <div class="px-6 py-5 border-b border-slate-100 bg-slate-50 flex items-center justify-between sticky top-0 z-10">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
-                        Lịch sử làm bài gần đây
+                        Chi tiết bài làm
                     </h3>
-                    <div id="history-list-main" class="space-y-3">
-                        <!-- History items here -->
-                    </div>
+                </div>
+                <div id="detail-questions-list" class="divide-y divide-slate-100 bg-white">
+                    <!-- JS sẽ render vào đây -->
                 </div>
             </div>
 
-            <!-- TEST MODE SELECTOR -->
-            <div id="test-mode-selector"
-                class="hidden glass-card round-card p-10 text-center fade-in relative max-w-xl mx-auto">
-                <div class="absolute top-6 left-6">
-                    <button onclick="backToStart()" class="btn-icon-nav" title="Quay lại">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="w-20 h-20 bg-blue-50 pill-shape flex items-center justify-center mx-auto mb-4 mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                    </svg>
-                </div>
-                <h2 class="text-xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">Chọn dạng kiểm tra</h2>
-                <p class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em] mb-8">EduSpace Quiz Platform
-                </p>
-                <div class="flex flex-col gap-3 px-4">
-                    <button onclick="initQuiz('thptqg')"
-                        class="btn-main pill-shape py-5 px-8 font-bold text-sm w-full flex flex-col items-center gap-1">
-                        <span class="text-base">📝 Kiểm tra theo dạng đề TN THPT-QG</span>
-                        <span class="text-[11px] opacity-80 font-medium">Xáo trộn câu hỏi • Thi thử chuẩn quốc
-                            gia</span>
-                    </button>
-                    <button onclick="initQuiz('test')"
-                        class="bg-white border-2 border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all pill-shape py-5 px-8 font-bold text-sm w-full flex flex-col items-center gap-1">
-                        <span class="text-base">📋 Kiểm tra hết phần luyện tập</span>
-                        <span class="text-[11px] text-slate-400 font-medium">Làm đủ tất cả câu theo thứ tự</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- MAIN QUIZ -->
-            <div id="main-quiz" class="hidden">
-                <header class="flex items-center justify-between mb-5 glass-card pill-shape p-2 px-4">
-                    <div class="flex items-center gap-1">
-                        <button onclick="goBackToStart()" class="btn-icon-nav" title="Thoát">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div id="ui-timer" class="text-blue-600 font-bold text-sm flex items-center gap-2">
-                        <span id="timer-text" class="tabular-nums">00:00</span>
-                    </div>
-                    <div id="ui-progress"
-                        class="bg-blue-600 text-white pill-shape px-4 py-1.5 text-[10px] font-black uppercase tracking-widest">
-                        Câu 0/0</div>
-                </header>
-
-                <div id="question-progress-bar" class="flex gap-3 mb-4"></div>
-
-                <main id="quiz-container">
-                    <div id="question-card"
-                        class="glass-card round-card p-6 md:p-10 fade-in min-h-[420px] flex flex-col lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start lg:min-h-[600px]">
-
-                        <!-- Left Column: Question Content -->
-                        <div class="flex flex-col h-full lg:max-h-[70vh] lg:overflow-y-auto lg:pr-4 custom-scrollbar">
-                            <div id="question-header"></div>
-                        </div>
-
-                        <!-- Right Column: Answers & Actions -->
-                        <div
-                            class="flex flex-col h-full lg:max-h-[70vh] lg:overflow-y-auto lg:overflow-x-hidden custom-scrollbar mt-8 lg:mt-0 lg:border-l lg:border-slate-100 lg:pl-8 w-full">
-                            <div id="options-container" class="flex flex-col gap-4 flex-1 w-full"></div>
-
-                            <div id="action-area"
-                                class="mt-8 flex flex-wrap items-center justify-between gap-4 sticky bottom-0 bg-white/95 backdrop-blur py-4 -mx-2 px-2 border-t border-slate-50 lg:static lg:bg-transparent lg:p-0 lg:m-0 lg:border-none">
-                                <div class="flex gap-2">
-                                    <button id="prev-btn"
-                                        class="hidden btn-nav-blue pill-shape px-5 py-2 text-[10px] uppercase tracking-widest">Trước</button>
-                                    <button id="next-nav-btn"
-                                        class="hidden btn-nav-blue pill-shape px-5 py-2 text-[10px] uppercase tracking-widest">Tiếp</button>
-                                </div>
-                                <div class="flex items-center gap-2 ml-auto">
-                                    <button id="submit-btn"
-                                        class="btn-main pill-shape py-3 px-8 font-bold uppercase tracking-widest text-[11px] min-w-[140px]">Kiểm
-                                        tra</button>
-                                    <button id="finish-test-btn"
-                                        class="hidden btn-main pill-shape py-3 px-8 font-bold uppercase tracking-widest text-[11px] !bg-blue-600">Nộp
-                                        bài</button>
-                                </div>
-                            </div>
-
-                            <div id="explanation-container" class="mt-6 hidden fade-in">
-                                <div class="bg-slate-50 round-card p-6 border border-slate-100">
-                                    <span id="result-badge"
-                                        class="pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white mb-4 inline-block"></span>
-                                    <div id="explanation-text"
-                                        class="explanation-content text-slate-600 text-sm leading-relaxed mb-6"></div>
-                                    <button id="next-btn-exp"
-                                        class="w-full btn-main pill-shape py-4 font-bold text-sm">Câu
-                                        tiếp theo</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-
-            <!-- KẾT QUẢ MỚI (FULLSCREEN) -->
-            <div id="result-screen"
-                class="hidden fixed inset-0 z-[200] bg-[#f8fafc] flex-col overflow-y-auto fade-in scroll-smooth">
-                <!-- Header kết quả -->
-                <div class="relative w-full bg-white shadow-sm border-b border-slate-200 sticky top-0 z-[210]">
-                    <div class="max-w-4xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl">
-                                🏆</div>
-                            <div>
-                                <h1 class="text-lg md:text-xl font-extrabold text-slate-800 uppercase tracking-wide">Kết
-                                    Quả</h1>
-                                <p id="result-subtitle" class="text-xs md:text-sm text-slate-500 font-medium">Hoàn thành
-                                    bài kiểm tra</p>
-                            </div>
-                        </div>
-                        <button onclick="closeResultScreen()"
-                            class="p-2 hover:bg-slate-100 rounded-full transition-colors" title="Thoát">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="flex-1 w-full max-w-3xl mx-auto px-4 md:px-6 py-8 pb-32">
-                    <!-- Tổng quan điểm số -->
-                    <div class="flex flex-col md:flex-row gap-6 mb-8">
-                        <!-- Điểm số chính -->
-                        <div
-                            class="flex-1 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-[32px] p-8 relative overflow-hidden shadow-xl flex flex-col items-center justify-center text-center min-h-[220px]">
-                            <div
-                                class="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent">
-                            </div>
-                            <span class="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">Tổng điểm</span>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-[4rem] md:text-[5rem] font-black leading-none tracking-tighter"
-                                    id="final-score-display">0</span>
-                                <span class="text-2xl font-bold opacity-60">/ <span
-                                        id="final-max-score-display">0</span></span>
-                            </div>
-                            <div
-                                class="mt-4 inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full overflow-hidden backdrop-blur-sm border border-white/10">
-                                <span id="final-rank-display" class="font-bold text-sm">Đang tải...</span>
-                            </div>
-                        </div>
-
-                        <!-- Thống kê chi tiết -->
-                        <div class="flex-1 grid grid-cols-2 gap-4">
-                            <div
-                                class="bg-white p-5 rounded-[24px] border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-                                <span class="text-3xl">⏱️</span>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Thời
-                                    gian</span>
-                                <span id="final-time-display" class="text-lg font-black text-slate-700">00:00</span>
-                            </div>
-                            <div
-                                class="bg-white p-5 rounded-[24px] border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
-                                <span class="text-3xl">✅</span>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Chính
-                                    xác</span>
-                                <span id="final-percent-display" class="text-lg font-black text-green-600">0%</span>
-                            </div>
-                            <div
-                                class="bg-white p-5 rounded-[24px] border border-slate-100 shadow-sm flex flex-col items-center justify-center gap-2 col-span-2 transition-transform hover:scale-[1.02]">
-                                <span class="text-3xl">🎯</span>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Số câu
-                                    đúng</span>
-                                <span id="final-correct-count" class="text-lg font-black text-blue-600">0/0</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chi tiết từng câu (Review) -->
-                    <div class="bg-white rounded-[32px] shadow-sm border border-slate-200 overflow-hidden">
-                        <div
-                            class="px-6 py-5 border-b border-slate-100 bg-slate-50 flex items-center justify-between sticky top-0">
-                            <h3 class="font-bold text-slate-800 flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                                Chi tiết bài làm
-                            </h3>
-                            <span
-                                class="text-[10px] font-bold bg-white border border-slate-200 text-slate-500 px-3 py-1 rounded-full shadow-sm"
-                                id="total-questions-count">Đang tải...</span>
-                        </div>
-                        <div id="detail-questions-list-new" class="divide-y divide-slate-100 bg-white">
-                            <!-- JS sẽ render vào đây -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer cố định -->
-                <div
-                    class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-[210] shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
-                    <div class="max-w-md mx-auto flex gap-3">
-                        <button onclick="closeResultScreen()"
-                            class="flex-1 bg-slate-100 text-slate-600 hover:bg-slate-200 pill-shape py-3.5 font-bold text-sm transition-transform flex items-center justify-center gap-2">
-                            Quay lại
-                        </button>
-                        <button onclick="location.reload()"
-                            class="flex-1 btn-main pill-shape py-3.5 font-bold text-sm shadow-lg hover:translate-y-[-2px] transition-transform flex items-center justify-center gap-2">
-                            Làm bài mới
-                        </button>
-                    </div>
-                </div>
+            <div class="flex flex-col md:flex-row gap-4">
+                <button onclick="location.reload()" class="flex-1 py-4 bg-blue-600 text-white font-black rounded-3xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">
+                    Làm bài mới
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- EXAM INTRO SCREEN (Intermediate) -->
-    <div id="exam-intro-screen" class="hidden fixed inset-0 z-[150] bg-slate-50 overflow-y-auto pt-10 px-4">
-        <div class="max-w-xl mx-auto flex flex-col items-center">
-            <div id="exam-notice-area" class="w-full mb-6"></div>
-            <div id="exam-structure-area" class="w-full mb-8"></div>
-
-            <div class="glass-card round-card p-8 w-full text-center">
-                <p id="intro-timer-msg" class="text-slate-400 font-bold text-xs uppercase mb-4">Bạn có thể bắt đầu sau 5
-                    giây...</p>
-                <div class="flex gap-3">
-                    <button id="start-exam-confirm-btn" disabled
-                        class="flex-1 btn-main pill-shape py-4 font-bold text-sm opacity-50 cursor-not-allowed">
-                        Bắt đầu làm bài
-                    </button>
-                    <button onclick="backToStartFromIntro()"
-                        class="px-6 bg-slate-100 text-slate-500 hover:bg-slate-200 pill-shape font-bold text-sm">
-                        Thoát
-                    </button>
-                </div>
+    <!-- Custom Modal -->
+    <div id="custom-modal" class="hidden fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-6">
+        <div class="bg-white rounded-[2.5rem] p-10 max-w-md w-full shadow-2xl text-center">
+            <div id="modal-icon" class="text-4xl mb-6">🔔</div>
+            <h3 id="modal-title" class="text-2xl font-black text-slate-800 mb-4">Thông báo</h3>
+            <p id="modal-text" class="text-slate-500 leading-relaxed mb-10"></p>
+            <div class="flex gap-4">
+                <button id="modal-cancel" class="flex-1 py-4 border-2 border-slate-100 text-slate-400 font-bold rounded-2xl hover:bg-slate-50">Hủy</button>
+                <button id="modal-confirm" class="flex-1 py-4 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 shadow-lg shadow-blue-500/20">Xác nhận</button>
             </div>
         </div>
     </div>
 
-    <!-- HISTORY SCREEN -->
-    <div id="history-screen" class="hidden fixed inset-0 z-[200] bg-[#f8fafc] flex-col overflow-y-auto fade-in">
-        <div
-            class="sticky top-0 bg-white shadow-sm border-b border-slate-200 px-6 py-4 flex items-center justify-between z-[220]">
+    <!-- History Drawer Backdrop -->
+    <div id="history-overlay" onclick="closeHistory()" class="hidden fixed inset-0 z-[99990] bg-slate-900/40 backdrop-blur-sm transition-opacity duration-500 opacity-0"></div>
+
+    <!-- History Drawer -->
+    <div id="history-drawer" class="fixed inset-y-0 right-0 z-[99999] w-full md:w-[450px] bg-white shadow-[-20px_0_60px_rgba(0,0,0,0.1)] translate-x-full transition-transform duration-500 ease-out flex flex-col pt-20">
+        <div class="sticky top-0 bg-white shadow-sm border-b border-slate-200 px-6 py-4 flex items-center justify-between z-[220]">
             <h2 class="text-lg font-extrabold text-slate-800 flex items-center gap-2">
                 <span class="text-blue-500 text-xl">📜</span> Lịch sử làm bài
             </h2>
-            <button onclick="closeHistory()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+            <button onclick="closeHistory()" class="group p-3 bg-slate-100 hover:bg-rose-500 rounded-2xl transition-all duration-300 flex items-center gap-2">
+                <span class="text-slate-500 group-hover:text-white font-bold text-xs uppercase tracking-widest">Đóng</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
-        <div class="max-w-3xl mx-auto w-full p-6" id="history-list">
+        <div class="flex-1 overflow-y-auto p-6 custom-scrollbar" id="history-list">
             <!-- Items injected here -->
         </div>
-        <div class="p-10 text-center text-slate-400 text-xs italic">Dữ liệu được lưu cục bộ trên trình duyệt của bạn.
-        </div>
+        <div class="p-8 text-center text-slate-400 text-[10px] font-bold uppercase tracking-widest border-t border-slate-50">Dữ liệu được lưu cục bộ trên trình duyệt của bạn.</div>
     </div>
 
+    <!-- Scripts -->
     <script>
+        // Fallback data for safety - if data.js fails or is missing
         if (typeof quizData === 'undefined') {
             window.quizData = {
-                title: "Bài kiểm tra mẫu - Cập nhật 2026",
+                title: "Bài kiểm tra (Lỗi nạp dữ liệu)",
                 config: { testDuration: 1800 },
-                questions: Array.from({ length: 50 }, (_, i) => ({
+                questions: [{
                     type: "multiple",
-                    question: `Câu hỏi mẫu số ${i + 1}`,
-                    options: ["A", "B", "C", "D"],
+                    question: "Hệ thống không thể tìm thấy tệp dữ liệu câu hỏi. Vui lòng kiểm tra lại đường dẫn tệp 'data.js'.",
+                    options: ["Tôi đã hiểu"],
                     correct: 0,
-                    points: 10,
-                    explanation: "Đáp án là A."
-                }))
+                    explanation: "Lỗi này xảy ra khi trình duyệt không thể tải được tệp data.js cùng cấp với tệp index.html."
+                }]
             };
         }
     </script>
-
-    <script src="data.js"></script>
 
     <script>
         let apiKey = "";
@@ -1244,20 +589,260 @@
         let sessionScore = 0;
         let questionResults = [];
         let questionEarned = [];
-        let aiFeedbacks = []; // To store AI recognition for results display
+        let aiFeedbacks = []; 
 
-        window.onload = async () => {
-            if (typeof quizData !== 'undefined') {
-                document.getElementById('quiz-title-display').innerText = quizData.title || "EduSpace by ND Labs";
-                document.getElementById('page-title').innerText = quizData.title || "EduSpace by ND Labs";
+        let questionChecked = [];
+
+        window.addEventListener('load', async () => {
+            try {
+                if (typeof quizData !== 'undefined') {
+                    document.getElementById('quiz-title-display').innerText = quizData.title || "EduSpace by ND Labs";
+                    document.getElementById('page-title').innerText = quizData.title || "EduSpace by ND Labs";
+                    
+                    quizData.activeQuestions = [...(quizData.questions || [])];
+                    
+                    document.getElementById('total-questions-stat').innerText = quizData.activeQuestions.length;
+                    
+                    let duration = 0;
+                    if (quizData.config && quizData.config.testDuration) {
+                        duration = quizData.config.testDuration;
+                    }
+                    document.getElementById('total-time-stat').innerText = Math.floor(duration / 60);
+                }
+                if (window.getGeminiApiKey) {
+                    apiKey = await window.getGeminiApiKey();
+                }
+                showHistory();
+                checkActiveSession();
+            } catch (error) {
+                console.error("Initialization error:", error);
             }
-            // Load API key securely (supports local .env overriding GitHub placeholder)
-            if (window.getGeminiApiKey) {
-                apiKey = await window.getGeminiApiKey();
+        });
+
+        // Customize Marked renderer for EduSpace
+        if (typeof marked !== 'undefined') {
+            marked.use({
+                renderer: {
+                    image(href, title, text) {
+                        return `<div class="media-container"><img src="${href}" alt="${text || ''}" title="${title || ''}"></div>`;
+                    },
+                    table(header, body) {
+                        return `<div class="overflow-x-auto my-6"><table class="min-w-full border-collapse"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
+                    }
+                },
+                gfm: true,
+                breaks: true
+            });
+        }
+
+        // Utility to parse media links in text
+        function parseMedia(text) {
+            let content = text;
+            
+            // Video (Youtube, mp4)
+            content = content.replace(/\[video:(.*?)\]/g, (match, url) => {
+                let videoHtml = '';
+                if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                    const vidId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
+                    videoHtml = `<iframe src="https://www.youtube.com/embed/${vidId}" frameborder="0" allowfullscreen></iframe>`;
+                } else {
+                    videoHtml = `<video src="${url}" controls></video>`;
+                }
+                return `<div class="media-container">${videoHtml}</div>`;
+            });
+
+            // Audio
+            content = content.replace(/\[audio:(.*?)\]/g, (match, url) => {
+                return `<div class="media-container"><audio src="${url}" controls></audio></div>`;
+            });
+
+            return content;
+        }
+
+        function renderQuestion() {
+            if (!quizData.activeQuestions || quizData.activeQuestions.length === 0) return;
+            const q = quizData.activeQuestions[currentIndex];
+            
+            // Calculate progress based on answered questions
+            const answeredCount = userAnswers.filter(a => {
+                if (a === null) return false;
+                if (typeof a === 'object' && Object.keys(a).length === 0) return false;
+                return true;
+            }).length;
+            
+            document.getElementById('progress-text').innerText = `Đã làm: ${answeredCount}/${quizData.activeQuestions.length}`;
+            document.getElementById('progress-bar').style.width = `${(answeredCount / quizData.activeQuestions.length) * 100}%`;
+            
+            const badge = document.getElementById('question-type-badge');
+            if (q.type === 'multiple') badge.innerText = "Trắc nghiệm nhiều lựa chọn";
+            else if (q.type === 'truefalse') badge.innerText = "Trắc nghiệm Đúng/Sai";
+            else if (q.type === 'short') badge.innerText = "Trả lời ngắn";
+            else if (q.type === 'essay') badge.innerText = "Tự luận";
+
+            // Markdown support
+            let qText = (q.question || '').trim();
+            if (typeof marked !== 'undefined') {
+                qText = marked.parse(qText);
             }
-            showHistory();
-            checkActiveSession();
-        };
+            // Parse media (video, audio) and wrap images
+            document.getElementById('question-text').innerHTML = parseMedia(qText);
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            if (q.type === 'multiple') {
+                q.options.forEach((opt, i) => {
+                    const card = document.createElement('div');
+                    card.className = `option-card p-3.5 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
+                    card.onclick = () => selectOption(i);
+                    let optHtml = opt;
+                    if (typeof marked !== 'undefined') optHtml = marked.parseInline(optHtml);
+                    card.innerHTML = `
+                        <span class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-100 text-xs font-black transition-colors">${String.fromCharCode(65 + i)}</span>
+                        <span class="text-sm md:text-base">${optHtml}</span>
+                    `;
+                    container.appendChild(card);
+                });
+            } else if (q.type === 'truefalse') {
+                q.options.forEach((opt, i) => {
+                    const row = document.createElement('div');
+                    row.className = "flex flex-col md:flex-row md:items-center justify-between p-2.5 px-4 bg-white border border-slate-100 rounded-xl mb-1 gap-4";
+                    let optHtml = opt;
+                    if (typeof marked !== 'undefined') optHtml = marked.parseInline(optHtml);
+                    row.innerHTML = `
+                        <p class="text-sm text-slate-700 flex-1">${optHtml}</p>
+                        <div class="flex gap-2">
+                            <button onclick="selectTF(${i}, true)" class="px-3.5 py-1.5 rounded-lg text-[10px] font-black transition-all ${userAnswers[currentIndex]?.[i] === true ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-400'}">ĐÚNG</button>
+                            <button onclick="selectTF(${i}, false)" class="px-3.5 py-1.5 rounded-lg text-[10px] font-black transition-all ${userAnswers[currentIndex]?.[i] === false ? 'bg-rose-500 text-white' : 'bg-slate-100 text-slate-400'}">SAI</button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            } else if (q.type === 'short' || q.type === 'essay') {
+                const textarea = document.createElement(q.type === 'short' ? 'input' : 'textarea');
+                textarea.className = "w-full p-4 md:p-5 bg-white border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-500 transition-all font-medium text-base";
+                if (q.type === 'essay') textarea.classList.add('min-h-[150px]');
+                textarea.placeholder = "Nhập câu trả lời của bạn tại đây...";
+                textarea.value = userAnswers[currentIndex] || '';
+                if (q.type === 'short') {
+                    textarea.type = 'text';
+                    textarea.maxLength = 4;
+                    // Restrict input to 0-9, ., -, ,
+                    textarea.oninput = (e) => { 
+                        e.target.value = e.target.value.replace(/[^0-9.,\-]/g, '');
+                        userAnswers[currentIndex] = e.target.value; 
+                        updateMap(); saveActiveSession(); updateProgressOnly(); updateNavButtons();
+                    };
+                } else {
+                    textarea.oninput = (e) => { userAnswers[currentIndex] = e.target.value; updateMap(); saveActiveSession(); updateProgressOnly(); updateNavButtons(); };
+                }
+                container.appendChild(textarea);
+            }
+
+            const expBox = document.getElementById('explanation-box');
+            if (quizMode === 'practice' && questionChecked[currentIndex]) {
+                expBox.classList.remove('hidden');
+                
+                let isCorrect = false;
+                if (q.type === 'multiple') {
+                    isCorrect = userAnswers[currentIndex] === q.correct;
+                } else if (q.type === 'short') {
+                    isCorrect = String(userAnswers[currentIndex]).trim().toLowerCase() === String(q.correct).trim().toLowerCase();
+                } else if (q.type === 'truefalse') {
+                    let cnt = 0;
+                    const cArr = q.correctAnswers || q.correct || [];
+                    const ua = userAnswers[currentIndex] || {};
+                    (q.options || []).forEach((_, k) => { if (ua[k] === cArr[k]) cnt++; });
+                    isCorrect = cnt === (q.options || []).length;
+                } else if (q.type === 'essay') {
+                    isCorrect = true; 
+                }
+
+                const expHeader = document.getElementById('explanation-header');
+                const expTextContainer = document.getElementById('explanation-text');
+                const aiLink = document.getElementById('ai-assistant-link');
+                const aiPrompt = document.getElementById('ai-assistant-prompt');
+                const aiBtn = document.getElementById('ai-assistant-btn');
+
+                if (isCorrect) {
+                    expBox.className = "mt-10 p-6 bg-emerald-50 border border-emerald-100 rounded-[2rem]";
+                    expHeader.className = "font-black text-emerald-800 text-sm uppercase tracking-widest mb-3 flex items-center gap-2";
+                    expHeader.innerHTML = `<span>✅</span> Chính xác! Giải thích chi tiết`;
+                    expTextContainer.className = "text-emerald-800 leading-relaxed prose-emerald text-sm";
+                    aiLink.className = "mt-4 pt-4 border-t border-emerald-100 flex justify-between items-center";
+                    aiPrompt.className = "text-xs text-emerald-600 font-medium";
+                    aiBtn.className = "text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-full font-bold transition-colors";
+                } else {
+                    expBox.className = "mt-10 p-6 bg-rose-50 border border-rose-100 rounded-[2rem]";
+                    expHeader.className = "font-black text-rose-800 text-sm uppercase tracking-widest mb-3 flex items-center gap-2";
+                    expHeader.innerHTML = `<span>❌</span> Chưa chính xác! Giải thích chi tiết`;
+                    expTextContainer.className = "text-rose-800 leading-relaxed prose-rose text-sm";
+                    aiLink.className = "mt-4 pt-4 border-t border-rose-100 flex justify-between items-center";
+                    aiPrompt.className = "text-xs text-rose-600 font-medium";
+                    aiBtn.className = "text-xs bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 rounded-full font-bold transition-colors";
+                }
+                // Ẩn AI Assistant trong chế độ thi để tránh gian lận
+                if (quizMode !== 'practice') {
+                    aiLink.classList.add('hidden');
+                } else {
+                    aiLink.classList.remove('hidden');
+                }
+
+                let expText = (q.explanation || "Không có giải thích chi tiết.").trim();
+                if (q.type === 'multiple') {
+                    const correctLetter = String.fromCharCode(65 + q.correct);
+                    expText = `**Đáp án đúng là: ${correctLetter}**\n\n` + expText;
+                }
+                if (typeof marked !== 'undefined') expText = marked.parse(expText);
+                expTextContainer.innerHTML = parseMedia(expText);
+            } else {
+                expBox.classList.add('hidden');
+            }
+            updateNavButtons();
+            
+            updateScore();
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(document.getElementById('question-card'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            
+            let hasAnswer = userAnswers[currentIndex] !== null && userAnswers[currentIndex] !== undefined;
+            if (quizData.activeQuestions[currentIndex].type === 'short' || quizData.activeQuestions[currentIndex].type === 'essay') {
+                hasAnswer = hasAnswer && String(userAnswers[currentIndex]).trim() !== '';
+            } else if (quizData.activeQuestions[currentIndex].type === 'truefalse') {
+                hasAnswer = hasAnswer && Object.keys(userAnswers[currentIndex] || {}).length > 0;
+            }
+
+            if (quizMode === 'practice' && hasAnswer && !questionChecked[currentIndex]) {
+                document.getElementById('check-btn').classList.remove('hidden');
+                document.getElementById('next-btn').classList.add('hidden');
+            } else {
+                document.getElementById('check-btn').classList.add('hidden');
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('next-btn').innerText = currentIndex === quizData.activeQuestions.length - 1 ? 'Xem kết quả' : 'Câu tiếp theo';
+            }
+        }
+
+        function updateProgressOnly() {
+             const answeredCount = userAnswers.filter(a => {
+                if (a === null) return false;
+                if (typeof a === 'object' && Object.keys(a).length === 0) return false;
+                return true;
+            }).length;
+            document.getElementById('progress-text').innerText = `Đã làm: ${answeredCount}/${quizData.activeQuestions.length}`;
+            document.getElementById('progress-bar').style.width = `${(answeredCount / quizData.activeQuestions.length) * 100}%`;
+        }
 
         function showModal(title, text, type = 'info', onConfirm = null) {
             const modal = document.getElementById('custom-modal');
@@ -1273,16 +858,53 @@
         }
 
         function showHelp() {
-            showModal("Về API Key", "API Key giúp AI chấm điểm câu hỏi tự luận và đưa ra giải thích chi tiết. Ngoài ra API key còn giúp người dùng trò chuyện với EduAI Assistant về các kiến thức người dùng thắc mắc trong chế độ luyện tập.", 'help');
+            showModal("Hướng dẫn", "Chọn chế độ làm bài (Luyện tập hoặc Thi thử). Trong quá trình làm bài, bạn có thể xem giải thích ở chế độ luyện tập.", 'help');
         }
 
         function goBackToStart() {
-            showModal("Xác nhận", "Dữ liệu đang làm sẽ bị mất. Bạn muốn thoát?", "confirm", () => {
+            showModal("Xác nhận", "Bạn muốn dừng làm bài? Kết quả hiện tại sẽ không được lưu.", "confirm", () => {
                 clearInterval(timerInterval);
                 clearActiveSession();
                 document.getElementById('main-quiz').classList.add('hidden');
                 document.getElementById('start-screen').classList.remove('hidden');
             });
+        }
+
+        let pendingMode = '';
+
+        function selectMode(mode) {
+            pendingMode = mode;
+            document.getElementById('test-mode-selector').classList.add('hidden');
+            document.getElementById('layout-selector').classList.remove('hidden');
+        }
+
+        function backToModeSelector() {
+            document.getElementById('layout-selector').classList.add('hidden');
+            document.getElementById('test-mode-selector').classList.remove('hidden');
+        }
+
+        function startQuizWithLayout(useMatrix) {
+            let activeQs = [];
+            if (useMatrix && quizData.config && quizData.config.examLayout) {
+                const layout = quizData.config.examLayout;
+                ['multiple', 'truefalse', 'short', 'essay'].forEach(type => {
+                    if (layout[type]) {
+                        const qsOfType = quizData.questions.filter(q => q.type === type);
+                        activeQs = activeQs.concat(qsOfType.slice(0, layout[type].count));
+                    }
+                });
+                quizData.activeQuestions = activeQs;
+                timerSeconds = quizData.config.testDuration || 0;
+            } else {
+                quizData.activeQuestions = [...(quizData.questions || [])];
+                const matrixCount = quizData.config && quizData.config.examLayout ? Object.values(quizData.config.examLayout).reduce((sum, item) => sum + item.count, 0) : quizData.questions.length;
+                timerSeconds = ((quizData.config.testDuration || 0) / matrixCount) * quizData.questions.length;
+                if(isNaN(timerSeconds) || !isFinite(timerSeconds) || timerSeconds <= 0) timerSeconds = quizData.activeQuestions.length * 60;
+                timerSeconds = Math.round(timerSeconds);
+            }
+            
+            document.getElementById('layout-selector').classList.add('hidden');
+            startQuiz(pendingMode, false);
         }
 
         function showTestModeSelector() {
@@ -1295,1117 +917,33 @@
             document.getElementById('start-screen').classList.remove('hidden');
         }
 
-        function closeResultScreen() {
-            document.getElementById('result-screen').classList.add('hidden');
-            document.getElementById('start-screen').classList.remove('hidden');
-            showHistory();
-        }
-
-        // --- THPT-QG Exam Builder ---
-        // Xem hướng dẫn tại: /_agent/workflows/coding-standards.md
-        function buildThptqgExam() {
-            const allQ = quizData.questions;
-            const examConfig = quizData.config?.examLayout;
-            let selected = [];
-
-            if (examConfig) {
-                // RULE 1: Use predefined layout from data.js if exists
-                const types = ['multiple', 'truefalse', 'short', 'essay'];
-                types.forEach(type => {
-                    const cfg = examConfig[type];
-                    if (!cfg) return;
-
-                    let typeQs = allQ.filter(q => q.type === type);
-                    if (typeQs.length === 0) return;
-
-                    // Assign points based on rules
-                    const take = Math.min(cfg.count || typeQs.length, typeQs.length);
-
-                    typeQs = typeQs.map((q, idx) => {
-                        let p = cfg.pointsPerQ;
-
-                        // New: Support pointsList (Array or Object)
-                        if (cfg.pointsList) {
-                            // Check direct index
-                            if (cfg.pointsList[idx] !== undefined) p = cfg.pointsList[idx];
-                            // Check negative index (e.g., -1 for last)
-                            const negIdx = idx - typeQs.length;
-                            if (cfg.pointsList[negIdx] !== undefined) p = cfg.pointsList[negIdx];
-                        }
-
-                        // Fallback to totalPoints distribution
-                        if (p === undefined && cfg.totalPoints) {
-                            p = cfg.totalPoints / take;
-                        }
-
-                        return { ...q, points: Math.round((p || 0) * 100) / 100 };
-                    });
-
-                    const shuffled = shuffle(typeQs);
-                    selected = selected.concat(shuffled.slice(0, take));
-                });
-            } else {
-                // RULE 2: FALLBACK CASCADED RULES
-                const multipleQs = shuffle(allQ.filter(q => q.type === 'multiple'));
-                const trueFalseQs = shuffle(allQ.filter(q => q.type === 'truefalse'));
-                const shortQs = shuffle(allQ.filter(q => q.type === 'short'));
-                const essayQs = shuffle(allQ.filter(q => q.type === 'essay'));
-
-                const hasMC = multipleQs.length > 0;
-                const hasTF = trueFalseQs.length > 0;
-                const hasSH = shortQs.length > 0;
-                const hasES = essayQs.length > 0;
-
-                let mcTake = 0, tfTake = 0, shTake = 0, esTake = 0;
-                let mcPts = 0, tfPts = 0, shPts = 0, esPts = 0;
-
-                // TN logic (Target 7 points)
-                if (hasMC && hasTF && hasSH) {
-                    // Part 1: All 3 TN parts
-                    mcTake = Math.min(12, multipleQs.length); mcPts = mcTake * 0.25;
-                    tfTake = Math.min(2, trueFalseQs.length); tfPts = tfTake * 1.0;
-                    shTake = Math.min(4, shortQs.length); shPts = shTake * 0.5;
-                } else if (hasMC && (hasTF || hasSH)) {
-                    // Part 2: 2 TN parts
-                    mcTake = Math.min(12, multipleQs.length); mcPts = 3.0;
-                    if (hasTF) { tfTake = Math.min(4, trueFalseQs.length); tfPts = 4.0; }
-                    else { shTake = Math.min(8, shortQs.length); shPts = 4.0; }
-                } else if (hasTF && hasSH) {
-                    // 2 TN parts (no MC)
-                    tfTake = Math.min(4, trueFalseQs.length); tfPts = 4.0;
-                    shTake = Math.min(8, shortQs.length); shPts = 4.0;
-                } else if (hasMC) {
-                    // Only MC
-                    mcTake = Math.min(14, multipleQs.length); mcPts = 7.0;
-                } else {
-                    // Only 1 of TF or SH
-                    if (hasTF) { tfTake = Math.min(7, trueFalseQs.length); tfPts = 7.0; }
-                    else if (hasSH) { shTake = Math.min(14, shortQs.length); shPts = 7.0; }
-                }
-
-                // Essay logic (Target 3 points)
-                if (hasES) {
-                    esTake = essayQs.length;
-                    esPts = 3.0;
-                } else {
-                    // If no essay, scale TN to 10 points
-                    const currentTnTotal = mcPts + tfPts + shPts;
-                    if (currentTnTotal > 0) {
-                        const scale = 10 / currentTnTotal;
-                        mcPts *= scale; tfPts *= scale; shPts *= scale;
-                    }
-                }
-
-                if (mcTake > 0) selected = selected.concat(multipleQs.slice(0, mcTake).map(q => ({ ...q, points: Math.round((mcPts / mcTake) * 100) / 100 })));
-                if (tfTake > 0) selected = selected.concat(trueFalseQs.slice(0, tfTake).map(q => ({ ...q, points: Math.round((tfPts / tfTake) * 100) / 100 })));
-                if (shTake > 0) selected = selected.concat(shortQs.slice(0, shTake).map(q => ({ ...q, points: Math.round((shPts / shTake) * 100) / 100 })));
-                if (esTake > 0) selected = selected.concat(essayQs.slice(0, esTake).map(q => ({ ...q, points: Math.round((esPts / esTake) * 100) / 100 })));
-            }
-
-            if (selected.length === 0) {
-                // Safety net: Take all questions, shuffle, and assign 0.25 each
-                selected = shuffle([...allQ]).map(q => ({ ...q, points: 0.25 }));
-            }
-
-            return selected;
-        }
-        function getOrganizedQuestions() {
-            const all = [...quizData.questions];
-            const types = ['multiple', 'truefalse', 'short', 'essay'];
-            let result = [];
-            types.forEach(t => {
-                const group = all.filter(q => q.type === t);
-                if (group.length > 0) {
-                    result = result.concat(shuffle(group));
-                }
-            });
-            const others = all.filter(q => !types.includes(q.type));
-            if (others.length > 0) result = result.concat(shuffle(others));
-            return result;
-        }
-
-        function formatCorrectOption(q) {
-            if (q.type !== 'multiple') return q.correct;
-            const letter = String.fromCharCode(65 + q.correct);
-            const opt = q.options[q.correct];
-            if (opt.trim().startsWith(letter + ".")) return opt;
-            return letter + ". " + opt;
-        }
-
-        function shuffle(arr) {
-            const a = [...arr];
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
-        }
-
-        // Build THPT-QG exam layout header
-        function buildExamHeaderHtml(questions) {
-            const multipleCount = questions.filter(q => q.type === 'multiple').length;
-            const trueFalseCount = questions.filter(q => q.type === 'truefalse').length;
-            const shortCount = questions.filter(q => q.type === 'short').length;
-            const essayCount = questions.filter(q => q.type === 'essay').length;
-            const totalPts = questions.reduce((s, q) => s + (Number(q.points) || 0), 0);
-
-            let html = `<div id="thptqg-layout-header" class="glass-card round-card p-6 fade-in shadow-sm">
-                <h3 class="font-extrabold text-blue-700 text-sm mb-4 flex items-center gap-2">📋 Cấu trúc đề thi dự kiến</h3>
-                <div class="grid grid-cols-2 gap-3">`;
-            if (multipleCount > 0) {
-                const pts = questions.filter(q => q.type === 'multiple').reduce((s, q) => s + Number(q.points || 0), 0);
-                html += `<div class="bg-blue-50/50 rounded-xl p-3 border border-blue-100/50 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-black">${multipleCount}</div>
-                    <div>
-                        <div class="text-[10px] font-bold text-blue-500 uppercase">Trắc nghiệm I</div>
-                        <div class="text-[10px] text-blue-400">${pts.toFixed(2)} điểm</div>
-                    </div>
-                </div>`;
-            }
-            if (trueFalseCount > 0) {
-                const pts = questions.filter(q => q.type === 'truefalse').reduce((s, q) => s + Number(q.points || 0), 0);
-                html += `<div class="bg-green-50/50 rounded-xl p-3 border border-green-100/50 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-black">${trueFalseCount}</div>
-                    <div>
-                        <div class="text-[10px] font-bold text-green-500 uppercase">Trắc nghiệm II</div>
-                        <div class="text-[10px] text-green-400">${pts.toFixed(2)} điểm</div>
-                    </div>
-                </div>`;
-            }
-            if (shortCount > 0) {
-                const pts = questions.filter(q => q.type === 'short').reduce((s, q) => s + Number(q.points || 0), 0);
-                html += `<div class="bg-purple-50/50 rounded-xl p-3 border border-purple-100/50 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-black">${shortCount}</div>
-                    <div>
-                        <div class="text-[10px] font-bold text-purple-500 uppercase">Trắc nghiệm III</div>
-                        <div class="text-[10px] text-purple-400">${pts.toFixed(2)} điểm</div>
-                    </div>
-                </div>`;
-            }
-            if (essayCount > 0) {
-                const pts = questions.filter(q => q.type === 'essay').reduce((s, q) => s + Number(q.points || 0), 0);
-                html += `<div class="bg-orange-50/50 rounded-xl p-3 border border-orange-100/50 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-black">${essayCount}</div>
-                    <div>
-                        <div class="text-[10px] font-bold text-orange-500 uppercase">Tự luận</div>
-                        <div class="text-[10px] text-orange-400">${pts.toFixed(2)} điểm</div>
-                    </div>
-                </div>`;
-            }
-            html += `</div>
-                <div class="mt-3 text-center text-xs font-bold text-slate-400 uppercase tracking-wider">Tổng: ${totalPts.toFixed(2)} điểm • ${questions.length} câu hỏi</div>
-            </div>`;
-            return html;
-        }
-
-        function initQuiz(mode) {
-            quizMode = mode;
-
-            // Prepare questions set
-            let finalQs = [];
-            if (mode === 'thptqg') {
-                finalQs = buildThptqgExam();
-            } else {
-                finalQs = getOrganizedQuestions();
-            }
-            window._thptqgQuestions = finalQs;
-
-            // If mode is test or thptqg, or if there is a notice, show intro screen first
-            if (mode === 'test' || mode === 'thptqg' || quizData.config?.notice) {
-                showExamIntro(mode, finalQs);
-                return;
-            }
-
-            // Practice mode starts immediately
-            startQuizNow();
-        }
-
-        function showExamIntro(mode, questions) {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('test-mode-selector').classList.add('hidden');
-            document.getElementById('exam-intro-screen').classList.remove('hidden');
-
-            // Notice
-            const noticeArea = document.getElementById('exam-notice-area');
-            const notice = quizData.config?.notice;
-            if (notice) {
-                noticeArea.innerHTML = `
-                    <div class="glass-card round-card p-6 notice-card">
-                        <h4 class="text-blue-600 font-black text-xs uppercase mb-3 flex items-center gap-2">📢 Thông báo từ Giáo viên</h4>
-                        <div class="text-slate-700 font-medium leading-relaxed">${notice}</div>
-                    </div>
-                `;
-                noticeArea.classList.remove('hidden');
-            } else {
-                noticeArea.classList.add('hidden');
-            }
-
-            // Structure
-            const structureArea = document.getElementById('exam-structure-area');
-            if (mode === 'thptqg') {
-                structureArea.innerHTML = buildExamHeaderHtml(questions);
-                structureArea.classList.remove('hidden');
-            } else {
-                structureArea.classList.add('hidden');
-            }
-
-            // Timer countdown for Start Button
-            const startBtn = document.getElementById('start-exam-confirm-btn');
-            const timerMsg = document.getElementById('intro-timer-msg');
-            let waitTime = quizData.config?.noticeDuration || 3;
-            if (!notice && mode !== 'thptqg') waitTime = 0;
-
-            if (waitTime > 0) {
-                startBtn.disabled = true;
-                startBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                let remaining = waitTime;
-
-                const step = () => {
-                    timerMsg.innerText = `Bạn có thể bắt đầu sau ${remaining} giây...`;
-                    if (remaining <= 0) {
-                        startBtn.disabled = false;
-                        startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                        timerMsg.innerText = "Sẵn sàng! Nhấn nút bên dưới để bắt đầu.";
-                        return;
-                    }
-                    remaining--;
-                    setTimeout(step, 1000);
-                };
-                step();
-            } else {
-                startBtn.disabled = false;
-                startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                timerMsg.innerText = "Sẵn sàng!";
-            }
-
-            startBtn.onclick = () => {
-                document.getElementById('exam-intro-screen').classList.add('hidden');
-                startQuizNow();
-            };
-        }
-
-        function backToStartFromIntro() {
-            document.getElementById('exam-intro-screen').classList.add('hidden');
-            document.getElementById('start-screen').classList.remove('hidden');
-        }
-
-        function startQuizNow(isResuming = false) {
-            const mode = quizMode;
-            const selected = window._thptqgQuestions;
-
-            if (!isResuming) {
-                userAnswers = new Array(selected.length).fill(null);
-                questionResults = new Array(selected.length).fill(null);
-                questionEarned = new Array(selected.length).fill(0);
-                aiFeedbacks = new Array(selected.length).fill(null);
-                currentIndex = 0;
-                sessionScore = 0;
-            }
-
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('test-mode-selector').classList.add('hidden');
-            document.getElementById('main-quiz').classList.remove('hidden');
-
-            const isTest = mode === 'test' || mode === 'thptqg';
-            if (isTest) {
-                if (!isResuming) timerSeconds = quizData.config.testDuration || 600;
-                document.getElementById('prev-btn').classList.remove('hidden');
-                document.getElementById('next-nav-btn').classList.remove('hidden');
-                document.getElementById('finish-test-btn').classList.remove('hidden');
-                document.getElementById('submit-btn').classList.add('hidden');
-            } else {
-                if (!isResuming) timerSeconds = 0;
-                document.getElementById('prev-btn').classList.add('hidden');
-                document.getElementById('next-nav-btn').classList.add('hidden');
-                document.getElementById('finish-test-btn').classList.add('hidden');
-                document.getElementById('submit-btn').classList.remove('hidden');
-            }
-            startTimer();
-            loadQuestion();
-            if (!isResuming) saveActiveSession();
-        }
-
-
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            const display = document.getElementById('timer-text');
-            timerInterval = setInterval(() => {
-                const isTest = quizMode === 'test' || quizMode === 'thptqg';
-                isTest ? timerSeconds-- : timerSeconds++;
-                if (timerSeconds < 0 && isTest) { finishTest(); return; }
-                const m = Math.floor(Math.abs(timerSeconds) / 60).toString().padStart(2, '0');
-                const s = (Math.abs(timerSeconds) % 60).toString().padStart(2, '0');
-                display.innerText = `${m}:${s}`;
-
-                // Save session roughly every 5 seconds to reduce storage writes
-                if (Math.abs(timerSeconds) % 5 === 0) saveActiveSession();
-            }, 1000);
-        }
-
-        function getTFScorePercent(correctCount) {
-            if (correctCount === 1) return 0.10;
-            if (correctCount === 2) return 0.25;
-            if (correctCount === 3) return 0.50;
-            if (correctCount === 4) return 1.00;
-            return 0;
-        }
-
-        function getActiveQuestions() {
-            return window._thptqgQuestions || quizData.questions;
-        }
-
-        function renderQuestionProgress() {
-            const bar = document.getElementById('question-progress-bar');
-            bar.innerHTML = '';
-            const qs = getActiveQuestions();
-            qs.forEach((q, i) => {
-                const item = document.createElement('div');
-                item.className = 'question-progress-item';
-                item.textContent = i + 1;
-
-                if (i === currentIndex) item.classList.add('current');
-                if (userAnswers[i] !== null && userAnswers[i] !== undefined) item.classList.add('answered');
-                if (questionResults[i] === true) item.classList.add('correct');
-                if (questionResults[i] === false) item.classList.add('incorrect');
-
-                item.onclick = () => {
-                    currentIndex = i;
-                    loadQuestion();
-                };
-                bar.appendChild(item);
-            });
-
-            // Tự động cuộn thanh tiến trình để hiện câu đang làm ở giữa
-            const activeItem = bar.children[currentIndex];
-            if (activeItem) {
-                activeItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }
-        }
-
-        function loadQuestion() {
-            const qs = getActiveQuestions();
-            const q = qs[currentIndex];
-            const type = q.type || 'multiple';
-
-            document.getElementById('ui-progress').innerText = `Câu ${currentIndex + 1}/${qs.length}`;
-            document.getElementById('explanation-container').classList.add('hidden');
-
-            const submitBtn = document.getElementById('submit-btn');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextNavBtn = document.getElementById('next-nav-btn');
-
-            if (quizMode === 'practice') {
-                submitBtn.classList.remove('hidden');
-                submitBtn.disabled = !hasUserAnsweredCurrent();
-
-                // If question was already answered correctly in practice, show explanation
-                if (questionResults[currentIndex] !== null) {
-                    showExplanationDirectly();
-                }
-            } else {
-                prevBtn.disabled = currentIndex === 0;
-                nextNavBtn.disabled = currentIndex === qs.length - 1;
-            }
-
-            function showExplanationDirectly() {
-                submitBtn.classList.add('hidden');
-                const badge = document.getElementById('result-badge');
-                const expText = document.getElementById('explanation-text');
-                const isCorrect = questionResults[currentIndex];
-                const earned = questionEarned[currentIndex];
-
-                badge.innerText = isCorrect ? (q.type === 'truefalse' ? `Kết quả: ${earned.toFixed(2)}đ` : "Chính xác") : "Chưa đúng";
-                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
-
-                let explHtml = q.explanation || "";
-                if (q.type === 'multiple') {
-                    explHtml = (q.explanation || '') + `<div class="mt-2 font-bold text-green-600">Đáp án đúng: ${formatCorrectOption(q)}</div>`;
-                } else if (q.type === 'truefalse') {
-                    let tfHtml = '<div class="space-y-3">';
-                    q.statements.forEach((st, i) => {
-                        const user = userAnswers[currentIndex][i] === null ? '—' : (userAnswers[currentIndex][i] ? 'ĐÚNG' : 'SAI');
-                        const right = (q.correctAnswers || [])[i] ? 'ĐÚNG' : 'SAI';
-                        const color = user === right ? 'text-emerald-600' : 'text-rose-600';
-                        tfHtml += `<p><strong>${String.fromCharCode(65 + i)}.</strong> ${st}<br><span class="${color}">Bạn chọn: ${user} | Đáp án: ${right}</span></p>`;
-                    });
-                    tfHtml += '</div>' + (q.explanation ? `<div class="mt-4 pt-4 border-t border-slate-200">${q.explanation}</div>` : '');
-                    explHtml = tfHtml;
-                }
-
-                expText.innerHTML = `<div class="explanation-content">${explHtml}</div>`;
-                document.getElementById('explanation-container').classList.remove('hidden');
-            }
-
-            let imgHtml = q.image ? `
-                <div class="q-image-container">
-                    <img src="${q.image}" alt="Hình ảnh câu ${currentIndex + 1}" 
-                         onerror="this.src='https://via.placeholder.com/600x300?text=Hinh+Anh+Khong+Ton+Tai';">
-                </div>` : '';
-
-            // GIỮ NGUYÊN HTML GỐC, KHÔNG DÙNG MARKDOWN CHO CÂU HỎI
-            const questionText = q.question || '';
-
-            document.getElementById('question-header').innerHTML = `
-                <p class="text-[9px] font-black text-blue-500 uppercase tracking-widest mb-3">
-                    Câu ${currentIndex + 1} • ${q.points || 0} điểm
-                </p>
-                ${imgHtml}
-                <div class="question-content text-xl font-extrabold leading-tight prose prose-slate max-w-none">
-                    ${questionText}
-                </div>
-            `;
-
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-
-            if (type === 'multiple') {
-                q.options.forEach((opt, i) => {
-                    const btn = document.createElement('div');
-                    btn.className = `option-card p-4 pl-6 pr-6 flex items-center gap-4 ${userAnswers[currentIndex] === i ? 'selected' : ''}`;
-                    btn.innerHTML = `
-                        <span class="w-8 h-8 flex items-center justify-center pill-shape bg-slate-100 text-slate-400 font-black text-[10px]">${String.fromCharCode(65 + i)}</span>
-                        <span class="font-bold text-sm flex-1">${opt}</span>
-                        <span class="kbd key-hint">${i + 1}</span>
-                    `;
-                    btn.onclick = () => {
-                        if (quizMode === 'practice' && !document.getElementById('explanation-container').classList.contains('hidden')) return;
-                        selectAns(i);
-                    };
-                    container.appendChild(btn);
-                });
-            }
-            else if (type === 'truefalse') {
-                if (!userAnswers[currentIndex] || !Array.isArray(userAnswers[currentIndex])) {
-                    userAnswers[currentIndex] = Array(4).fill(null);
-                }
-                currentTFIndex = 0; // Reset TF index when loading new question
-                const statements = q.statements || ["Ý A", "Ý B", "Ý C", "Ý D"];
-                statements.forEach((text, idx) => {
-                    const row = document.createElement('div');
-                    row.className = 'tf-row';
-                    row.dataset.index = idx;
-
-                    const label = document.createElement('span');
-                    label.className = 'tf-label';
-                    label.innerHTML = `${String.fromCharCode(65 + idx)}<span class="kbd key-hint ml-1" style="font-size:9px;min-width:18px;height:18px;">${idx + 1}</span>`;
-
-                    const content = document.createElement('span');
-                    content.className = 'tf-content';
-                    content.innerHTML = text;
-
-                    const trueBtn = document.createElement('div');
-                    trueBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === true ? 'selected' : ''}`;
-                    trueBtn.innerHTML = `<span class="kbd key-hint mr-1" style="font-size:9px;min-width:18px;height:18px;">Đ</span>ĐÚNG`;
-
-                    const falseBtn = document.createElement('div');
-                    falseBtn.className = `tf-btn ${userAnswers[currentIndex][idx] === false ? 'selected' : ''}`;
-                    falseBtn.innerHTML = `<span class="kbd key-hint mr-1" style="font-size:9px;min-width:18px;height:18px;">S</span>SAI`;
-
-                    trueBtn.onclick = () => {
-                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
-                            currentTFIndex = idx;
-                            userAnswers[currentIndex][idx] = true;
-                            updateTFVisual(idx);
-                            highlightCurrentTFRow();
-                            if (quizMode === 'practice') submitBtn.disabled = false;
-                        }
-                    };
-                    falseBtn.onclick = () => {
-                        if (document.getElementById('explanation-container').classList.contains('hidden')) {
-                            currentTFIndex = idx;
-                            userAnswers[currentIndex][idx] = false;
-                            updateTFVisual(idx);
-                            highlightCurrentTFRow();
-                            if (quizMode === 'practice') submitBtn.disabled = false;
-                        }
-                    };
-                    row.append(label, content, trueBtn, falseBtn);
-                    container.appendChild(row);
-                });
-                // Highlight first row
-                setTimeout(() => highlightCurrentTFRow(), 50);
-            }
-            else if (type === 'short' || type === 'essay') {
-                const isShort = type === 'short';
-                if (isShort) {
-                    container.innerHTML = `
-                        <div class="short-ans-container">
-                            <input type="text" id="ans-input" maxlength="4" class="input-short" placeholder="••••">
-                        </div>
-                    `;
-                } else {
-                    container.innerHTML = `
-                        <textarea id="ans-input" placeholder="Viết câu trả lời của bạn tại đây..."></textarea>
-                    `;
-                }
-                const input = document.getElementById('ans-input');
-                if (userAnswers[currentIndex] !== null) {
-                    input.value = userAnswers[currentIndex];
-                }
-                if (isShort) {
-                    input.onkeypress = (e) => {
-                        const allowed = /[0-9\.\-,]/;
-                        if (!allowed.test(e.key)) {
-                            e.preventDefault();
-                            return false;
-                        }
-                    };
-                    input.oninput = (e) => {
-                        let val = e.target.value.replace(/[^0-9\.\-,]/g, '');
-                        if (val.length > 4) val = val.slice(0, 4);
-                        e.target.value = val;
-                        userAnswers[currentIndex] = val;
-                        if (quizMode === 'practice') {
-                            submitBtn.disabled = val.trim().length === 0;
-                        }
-                        saveActiveSession();
-                    };
-                } else {
-                    input.oninput = (e) => {
-                        userAnswers[currentIndex] = e.target.value;
-                        if (quizMode === 'practice') {
-                            submitBtn.disabled = e.target.value.trim().length === 0;
-                        }
-                        saveActiveSession();
-                    };
-                }
-                input.focus();
-            }
-
-            renderMath();
-            renderQuestionProgress();
-        }
-
-        function updateTFVisual(idx) {
-            const rows = document.querySelectorAll('.tf-row');
-            if (!rows[idx]) return;
-            const trueBtn = rows[idx].querySelectorAll('.tf-btn')[0];
-            const falseBtn = rows[idx].querySelectorAll('.tf-btn')[1];
-            trueBtn.classList.toggle('selected', userAnswers[currentIndex][idx] === true);
-            falseBtn.classList.toggle('selected', userAnswers[currentIndex][idx] === false);
-            saveActiveSession();
-        }
-
-        function hasUserAnsweredCurrent() {
-            const q = getActiveQuestions()[currentIndex];
-            if (q.type === 'truefalse') {
-                return userAnswers[currentIndex] && userAnswers[currentIndex].some(v => v !== null);
-            } else if (q.type === 'multiple') {
-                return userAnswers[currentIndex] !== null;
-            } else {
-                return (userAnswers[currentIndex] || '').trim().length > 0;
-            }
-        }
-
-        function selectAns(idx) {
-            userAnswers[currentIndex] = idx;
-            document.querySelectorAll('.option-card').forEach((o, i) => o.classList.toggle('selected', i === idx));
-            if (quizMode === 'practice') document.getElementById('submit-btn').disabled = false;
-            saveActiveSession();
-        }
-
-        async function handlePractice() {
-            const q = getActiveQuestions()[currentIndex];
-            const badge = document.getElementById('result-badge');
-            const expText = document.getElementById('explanation-text');
-            const submitBtn = document.getElementById('submit-btn');
-            let earned = 0;
-            let isCorrectThisTime = false;
-
-            if (q.type === 'truefalse') {
-                let correctCount = 0;
-                const correctAnswers = q.correctAnswers || Array(4).fill(false);
-                userAnswers[currentIndex].forEach((userChoice, i) => {
-                    if (userChoice !== null && userChoice === correctAnswers[i]) correctCount++;
-                });
-                const percent = getTFScorePercent(correctCount);
-                earned = percent * (q.points || 0);
-                isCorrectThisTime = percent >= 0.5;
-
-                badge.innerText = `Đúng ${correctCount}/4 → ${Math.round(percent * 100)}%`;
-                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${percent >= 0.5 ? 'bg-emerald-500' : percent > 0 ? 'bg-amber-500' : 'bg-rose-500'}`;
-
-                let html = '<div class="space-y-3">';
-                q.statements.forEach((st, i) => {
-                    const user = userAnswers[currentIndex][i] === null ? '—' : (userAnswers[currentIndex][i] ? 'ĐÚNG' : 'SAI');
-                    const right = correctAnswers[i] ? 'ĐÚNG' : 'SAI';
-                    const color = user === right ? 'text-emerald-600' : 'text-rose-600';
-                    html += `<p><strong>${String.fromCharCode(65 + i)}.</strong> ${st}<br><span class="${color}">Bạn chọn: ${user} | Đáp án: ${right}</span></p>`;
-                });
-                html += '</div>';
-
-                // GIỮ NGUYÊN HTML CHO GIẢI THÍCH TĨNH (TRUE/FALSE)
-                if (q.explanation) html += `<div class="mt-6 pt-4 border-t border-slate-200 explanation-content">${q.explanation}</div>`;
-                expText.innerHTML = html;
-            }
-            else if (q.type === 'essay') {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = `<div class="spinner"></div>`;
-                const res = await gradeAI(q.question, userAnswers[currentIndex], q.suggested || "");
-                earned = Math.round(res.score * q.points * 10) / 10;
-                isCorrectThisTime = res.score >= 0.6;
-                badge.innerText = `Điểm: ${earned} / ${q.points}`;
-                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${res.score > 0.6 ? 'bg-emerald-500' : 'bg-rose-500'}`;
-
-                // ÁP DỤNG MARKDOWN CHO PHẢN HỒI CỦA AI (ESSAY)
-                const feedbackHtml = res.feedback ? marked.parse(res.feedback) : "Không có phản hồi từ AI.";
-                aiFeedbacks[currentIndex] = res.feedback; // Store for results
-                expText.innerHTML = `<div class="explanation-content markdown-content">${feedbackHtml}</div>`;
-                submitBtn.innerHTML = "Kiểm tra";
-            }
-            else {
+        function renderDetailResults() {
+            const list = document.getElementById('detail-questions-list');
+            list.innerHTML = '';
+            
+            quizData.activeQuestions.forEach((q, i) => {
+                const ans = userAnswers[i];
                 let isCorrect = false;
-                if (q.type === 'short') {
-                    const cleanU = (userAnswers[currentIndex] || '').trim().toLowerCase();
-                    const cleanC = String(q.correct).trim().toLowerCase();
-                    isCorrect = cleanU === cleanC;
-                } else {
-                    isCorrect = userAnswers[currentIndex] === q.correct;
+                
+                if (q.type === 'multiple') {
+                    isCorrect = ans === q.correct;
+                } else if (q.type === 'short') {
+                    const cleanUser = String(ans || '').trim().toLowerCase();
+                    const cleanCorrect = String(q.correct).trim().toLowerCase();
+                    isCorrect = cleanUser === cleanCorrect && ans !== null && ans !== undefined;
+                } else if (q.type === 'truefalse') {
+                    let cnt = 0;
+                    const correctArr = q.correctAnswers || q.correct || [];
+                    const ua = ans || {};
+                    (q.options || []).forEach((_, k) => { if (ua[k] === correctArr[k]) cnt++; });
+                    isCorrect = cnt === (q.options || []).length; 
+                } else if (q.type === 'essay') {
+                    isCorrect = true; 
                 }
-                earned = isCorrect ? (q.points || 0) : 0;
-                isCorrectThisTime = isCorrect;
-                badge.innerText = isCorrect ? "Chính xác" : "Chưa đúng";
-                badge.className = `pill-shape px-4 py-1.5 text-[9px] font-black uppercase text-white ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'}`;
 
-                // GIỮ NGUYÊN HTML CHO GIẢI THÍCH TĨNH (TRẮC NGHIỆM/ĐIỀN TỪ)
-                const explHtml = (q.explanation || '') + `<div class="mt-2 font-bold text-green-600">Đáp án đúng: ${formatCorrectOption(q)}</div>`;
-                expText.innerHTML = `<div class="explanation-content">${explHtml}</div>`;
-            }
+                let statusColor = isCorrect ? 'bg-emerald-50 border-l-4 border-emerald-500' : 'bg-rose-50 border-l-4 border-rose-500';
+                let icon = isCorrect ? '✅ <span class="text-emerald-600">Đúng</span>' : '❌ <span class="text-rose-600">Chưa chính xác</span>';
 
-            sessionScore += earned;
-            questionResults[currentIndex] = isCorrectThisTime;
-            questionEarned[currentIndex] = earned;
-            document.getElementById('explanation-container').classList.remove('hidden');
-            submitBtn.classList.add('hidden');
-            renderMath();
-            renderQuestionProgress();
-        }
-
-        async function gradeAI(q, u, s) {
-            try {
-                // Use the centralized eduspaceAI.call for robustness
-                const responseText = await eduspaceAI.call({
-                    contents: [{
-                        parts: [{
-                            text: `Chấm điểm câu trả lời: Câu hỏi: "${q}", Trả lời của HS: "${u}", Đáp án gợi ý: "${s}". Hãy chấm trên thang điểm 0-1 (số thập phân) và đưa ra nhận xét ngắn gọn bằng Markdown tiếng Việt (in đậm **...**, xuống dòng). Trả về JSON theo định dạng chuẩn: {"score": 0.8, "feedback": "..."}`
-                        }]
-                    }],
-                    generationConfig: {
-                        responseMimeType: "application/json"
-                    }
-                });
-                return JSON.parse(responseText);
-            } catch (e) {
-                console.error("Grade AI Error:", e);
-                return { 
-                    score: 0, 
-                    feedback: "Lỗi kết nối AI hoặc phân tích kết quả: " + e.message 
-                };
-            }
-        }
-
-        async function finishTest() {
-            clearInterval(timerInterval);
-            const container = document.getElementById('quiz-container');
-            container.innerHTML = `<div class="glass-card round-card p-20 flex flex-col items-center justify-center fade-in"><div class="spinner !border-blue-500 !w-12 !h-12 mb-6"></div><p class="font-bold text-slate-500 uppercase tracking-widest text-xs animate-pulse">Đang tổng hợp kết quả...</p></div>`;
-
-            const qs = getActiveQuestions();
-            let totalScore = 0;
-            let maxScore = 0;
-            let correctCount = 0;
-
-            for (let i = 0; i < qs.length; i++) {
-                const q = qs[i];
-                const qPoints = Number(q.points || 0);
-                maxScore += qPoints;
-
-                let earned = calculateScoreForQuestion(q, userAnswers[i]);
-                totalScore += earned;
-
-                if (Math.abs(earned - qPoints) < 0.01 && earned > 0) correctCount++;
-                questionEarned[i] = earned;
-                questionResults[i] = Math.abs(earned - qPoints) < 0.01;
-            }
-
-            const finalScore = Math.round(totalScore * 100) / 100;
-            const percentage = maxScore > 0 ? getPercentage(totalScore, maxScore) : 0;
-
-            // Render Animations and Confetti Setup
-            const resultScreen = document.getElementById('result-screen');
-            if (!document.getElementById('confetti-container')) {
-                const canvas = document.createElement('canvas');
-                canvas.id = 'confetti-container';
-                canvas.className = 'confetti-canvas';
-                resultScreen.appendChild(canvas);
-            }
-
-            // Update UI elements
-            document.getElementById('final-time-display').innerText = document.getElementById('timer-text').innerText;
-            document.getElementById('final-percent-display').innerText = Math.round(percentage) + '%';
-            document.getElementById('final-correct-count').innerText = `${correctCount}/${qs.length}`;
-            document.getElementById('final-max-score-display').innerText = maxScore; // Display dynamic max score
-
-            let rank = "Cần cố gắng";
-            let rankEmoji = "🥺";
-            let rankColor = "text-slate-500";
-            let gradientClass = "from-slate-500 to-slate-700";
-
-            if (percentage >= 90) { rank = "Xuất Sắc"; rankEmoji = "👑"; rankColor = "text-yellow-500"; gradientClass = "from-yellow-500 to-amber-600"; }
-            else if (percentage >= 80) { rank = "Giỏi"; rankEmoji = "😎"; rankColor = "text-emerald-500"; gradientClass = "from-emerald-500 to-teal-600"; }
-            else if (percentage >= 65) { rank = "Khá"; rankEmoji = "👍"; rankColor = "text-blue-500"; gradientClass = "from-blue-500 to-indigo-600"; }
-            else if (percentage >= 50) { rank = "Trung Bình"; rankEmoji = "😐"; rankColor = "text-orange-500"; gradientClass = "from-orange-500 to-red-500"; }
-
-            const rankDisplay = document.getElementById('final-rank-display');
-            rankDisplay.innerHTML = `${rankEmoji} ${rank}`;
-            rankDisplay.className = `font-bold text-sm ${rankColor} inline-flex items-center gap-1 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-slate-100`;
-
-            const scoreCard = document.querySelector('#result-screen .score-gradient');
-            if (scoreCard) {
-                scoreCard.className = `flex-1 bg-gradient-to-br ${gradientClass} text-white rounded-[32px] p-8 relative overflow-hidden shadow-xl flex flex-col items-center justify-center text-center min-h-[220px] animate-up score-gradient`;
-            }
-
-            renderDetailResultsNew();
-
-            document.getElementById('main-quiz').classList.add('hidden');
-            resultScreen.classList.remove('hidden');
-            resultScreen.style.display = 'flex';
-
-            // ANIMATE SCORE COUNT UP
-            animateValue("final-score-display", 0, finalScore, 1500);
-
-            // FIRE CONFETTI IF SCORE IS GOOD
-            if (percentage >= 50) {
-                setTimeout(() => fireConfetti(), 500);
-            }
-
-            // SAVE TO HISTORY
-            saveToHistory({
-                title: quizData.title,
-                mode: quizMode,
-                score: finalScore,
-                maxScore: maxScore,
-                percentage: percentage,
-                timeSpent: document.getElementById('final-time-display').innerText,
-                date: new Date().toLocaleString('vi-VN'),
-                questions: qs,
-                userAnswers: [...userAnswers],
-                questionEarned: [...questionEarned],
-                aiFeedbacks: [...aiFeedbacks]
-            });
-
-            clearActiveSession();
-        }
-
-        // --- HISTORY MANAGEMENT ---
-        function saveToHistory(record) {
-            try {
-                const history = JSON.parse(localStorage.getItem('eduspace_history') || '[]');
-                history.unshift(record);
-                // Limit to last 20 attempts
-                if (history.length > 20) history.pop();
-                localStorage.setItem('eduspace_history', JSON.stringify(history));
-                showHistory();
-            } catch (e) {
-                console.error("Could not save history", e);
-            }
-        }
-
-        function showHistory() {
-            const list = document.getElementById('history-list-main');
-            if (!list) return;
-            const history = JSON.parse(localStorage.getItem('eduspace_history') || '[]');
-
-            list.innerHTML = '';
-            if (history.length === 0) {
-                list.innerHTML = `<div class="py-10 text-center text-slate-300 font-bold text-xs uppercase tracking-widest">Chưa có dữ liệu</div>`;
-            } else {
-                history.forEach((h, i) => {
-                    const item = document.createElement('div');
-                    item.className = 'history-item bg-white/50 border border-slate-100 rounded-2xl mb-2 p-4 flex items-center justify-between cursor-pointer';
-                    item.onclick = () => reviewAttempt(h);
-
-                    let modeName = h.mode === 'test' ? 'Kiểm tra' : (h.mode === 'thptqg' ? 'THPT-QG' : 'Luyện tập');
-                    let color = h.percentage >= 80 ? 'text-emerald-500' : (h.percentage >= 50 ? 'text-blue-500' : 'text-rose-500');
-
-                    item.innerHTML = `
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-xl shadow-inner">${h.percentage >= 80 ? '🏆' : '📝'}</div>
-                            <div>
-                                <h4 class="font-extrabold text-slate-800 text-sm line-clamp-1">${h.title}</h4>
-                                <div class="flex gap-3 mt-1">
-                                    <span class="text-[10px] uppercase font-bold text-slate-400">${modeName}</span>
-                                    <span class="text-[10px] text-slate-300">•</span>
-                                    <span class="text-[10px] font-bold text-slate-400">${h.date}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-lg font-black ${color}">${h.score}/${h.maxScore}</div>
-                            <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">${h.timeSpent}</div>
-                        </div>
-                    `;
-                });
-            }
-        }
-
-        function reviewAttempt(h) {
-            // Hijack result screen to show old attempt
-            currentIndex = 0;
-            window._thptqgQuestions = h.questions;
-            userAnswers = h.userAnswers;
-            questionEarned = h.questionEarned;
-            aiFeedbacks = h.aiFeedbacks || new Array(h.questions.length).fill(null);
-
-            // Set stats manually
-            document.getElementById('final-time-display').innerText = h.timeSpent;
-            document.getElementById('final-percent-display').innerText = Math.round(h.percentage) + '%';
-            document.getElementById('final-correct-count').innerText = `${h.questions.filter((q, i) => Math.abs(h.questionEarned[i] - (q.points || 0)) < 0.01).length}/${h.questions.length}`;
-            document.getElementById('final-max-score-display').innerText = h.maxScore;
-            document.getElementById('final-score-display').innerText = h.score;
-
-            renderDetailResultsNew();
-
-            document.getElementById('start-screen').classList.add('hidden');
-
-            const resultScreen = document.getElementById('result-screen');
-            resultScreen.classList.remove('hidden');
-            resultScreen.style.display = 'flex';
-
-            // Adjust rank and gradient as done in finishTest
-            const p = h.percentage;
-            let rank = "Cần cố gắng", rankEmoji = "🥺", rankColor = "text-slate-500", gradientClass = "from-slate-500 to-slate-700";
-            if (p >= 90) { rank = "Xuất Sắc"; rankEmoji = "👑"; rankColor = "text-yellow-500"; gradientClass = "from-yellow-500 to-amber-600"; }
-            else if (p >= 80) { rank = "Giỏi"; rankEmoji = "😎"; rankColor = "text-emerald-500"; gradientClass = "from-emerald-500 to-teal-600"; }
-            else if (p >= 65) { rank = "Khá"; rankEmoji = "👍"; rankColor = "text-blue-500"; gradientClass = "from-blue-500 to-indigo-600"; }
-            else if (p >= 50) { rank = "Trung Bình"; rankEmoji = "😐"; rankColor = "text-orange-500"; gradientClass = "from-orange-500 to-red-500"; }
-
-            const rd = document.getElementById('final-rank-display');
-            rd.innerHTML = `${rankEmoji} ${rank}`;
-            rd.className = `font-bold text-sm ${rankColor} inline-flex items-center gap-1 bg-white/90 backdrop-blur px-3 py-1 rounded-full shadow-sm border border-slate-100`;
-            const sc = document.querySelector('#result-screen .score-gradient');
-            if (sc) sc.className = `flex-1 bg-gradient-to-br ${gradientClass} text-white rounded-[32px] p-8 relative overflow-hidden shadow-xl flex flex-col items-center justify-center text-center min-h-[220px] animate-up score-gradient`;
-        }
-
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentVal = Math.floor(progress * (end - start) + start);
-                // Handle decimal for score
-                const displayedVal = Number.isInteger(end) ? currentVal : (Math.round((start + progress * (end - start)) * 10) / 10).toFixed(1);
-                obj.innerHTML = displayedVal;
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerHTML = end; // Ensure final value is exact
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // --- ACTIVE SESSION PERSISTENCE ---
-        function saveActiveSession() {
-            if (!document.getElementById('main-quiz') || document.getElementById('main-quiz').classList.contains('hidden')) return;
-
-            const session = {
-                quizTitle: quizData.title,
-                mode: quizMode,
-                questions: window._thptqgQuestions,
-                userAnswers: userAnswers,
-                timerSeconds: timerSeconds,
-                currentIndex: currentIndex,
-                timestamp: Date.now()
-            };
-            localStorage.setItem('eduspace_active_session', JSON.stringify(session));
-        }
-
-        function checkActiveSession() {
-            const sessionStr = localStorage.getItem('eduspace_active_session');
-            if (!sessionStr) return;
-
-            try {
-                const session = JSON.parse(sessionStr);
-                // Only allow resume if it's the SAME quiz
-                if (session.quizTitle !== quizData.title) return;
-
-                // Show resume button
-                const container = document.querySelector('#start-screen .flex-col.gap-3');
-                if (!container) return;
-
-                const resumeBtn = document.createElement('button');
-                resumeBtn.id = 'resume-quiz-btn';
-                resumeBtn.className = 'bg-emerald-500 text-white pill-shape py-4 px-10 font-bold text-sm w-full flex items-center justify-center gap-3 shadow-lg shadow-emerald-200 animate-pulse mb-2';
-                resumeBtn.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <span class="text-xl">⏳</span>
-                        <div class="text-left">
-                            <div class="leading-none">Tiếp tục bài đang làm</div>
-                            <div class="text-[9px] opacity-70 mt-1 uppercase tracking-wider">${session.mode === 'thptqg' ? 'Chế độ THPT-QG' : 'Chế độ ' + session.mode}</div>
-                        </div>
-                    </div>
-                `;
-                resumeBtn.onclick = () => resumeSession(session);
-                container.prepend(resumeBtn);
-            } catch (e) { }
-        }
-
-        function resumeSession(session) {
-            quizMode = session.mode;
-            window._thptqgQuestions = session.questions;
-            userAnswers = session.userAnswers;
-            timerSeconds = session.timerSeconds;
-            currentIndex = session.currentIndex;
-
-            startQuizNow(true);
-        }
-
-        function clearActiveSession() {
-            localStorage.removeItem('eduspace_active_session');
-            const btn = document.getElementById('resume-quiz-btn');
-            if (btn) btn.remove();
-        }
-
-        // Simple Canvas Confetti Logic
-        function fireConfetti() {
-            const canvas = document.getElementById('confetti-container');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const confetti = [];
-            const confettiCount = 150;
-            const gravity = 0.5;
-            const terminalVelocity = 5;
-            const drag = 0.075;
-            const colors = [
-                { front: 'red', back: 'darkred' },
-                { front: 'green', back: 'darkgreen' },
-                { front: 'blue', back: 'darkblue' },
-                { front: 'yellow', back: 'darkyellow' },
-                { front: 'orange', back: 'darkorange' },
-                { front: 'pink', back: 'darkpink' },
-                { front: 'purple', back: 'darkpurple' },
-                { front: 'turquoise', back: 'darkturquoise' },
-            ];
-
-            resizeCanvas = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            };
-
-            randomRange = (min, max) => Math.random() * (max - min) + min;
-
-            initConfetti = () => {
-                for (let i = 0; i < confettiCount; i++) {
-                    confetti.push({
-                        color: colors[Math.floor(randomRange(0, colors.length))],
-                        dimensions: { x: randomRange(10, 20), y: randomRange(10, 30) },
-                        position: { x: randomRange(0, canvas.width), y: canvas.height - 1 },
-                        rotation: randomRange(0, 2 * Math.PI),
-                        scale: { x: 1, y: 1 },
-                        velocity: { x: randomRange(-25, 25), y: randomRange(0, -50) }
-                    });
-                }
-            };
-
-            render = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                confetti.forEach((confetto, index) => {
-                    let width = (confetto.dimensions.x * confetto.scale.x);
-                    let height = (confetto.dimensions.y * confetto.scale.y);
-
-                    // Move canvas to position and rotate
-                    ctx.translate(confetto.position.x, confetto.position.y);
-                    ctx.rotate(confetto.rotation);
-
-                    // Apply forces to velocity
-                    confetto.velocity.x -= confetto.velocity.x * drag;
-                    confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
-                    confetto.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
-
-                    // Set position
-                    confetto.position.x += confetto.velocity.x;
-                    confetto.position.y += confetto.velocity.y;
-
-                    // Delete confetti when out of frame
-                    if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
-
-                    // Loop confetti generation
-                    if (confetto.position.x > canvas.width) confetto.position.x = 0;
-                    if (confetto.position.x < 0) confetto.position.x = canvas.width;
-
-                    // Spin confetto by scaling y
-                    confetto.scale.y = Math.cos(confetto.position.y * 0.1);
-                    ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
-
-                    // Draw confetto
-                    ctx.fillRect(-width / 2, -height / 2, width, height);
-
-                    // Reset transform matrix
-                    ctx.setTransform(1, 0, 0, 1, 0, 0);
-                });
-
-                if (confetti.length > 0) window.requestAnimationFrame(render);
-                else ctx.clearRect(0, 0, canvas.width, canvas.height); // cleanup
-            };
-
-            initConfetti();
-            render();
-
-            // Clean up after 5 seconds
-            setTimeout(() => {
-                canvas.remove();
-            }, 6000);
-        }
-
-        function getPercentage(score, total) {
-            return (score / total) * 100;
-        }
-
-        function calculateScoreForQuestion(q, ans) {
-            if (!ans && ans !== 0) return 0;
-            const points = Number(q.points || 0); // Strictly number
-
-            if (q.type === 'multiple') {
-                return ans === q.correct ? points : 0;
-            }
-            if (q.type === 'short') {
-                const cleanUser = String(ans).trim().toLowerCase();
-                const cleanCorrect = String(q.correct).trim().toLowerCase();
-                return cleanUser === cleanCorrect ? points : 0;
-            }
-            if (q.type === 'truefalse') {
-                if (!Array.isArray(ans)) return 0;
-                let cnt = 0;
-                const correctArr = q.correctAnswers || [];
-                ans.forEach((v, k) => { if (v === correctArr[k]) cnt++; });
-                return getTFScorePercent(cnt) * points;
-            }
-            // Essay temporary logic (if mostly relying on AI later)
-            return 0;
-        }
-
-        function renderDetailResultsNew() {
-            const list = document.getElementById('detail-questions-list-new');
-            const countDisplay = document.getElementById('total-questions-count');
-            list.innerHTML = '';
-            const qs = getActiveQuestions();
-            countDisplay.innerText = `${qs.length} câu hỏi`;
-
-            qs.forEach((q, i) => {
-                const earned = Math.round((questionEarned[i] || 0) * 100) / 100;
-                const max = q.points || 0;
-                const isCorrect = earned === max;
-                const isZero = earned === 0;
-
-                // Style trạng thái
-                let statusColor = isCorrect ? 'bg-green-50 border-l-4 border-green-500' : (isZero ? 'bg-red-50 border-l-4 border-red-500' : 'bg-orange-50 border-l-4 border-orange-500');
-                let icon = isCorrect ? 'Cre: <span class="text-green-600">Đúng</span>' : (isZero ? 'Cre: <span class="text-red-600">Sai</span>' : 'Cre: <span class="text-orange-600">Một phần</span>');
-
-                // Dùng thẻ details để tạo accordion
                 const details = document.createElement('details');
                 details.className = `group ${statusColor} open:bg-white open:shadow-md transition-all duration-300`;
 
@@ -2422,9 +960,6 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="text-xs font-bold px-2 py-1 rounded bg-white border border-slate-200 text-slate-600 shadow-sm">
-                            ${earned}/${max} đ
-                        </span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 transform group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -2434,38 +969,37 @@
                 const content = document.createElement('div');
                 content.className = 'p-4 pt-0 border-t border-slate-100 mt-2 text-sm text-slate-700';
 
-                // Nội dung câu hỏi và đáp án
                 let answerDetail = '';
                 if (q.type === 'multiple') {
-                    const userOpt = userAnswers[i] !== null ? String.fromCharCode(65 + userAnswers[i]) : 'Chưa chọn';
+                    const userOpt = ans !== null ? String.fromCharCode(65 + ans) : 'Chưa chọn';
                     const correctOpt = String.fromCharCode(65 + q.correct);
                     answerDetail = `
                         <div class="grid grid-cols-2 gap-2 mt-3">
                             <div class="p-3 bg-slate-50 rounded border border-slate-200">
                                 <span class="text-[10px] text-slate-400 uppercase font-bold block mb-1">Bạn chọn</span>
-                                <span class="font-bold ${userAnswers[i] === q.correct ? 'text-green-600' : 'text-red-600'}">${userOpt}</span>
+                                <span class="font-bold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${userOpt}</span>
                             </div>
-                            <div class="p-3 bg-green-50 rounded border border-green-100">
-                                <span class="text-[10px] text-green-600/70 uppercase font-bold block mb-1">Đáp án đúng</span>
-                                <span class="font-bold text-green-700">${correctOpt}</span>
+                            <div class="p-3 bg-emerald-50 rounded border border-emerald-100">
+                                <span class="text-[10px] text-emerald-600/70 uppercase font-bold block mb-1">Đáp án đúng</span>
+                                <span class="font-bold text-emerald-700">${correctOpt}</span>
                             </div>
                         </div>
                      `;
                 } else if (q.type === 'truefalse') {
                     answerDetail = `<div class="mt-3 space-y-2">`;
-                    const correctArr = q.correctAnswers || [];
-                    q.statements.forEach((st, idx) => {
-                        const ua = userAnswers[i] ? userAnswers[i][idx] : null;
+                    const correctArr = q.correctAnswers || q.correct || [];
+                    (q.options || []).forEach((st, idx) => {
+                        const ua = ans ? ans[idx] : null;
                         const ca = correctArr[idx];
-                        const icon = ua === ca ? '✅' : '❌';
+                        const sIcon = ua === ca ? '✅' : '❌';
                         answerDetail += `
                             <div class="flex justify-between items-center p-2 rounded bg-white border border-slate-100 text-xs">
                                 <span class="truncate flex-1 pr-2">${String.fromCharCode(65 + idx)}. ${st}</span>
-                                <span class="font-bold whitespace-nowrap gap-2 flex items-center">
+                                <span class="font-bold gap-2 flex items-center">
                                     ${ua === true ? 'Đ' : (ua === false ? 'S' : '_')} 
                                     <span class="text-slate-300">|</span> 
-                                    <span class="text-green-600">${ca ? 'Đ' : 'S'}</span>
-                                    ${icon}
+                                    <span class="text-emerald-600">${ca ? 'Đ' : 'S'}</span>
+                                    ${sIcon}
                                 </span>
                             </div>
                         `;
@@ -2473,37 +1007,34 @@
                     answerDetail += `</div>`;
                 } else {
                     answerDetail = `
-                        <div class="mt-3">
-                            <p class="text-xs font-bold text-slate-500 mb-1">Câu trả lời của bạn:</p>
-                            <div class="p-3 bg-slate-50 border border-slate-200 rounded text-slate-800 italic mb-2">${userAnswers[i] || '(Trống)'}</div>
-                            <p class="text-xs font-bold text-green-600 mb-1">Đáp án gợi ý:</p>
-                             <div class="p-3 bg-green-50 border border-green-100 rounded text-green-800 font-medium">${q.correct || q.suggested || 'Không có giải thích.'}</div>
+                        <div class="mt-3 grid grid-cols-2 gap-2">
+                            <div class="p-3 bg-slate-50 border border-slate-200 rounded">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Bạn chọn</p>
+                                <div class="text-slate-800 font-bold">${ans || '(Trống)'}</div>
+                            </div>
+                            <div class="p-3 bg-emerald-50 border border-emerald-100 rounded">
+                                <p class="text-[10px] font-bold text-emerald-600 uppercase mb-1">Đáp án gợi ý</p>
+                                <div class="text-emerald-800 font-bold">${q.correct || q.suggested || 'Không có gợi ý.'}</div>
+                            </div>
                         </div>
                      `;
                 }
 
-                // AI Feedback Section
-                let aiDetail = '';
-                if (aiFeedbacks[i]) {
-                    aiDetail = `
-                        <div class="mt-4 p-4 bg-blue-50 border border-blue-100 rounded-xl shadow-inner">
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-1">🤖 Nhận xét từ AI:</span>
-                            <div class="markdown-content text-slate-800 text-xs">${marked.parse(aiFeedbacks[i])}</div>
-                        </div>
-                    `;
-                }
+                let parsedQ = (q.question || '').trim();
+                if (typeof marked !== 'undefined') parsedQ = marked.parse(parsedQ);
+                let parsedExp = (q.explanation || 'Không có giải thích.').trim();
+                if (typeof marked !== 'undefined') parsedExp = marked.parse(parsedExp);
 
                 content.innerHTML = `
                     <div class="mb-4">
                         <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-2">Câu hỏi:</span>
-                        <div class="question-content font-medium text-slate-800 leading-relaxed bg-white p-4 rounded-xl border border-slate-100 shadow-sm">${q.question}</div>
+                        <div class="font-medium text-slate-800 leading-relaxed bg-white p-4 rounded-xl border border-slate-100 shadow-sm">${parseMedia(parsedQ)}</div>
                     </div>
                     ${answerDetail}
-                    ${aiDetail}
                     <div class="mt-6 pt-4 border-t border-dashed border-slate-200">
-                        <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider block mb-2">Giải thích chi tiết:</span>
-                        <div class="explanation-content bg-amber-50/50 p-4 rounded-xl border border-amber-100 text-slate-700 text-sm leading-relaxed shadow-inner">
-                            ${(q.explanation || 'Không có giải thích.')}
+                        <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block mb-2">Giải thích chi tiết:</span>
+                        <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 text-emerald-800 text-sm leading-relaxed shadow-inner prose-emerald">
+                            ${parseMedia(parsedExp)}
                         </div>
                     </div>
                 `;
@@ -2512,387 +1043,314 @@
                 details.appendChild(content);
                 list.appendChild(details);
             });
-        }
-
-        function nextStep() {
-            const qs = getActiveQuestions();
-            if (currentIndex < qs.length - 1) {
-                currentIndex++;
-                loadQuestion();
-                saveActiveSession();
-            } else {
-                if (quizMode === 'test' || quizMode === 'thptqg') {
-                    showModal("Nộp bài", "Bạn đã hoàn thành các câu hỏi. Nộp bài ngay?", "confirm", finishTest);
-                } else {
-                    finishTest();
-                }
-            }
-        }
-
-        // === KEYBOARD SHORTCUTS SYSTEM ===
-        let currentTFIndex = 0; // Track current True/False statement index
-
-        function toggleShortcutsPanel() {
-            const panel = document.getElementById('shortcuts-panel');
-            panel.classList.toggle('show');
-        }
-
-        function isInputFocused() {
-            const active = document.activeElement;
-            return active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
-        }
-
-        function selectOptionByIndex(index) {
-            const qs = getActiveQuestions();
-            const q = qs[currentIndex];
-            if (q.type !== 'multiple') return;
-            if (!document.getElementById('explanation-container').classList.contains('hidden')) return;
-
-            const options = document.querySelectorAll('.option-card');
-            if (index >= 0 && index < options.length) {
-                selectAns(index);
-                // Visual feedback
-                options.forEach((o, i) => {
-                    if (i === index) {
-                        o.querySelector('.key-hint')?.classList.add('active');
-                        setTimeout(() => o.querySelector('.key-hint')?.classList.remove('active'), 200);
-                    }
-                });
-            }
-        }
-
-        function handleTrueFalseKey(isTrue) {
-            const qs = getActiveQuestions();
-            const q = qs[currentIndex];
-            if (q.type !== 'truefalse') return;
-            if (!document.getElementById('explanation-container').classList.contains('hidden')) return;
-
-            if (!userAnswers[currentIndex] || !Array.isArray(userAnswers[currentIndex])) {
-                userAnswers[currentIndex] = Array(4).fill(null);
-            }
-
-            userAnswers[currentIndex][currentTFIndex] = isTrue;
-            updateTFVisual(currentTFIndex);
-
-            // Auto advance to next statement
-            const statementsCount = q.statements?.length || 4;
-            if (currentTFIndex < statementsCount - 1) {
-                currentTFIndex++;
-                highlightCurrentTFRow();
-            }
-
-            if (quizMode === 'practice') {
-                document.getElementById('submit-btn').disabled = false;
-            }
-        }
-
-        function highlightCurrentTFRow() {
-            const rows = document.querySelectorAll('.tf-row');
-            rows.forEach((row, i) => {
-                row.style.outline = i === currentTFIndex ? '2px solid var(--primary)' : 'none';
-                row.style.outlineOffset = '2px';
-            });
-        }
-
-        window.onkeydown = (e) => {
-            const key = e.key.toLowerCase();
-            const isModalOpen = document.getElementById('custom-modal').style.display === 'flex';
-            const isStartScreen = !document.getElementById('start-screen').classList.contains('hidden');
-            const isQuizScreen = !document.getElementById('main-quiz').classList.contains('hidden');
-            const expVisible = isQuizScreen && !document.getElementById('explanation-container').classList.contains('hidden');
-
-            // ESC - Close modals/panels or go back
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                if (isModalOpen) {
-                    document.getElementById('custom-modal').style.display = 'none';
-                } else if (document.getElementById('shortcuts-panel').classList.contains('show')) {
-                    document.getElementById('shortcuts-panel').classList.remove('show');
-                } else if (window.eduspaceAI_UI && document.getElementById('edu-ai-widget') && document.getElementById('edu-ai-widget').style.display === 'flex') {
-                    eduspaceAI_UI.toggle();
-                } else if (isQuizScreen) {
-                    goBackToStart();
-                }
-                return;
-            }
-
-            // ? - Toggle shortcuts panel
-            if (key === '?' || (e.shiftKey && key === '/')) {
-                e.preventDefault();
-                toggleShortcutsPanel();
-                return;
-            }
-
-            // Handle modal confirm with Enter
-            if (isModalOpen && e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('modal-confirm').click();
-                return;
-            }
-
-            // Skip if typing in input
-            if (isInputFocused() && e.key !== 'Escape') return;
-
-            // === START SCREEN SHORTCUTS ===
-            if (isStartScreen) {
-                if (key === 'p') {
-                    e.preventDefault();
-                    initQuiz('practice');
-                } else if (key === 'k' || key === 't') {
-                    e.preventDefault();
-                    showTestModeSelector();
-                }
-                return;
-            }
-
-            // === QUIZ SCREEN SHORTCUTS ===
-            if (isQuizScreen) {
-                const qs = getActiveQuestions();
-                const q = qs[currentIndex];
-
-                // ENTER - Submit/Continue
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    if (expVisible) {
-                        nextStep();
-                    } else if (quizMode === 'practice' && !document.getElementById('submit-btn').disabled) {
-                        handlePractice();
-                    } else if (quizMode === 'test' || quizMode === 'thptqg') {
-                        nextStep();
-                    }
-                    return;
-                }
-
-                // Ctrl+Enter - Submit test
-                if (e.ctrlKey && e.key === 'Enter' && quizMode === 'test') {
-                    e.preventDefault();
-                    showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
-                    return;
-                }
-
-                // Arrow keys - Navigate questions
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        currentTFIndex = 0;
-                        loadQuestion();
-                    }
-                    return;
-                }
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    const qs = getActiveQuestions();
-                    if (currentIndex < qs.length - 1) {
-                        if (quizMode === 'test' || quizMode === 'thptqg' || expVisible) {
-                            currentIndex++;
-                            currentTFIndex = 0;
-                            loadQuestion();
-                        }
-                    }
-                    return;
-                }
-
-                // Skip option selection if explanation is visible
-                if (expVisible) return;
-
-                // === MULTIPLE CHOICE: 1-4 or A-D ===
-                if (q.type === 'multiple') {
-                    if (['1', '2', '3', '4'].includes(key)) {
-                        e.preventDefault();
-                        selectOptionByIndex(parseInt(key) - 1);
-                    } else if (['a', 'b', 'c', 'd'].includes(key)) {
-                        e.preventDefault();
-                        selectOptionByIndex(key.charCodeAt(0) - 97);
-                    }
-                    return;
-                }
-
-                // === TRUE/FALSE: Đ/T for True, S/F for False, Tab to move ===
-                if (q.type === 'truefalse') {
-                    if (key === 'đ' || key === 't' || key === 'y') {
-                        e.preventDefault();
-                        handleTrueFalseKey(true);
-                    } else if (key === 's' || key === 'f' || key === 'n') {
-                        e.preventDefault();
-                        handleTrueFalseKey(false);
-                    } else if (e.key === 'Tab') {
-                        e.preventDefault();
-                        const statementsCount = q.statements?.length || 4;
-                        if (e.shiftKey) {
-                            currentTFIndex = Math.max(0, currentTFIndex - 1);
-                        } else {
-                            currentTFIndex = Math.min(statementsCount - 1, currentTFIndex + 1);
-                        }
-                        highlightCurrentTFRow();
-                    } else if (['1', '2', '3', '4'].includes(key)) {
-                        e.preventDefault();
-                        currentTFIndex = parseInt(key) - 1;
-                        highlightCurrentTFRow();
-                    }
-                    return;
-                }
-            }
-        };
-
-        document.getElementById('submit-btn').onclick = handlePractice;
-        document.getElementById('next-btn-exp').onclick = nextStep;
-        document.getElementById('prev-btn').onclick = () => { if (currentIndex > 0) { currentIndex--; loadQuestion(); } };
-        document.getElementById('next-nav-btn').onclick = nextStep;
-        document.getElementById('finish-test-btn').onclick = () => showModal("Xác nhận", "Bạn muốn nộp bài ngay?", "confirm", finishTest);
-
-        function renderMath() {
-            if (window.renderMathInElement) {
-                renderMathInElement(document.body, {
+            
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(list, {
                     delimiters: [
-                        { left: '$$', right: '$$', display: true },
-                        { left: '$', right: '$', display: false }
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
                     ],
                     throwOnError: false
                 });
             }
         }
 
-        // --- LOGIC EDU AI (Integrated with ai.js) ---
-        window.getAIContext = function () {
-            if (typeof currentIndex === 'undefined' || typeof getActiveQuestions !== 'function') return "";
-            const qs = getActiveQuestions();
-            const currentQ = qs[currentIndex];
-            if (!currentQ) return "";
-            const answerRef = currentQ.type === 'multiple' ? (currentQ.options?.[currentQ.correct] || currentQ.correct) : currentQ.correct;
-            return `Người dùng đang làm câu hỏi: "${currentQ.question}". Đáp án đúng: "${answerRef}". Giải thích: "${currentQ.explanation || ''}".`;
-        };
-
-        function updateAIVisibility() {
-            const isResultScreen = !document.getElementById('result-screen').classList.contains('hidden');
-            const isQuizScreen = !document.getElementById('main-quiz').classList.contains('hidden');
-            const isPractice = (quizMode === 'practice' && isQuizScreen);
-            const isThptqg = (quizMode === 'thptqg' && isQuizScreen);
-
-            window.eduAIShowOverride = (isPractice || isThptqg || isResultScreen);
-            if (window.eduspaceAI_UI) eduspaceAI_UI.updateVisibility();
+        function checkActiveSession() {
+            const saved = localStorage.getItem('active_session_' + window.location.pathname);
+            if (saved) {
+                const session = JSON.parse(saved);
+                showModal("Khôi phục", "Bạn có một bài làm dở dang. Khôi phục?", "confirm", () => {
+                    quizMode = session.mode;
+                    userAnswers = session.answers;
+                    questionChecked = session.checked || new Array(userAnswers.length).fill(false);
+                    timerSeconds = session.time;
+                    currentIndex = session.index;
+                    startQuiz(quizMode, true);
+                });
+            }
         }
 
-        // Gắn updateAIVisibility vào các điểm thay đổi màn hình
-        const originalInitQuiz = initQuiz;
-        initQuiz = function (mode) {
-            originalInitQuiz(mode);
-            updateAIVisibility();
-        };
+        function saveActiveSession() {
+            const session = {
+                mode: quizMode,
+                answers: userAnswers,
+                checked: questionChecked,
+                time: timerSeconds,
+                index: currentIndex
+            };
+            localStorage.setItem('active_session_' + window.location.pathname, JSON.stringify(session));
+        }
 
-        const originalFinishTest = finishTest;
-        finishTest = async function () {
-            await originalFinishTest();
-            updateAIVisibility();
-        };
+        function clearActiveSession() {
+            localStorage.removeItem('active_session_' + window.location.pathname);
+        }
 
-        const originalGoBack = goBackToStart;
-        window.goBackToStart = function () {
-            showModal("Xác nhận", "Dữ liệu đang làm sẽ bị mất. Bạn muốn thoát?", "confirm", () => {
-                clearInterval(timerInterval);
-                // Remove THPT-QG header if exists
-                const existing = document.getElementById('thptqg-layout-header');
-                if (existing) existing.parentElement?.remove();
-                window._thptqgQuestions = null;
-                document.getElementById('main-quiz').classList.add('hidden');
-                document.getElementById('start-screen').classList.remove('hidden');
-                updateAIVisibility();
+        function startQuiz(mode, resumed = false) {
+            quizMode = mode;
+            document.getElementById('test-mode-selector').classList.add('hidden');
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('main-quiz').classList.remove('hidden');
+            
+            document.getElementById('active-quiz-title').innerText = quizData.title;
+            document.getElementById('current-mode-label').innerText = mode === 'practice' ? 'CHẾ ĐỘ LUYỆN TẬP' : 'CHẾ ĐỘ THI THỬ';
+            document.getElementById('current-mode-label').className = mode === 'practice' 
+                ? 'text-[10px] font-black uppercase tracking-widest text-emerald-500 px-2 py-0.5 bg-emerald-50 rounded'
+                : 'text-[10px] font-black uppercase tracking-widest text-rose-500 px-2 py-0.5 bg-rose-50 rounded';
+
+            if (!resumed) {
+                userAnswers = new Array(quizData.activeQuestions.length).fill(null);
+                questionChecked = new Array(quizData.activeQuestions.length).fill(false);
+                // timerSeconds is already set in startQuizWithLayout
+                currentIndex = 0;
+            }
+
+            renderQuestion();
+            renderMap();
+            
+            // Quản lý hiển thị EduAI Assistant (Ẩn trong chế độ thi để tránh gian lận)
+            if (window.eduspaceAI_UI) {
+                window.eduAIShowOverride = (mode === 'practice');
+                window.eduspaceAI_UI.updateVisibility();
+            } else {
+                const aiToggle = document.getElementById('ai-toggle');
+                if (aiToggle) aiToggle.style.display = (mode === 'practice') ? 'flex' : 'none';
+            }
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timerSeconds--; // always countdown for both practice and exam
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz(true);
+                }
+                updateTimerDisplay();
+                saveActiveSession();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const h = Math.floor(timerSeconds / 3600);
+            const m = Math.floor((timerSeconds % 3600) / 60);
+            const s = timerSeconds % 60;
+            document.getElementById('timer-box').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function selectOption(index) {
+            userAnswers[currentIndex] = index;
+            renderQuestion();
+            updateMap();
+            saveActiveSession();
+        }
+
+        function selectTF(idx, val) {
+            if (!userAnswers[currentIndex]) userAnswers[currentIndex] = {};
+            userAnswers[currentIndex][idx] = val;
+            renderQuestion();
+            updateMap();
+            saveActiveSession();
+        }
+
+        function nextQuestion() {
+            if (currentIndex < quizData.activeQuestions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+                updateMap();
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function checkPracticeAnswer() {
+            questionChecked[currentIndex] = true;
+            saveActiveSession();
+            renderQuestion();
+            updateScore();
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+                updateMap();
+            }
+        }
+
+        function calculateScoreData() {
+            let totalScore = 0;
+            let correctMultipleCount = 0;
+            let totalMultipleCount = 0;
+            const layout = quizData.config?.examLayout || {};
+
+            quizData.activeQuestions.forEach((q, i) => {
+                const ans = userAnswers[i];
+                let points = 0;
+
+                if (q.type === 'multiple') {
+                    const maxPts = layout.multiple?.pointsPerQ || 0.25;
+                    totalMultipleCount++;
+                    if (ans === q.correct) {
+                        points = maxPts;
+                        correctMultipleCount++;
+                    }
+                } else if (q.type === 'truefalse') {
+                    const maxPts = layout.truefalse?.pointsPerQ || 1.0;
+                    if (ans && typeof ans === 'object') {
+                        let correctStatements = 0;
+                        const cArr = q.correctAnswers || q.correct || [];
+                        (q.options || []).forEach((_, idx) => {
+                            if (ans[idx] === cArr[idx]) correctStatements++;
+                        });
+                        const partialScoring = layout.truefalse?.partialScoring || [0.1, 0.25, 0.5, 1.0];
+                        if (correctStatements > 0 && correctStatements <= 4) {
+                            points = maxPts * partialScoring[correctStatements - 1];
+                        }
+                    }
+                } else if (q.type === 'short') {
+                    const maxPts = layout.short?.pointsPerQ || 0.5;
+                    if (ans !== null && ans !== undefined && ans !== '') {
+                        let formattedAns = ans.toString().trim().replace(/,/g, '.');
+                        let formattedCorrect = (q.correct || '').toString().trim().replace(/,/g, '.');
+                        if (formattedAns === formattedCorrect) {
+                            points = maxPts;
+                        }
+                    }
+                }
+
+                totalScore += points;
             });
-        };
+
+            if (!quizData.config?.examLayout) {
+                totalScore = totalMultipleCount > 0 ? (correctMultipleCount / totalMultipleCount) * 10 : 0;
+            }
+            return { score: totalScore, correct: correctMultipleCount, totalMultiple: totalMultipleCount };
+        }
+
+        function updateScore() {
+            const data = calculateScoreData();
+            sessionScore = data.score;
+            document.getElementById('current-score').innerText = sessionScore.toFixed(2);
+        }
+
+        function renderMap() {
+            const map = document.getElementById('question-map');
+            map.innerHTML = '';
+            quizData.activeQuestions.forEach((_, i) => {
+                const item = document.createElement('div');
+                item.className = `w-11 h-11 lg:w-full lg:aspect-square flex-shrink-0 rounded-xl flex items-center justify-center text-xs font-black cursor-pointer transition-all border-2
+                    ${currentIndex === i ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/20' : 
+                    (userAnswers[i] !== null ? 'bg-slate-800 border-slate-800 text-white' : 'bg-slate-100 border-slate-100 text-slate-400 hover:border-slate-300')}`;
+                item.innerText = i + 1;
+                item.onclick = () => { currentIndex = i; renderQuestion(); updateMap(); };
+                map.appendChild(item);
+            });
+        }
+
+        function updateMap() { renderMap(); }
+
+        async function submitQuiz(auto = false) {
+            if (!auto) {
+                const unanswered = userAnswers.filter(a => a === null).length;
+                if (unanswered > 0) {
+                    showModal("Nộp bài?", `Bạn còn ${unanswered} câu chưa làm. Bạn vẫn muốn nộp bài chứ?`, "confirm", processSubmit);
+                } else {
+                    showModal("Nộp bài?", "Bạn có chắc chắn muốn kết thúc bài thi?", "confirm", processSubmit);
+                }
+            } else {
+                processSubmit();
+            }
+        }
+
+        function processSubmit() {
+            clearInterval(timerInterval);
+            clearActiveSession();
+            
+            const data = calculateScoreData();
+            const total = quizData.activeQuestions.length;
+            const score = data.score;
+            
+            // Format score based on type: if it's perfectly round show without decimals, else show up to 2
+            const displayScore = Number.isInteger(score) ? score.toString() : score.toFixed(2);
+            
+            document.getElementById('res-score').innerText = displayScore;
+            document.getElementById('res-correct').innerText = `${data.correct}/${data.totalMultiple} (TN)`;
+            document.getElementById('res-time').innerText = document.getElementById('timer-box').innerText;
+            
+            renderDetailResults();
+            
+            document.getElementById('main-quiz').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            saveHistory(score, `${data.correct}/${data.totalMultiple}`, total);
+        }
+
+        function saveHistory(score, correct, total) {
+            const history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
+            history.unshift({
+                date: new Date().toLocaleString('vi-VN'),
+                title: quizData.title,
+                score: Number.isInteger(score) ? score.toString() : score.toFixed(2),
+                correct: correct,
+                mode: quizMode
+            });
+            localStorage.setItem('quiz_history', JSON.stringify(history.slice(0, 50)));
+            showHistory();
+        }
+
+        function showHistory() {
+            const list = document.getElementById('history-list');
+            const history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
+            if (history.length === 0) {
+                list.innerHTML = '<div class="text-center py-10 text-slate-400">Chưa có lịch sử làm bài.</div>';
+                return;
+            }
+            list.innerHTML = history.map(h => `
+                <div class="bg-white border border-slate-100 p-5 rounded-3xl mb-4 shadow-sm group hover:border-blue-500 transition-all">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[10px] font-black text-blue-500 uppercase">${h.date}</span>
+                        <span class="text-lg font-black text-slate-800">${h.score}đ</span>
+                    </div>
+                    <p class="font-bold text-slate-700 mb-1 line-clamp-1">${h.title}</p>
+                    <div class="flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase">
+                        <span>Chế độ: ${h.mode === 'practice' ? 'Luyện tập' : 'Thi thử'}</span>
+                        <span>Đúng: ${h.correct}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openHistory() { 
+            const overlay = document.getElementById('history-overlay');
+            const drawer = document.getElementById('history-drawer');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.add('opacity-100');
+                drawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeHistory() { 
+            const overlay = document.getElementById('history-overlay');
+            const drawer = document.getElementById('history-drawer');
+            overlay.classList.remove('opacity-100');
+            drawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 500);
+        }
+
+        async function askEduAI() {
+            const q = quizData.activeQuestions[currentIndex];
+            if (window.eduAI_ask) {
+                window.eduAI_ask(`Tôi đang làm câu hỏi này: "${q.question}". Đáp án của tôi là "${q.options[userAnswers[currentIndex]]}". Hãy giải thích thêm cho tôi nhé.`);
+            } else {
+                showModal("Thông báo", "EduAI Assistant đang được khởi tạo. Vui lòng đợi trong giây lát hoặc nhấn nút Trợ lý ảo ở góc màn hình.", "info");
+            }
+        }
     </script>
-
-    <!-- Keyboard Shortcuts Help -->
-    <div id="shortcuts-help">
-        <div id="shortcuts-panel">
-            <h4>⌨️ Phím tắt</h4>
-
-            <div class="shortcut-section">
-                <div class="shortcut-section-title">Chọn đáp án</div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">1</span><span class="kbd">A</span></div>
-                    <span class="shortcut-desc">Chọn đáp án A</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">2</span><span class="kbd">B</span></div>
-                    <span class="shortcut-desc">Chọn đáp án B</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">3</span><span class="kbd">C</span></div>
-                    <span class="shortcut-desc">Chọn đáp án C</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">4</span><span class="kbd">D</span></div>
-                    <span class="shortcut-desc">Chọn đáp án D</span>
-                </div>
-            </div>
-
-            <div class="shortcut-section">
-                <div class="shortcut-section-title">Đúng/Sai (True/False)</div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">Đ</span><span class="kbd">T</span></div>
-                    <span class="shortcut-desc">Chọn ĐÚNG</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">S</span><span class="kbd">F</span></div>
-                    <span class="shortcut-desc">Chọn SAI</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">Tab</span></div>
-                    <span class="shortcut-desc">Chuyển ý tiếp theo</span>
-                </div>
-            </div>
-
-            <div class="shortcut-section">
-                <div class="shortcut-section-title">Điều hướng</div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">Enter ↵</span></div>
-                    <span class="shortcut-desc">Kiểm tra / Tiếp tục</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">←</span></div>
-                    <span class="shortcut-desc">Câu trước</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">→</span></div>
-                    <span class="shortcut-desc">Câu sau</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></div>
-                    <span class="shortcut-desc">Nộp bài (Chế độ kiểm tra)</span>
-                </div>
-            </div>
-
-            <div class="shortcut-section">
-                <div class="shortcut-section-title">Khác</div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">Esc</span></div>
-                    <span class="shortcut-desc">Thoát / Đóng</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">?</span></div>
-                    <span class="shortcut-desc">Hiện/ẩn phím tắt</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">P</span></div>
-                    <span class="shortcut-desc">Luyện tập (Màn hình chính)</span>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-keys"><span class="kbd">K</span></div>
-                    <span class="shortcut-desc">Kiểm tra (Màn hình chính)</span>
-                </div>
-            </div>
-        </div>
-        <div id="shortcuts-toggle" onclick="toggleShortcutsPanel()" title="Phím tắt (?)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                <path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10"></path>
-            </svg>
-        </div>
-    </div>
-    <footer class="fixed bottom-2 w-full text-center text-slate-400 text-xs pointer-events-none z-50">
-        © 2026 EduSpace by ND Labs.
-    </footer>
 </body>
 
 </html>
