@@ -680,6 +680,126 @@
             return colors[subject] || '#64748b'; // Default Slate
         }
 
+        const subjectQuotes = {
+            'Toán': [
+                'Toán học là ông vua của các ngành khoa học.',
+                'Trong toán học, nghệ thuật đặt câu hỏi có giá trị hơn việc giải đáp.',
+                'Toán học là ngôn ngữ mà Thượng đế dùng để viết nên vũ trụ.',
+                'Những con số là thực thể tối cao quản trị thế giới.',
+                'Toán học không chỉ là con số, mà còn là sự hiểu biết.'
+            ],
+            'Vật Lý': [
+                'Vật lý là chìa khóa mở cánh cửa vũ trụ.',
+                'Mọi thứ đều là năng lượng, đó là tất cả những gì có.',
+                'Trái đất là cái nôi, nhưng con người không thể sống mãi trong nôi.',
+                'Năng lượng không tự sinh ra, cũng không tự mất đi.',
+                'Vật lý là nỗ lực của con người để hiểu được quy luật của tự nhiên.'
+            ],
+            'Hóa Học': [
+                'Cuộc sống là một chuỗi các phản ứng hóa học.',
+                'Trong hóa học, không có gì mất đi, mọi thứ đều chuyển hóa.',
+                'Hóa học là sự chuyển hóa diệu kỳ của vật chất.',
+                'Mọi thứ xung quanh chúng ta đều mang hơi thở của hóa học.',
+                'Hóa học giống như nấu ăn, nhưng đòi hỏi sự chính xác tuyệt đối.'
+            ],
+            'Sinh Học': [
+                'Nơi nào có sự sống, nơi đó có hy vọng.',
+                'Sinh học là nghiên cứu về những điều kỳ diệu nhất của thiên nhiên.',
+                'Mỗi tế bào là một thế giới nhỏ bé chứa đựng bí mật của sự sống.',
+                'Sự đa dạng sinh học là chìa khóa của sự tồn tại bền vững.',
+                'Tự nhiên không bao giờ làm điều gì thừa thãi.'
+            ],
+            'Ngữ Văn': [
+                'Văn chương luyện rèn tình cảm, bồi đắp tâm hồn.',
+                'Văn học là nhân học, giúp con người hiểu về con người hơn.',
+                'Sách là ngọn đèn sáng cho trí tuệ con người.',
+                'Một trang sách hay là một cuộc đời mới được mở ra.',
+                'Thơ là tiếng lòng của tâm hồn đang rung động.'
+            ],
+            'Lịch Sử': [
+                'Dân ta phải biết sử ta, cho tường gốc tích nước nhà Việt Nam.',
+                'Lịch sử là tấm gương soi chiếu cho tương lai.',
+                'Quốc gia nào quên đi quá khứ sẽ không có tương lai.',
+                'Lịch sử được viết nên bởi ý chí của cả một dân tộc.',
+                'Ôn cố nhi tri tân - Ôn cũ để biết mới.'
+            ],
+            'Địa Lý': [
+                'Thế giới là một cuốn sách, và mỗi chuyến đi là một trang mới.',
+                'Địa lý là nghiên cứu về ngôi nhà chung của nhân loại.',
+                'Bản đồ là ngôn ngữ hình ảnh của địa lý.',
+                'Trái đất không thuộc về chúng ta, chúng ta thuộc về Trái đất.',
+                'Đi một ngày đàng, học một sàng khôn.'
+            ],
+            'Tiếng Anh': [
+                'Một ngôn ngữ khác là một tầm nhìn khác về cuộc sống.',
+                'Học một ngoại ngữ là mở thêm một cửa sổ nhìn ra thế giới.',
+                'Ngôn ngữ là bản đồ văn hóa của một dân tộc.',
+                'Tiếng Anh là chìa khóa để hội nhập với tri thức toàn cầu.',
+                'Biết thêm một ngoại ngữ là sống thêm một cuộc đời.'
+            ],
+            'Tin Học': [
+                'Lập trình là nghệ thuật của tư duy logic.',
+                'Code là bài thơ của kỷ nguyên công nghệ số.',
+                'Sáng tạo là giới hạn duy nhất trong thế giới lập trình.',
+                'Máy tính chỉ làm những gì bạn thực sự bảo nó làm.',
+                'Phần mềm đang nuốt chửng thế giới bằng sức mạnh thuật toán.'
+            ],
+            'Công Nghệ': [
+                'Công nghệ thay đổi thế giới, con người thay đổi công nghệ.',
+                'Bất kỳ công nghệ nào đủ tiên tiến đều không khác gì phép thuật.',
+                'Đổi mới là điểm khác biệt giữa người dẫn đầu và người theo sau.',
+                'Công nghệ là công cụ, con người mới là trái tim của sự sáng tạo.',
+                'Tương lai thuộc về những ai làm chủ được công nghệ.'
+            ],
+            'Kinh Tế và Pháp Luật': [
+                'Thượng tôn pháp luật, phát triển kinh tế bền vững.',
+                'Pháp luật là cán cân của công lý và trật tự xã hội.',
+                'Kinh tế là nền tảng, pháp luật là khung xương của quốc gia.',
+                'Tự do trong khuôn khổ pháp luật là tự do thực sự.',
+                'Sống và làm việc theo Hiến pháp và Pháp luật.'
+            ],
+            'Quốc Phòng và An Ninh': [
+                'Bảo vệ Tổ quốc là nghĩa vụ thiêng liêng và quyền cao quý.',
+                'Hòa bình không phải là sự vắng bóng của xung đột.',
+                'Quốc thái dân an là mong ước ngàn đời của dân tộc.',
+                'Dựng nước luôn đi đôi với giữ nước.',
+                'An ninh quốc gia là nền tảng vững chắc cho sự phát triển.'
+            ],
+            'Công Cụ': [
+                'Công cụ tốt làm nên người thợ giỏi.',
+                'Trí tuệ nhân tạo là cánh tay nối dài của tri thức con người.',
+                'Đơn giản là sự tinh tế tối thượng trong thiết kế.',
+                'Tự động hóa giúp giải phóng sức sáng tạo vô hạn.',
+                'Công nghệ sinh ra là để phục vụ và nâng tầm cuộc sống.'
+            ],
+        };
+
+        function getSubjectQuote(subject) {
+            const quotes = subjectQuotes[subject] || [];
+            if (quotes.length === 0) return "";
+            
+            const storageKey = `used_quotes_${subject}`;
+            let usedIndexes = JSON.parse(localStorage.getItem(storageKey) || "[]");
+            
+            // Lọc các index chưa dùng
+            let availableIndexes = quotes.map((_, i) => i).filter(i => !usedIndexes.includes(i));
+            
+            // Nếu đã dùng hết, reset lại
+            if (availableIndexes.length === 0) {
+                usedIndexes = [];
+                availableIndexes = quotes.map((_, i) => i);
+            }
+            
+            // Chọn ngẫu nhiên một index trong số còn lại
+            const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+            
+            // Lưu vào lịch sử đã dùng
+            usedIndexes.push(randomIndex);
+            localStorage.setItem(storageKey, JSON.stringify(usedIndexes));
+            
+            return quotes[randomIndex];
+        }
+
         function renderContent(items) {
             contentArea.innerHTML = '';
             
@@ -717,12 +837,14 @@
                 const isExpanded = subject === 'Công Cụ';
                 const subjectColor = getSubjectColor(subject);
 
+                const quote = getSubjectQuote(subject);
                 const headerHTML = `
                     <div class="flex items-center justify-between cursor-pointer py-2.5 px-4 bg-white/50 border border-slate-200/60 rounded-2xl hover:bg-white hover:shadow-sm transition-all mb-3" onclick="toggleSection('${contentId}', this)">
-                        <div class="flex items-center gap-3">
-                            <div class="h-5 w-1 rounded-full" style="background-color: ${subjectColor}"></div>
-                            <h2 class="text-base font-display font-bold text-slate-800">${subject}</h2>
-                            <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">${totalItems}</span>
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="h-5 w-1 rounded-full shrink-0" style="background-color: ${subjectColor}"></div>
+                            <h2 class="text-base font-display font-bold text-slate-800 shrink-0">${subject}</h2>
+                            <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full shrink-0">${totalItems}</span>
+                            <span class="hidden lg:block text-[11px] italic text-slate-400 truncate ml-2 font-medium">"${quote}"</span>
                         </div>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300 transform" style="${isExpanded ? 'transform: rotate(180deg)' : ''}" id="icon-${contentId}"></i>
                     </div>
