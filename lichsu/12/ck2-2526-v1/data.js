@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – LỊCH SỬ 12 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Việt Nam giai đoạn 1954-1975, Việt Nam giai đoạn 1975-hiện nay (Công cuộc Đổi mới)
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Lịch Sử 12 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── VIỆT NAM GIAI ĐOẠN 1954 - 1975 ───────────────────────────────
         {
             type: "multiple",
             question: "Đặc điểm lớn nhất của tình hình Việt Nam sau Hiệp định Giơ-ne-vơ năm 1954 là gì?",
@@ -41,7 +54,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Phong trào Đồng khởi (1959-1960) ở miền Nam nổ ra mạnh mẽ nhất tại tỉnh nào?",
-            options: ["Bình Định", "Quảng Ngãi", "Bến Tre", "Mĩ Tho"],
+            options: [
+                "Bình Định",
+                "Quảng Ngãi",
+                "Bến Tre",
+                "Mĩ Tho"
+            ],
             correct: 2,
             explanation: "Bến Tre (đặc biệt là huyện Mỏ Cày) là quê hương của phong trào Đồng khởi, tiêu biểu cho sự nổi dậy của quần chúng."
         },
@@ -60,7 +78,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Chiến thắng nào của quân dân miền Nam đã làm phá sản hoàn toàn chiến lược 'Chiến tranh đặc biệt' của Mĩ?",
-            options: ["Chiến thắng Ấp Bắc", "Chiến thắng Bình Giã", "Chiến thắng Đồng Xoài và Ba Gia", "Tổng tiến công Tết Mậu Thân 1968"],
+            options: [
+                "Chiến thắng Ấp Bắc",
+                "Chiến thắng Bình Giã",
+                "Chiến thắng Đồng Xoài và Ba Gia",
+                "Tổng tiến công Tết Mậu Thân 1968"
+            ],
             correct: 2,
             explanation: "Sau hàng loạt chiến thắng từ Ấp Bắc, Bình Giã, Ba Gia, Đồng Xoài... chiến lược Chiến tranh đặc biệt bị phá sản hoàn toàn (1965)."
         },
@@ -115,7 +138,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Chiến dịch nào mở màn cho cuộc Tổng tiến công và nổi dậy Xuân 1975?",
-            options: ["Chiến dịch Tây Nguyên", "Chiến dịch Huế - Đà Nẵng", "Chiến dịch Hồ Chí Minh", "Chiến dịch Phước Long"],
+            options: [
+                "Chiến dịch Tây Nguyên",
+                "Chiến dịch Huế - Đà Nẵng",
+                "Chiến dịch Hồ Chí Minh",
+                "Chiến dịch Phước Long"
+            ],
             correct: 0,
             explanation: "Chiến dịch Tây Nguyên (bắt đầu bằng trận Buôn Ma Thuột tháng 3/1975) là chiến dịch mở màn và tạo bước ngoặt của cuộc Tổng tiến công."
         },
@@ -131,7 +159,6 @@ window.quizData = {
             correct: 0,
             explanation: "Lúc 11h30 ngày 30/4/1975, lá cờ cách mạng tung bay trên nóc Dinh Độc Lập."
         },
-        // ── VIỆT NAM GIAI ĐOẠN 1975 - 2000 (CÔNG CUỘC ĐỔI MỚI) ─────────
         {
             type: "multiple",
             question: "Sau Đại thắng mùa Xuân 1975, nhiệm vụ cấp bách hàng đầu của nước ta là gì?",
@@ -145,174 +172,73 @@ window.quizData = {
             explanation: "Non sông đã liền một dải nhưng vẫn tồn tại 2 chính quyền, nên thống nhất về mặt nhà nước là yêu cầu tất yếu và cấp bách."
         },
         {
-            type: "multiple",
-            question: "Đại hội đại biểu toàn quốc lần thứ mấy của Đảng đã đề ra đường lối Đổi mới toàn diện đất nước?",
-            options: ["Đại hội IV (1976)", "Đại hội V (1982)", "Đại hội VI (1986)", "Đại hội VII (1991)"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Đại hội đại biểu toàn quốc lần thứ mấy của Đảng đã đề ra đường lối Đổi mới toàn diện đất nước?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Đại hội IV (1976)",
+                "Đại hội V (1982)",
+                "Đại hội VI (1986)",
+                "Đại hội VII (1991)"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Đại hội VI (tháng 12/1986) đánh dấu bước ngoặt lịch sử khi Đảng ta khởi xướng công cuộc Đổi mới."
         },
         {
-            type: "multiple",
-            question: "Trọng tâm của công cuộc Đổi mới ở Việt Nam (khởi xướng năm 1986) được xác định là lĩnh vực nào?",
-            options: ["Chính trị", "Kinh tế", "Văn hóa", "Ngoại giao"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Trọng tâm của công cuộc Đổi mới ở Việt Nam (khởi xướng năm 1986) được xác định là lĩnh vực nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Chính trị",
+                "Kinh tế",
+                "Văn hóa",
+                "Ngoại giao"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Đổi mới toàn diện, nhưng trọng tâm là Đổi mới kinh tế, đổi mới chính trị phải tiến hành từng bước vững chắc."
         },
         {
-            type: "multiple",
-            question: "Chủ trương đổi mới kinh tế của Đảng (1986) nhằm xóa bỏ cơ chế quản lí nào?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Chủ trương đổi mới kinh tế của Đảng (1986) nhằm xóa bỏ cơ chế quản lí nào?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Cơ chế thị trường định hướng XHCN",
                 "Cơ chế tập trung quan liêu, bao cấp",
                 "Cơ chế tự chủ tài chính",
                 "Cơ chế hạch toán kinh doanh"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Xóa bỏ cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp, chuyển sang nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường."
         },
         {
-            type: "multiple",
-            question: "Thành tựu kinh tế nổi bật nhất của Việt Nam trong những năm đầu Đổi mới (1986 - 1990) là gì?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Thành tựu kinh tế nổi bật nhất của Việt Nam trong những năm đầu Đổi mới (1986 - 1990) là gì?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Trở thành nước công nghiệp hóa",
                 "Trở thành một trong những nước xuất khẩu gạo hàng đầu thế giới (từ chỗ thiếu ăn)",
                 "Sản xuất ô tô xuất khẩu sang Mĩ",
                 "Đạt GDP bình quân đầu người cao nhất Đông Nam Á"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Năm 1989, Việt Nam lần đầu tiên xuất khẩu được 1,5 triệu tấn gạo, giải quyết vững chắc vấn đề lương thực."
         },
-        {
-            type: "multiple",
-            question: "Về đối ngoại, từ năm 1986, Đảng ta thực hiện đường lối gì?",
-            options: [
-                "Chỉ quan hệ với các nước xã hội chủ nghĩa",
-                "Đóng cửa, tự cung tự cấp",
-                "Đa dạng hóa, đa phương hóa quan hệ quốc tế, 'Việt Nam muốn là bạn với tất cả các nước'",
-                "Chỉ hợp tác với các nước láng giềng"
-            ],
-            correct: 2,
-            explanation: "Đường lối đối ngoại rộng mở, phá thế bao vây cấm vận."
-        },
-        {
-            type: "multiple",
-            question: "Sự kiện ngoại giao lịch sử diễn ra vào tháng 7/1995 là:",
-            options: [
-                "Việt Nam gia nhập ASEAN và bình thường hóa quan hệ với Mĩ",
-                "Việt Nam gia nhập Liên hợp quốc",
-                "Việt Nam gia nhập WTO",
-                "Việt Nam kí Hiệp định thương mại tự do với EU"
-            ],
-            correct: 0,
-            explanation: "Tháng 7/1995, Việt Nam chính thức trở thành thành viên thứ 7 của ASEAN và bình thường hóa quan hệ ngoại giao với Hoa Kỳ."
-        },
-        {
-            type: "multiple",
-            question: "Trong công cuộc Đổi mới, tại sao Đảng ta phải kết hợp chặt chẽ ngay từ đầu đổi mới kinh tế với đổi mới chính trị?",
-            options: [
-                "Vì chính trị quyết định hoàn toàn kinh tế",
-                "Đổi mới kinh tế sẽ tạo điều kiện vật chất để đổi mới chính trị, và ngược lại đổi mới chính trị sẽ thúc đẩy đổi mới kinh tế",
-                "Vì các thế lực thù địch yêu cầu như vậy",
-                "Để nhanh chóng thay đổi chế độ xã hội"
-            ],
-            correct: 1,
-            explanation: "Mối quan hệ biện chứng: lấy đổi mới kinh tế làm trọng tâm nhưng không tách rời việc đổi mới tổ chức và phương thức hoạt động của hệ thống chính trị."
-        },
-        {
-            type: "multiple",
-            question: "Thành tựu nào sau đây KHÔNG phải là kết quả của công cuộc Đổi mới (tính đến năm 2000)?",
-            options: [
-                "Nền kinh tế thoát khỏi khủng hoảng nghiêm trọng",
-                "Đời sống vật chất, tinh thần của nhân dân được cải thiện rõ rệt",
-                "Phá thế bao vây cấm vận, hội nhập quốc tế",
-                "Hoàn thành triệt để công nghiệp hóa, trở thành nước công nghiệp phát triển cao"
-            ],
-            correct: 3,
-            explanation: "Việt Nam vẫn đang trong quá trình CNH-HĐH, đến năm 2000 chưa thể trở thành nước công nghiệp phát triển cao."
-        },
-        // ── KHÁC ─────────────────────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Khẩu hiệu nào thể hiện quyết tâm đánh Mĩ của thanh niên miền Bắc trong thời kì chống Chiến tranh phá hoại?",
-            options: ["Ba sẵn sàng", "Ba đảm đang", "Thi đua ái quốc", "Diệt giặc dốt"] ,
-            correct: 0,
-            explanation: "Phong trào 'Ba sẵn sàng' của thanh niên và 'Ba đảm đang' của phụ nữ là biểu tượng của hậu phương miền Bắc."
-        },
-        {
-            type: "multiple",
-            question: "Chiến dịch Tây Nguyên (tháng 3/1975) thành công vang dội chủ yếu nhờ vào nghệ thuật quân sự nào?",
-            options: [
-                "Đánh vu hồi",
-                "Nghệ thuật nghi binh lừa địch, tạo yếu tố bất ngờ",
-                "Đánh phòng ngự",
-                "Thủy chiến"
-            ],
-            correct: 1,
-            explanation: "Ta nghi binh ở Bắc Tây Nguyên (Pleiku, Kon Tum) nhưng lại bất ngờ đánh hiểm vào Nam Tây Nguyên (Buôn Ma Thuột)."
-        },
-        {
-            type: "multiple",
-            question: "Chiến lược 'Việt Nam hóa chiến tranh' của Mĩ được tiến hành sau thất bại của chiến lược nào?",
-            options: ["Chiến tranh đơn phương", "Chiến tranh đặc biệt", "Chiến tranh cục bộ", "Chiến tranh phá hoại miền Bắc"],
-            correct: 2,
-            explanation: "Sau thất bại của Chiến tranh cục bộ (1968), Tổng thống Nixon đề ra 'Việt Nam hóa chiến tranh' (rút dần quân Mĩ, tăng cường quân Sài Gòn)."
-        },
-        {
-            type: "multiple",
-            question: "Đâu là nguyên nhân cơ bản nhất quyết định thắng lợi của cuộc kháng chiến chống Mĩ cứu nước (1954-1975)?",
-            options: [
-                "Sự giúp đỡ to lớn của Liên Xô, Trung Quốc",
-                "Sự đoàn kết của ba dân tộc Đông Dương",
-                "Sự lãnh đạo đúng đắn, sáng suốt của Đảng Cộng sản Việt Nam với đường lối chính trị, quân sự độc lập tự chủ",
-                "Mĩ gặp khó khăn về kinh tế ở trong nước"
-            ],
-            correct: 2,
-            explanation: "Sự lãnh đạo của Đảng là nhân tố quyết định hàng đầu, tập hợp sức mạnh toàn dân tộc kết hợp sức mạnh thời đại."
-        },
-        {
-            type: "multiple",
-            question: "Tên gọi chính thức 'Nước Cộng hòa Xã hội Chủ nghĩa Việt Nam' được thông qua tại sự kiện nào?",
-            options: [
-                "Kì họp thứ nhất Quốc hội khóa VI (tháng 7/1976)",
-                "Đại hội Đảng lần thứ IV (tháng 12/1976)",
-                "Ngày miền Nam hoàn toàn giải phóng (30/4/1975)",
-                "Hiệp định Paris (1973)"
-            ],
-            correct: 0,
-            explanation: "Kì họp thứ nhất Quốc hội khóa VI đã hoàn thành thống nhất đất nước về mặt nhà nước, quyết định đổi tên nước."
-        },
-        {
-            type: "multiple",
-            question: "Nội dung nào phản ánh KHÔNG đúng hoàn cảnh của Việt Nam trước khi bước vào thời kì Đổi mới (1986)?",
-            options: [
-                "Đất nước lâm vào khủng hoảng kinh tế - xã hội trầm trọng",
-                "Lạm phát phi mã, đời sống nhân dân vô cùng khó khăn",
-                "Bị các nước đế quốc bao vây, cấm vận",
-                "Kinh tế tăng trưởng rất cao, liên tục đạt hai con số"
-            ],
-            correct: 3,
-            explanation: "Trước Đổi mới, kinh tế Việt Nam đình đốn, lạm phát có lúc lên tới 774% (1986)."
-        },
-        {
-            type: "multiple",
-            question: "Hiệp hội các quốc gia Đông Nam Á (ASEAN) được thành lập vào năm nào?",
-            options: ["1967", "1977", "1995", "1999"],
-            correct: 0,
-            explanation: "ASEAN được thành lập ngày 8/8/1967 tại Bangkok (Thái Lan)."
-        },
-        {
-            type: "multiple",
-            question: "Trong đường lối Đổi mới kinh tế, Đảng ta chủ trương xây dựng nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường, nhưng phải có đặc điểm gì cốt lõi?",
-            options: [
-                "Tự do tuyệt đối",
-                "Có sự quản lí của Nhà nước theo định hướng xã hội chủ nghĩa",
-                "Chỉ dựa vào đầu tư nước ngoài",
-                "Phụ thuộc hoàn toàn vào nông nghiệp"
-            ],
-            correct: 1,
-            explanation: "Định hướng XHCN là đặc điểm khác biệt và cốt lõi trong nền kinh tế thị trường của Việt Nam."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Vì sao Đảng và Nhà nước ta phải tiến hành đường lối Đổi mới đất nước từ năm 1986? Nêu nội dung trọng tâm của công cuộc đổi mới về kinh tế.",

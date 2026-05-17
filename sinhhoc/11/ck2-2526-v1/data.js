@@ -1,218 +1,272 @@
-// data.js – KIỂM TRA CUỐI KÌ II – SINH HỌC 11 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung: Sinh trưởng & Phát triển, Sinh sản, Cơ thể sinh vật là một thể thống nhất
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 50 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Sinh Học 11 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 3000,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── SINH TRƯỞNG & PHÁT TRIỂN ──────────────────────────────────────────────
         {
             type: "multiple",
             question: "Sinh trưởng ở thực vật là:",
-            options: ["Quá trình tăng về kích thước (chiều dài, bề mặt, thể tích) của cơ thể do tăng số lượng và kích thước tế bào", "Sự thay đổi về hình thái của cây trong vòng đời", "Quá trình ra hoa tạo quả", "Sự phát sinh các cơ quan mới của thực vật"],
+            options: [
+                "Quá trình tăng về kích thước (chiều dài, bề mặt, thể tích) của cơ thể do tăng số lượng và kích thước tế bào",
+                "Sự thay đổi về hình thái của cây trong vòng đời",
+                "Quá trình ra hoa tạo quả",
+                "Sự phát sinh các cơ quan mới của thực vật"
+            ],
             correct: 0,
             explanation: "Sinh trưởng là sự tăng lên về kích thước và khối lượng của cơ thể do sự tăng số lượng và kích thước tế bào."
         },
         {
             type: "multiple",
             question: "Mô phân sinh là nhóm các tế bào:",
-            options: ["Chưa phân hóa, duy trì được khả năng phân chia", "Đã phân hóa hoàn toàn, thực hiện chức năng chuyên biệt", "Chỉ có ở rễ cây", "Đã ngừng phân chia"],
+            options: [
+                "Chưa phân hóa, duy trì được khả năng phân chia",
+                "Đã phân hóa hoàn toàn, thực hiện chức năng chuyên biệt",
+                "Chỉ có ở rễ cây",
+                "Đã ngừng phân chia"
+            ],
             correct: 0,
             explanation: "Mô phân sinh gồm các tế bào chưa phân hóa, có khả năng phân chia liên tục tạo ra tế bào mới."
         },
         {
             type: "multiple",
             question: "Sinh trưởng sơ cấp ở thực vật có đặc điểm:",
-            options: ["Làm thân và rễ to ra, do mô phân sinh bên hoạt động", "Làm thân và rễ dài ra, do mô phân sinh đỉnh hoạt động", "Chỉ xảy ra ở cây Hai lá mầm", "Là sự sinh trưởng của cành cây"],
+            options: [
+                "Làm thân và rễ to ra, do mô phân sinh bên hoạt động",
+                "Làm thân và rễ dài ra, do mô phân sinh đỉnh hoạt động",
+                "Chỉ xảy ra ở cây Hai lá mầm",
+                "Là sự sinh trưởng của cành cây"
+            ],
             correct: 1,
             explanation: "Sinh trưởng sơ cấp diễn ra tại mô phân sinh đỉnh, làm cho thân và rễ dài ra."
         },
         {
             type: "multiple",
             question: "Phytohormone (hormone thực vật) là gì?",
-            options: ["Các chất hóa học do con người tổng hợp để kích thích cây", "Các chất hữu cơ do thực vật tiết ra có tác dụng điều hòa hoạt động sống", "Enzyme xúc tác các phản ứng trong cây", "Chất dinh dưỡng khoáng từ đất"],
+            options: [
+                "Các chất hóa học do con người tổng hợp để kích thích cây",
+                "Các chất hữu cơ do thực vật tiết ra có tác dụng điều hòa hoạt động sống",
+                "Enzyme xúc tác các phản ứng trong cây",
+                "Chất dinh dưỡng khoáng từ đất"
+            ],
             correct: 1,
             explanation: "Phytohormone là các chất hữu cơ do cơ thể thực vật tổng hợp, có vai trò điều hòa các hoạt động sinh trưởng và phát triển."
         },
         {
             type: "multiple",
             question: "Nhóm hormone nào sau đây thuộc nhóm kích thích sinh trưởng ở thực vật?",
-            options: ["Auxin, Gibberellin, Cytokinin", "Abscisic acid, Ethylene", "Auxin, Ethylene", "Gibberellin, Abscisic acid"],
+            options: [
+                "Auxin, Gibberellin, Cytokinin",
+                "Abscisic acid, Ethylene",
+                "Auxin, Ethylene",
+                "Gibberellin, Abscisic acid"
+            ],
             correct: 0,
             explanation: "Hormone kích thích gồm Auxin, Gibberellin, Cytokinin. Hormone ức chế gồm Abscisic acid và Ethylene."
         },
         {
             type: "multiple",
             question: "Hormone nào có vai trò chính trong việc làm rụng lá và chín quả?",
-            options: ["Auxin", "Cytokinin", "Ethylene", "Gibberellin"],
+            options: [
+                "Auxin",
+                "Cytokinin",
+                "Ethylene",
+                "Gibberellin"
+            ],
             correct: 2,
             explanation: "Ethylene là hormone dạng khí kích thích sự rụng lá, rụng quả và thúc đẩy quả chín."
         },
         {
             type: "multiple",
             question: "Sinh trưởng và phát triển của động vật qua biến thái hoàn toàn có đặc điểm:",
-            options: ["Con non giống hệt con trưởng thành", "Con non có hình thái, cấu tạo và sinh lý rất khác con trưởng thành", "Chỉ qua giai đoạn lột xác nhẹ", "Con non gần giống con trưởng thành nhưng chưa hoàn thiện"],
+            options: [
+                "Con non giống hệt con trưởng thành",
+                "Con non có hình thái, cấu tạo và sinh lý rất khác con trưởng thành",
+                "Chỉ qua giai đoạn lột xác nhẹ",
+                "Con non gần giống con trưởng thành nhưng chưa hoàn thiện"
+            ],
             correct: 1,
             explanation: "Biến thái hoàn toàn (như ở bướm, ếch) thì ấu trùng rất khác con trưởng thành, phải qua giai đoạn trung gian (nhộng) để lột xác."
         },
         {
             type: "multiple",
             question: "Quá trình biến thái ở ếch được điều hòa chủ yếu bởi hormone nào?",
-            options: ["Tiroxin", "GH (Hormone sinh trưởng)", "Testosterone", "Estrogen"],
+            options: [
+                "Tiroxin",
+                "GH (Hormone sinh trưởng)",
+                "Testosterone",
+                "Estrogen"
+            ],
             correct: 0,
             explanation: "Thyroxine (tiroxin) do tuyến giáp tiết ra kích thích sự biến thái từ nòng nọc thành ếch."
         },
         {
             type: "multiple",
             question: "Ở người, hormone sinh trưởng (GH) do tuyến nào tiết ra?",
-            options: ["Tuyến giáp", "Tuyến tụy", "Tuyến yên", "Tuyến sinh dục"],
+            options: [
+                "Tuyến giáp",
+                "Tuyến tụy",
+                "Tuyến yên",
+                "Tuyến sinh dục"
+            ],
             correct: 2,
             explanation: "Hormone GH do thùy trước tuyến yên tiết ra, kích thích phân chia tế bào, tăng trưởng xương."
         },
-        // ── SINH SẢN ───────────────────────────────────────────────────
         {
             type: "multiple",
             question: "Sinh sản vô tính là hình thức sinh sản:",
-            options: ["Có sự kết hợp giữa giao tử đực và giao tử cái", "Không có sự kết hợp giữa giao tử đực và giao tử cái, cơ thể con sinh ra từ một phần của cơ thể mẹ", "Chỉ xảy ra ở động vật bậc thấp", "Tạo ra các cá thể có sự đa dạng di truyền cao"],
+            options: [
+                "Có sự kết hợp giữa giao tử đực và giao tử cái",
+                "Không có sự kết hợp giữa giao tử đực và giao tử cái, cơ thể con sinh ra từ một phần của cơ thể mẹ",
+                "Chỉ xảy ra ở động vật bậc thấp",
+                "Tạo ra các cá thể có sự đa dạng di truyền cao"
+            ],
             correct: 1,
             explanation: "Sinh sản vô tính tạo ra con cái mang bộ NST giống hệt mẹ, không có sự thụ tinh."
         },
         {
             type: "multiple",
             question: "Ở thực vật, hình thức sinh sản sinh dưỡng tự nhiên bao gồm:",
-            options: ["Sinh sản bằng thân rễ, thân củ, lá", "Giâm cành, chiết cành", "Nuôi cấy mô tế bào", "Ghép cành"],
+            options: [
+                "Sinh sản bằng thân rễ, thân củ, lá",
+                "Giâm cành, chiết cành",
+                "Nuôi cấy mô tế bào",
+                "Ghép cành"
+            ],
             correct: 0,
             explanation: "Sinh sản từ các cơ quan sinh dưỡng như lá, rễ, thân là tự nhiên. Giâm, chiết, ghép, nuôi cấy mô là nhân tạo."
         },
         {
             type: "multiple",
             question: "Sinh sản hữu tính có ưu điểm hơn sinh sản vô tính là:",
-            options: ["Duy trì nguyên vẹn các đặc điểm của loài", "Tốc độ sinh sản rất nhanh", "Tạo ra sự đa dạng di truyền, sinh vật dễ thích nghi với môi trường thay đổi", "Tiết kiệm năng lượng"],
+            options: [
+                "Duy trì nguyên vẹn các đặc điểm của loài",
+                "Tốc độ sinh sản rất nhanh",
+                "Tạo ra sự đa dạng di truyền, sinh vật dễ thích nghi với môi trường thay đổi",
+                "Tiết kiệm năng lượng"
+            ],
             correct: 2,
             explanation: "Nhờ sự tổ hợp vật chất di truyền (qua giảm phân và thụ tinh) tạo ra biến dị tổ hợp, giúp tăng khả năng thích nghi."
         },
         {
-            type: "multiple",
-            question: "Cơ quan sinh sản hữu tính của thực vật Hạt kín là:",
-            options: ["Rễ", "Thân", "Hoa", "Lá"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Cơ quan sinh sản hữu tính của thực vật Hạt kín là:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Rễ",
+                "Thân",
+                "Hoa",
+                "Lá"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Hoa là cơ quan sinh sản hữu tính của thực vật Hạt kín."
         },
         {
-            type: "multiple",
-            question: "Hạt phấn được hình thành ở bộ phận nào của hoa?",
-            options: ["Bầu nhụy", "Bao phấn", "Vòi nhụy", "Đài hoa"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Hạt phấn được hình thành ở bộ phận nào của hoa?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Bầu nhụy",
+                "Bao phấn",
+                "Vòi nhụy",
+                "Đài hoa"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Hạt phấn chứa giao tử đực, được hình thành trong bao phấn của nhị."
         },
         {
-            type: "multiple",
-            question: "Ở thực vật Hạt kín, quá trình thụ tinh kép là quá trình:",
-            options: ["Hai giao tử đực cùng thụ tinh cho một tế bào trứng", "Một giao tử đực thụ tinh với trứng, một giao tử đực thụ tinh với nhân cực", "Hai hạt phấn thụ tinh cho hai noãn", "Giao tử đực kết hợp với hai tế bào kèm"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Ở thực vật Hạt kín, quá trình thụ tinh kép là quá trình:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Hai giao tử đực cùng thụ tinh cho một tế bào trứng",
+                "Một giao tử đực thụ tinh với trứng, một giao tử đực thụ tinh với nhân cực",
+                "Hai hạt phấn thụ tinh cho hai noãn",
+                "Giao tử đực kết hợp với hai tế bào kèm"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Thụ tinh kép: 1 tinh tử + trứng -> hợp tử (2n); 1 tinh tử + nhân cực (2n) -> phôi nhũ (3n)."
         },
         {
-            type: "multiple",
-            question: "Sau khi thụ tinh ở thực vật Hạt kín, noãn phát triển thành:",
-            options: ["Quả", "Hạt", "Phôi nhũ", "Vỏ quả"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Sau khi thụ tinh ở thực vật Hạt kín, noãn phát triển thành:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Quả",
+                "Hạt",
+                "Phôi nhũ",
+                "Vỏ quả"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Sau thụ tinh, noãn phát triển thành hạt, bầu nhụy phát triển thành quả."
         },
         {
-            type: "multiple",
-            question: "Quả giả (như quả dứa, quả táo) được hình thành từ:",
-            options: ["Chỉ từ bầu nhụy", "Một bộ phận khác của hoa ngoài bầu nhụy (ví dụ đế hoa)", "Lá đài", "Cánh hoa"],
-            correct: 1,
+            type: "short",
+            question: "Quả giả (như quả dứa, quả táo) được hình thành từ: (Lưu ý: Đáp án đúng gốc là \"Một bộ phận khác của hoa ngoài bầu nhụy (ví dụ đế hoa)\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Quả giả là quả có thêm sự tham gia của đế hoa hoặc đài hoa phát triển thành phần thịt quả."
         },
         {
-            type: "multiple",
-            question: "Hình thức sinh sản vô tính nào phổ biến ở Thủy tức và San hô?",
-            options: ["Phân đôi", "Nảy chồi", "Phân mảnh", "Trinh sinh"],
-            correct: 1,
+            type: "short",
+            question: "Hình thức sinh sản vô tính nào phổ biến ở Thủy tức và San hô? (Lưu ý: Đáp án đúng gốc là \"Nảy chồi\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Thủy tức sinh sản vô tính chủ yếu bằng hình thức nảy chồi."
         },
         {
-            type: "multiple",
-            question: "Trinh sinh (trinh sản) là hiện tượng:",
-            options: ["Trứng không được thụ tinh phát triển thành cá thể mới", "Cơ thể con tự tách từ cơ thể mẹ", "Con sinh ra từ bào tử", "Cơ quan sinh dục đực và cái cùng nằm trên một cơ thể"],
-            correct: 0,
+            type: "short",
+            question: "Trinh sinh (trinh sản) là hiện tượng: (Lưu ý: Đáp án đúng gốc là \"Trứng không được thụ tinh phát triển thành cá thể mới\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Trinh sinh (như ở ong đực) là trứng không thụ tinh (n) phân chia phát triển thành cá thể."
         },
         {
-            type: "multiple",
-            question: "Động vật có xương sống (trừ một số loài đặc biệt) chủ yếu sinh sản bằng hình thức:",
-            options: ["Phân mảnh", "Trinh sinh", "Sinh sản hữu tính", "Nảy chồi"],
-            correct: 2,
+            type: "short",
+            question: "Động vật có xương sống (trừ một số loài đặc biệt) chủ yếu sinh sản bằng hình thức: (Lưu ý: Đáp án đúng gốc là \"Sinh sản hữu tính\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Hầu hết động vật bậc cao đều sinh sản hữu tính."
         },
-        {
-            type: "multiple",
-            question: "Thụ tinh ngoài là hình thức thụ tinh:",
-            options: ["Trứng và tinh trùng gặp nhau bên ngoài cơ thể cái (trong môi trường nước)", "Trứng và tinh trùng gặp nhau trong ống dẫn trứng của con cái", "Chỉ xảy ra ở động vật trên cạn", "Không cần môi trường nước"],
-            correct: 0,
-            explanation: "Thụ tinh ngoài phổ biến ở cá, ếch nhái, trứng và tinh trùng kết hợp trong môi trường nước."
-        },
-        {
-            type: "multiple",
-            question: "Ưu điểm của thai sinh so với đẻ trứng là:",
-            options: ["Đẻ được nhiều con một lúc", "Phôi thai được bảo vệ và nuôi dưỡng tốt hơn trong cơ thể mẹ", "Không tốn năng lượng của cơ thể mẹ", "Tốc độ sinh sản nhanh hơn"],
-            correct: 1,
-            explanation: "Thai sinh giúp phôi được bảo vệ và lấy dinh dưỡng trực tiếp từ mẹ qua nhau thai nên tỉ lệ sống sót cao."
-        },
-        {
-            type: "multiple",
-            question: "Hormone nào kích thích nang trứng chín và rụng ở phụ nữ?",
-            options: ["Testosterone", "Progesterone", "LH và FSH", "Insulin"],
-            correct: 2,
-            explanation: "FSH kích thích nang trứng phát triển, LH gây rụng trứng."
-        },
-        {
-            type: "multiple",
-            question: "Quá trình thụ tinh ở người thường diễn ra tại:",
-            options: ["Buồng trứng", "1/3 phía ngoài ống dẫn trứng", "Tử cung", "Âm đạo"],
-            correct: 1,
-            explanation: "Tinh trùng và trứng thường gặp nhau và thụ tinh tại 1/3 ngoài của ống dẫn trứng (vòi trứng)."
-        },
-        // ── CƠ THỂ LÀ THỂ THỐNG NHẤT ─────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Tính thống nhất của cơ thể sinh vật được thể hiện ở:",
-            options: ["Mối quan hệ mật thiết giữa các cơ quan, hệ cơ quan trong cơ thể", "Các cơ quan hoạt động độc lập không liên quan đến nhau", "Chỉ có hệ thần kinh điều khiển mọi hoạt động", "Mỗi tế bào tự điều chỉnh hoạt động sống riêng biệt"],
-            correct: 0,
-            explanation: "Cơ thể là một hệ thống mở, tự điều chỉnh, các hệ cơ quan phối hợp nhịp nhàng tạo nên thể thống nhất."
-        },
-        {
-            type: "multiple",
-            question: "Trong cơ thể thực vật, quá trình quang hợp có mối liên hệ trực tiếp với quá trình nào để tạo ra năng lượng ATP?",
-            options: ["Cảm ứng", "Hô hấp", "Sinh sản", "Vận động"],
-            correct: 1,
-            explanation: "Sản phẩm của quang hợp (đường, O2) là nguyên liệu cho hô hấp tế bào để giải phóng ATP."
-        },
-        {
-            type: "multiple",
-            question: "Hệ thống nào đóng vai trò chủ đạo trong việc điều hòa phối hợp hoạt động của các cơ quan ở động vật bậc cao?",
-            options: ["Hệ tiêu hóa và hệ tuần hoàn", "Hệ tuần hoàn và hệ hô hấp", "Hệ thần kinh và hệ nội tiết", "Hệ bài tiết và hệ sinh dục"],
-            correct: 2,
-            explanation: "Hệ thần kinh và hệ nội tiết đảm nhiệm vai trò điều hòa, điều khiển các hoạt động sống, duy trì hằng tính nội môi."
-        },
-        {
-            type: "multiple",
-            question: "Khi vận động mạnh (chạy bộ), hệ cơ quan nào phải tăng cường hoạt động để cung cấp đủ O2 và thải CO2?",
-            options: ["Hệ tuần hoàn và hệ hô hấp", "Hệ tiêu hóa và hệ bài tiết", "Hệ nội tiết và hệ sinh dục", "Hệ thần kinh và hệ miễn dịch"],
-            correct: 0,
-            explanation: "Hệ hô hấp tăng nhịp thở để lấy O2, hệ tuần hoàn tăng nhịp tim để bơm máu chở O2 đến cơ bắp."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "So sánh sinh sản vô tính và sinh sản hữu tính ở thực vật về cơ sở tế bào học và đặc điểm di truyền của thế hệ con.",

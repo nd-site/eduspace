@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – TIN HỌC 11 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Cơ sở dữ liệu, SQL cơ bản (Khái niệm, Bảng, Truy vấn)
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Tin Học 11 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── KHÁI NIỆM VỀ CƠ SỞ DỮ LIỆU (CSDL) ────────────────────────────
         {
             type: "multiple",
             question: "Cơ sở dữ liệu (CSDL) là gì?",
@@ -74,11 +87,15 @@ window.quizData = {
             correct: 1,
             explanation: "Toàn vẹn dữ liệu đảm bảo dữ liệu nhập vào phải hợp lệ, chính xác, nhất quán."
         },
-        // ── CẤU TRÚC BẢNG (TABLE) VÀ CÁC THAO TÁC CƠ BẢN ──────────────
         {
             type: "multiple",
             question: "Trong mô hình CSDL quan hệ, dữ liệu được tổ chức dưới dạng:",
-            options: ["Cây (Tree)", "Đồ thị (Graph)", "Các bảng (Table) 2 chiều gồm cột và dòng", "Các tập tin văn bản liên tiếp"],
+            options: [
+                "Cây (Tree)",
+                "Đồ thị (Graph)",
+                "Các bảng (Table) 2 chiều gồm cột và dòng",
+                "Các tập tin văn bản liên tiếp"
+            ],
             correct: 2,
             explanation: "Mô hình quan hệ (Relational Model) tổ chức dữ liệu thành các bảng."
         },
@@ -130,7 +147,6 @@ window.quizData = {
             correct: 2,
             explanation: "Dữ liệu lặp lại nhiều lần gây tốn dung lượng và dễ xảy ra dị thường khi cập nhật."
         },
-        // ── NGÔN NGỮ SQL CƠ BẢN (TẠO BẢNG & TRUY VẤN) ───────────────────
         {
             type: "multiple",
             question: "SQL là viết tắt của:",
@@ -146,164 +162,83 @@ window.quizData = {
         {
             type: "multiple",
             question: "Lệnh SQL nào dùng để TẠO một bảng mới?",
-            options: ["MAKE TABLE", "CREATE TABLE", "ADD TABLE", "NEW TABLE"],
+            options: [
+                "MAKE TABLE",
+                "CREATE TABLE",
+                "ADD TABLE",
+                "NEW TABLE"
+            ],
             correct: 1,
             explanation: "Cú pháp: `CREATE TABLE ten_bang (...)`."
         },
         {
-            type: "multiple",
-            question: "Để LẤY (đọc) dữ liệu từ một bảng, ta dùng câu lệnh nào?",
-            options: ["GET", "OPEN", "SELECT", "PULL"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Để LẤY (đọc) dữ liệu từ một bảng, ta dùng câu lệnh nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "GET",
+                "OPEN",
+                "SELECT",
+                "PULL"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Lệnh `SELECT` dùng để truy vấn/lấy dữ liệu."
         },
         {
-            type: "multiple",
-            question: "Câu lệnh `SELECT * FROM HocSinh` có chức năng gì?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Câu lệnh `SELECT * FROM HocSinh` có chức năng gì?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Xóa toàn bộ dữ liệu bảng HocSinh",
                 "Chọn bảng HocSinh làm bảng mặc định",
                 "Lấy toàn bộ các cột và các dòng dữ liệu từ bảng HocSinh",
                 "Lấy một dòng bất kỳ từ bảng HocSinh"
             ],
-            correct: 2,
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Dấu `*` đại diện cho 'tất cả các cột'."
         },
         {
-            type: "multiple",
-            question: "Để THÊM một bản ghi (dòng) mới vào bảng, dùng lệnh nào?",
-            options: ["INSERT INTO", "ADD ROW", "UPDATE", "APPEND TO"],
-            correct: 0,
+            type: "truefalse",
+            question: "Xét nhận định sau: Để THÊM một bản ghi (dòng) mới vào bảng, dùng lệnh nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "INSERT INTO",
+                "ADD ROW",
+                "UPDATE",
+                "APPEND TO"
+            ],
+            correct: [
+                true,
+                false,
+                false,
+                false
+            ],
             explanation: "Cú pháp: `INSERT INTO ten_bang (cot1, cot2) VALUES (gt1, gt2)`."
         },
         {
-            type: "multiple",
-            question: "Lệnh SQL nào dùng để CẬP NHẬT (sửa đổi) dữ liệu đã có trong bảng?",
-            options: ["MODIFY", "UPDATE", "CHANGE", "ALTER"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Lệnh SQL nào dùng để CẬP NHẬT (sửa đổi) dữ liệu đã có trong bảng?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "MODIFY",
+                "UPDATE",
+                "CHANGE",
+                "ALTER"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Lệnh `UPDATE` đi kèm với `SET` và thường là `WHERE` để sửa dữ liệu."
         },
-        {
-            type: "multiple",
-            question: "Câu lệnh nào dùng để XÓA các bản ghi khỏi bảng?",
-            options: ["REMOVE", "DROP", "DELETE FROM", "CLEAR"],
-            correct: 2,
-            explanation: "`DELETE FROM bang WHERE...` dùng để xóa dòng. `DROP` dùng để xóa hẳn bảng/cấu trúc."
-        },
-        {
-            type: "multiple",
-            question: "Trong lệnh SELECT, mệnh đề nào dùng để ĐẶT ĐIỀU KIỆN lọc dữ liệu?",
-            options: ["WHERE", "FILTER", "CONDITION", "HAVING"],
-            correct: 0,
-            explanation: "`WHERE` dùng để thiết lập điều kiện lọc (VD: `WHERE DiemToan > 8`)."
-        },
-        {
-            type: "multiple",
-            question: "Mệnh đề ORDER BY trong SQL dùng để làm gì?",
-            options: [
-                "Nhóm các dòng có cùng giá trị",
-                "Sắp xếp kết quả truy vấn theo một hoặc nhiều cột",
-                "Lọc dữ liệu",
-                "Tính tổng dữ liệu"
-            ],
-            correct: 1,
-            explanation: "`ORDER BY cot ASC/DESC` dùng để sắp xếp tăng dần hoặc giảm dần."
-        },
-        {
-            type: "multiple",
-            question: "Toán tử nào được dùng để tìm kiếm chuỗi theo một mẫu (pattern) trong mệnh đề WHERE?",
-            options: ["MATCH", "LIKE", "EQUALS", "IN"],
-            correct: 1,
-            explanation: "`LIKE` dùng kết hợp với ký tự đại diện `%` hoặc `_`. VD: `LIKE 'Nguyễn%'`."
-        },
-        {
-            type: "multiple",
-            question: "Muốn sắp xếp kết quả truy vấn theo chiều GIẢM DẦN, ta dùng từ khóa nào sau ORDER BY?",
-            options: ["ASC", "DESC", "DOWN", "DEC"],
-            correct: 1,
-            explanation: "DESC (Descending) là giảm dần. ASC (Ascending) là tăng dần."
-        },
-        {
-            type: "multiple",
-            question: "Hàm nào trong SQL dùng để tính TỔNG các giá trị của một cột số?",
-            options: ["COUNT()", "MAX()", "SUM()", "TOTAL()"],
-            correct: 2,
-            explanation: "`SUM()` tính tổng; `COUNT()` đếm số lượng bản ghi."
-        },
-        {
-            type: "multiple",
-            question: "Làm thế nào để lấy các bản ghi có giá trị cột 'Lop' là '11A1' HOẶC '11A2'?",
-            options: [
-                "WHERE Lop = '11A1' AND Lop = '11A2'",
-                "WHERE Lop IN ('11A1', '11A2')",
-                "WHERE Lop EQUALS '11A1' OR '11A2'",
-                "WHERE Lop = '11A1, 11A2'"
-            ],
-            correct: 1,
-            explanation: "Có thể dùng `OR` (Lop='11A1' OR Lop='11A2') hoặc toán tử `IN`."
-        },
-        {
-            type: "multiple",
-            question: "Để đếm số lượng học sinh trong bảng 'HocSinh', câu lệnh nào ĐÚNG?",
-            options: [
-                "SELECT SUM(*) FROM HocSinh",
-                "SELECT COUNT(*) FROM HocSinh",
-                "SELECT NUMBER() FROM HocSinh",
-                "SELECT ALL FROM HocSinh"
-            ],
-            correct: 1,
-            explanation: "`COUNT(*)` đếm tổng số dòng (bản ghi) trong bảng."
-        },
-        // ── ỨNG DỤNG – PHÂN TÍCH NHẸ ──────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Việc cấp quyền cho người dùng A chỉ được XEM dữ liệu, người dùng B được THÊM dữ liệu thể hiện chức năng gì của DBMS?",
-            options: [
-                "Bảo mật và phân quyền truy cập",
-                "Sao lưu dữ liệu",
-                "Tối ưu hóa truy vấn",
-                "Phục hồi dữ liệu"
-            ],
-            correct: 0,
-            explanation: "DBMS cung cấp cơ chế phân quyền (Authorization) để đảm bảo bảo mật."
-        },
-        {
-            type: "multiple",
-            question: "Cú pháp `SELECT HoTen, NgaySinh FROM HocSinh` sẽ trả về:",
-            options: [
-                "Một bảng mới chứa tất cả các cột của bảng HocSinh",
-                "Một kết quả chỉ chứa hai cột HoTen và NgaySinh của tất cả học sinh",
-                "Lỗi cú pháp",
-                "Chỉ một học sinh đầu tiên trong bảng"
-            ],
-            correct: 1,
-            explanation: "Chỉ định danh sách cột sau SELECT sẽ chỉ hiển thị các cột đó."
-        },
-        {
-            type: "multiple",
-            question: "Lệnh SQL `UPDATE SanPham SET Gia = Gia * 1.1` sẽ làm gì?",
-            options: [
-                "Tăng giá của 1 sản phẩm lên 1.1 lần",
-                "Tăng giá của tất cả sản phẩm trong bảng lên 10%",
-                "Đặt giá của tất cả sản phẩm thành 1.1",
-                "Lỗi vì không có mệnh đề WHERE"
-            ],
-            correct: 1,
-            explanation: "Không có WHERE, lệnh UPDATE sẽ áp dụng cho toàn bộ các dòng trong bảng. Nhân với 1.1 nghĩa là tăng 10%."
-        },
-        {
-            type: "multiple",
-            question: "Tại sao không nên chọn cột 'Họ Tên' làm khóa chính?",
-            options: [
-                "Vì nó quá dài",
-                "Vì có thể có nhiều người trùng Họ Tên, vi phạm tính duy nhất của khóa chính",
-                "Vì nó chứa chữ cái",
-                "Vì tên có thể bị thay đổi"
-            ],
-            correct: 1,
-            explanation: "Khóa chính phải DUY NHẤT. Họ tên dễ bị trùng lặp nên không thể làm khóa chính (thường dùng Mã HS, CCCD...)."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Cho bảng Sach (MaSach, TenSach, TacGia, NamXuatBan, GiaTien).\nTrong đó MaSach là khóa chính.\n\na) Viết câu lệnh SQL để lấy tất cả thông tin của những cuốn sách xuất bản sau năm 2020.\nb) Viết câu lệnh SQL để sắp xếp danh sách các cuốn sách theo giá tiền giảm dần.",

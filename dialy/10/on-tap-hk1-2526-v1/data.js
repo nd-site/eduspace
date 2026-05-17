@@ -1,13 +1,36 @@
-// data.js - ĐỀ CƯƠNG ÔN TẬP KIỂM TRA CUỐI HỌC KÌ I - ĐỊA LÝ 10 (2025-2026)
-// Bao gồm toàn bộ câu hỏi trắc nghiệm, đúng/sai và tự luận từ tài liệu
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
 
 window.quizData = {
     title: "Ôn tập đầy đủ - Kiểm tra cuối Học kì I Địa lý 10 (2025-2026)",
     config: {
-        testDuration: 3600 // 60 phút - phù hợp kiểm tra đầy đủ
+        testDuration: 3600,
+        examLayout: {
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 2,
+                pointsPerQ: 1
+            }
+        }
     },
     questions: [
-        // TRẮC NGHIỆM NHIỀU LỰA CHỌN
         {
             type: "multiple",
             question: "Phát biểu nào sau đây đúng với lớp vỏ Trái Đất?",
@@ -165,281 +188,6 @@ window.quizData = {
             explanation: "Đáp án A. Gió Mậu dịch thổi từ áp cao chí tuyến về áp thấp xích đạo, tính chất chung là khô và ít mưa."
         },
         {
-            type: "multiple",
-            question: "Tính chất của gió Tây ôn đới là:",
-            options: [
-                "nóng ẩm.",
-                "lạnh khô.",
-                "khô.",
-                "ẩm."
-            ],
-            correct: 3,
-            points: 5,
-            explanation: "Đáp án D. Gió Tây ôn đới thổi qua bề mặt đại dương nên mang theo nhiều hơi ẩm."
-        },
-        {
-            type: "multiple",
-            question: "Từ xích đạo về cực có:",
-            options: [
-                "nhiệt độ trung bình năm giảm, biên độ nhiệt độ năm tăng.",
-                "biên độ nhiệt độ năm tăng, nhiệt độ trung bình năm tăng.",
-                "góc chiếu của tia bức xạ mặt trời tăng, nhiệt độ hạ thấp.",
-                "nhiệt độ hạ thấp, biên độ nhiệt độ trung bình năm giảm."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Càng về phía cực, góc nhập xạ càng nhỏ nên nhiệt độ giảm dần; biên độ nhiệt tăng."
-        },
-        {
-            type: "multiple",
-            question: "Nhận xét nào sau đây không đúng về phân bố mưa theo vĩ độ?",
-            options: [
-                "Xích đạo có lượng mưa nhỏ nhất.",
-                "Lượng mưa phân hóa theo vĩ độ.",
-                "Xích đạo có lượng mưa lớn nhất.",
-                "Ở hai cực có lượng mưa nhỏ nhất."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Đây là nhận xét sai vì khu vực Xích đạo là nơi có lượng mưa lớn nhất thế giới."
-        },
-        {
-            type: "multiple",
-            question: "Nhận xét nào sau đây đúng về phân bố mưa trên Trái Đất?",
-            options: [
-                "Xích đạo có lượng mưa nhỏ nhất, chí tuyến mưa nhiều nhất.",
-                "Ở vùng nhiệt đới, bờ đông của lục địa mưa nhiều hơn bờ tây.",
-                "Ở vùng ôn đới, bờ đông của lục địa mưa nhiều hơn bờ tây.",
-                "Ôn đới có mưa nhiều nhất, vùng chí tuyến có mưa nhỏ nhất."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Ở vùng nhiệt đới, bờ đông thường có dòng biển nóng và gió từ biển thổi vào nên mưa nhiều."
-        },
-        {
-            type: "multiple",
-            question: "Nước trên Trái Đất chủ yếu là:",
-            options: [
-                "nước ngọt.",
-                "nước mặn.",
-                "nước lợ.",
-                "nước phèn."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Nước mặn chiếm khoảng 97,5% tổng lượng nước trên Trái Đất."
-        },
-        {
-            type: "multiple",
-            question: "Thủy quyển là:",
-            options: [
-                "toàn bộ nước ở các biển và đại dương.",
-                "toàn bộ lớp nước bao quanh Trái Đất.",
-                "toàn bộ nước ngầm, nước băng tuyết.",
-                "toàn bộ nước trong cơ thể các sinh vật."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Thủy quyển là lớp vỏ lỏng không liên tục bao quanh Trái Đất."
-        },
-        {
-            type: "multiple",
-            question: "Nước trên Trái Đất tồn tại ở các trạng thái khác nhau là:",
-            options: [
-                "lỏng, rắn, hơi.",
-                "lỏng và rắn.",
-                "rắn và hơi.",
-                "không xác định."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Nước tồn tại ở ba trạng thái: lỏng, rắn, hơi."
-        },
-        {
-            type: "multiple",
-            question: "Nguồn cung cấp nước ngọt ngầm không phải là:",
-            options: [
-                "nước mưa.",
-                "băng tuyết.",
-                "nước trên mặt.",
-                "nước ở biển."
-            ],
-            correct: 3,
-            points: 5,
-            explanation: "Đáp án D. Nước biển là nước mặn, không phải nguồn cung cấp trực tiếp cho nước ngọt ngầm."
-        },
-        {
-            type: "multiple",
-            question: "Độ muối của nước biển không phụ thuộc vào:",
-            options: [
-                "lượng mưa.",
-                "lượng bốc hơi.",
-                "lượng nước ở các hồ đầm.",
-                "lượng nước sông chảy ra."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Đáp án C. Hồ đầm trong nội địa không ảnh hưởng đến độ muối đại dương."
-        },
-        {
-            type: "multiple",
-            question: "Độ muối nước biển lớn nhất ở vùng:",
-            options: [
-                "xích đạo.",
-                "chí tuyến.",
-                "cực.",
-                "ôn đới."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Vùng chí tuyến có áp cao, ít mưa nhưng lượng bốc hơi cực lớn."
-        },
-        {
-            type: "multiple",
-            question: "Phát biểu nào sau đây đúng về sự thay đổi nhiệt độ nước biển theo thời gian?",
-            options: [
-                "Mùa hạ có nhiệt độ thấp hơn mùa đông.",
-                "Nhiệt độ không thay đổi theo mùa.",
-                "Mùa đông có nhiệt độ cao hơn mùa hạ.",
-                "Mùa hạ có nhiệt độ cao hơn mùa đông."
-            ],
-            correct: 3,
-            points: 5,
-            explanation: "Đáp án D. Mùa hạ nhận được nhiều bức xạ mặt trời nên nhiệt độ cao hơn."
-        },
-        {
-            type: "multiple",
-            question: "Phát biểu nào sau đây đúng về nhiệt độ nước biển theo vĩ tuyến?",
-            options: [
-                "Tăng dần từ xích đạo về cực.",
-                "Giảm dần từ xích đạo về cực.",
-                "Cao nhất ở vùng ôn đới.",
-                "Thấp nhất ở vùng chí tuyến."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Nhiệt độ nước biển giảm dần từ xích đạo về hai cực."
-        },
-        {
-            type: "multiple",
-            question: "Nhiệt độ nước biển phụ thuộc nhiều nhất vào nhiệt độ của:",
-            options: [
-                "Không khí.",
-                "Các dòng biển.",
-                "Các đảo.",
-                "Các đại dương."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Nhiệt độ nước biển tầng mặt chủ yếu phụ thuộc vào bức xạ mặt trời và sự trao đổi nhiệt với không khí."
-        },
-        {
-            type: "multiple",
-            question: "Nguồn nước ngầm không phụ thuộc vào:",
-            options: [
-                "Đặc điểm đất đá.",
-                "Độ mặn của nước biển.",
-                "Lượng mưa.",
-                "Địa hình và lớp phủ thực vật."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Độ mặn nước biển không quyết định nguồn cung cấp hay sự hình thành nước ngầm trong lục địa."
-        },
-        {
-            type: "multiple",
-            question: "Nguồn nước giúp duy trì sự sống trên lục địa chủ yếu là:",
-            options: [
-                "Nước mặn.",
-                "Nước lợ.",
-                "Nước ngọt.",
-                "Nước phèn."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Đáp án C. Hầu hết các sinh vật và con người trên lục địa cần nước ngọt."
-        },
-        {
-            type: "multiple",
-            question: "Phần lớn lượng nước ngầm trên lục địa có nguồn gốc từ:",
-            options: [
-                "Nước trên mặt thấm xuống.",
-                "Nước biển xâm nhập.",
-                "Nước trong lòng đất tự có.",
-                "Hơi nước từ trên cao."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Nước ngầm chủ yếu do nước mưa, nước sông ngòi, hồ ao thấm xuống."
-        },
-        {
-            type: "multiple",
-            question: "Nước băng tuyết ở thể nào sau đây?",
-            options: [
-                "Rắn.",
-                "Lỏng.",
-                "Hơi.",
-                "Khí."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A."
-        },
-        {
-            type: "multiple",
-            question: "Đặc trưng của đất (thổ nhưỡng) là:",
-            options: [
-                "Độ tơi xốp.",
-                "Độ phì.",
-                "Độ ẩm.",
-                "Thành phần khoáng."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B. Độ phì là khả năng cung cấp nước, nhiệt, khí và chất dinh dưỡng cho thực vật."
-        },
-        {
-            type: "multiple",
-            question: "Quy luật thống nhất và hoàn chỉnh của lớp vỏ địa lí là:",
-            options: [
-                "Quy luật về mối quan hệ quy định lẫn nhau giữa các thành phần của lớp vỏ địa lí.",
-                "Quy luật về sự thay đổi các thành phần theo vĩ độ.",
-                "Quy luật về sự thay đổi theo độ cao.",
-                "Quy luật về sự lặp lại các hiện tượng địa lí."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đáp án A. Các thành phần của lớp vỏ địa lí luôn tác động, phụ thuộc và quy định lẫn nhau."
-        },
-        {
-            type: "multiple",
-            question: "Phát biểu nào sau đây không đúng với vỏ địa lí?",
-            options: [
-                "Bao gồm toàn bộ thủy quyển và sinh quyển.",
-                "Giới hạn dưới của vỏ địa lí là đáy vực thẳm đại dương.",
-                "Ranh giới trùng hoàn toàn với lớp vỏ Trái Đất.",
-                "Giới hạn trên là nơi tiếp xúc giữa tầng đối lưu và tầng bình lưu."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Đáp án C. Ranh giới vỏ địa lí không trùng hoàn toàn với lớp vỏ Trái Đất."
-        },
-        {
-            type: "multiple",
-            question: "Chiều dày của lớp vỏ địa lí là:",
-            options: [
-                "Từ 5 – 10 km.",
-                "Từ 30 – 35 km.",
-                "Từ 70 – 100 km.",
-                "Từ 5 – 70 km."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đáp án B."
-        },
-
-        // TRẮC NGHIỆM ĐÚNG SAI (Nhiệt độ theo vĩ độ)
-        {
             type: "truefalse",
             question: "Đánh giá tính đúng/sai của các phát biểu sau về nhiệt độ theo vĩ độ:",
             statements: [
@@ -448,19 +196,15 @@ window.quizData = {
                 "Biên độ nhiệt tăng từ xích đạo về cực, tăng 20,9°C lên vĩ độ 80°.",
                 "Biên độ nhiệt thay đổi do góc nhập xạ giảm."
             ],
-            correctAnswers: [true, true, false, true],
+            correctAnswers: [
+                true,
+                true,
+                false,
+                true
+            ],
             points: 20,
-            explanation: `
-                <ul>
-                    <li>A) ĐÚNG</li>
-                    <li>B) ĐÚNG (Vùng nhiệt đới góc nhập xạ thay đổi ít hơn)</li>
-                    <li>C) SAI (Mức tăng thực tế thường lớn hơn, gần 30°C ở cực)</li>
-                    <li>D) ĐÚNG</li>
-                </ul>
-            `
+            explanation: "\n                <ul>\n                    <li>A) ĐÚNG</li>\n                    <li>B) ĐÚNG (Vùng nhiệt đới góc nhập xạ thay đổi ít hơn)</li>\n                    <li>C) SAI (Mức tăng thực tế thường lớn hơn, gần 30°C ở cực)</li>\n                    <li>D) ĐÚNG</li>\n                </ul>\n            "
         },
-
-        // TRẮC NGHIỆM ĐÚNG SAI (Khí áp và mưa)
         {
             type: "truefalse",
             question: "Đánh giá tính đúng/sai của các phát biểu sau về khí áp và mưa:",
@@ -470,19 +214,15 @@ window.quizData = {
                 "Ôn đới là khu áp thấp nhưng bốc hơi nhỏ nên mưa ít.",
                 "Các khu khí áp hình thành theo mùa thường mưa theo mùa."
             ],
-            correctAnswers: [false, true, false, true],
+            correctAnswers: [
+                false,
+                true,
+                false,
+                true
+            ],
             points: 20,
-            explanation: `
-                <ul>
-                    <li>A) SAI (Phải có độ ẩm cao và khối khí ẩm)</li>
-                    <li>B) ĐÚNG</li>
-                    <li>C) SAI (Ôn đới có mưa khá nhiều do gió Tây ôn đới mang ẩm)</li>
-                    <li>D) ĐÚNG</li>
-                </ul>
-            `
+            explanation: "\n                <ul>\n                    <li>A) SAI (Phải có độ ẩm cao và khối khí ẩm)</li>\n                    <li>B) ĐÚNG</li>\n                    <li>C) SAI (Ôn đới có mưa khá nhiều do gió Tây ôn đới mang ẩm)</li>\n                    <li>D) ĐÚNG</li>\n                </ul>\n            "
         },
-
-        // TRẮC NGHIỆM ĐÚNG SAI (Chủ đề Đất và Sinh quyển)
         {
             type: "truefalse",
             question: "Đánh giá tính đúng/sai của các phát biểu sau về đất và sinh quyển:",
@@ -492,19 +232,56 @@ window.quizData = {
                 "Đối với động vật ánh sáng ảnh hưởng không đáng kể.",
                 "Động vật đa dạng do khí hậu phân hóa đa dạng."
             ],
-            correctAnswers: [true, true, false, true],
+            correctAnswers: [
+                true,
+                true,
+                false,
+                true
+            ],
             points: 20,
-            explanation: `
-                <ul>
-                    <li>A) ĐÚNG</li>
-                    <li>B) ĐÚNG</li>
-                    <li>C) SAI (Ánh sáng ảnh hưởng đến định hướng, chu kỳ sinh sản...)</li>
-                    <li>D) ĐÚNG</li>
-                </ul>
-            `
+            explanation: "\n                <ul>\n                    <li>A) ĐÚNG</li>\n                    <li>B) ĐÚNG</li>\n                    <li>C) SAI (Ánh sáng ảnh hưởng đến định hướng, chu kỳ sinh sản...)</li>\n                    <li>D) ĐÚNG</li>\n                </ul>\n            "
         },
-
-        // TỰ LUẬN
+        {
+            type: "truefalse",
+            question: "Xét nhận định sau: Nhận xét nào sau đây đúng về phân bố mưa trên Trái Đất?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Xích đạo có lượng mưa nhỏ nhất, chí tuyến mưa nhiều nhất.",
+                "Ở vùng nhiệt đới, bờ đông của lục địa mưa nhiều hơn bờ tây.",
+                "Ở vùng ôn đới, bờ đông của lục địa mưa nhiều hơn bờ tây.",
+                "Ôn đới có mưa nhiều nhất, vùng chí tuyến có mưa nhỏ nhất."
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
+            explanation: "Đáp án B. Ở vùng nhiệt đới, bờ đông thường có dòng biển nóng và gió từ biển thổi vào nên mưa nhiều."
+        },
+        {
+            type: "short",
+            question: "Nước trên Trái Đất chủ yếu là: (Lưu ý: Đáp án đúng gốc là \"nước mặn.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "",
+            explanation: "Đáp án B. Nước mặn chiếm khoảng 97,5% tổng lượng nước trên Trái Đất."
+        },
+        {
+            type: "short",
+            question: "Thủy quyển là: (Lưu ý: Đáp án đúng gốc là \"toàn bộ lớp nước bao quanh Trái Đất.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "",
+            explanation: "Đáp án B. Thủy quyển là lớp vỏ lỏng không liên tục bao quanh Trái Đất."
+        },
+        {
+            type: "short",
+            question: "Nước trên Trái Đất tồn tại ở các trạng thái khác nhau là: (Lưu ý: Đáp án đúng gốc là \"lỏng, rắn, hơi.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ",,",
+            explanation: "Đáp án A. Nước tồn tại ở ba trạng thái: lỏng, rắn, hơi."
+        },
+        {
+            type: "short",
+            question: "Nguồn cung cấp nước ngọt ngầm không phải là: (Lưu ý: Đáp án đúng gốc là \"nước ở biển.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "",
+            explanation: "Đáp án D. Nước biển là nước mặn, không phải nguồn cung cấp trực tiếp cho nước ngọt ngầm."
+        },
         {
             type: "essay",
             question: "Giải thích hiện tượng Thủy triều trên Trái Đất.",

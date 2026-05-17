@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – KTPL 10 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Hệ thống chính trị, Pháp luật nước CHXHCN Việt Nam, Hiến pháp 2013 (Quyền con người, Bộ máy nhà nước)
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Kinh tế và Pháp luật 10 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── HỆ THỐNG CHÍNH TRỊ VN ──────────────────────────────────────────
         {
             type: "multiple",
             question: "Hệ thống chính trị nước Cộng hoà xã hội chủ nghĩa Việt Nam bao gồm:",
@@ -29,18 +42,27 @@ window.quizData = {
         {
             type: "multiple",
             question: "Trong hệ thống chính trị Việt Nam, tổ chức nào giữ vai trò lãnh đạo?",
-            options: ["Nhà nước CHXHCN Việt Nam", "Đảng Cộng sản Việt Nam", "Mặt trận Tổ quốc Việt Nam", "Quốc hội"],
+            options: [
+                "Nhà nước CHXHCN Việt Nam",
+                "Đảng Cộng sản Việt Nam",
+                "Mặt trận Tổ quốc Việt Nam",
+                "Quốc hội"
+            ],
             correct: 1,
             explanation: "Đảng Cộng sản Việt Nam là đội tiên phong của giai cấp công nhân, nhân dân lao động, đóng vai trò lãnh đạo toàn diện."
         },
         {
             type: "multiple",
             question: "Đoàn Thanh niên Cộng sản Hồ Chí Minh thuộc tổ chức nào trong hệ thống chính trị?",
-            options: ["Cơ quan quyền lực nhà nước", "Tổ chức kinh tế", "Tổ chức chính trị - xã hội", "Cơ quan hành chính nhà nước"],
+            options: [
+                "Cơ quan quyền lực nhà nước",
+                "Tổ chức kinh tế",
+                "Tổ chức chính trị - xã hội",
+                "Cơ quan hành chính nhà nước"
+            ],
             correct: 2,
             explanation: "Đoàn Thanh niên cùng với Công đoàn, Hội Phụ nữ, Hội Nông dân... là các tổ chức chính trị - xã hội."
         },
-        // ── PHÁP LUẬT CHUNG ────────────────────────────────────────────────
         {
             type: "multiple",
             question: "Pháp luật là gì?",
@@ -56,7 +78,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Tính quy phạm phổ biến là đặc trưng cơ bản của:",
-            options: ["Đạo đức", "Pháp luật", "Phong tục tập quán", "Tín điều tôn giáo"],
+            options: [
+                "Đạo đức",
+                "Pháp luật",
+                "Phong tục tập quán",
+                "Tín điều tôn giáo"
+            ],
             correct: 1,
             explanation: "Pháp luật có tính quy phạm phổ biến, được áp dụng nhiều lần, ở nhiều nơi, đối với mọi người."
         },
@@ -75,190 +102,143 @@ window.quizData = {
         {
             type: "multiple",
             question: "Văn bản quy phạm pháp luật nào có giá trị pháp lí cao nhất trong hệ thống pháp luật Việt Nam?",
-            options: ["Luật", "Nghị định", "Hiến pháp", "Pháp lệnh"],
+            options: [
+                "Luật",
+                "Nghị định",
+                "Hiến pháp",
+                "Pháp lệnh"
+            ],
             correct: 2,
             explanation: "Hiến pháp là đạo luật cơ bản, có hiệu lực pháp lí cao nhất, mọi văn bản khác phải phù hợp với Hiến pháp."
         },
         {
             type: "multiple",
             question: "Cơ quan nào có quyền lập hiến và lập pháp (làm Hiến pháp, sửa đổi Hiến pháp, làm luật)?",
-            options: ["Chính phủ", "Quốc hội", "Chủ tịch nước", "Tòa án nhân dân tối cao"],
+            options: [
+                "Chính phủ",
+                "Quốc hội",
+                "Chủ tịch nước",
+                "Tòa án nhân dân tối cao"
+            ],
             correct: 1,
             explanation: "Quốc hội là cơ quan đại biểu cao nhất của nhân dân, cơ quan quyền lực nhà nước cao nhất, thực hiện quyền lập hiến, lập pháp."
         },
-        // ── HIẾN PHÁP 2013 (CHẾ ĐỘ CHÍNH TRỊ, BỘ MÁY NHÀ NƯỚC) ───────────
         {
             type: "multiple",
             question: "Theo Hiến pháp 2013, tất cả quyền lực nhà nước thuộc về ai?",
-            options: ["Thuộc về Đảng Cộng sản", "Thuộc về Quốc hội", "Thuộc về Nhân dân", "Thuộc về các cơ quan tư pháp"],
+            options: [
+                "Thuộc về Đảng Cộng sản",
+                "Thuộc về Quốc hội",
+                "Thuộc về Nhân dân",
+                "Thuộc về các cơ quan tư pháp"
+            ],
             correct: 2,
             explanation: "Hiến pháp quy định: Nước CHXHCN Việt Nam là quốc gia của Nhân dân, do Nhân dân, vì Nhân dân. Tất cả quyền lực nhà nước thuộc về Nhân dân."
         },
         {
             type: "multiple",
             question: "Hiến pháp 2013 quy định ngôn ngữ quốc gia của Việt Nam là:",
-            options: ["Tiếng dân tộc thiểu số", "Tiếng Anh", "Tiếng Việt", "Tất cả các ngôn ngữ"],
+            options: [
+                "Tiếng dân tộc thiểu số",
+                "Tiếng Anh",
+                "Tiếng Việt",
+                "Tất cả các ngôn ngữ"
+            ],
             correct: 2,
             explanation: "Điều 5 Hiến pháp 2013 quy định: Ngôn ngữ quốc gia là tiếng Việt. Các dân tộc có quyền dùng tiếng nói, chữ viết của mình."
         },
         {
             type: "multiple",
             question: "Cơ quan hành chính nhà nước cao nhất, thực hiện quyền hành pháp của nước ta là:",
-            options: ["Quốc hội", "Chính phủ", "Toà án nhân dân", "Viện kiểm sát nhân dân"],
+            options: [
+                "Quốc hội",
+                "Chính phủ",
+                "Toà án nhân dân",
+                "Viện kiểm sát nhân dân"
+            ],
             correct: 1,
             explanation: "Chính phủ là cơ quan hành chính nhà nước cao nhất của nước CHXHCN Việt Nam, thực hiện quyền hành pháp."
         },
         {
             type: "multiple",
             question: "Ủy ban nhân dân các cấp do cơ quan nào bầu ra?",
-            options: ["Chính phủ", "Hội đồng nhân dân cùng cấp", "Nhân dân bầu trực tiếp", "Đảng Cộng sản"],
+            options: [
+                "Chính phủ",
+                "Hội đồng nhân dân cùng cấp",
+                "Nhân dân bầu trực tiếp",
+                "Đảng Cộng sản"
+            ],
             correct: 1,
             explanation: "Ủy ban nhân dân (cơ quan hành chính địa phương) do Hội đồng nhân dân cùng cấp (cơ quan quyền lực địa phương) bầu ra."
         },
         {
-            type: "multiple",
-            question: "Cơ quan nào thực hiện chức năng xét xử ở nước ta?",
-            options: ["Cơ quan Công an", "Viện kiểm sát nhân dân", "Toà án nhân dân", "Chính phủ"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Cơ quan nào thực hiện chức năng xét xử ở nước ta?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Cơ quan Công an",
+                "Viện kiểm sát nhân dân",
+                "Toà án nhân dân",
+                "Chính phủ"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Tòa án nhân dân là cơ quan xét xử của nước CHXHCN Việt Nam, thực hiện quyền tư pháp."
         },
         {
-            type: "multiple",
-            question: "Chủ tịch nước CHXHCN Việt Nam do ai bầu ra?",
-            options: ["Do Nhân dân bầu trực tiếp", "Do Chính phủ chỉ định", "Do Quốc hội bầu trong số đại biểu Quốc hội", "Do Mặt trận Tổ quốc giới thiệu"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Chủ tịch nước CHXHCN Việt Nam do ai bầu ra?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Do Nhân dân bầu trực tiếp",
+                "Do Chính phủ chỉ định",
+                "Do Quốc hội bầu trong số đại biểu Quốc hội",
+                "Do Mặt trận Tổ quốc giới thiệu"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Chủ tịch nước là người đứng đầu Nhà nước, thay mặt nước CHXHCN Việt Nam về đối nội và đối ngoại, do Quốc hội bầu ra."
         },
-        // ── HIẾN PHÁP 2013 (QUYỀN CƠ BẢN CỦA CÔNG DÂN) ────────────────────
         {
-            type: "multiple",
-            question: "Quyền nào sau đây là quyền chính trị của công dân?",
-            options: ["Quyền tự do kinh doanh", "Quyền sở hữu tài sản", "Quyền bầu cử và ứng cử", "Quyền học tập"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Quyền nào sau đây là quyền chính trị của công dân?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Quyền tự do kinh doanh",
+                "Quyền sở hữu tài sản",
+                "Quyền bầu cử và ứng cử",
+                "Quyền học tập"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Bầu cử và ứng cử là quyền tham gia quản lý nhà nước và xã hội, thuộc lĩnh vực chính trị."
         },
         {
-            type: "multiple",
-            question: "Hiến pháp quy định công dân từ bao nhiêu tuổi trở lên có quyền bầu cử?",
-            options: ["Đủ 16 tuổi", "Đủ 18 tuổi", "Đủ 20 tuổi", "Đủ 21 tuổi"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Hiến pháp quy định công dân từ bao nhiêu tuổi trở lên có quyền bầu cử?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Đủ 16 tuổi",
+                "Đủ 18 tuổi",
+                "Đủ 20 tuổi",
+                "Đủ 21 tuổi"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Điều 27 HP 2013: Công dân đủ 18 tuổi trở lên có quyền bầu cử và đủ 21 tuổi trở lên có quyền ứng cử."
         },
-        {
-            type: "multiple",
-            question: "Hành vi nào sau đây vi phạm quyền bất khả xâm phạm về thân thể của công dân?",
-            options: ["Bắt người khi có quyết định của Tòa án", "Tự ý bắt, giam, giữ người trái pháp luật để xiết nợ", "Bắt người đang thực hiện hành vi phạm tội quả tang", "Khám xét chỗ ở khi có lệnh của Viện kiểm sát"],
-            correct: 1,
-            explanation: "Không ai bị bắt nếu không có quyết định của TAND hoặc Viện kiểm sát, trừ trường hợp phạm tội quả tang."
-        },
-        {
-            type: "multiple",
-            question: "Mọi công dân đều bình đẳng trước pháp luật có nghĩa là:",
-            options: [
-                "Không bị phân biệt đối xử trong đời sống chính trị, dân sự, kinh tế, văn hoá, xã hội",
-                "Phải đóng số tiền thuế giống hệt nhau",
-                "Được nhận mức lương như nhau bất kể công việc",
-                "Không ai bị xử phạt nếu vi phạm lần đầu"
-            ],
-            correct: 0,
-            explanation: "Bình đẳng trước pháp luật là không bị phân biệt đối xử về nam nữ, tôn giáo, thành phần, dân tộc... trước pháp luật."
-        },
-        {
-            type: "multiple",
-            question: "Nam thanh niên A (đủ 19 tuổi) trốn tránh lệnh gọi khám sức khỏe nghĩa vụ quân sự. Hành vi của A vi phạm điều gì?",
-            options: [
-                "Nghĩa vụ học tập",
-                "Nghĩa vụ nộp thuế",
-                "Nghĩa vụ bảo vệ Tổ quốc",
-                "Nghĩa vụ tuân thủ Hiến pháp và pháp luật"
-            ],
-            correct: 2,
-            explanation: "Bảo vệ Tổ quốc là nghĩa vụ thiêng liêng và quyền cao quý của công dân. Thực hiện nghĩa vụ quân sự là một phần của điều đó."
-        },
-        {
-            type: "multiple",
-            question: "Quyền tham gia quản lí nhà nước và xã hội của công dân được thực hiện thông qua hình thức nào?",
-            options: [
-                "Tham gia biểu quyết khi Nhà nước tổ chức trưng cầu ý dân",
-                "Từ chối đóng thuế nếu thấy không hợp lý",
-                "Tự ý mở công ty không cần xin phép",
-                "Bãi bỏ các quyết định của chính quyền địa phương"
-            ],
-            correct: 0,
-            explanation: "Tham gia trưng cầu ý dân, kiến nghị với cơ quan nhà nước, bỏ phiếu bầu cử là biểu hiện của quyền này."
-        },
-        {
-            type: "multiple",
-            question: "Trong quyền tự do kinh doanh, công dân có quyền tự do lựa chọn:",
-            options: [
-                "Ngành nghề kinh doanh, bất kể pháp luật có cấm hay không",
-                "Ngành nghề kinh doanh mà pháp luật không cấm",
-                "Trốn nộp thuế để tăng lợi nhuận",
-                "Bán hàng giả nếu có nhu cầu"
-            ],
-            correct: 1,
-            explanation: "Mọi người có quyền tự do kinh doanh trong những ngành nghề mà pháp luật không cấm."
-        },
-        {
-            type: "multiple",
-            question: "Công dân A khiếu nại quyết định xử phạt giao thông của CSGT vì cho rằng quyết định đó không đúng. Việc làm của A thể hiện quyền gì?",
-            options: ["Quyền tố cáo", "Quyền tự do ngôn luận", "Quyền khiếu nại", "Quyền bãi nhiệm"],
-            correct: 2,
-            explanation: "Khiếu nại là đề nghị cơ quan xem xét lại quyết định hành chính xâm phạm đến quyền lợi hợp pháp của chính mình."
-        },
-        {
-            type: "multiple",
-            question: "Phát hiện ông B đang xả chất thải độc hại ra sông, anh C đã báo cáo cơ quan công an. Anh C đang thực hiện quyền gì?",
-            options: ["Quyền khiếu nại", "Quyền tố cáo", "Quyền kiểm soát", "Quyền biểu quyết"],
-            correct: 1,
-            explanation: "Tố cáo là báo cho cơ quan có thẩm quyền về hành vi vi phạm pháp luật của bất kì ai gây thiệt hại lợi ích chung."
-        },
-        {
-            type: "multiple",
-            question: "Nhà nước tạo điều kiện để công dân học tập suốt đời. Điều này thể hiện chính sách của Nhà nước đối với quyền nào?",
-            options: ["Quyền tự do tín ngưỡng", "Quyền lao động", "Quyền học tập", "Quyền bất khả xâm phạm về chỗ ở"],
-            correct: 2,
-            explanation: "Mọi công dân đều có quyền học tập không hạn chế, học thường xuyên, học suốt đời."
-        },
-        {
-            type: "multiple",
-            question: "Việc thu hút vốn đầu tư nước ngoài, khuyến khích các thành phần kinh tế phát triển thể hiện nội dung cơ bản nào của Hiến pháp 2013?",
-            options: ["Chế độ chính trị", "Chế độ kinh tế", "Giáo dục và khoa học", "Bảo vệ Tổ quốc"],
-            correct: 1,
-            explanation: "Đó là những quy định về xây dựng nền kinh tế độc lập tự chủ, phát triển kinh tế thị trường định hướng XHCN."
-        },
-        {
-            type: "multiple",
-            question: "Trong đợt dịch bệnh, Chính phủ đã huy động nguồn lực lớn để điều trị miễn phí cho bệnh nhân. Điều này thể hiện Hiến pháp 2013 chú trọng đến vấn đề gì?",
-            options: ["Phát triển giao thông", "Bảo vệ chăm sóc sức khỏe nhân dân (Quyền an sinh xã hội)", "An ninh quốc phòng", "Đối ngoại"],
-            correct: 1,
-            explanation: "Nhà nước chăm lo sức khỏe, y tế cho người dân là một phần của quyền con người về an sinh xã hội."
-        },
-        {
-            type: "multiple",
-            question: "Đọc trộm tin nhắn điện thoại của người khác là hành vi vi phạm quyền gì?",
-            options: [
-                "Quyền tự do ngôn luận",
-                "Quyền bí mật đời tư, thư tín, điện thoại, điện tín",
-                "Quyền bất khả xâm phạm về chỗ ở",
-                "Quyền tự do đi lại"
-            ],
-            correct: 1,
-            explanation: "Không ai được bóc mở, kiểm soát, thu giữ trái luật thư tín, điện thoại, điện tín của người khác."
-        },
-        {
-            type: "multiple",
-            question: "Để pháp luật đi vào đời sống, Nhà nước thường xuyên tổ chức các hoạt động nào?",
-            options: [
-                "Chỉ trừng phạt người vi phạm",
-                "Tuyên truyền, phổ biến, giáo dục pháp luật cho nhân dân",
-                "Cấm người dân đọc luật",
-                "Thay đổi luật liên tục"
-            ],
-            correct: 1,
-            explanation: "Tuyên truyền, giáo dục pháp luật giúp người dân nâng cao ý thức tuân thủ và sống làm việc theo Hiến pháp, pháp luật."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Em hãy nêu sự khác biệt cơ bản giữa Quyền khiếu nại và Quyền tố cáo của công dân (về mục đích và đối tượng). Cho ví dụ minh họa cho mỗi quyền.",

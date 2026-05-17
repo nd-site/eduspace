@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – CÔNG NGHỆ 10 (NÔNG NGHIỆP TRỒNG TRỌT) – KNTT 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Phân bón, Phòng trừ sâu bệnh hại cây trồng, Thu hoạch, bảo quản và chế biến sản phẩm trồng trọt
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Công nghệ 10 Nông nghiệp (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── PHÂN BÓN TRONG TRỒNG TRỌT ──────────────────────────────────────
         {
             type: "multiple",
             question: "Phân bón hóa học (phân vô cơ) có đặc điểm nào sau đây?",
@@ -41,7 +54,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Cách bón phân nào thường được áp dụng cho phân bón lót?",
-            options: ["Bón qua lá", "Phun lên thân cây", "Bón rải đều trên mặt ruộng rồi cày bừa vùi xuống đất", "Hòa vào nước tưới nhỏ giọt"],
+            options: [
+                "Bón qua lá",
+                "Phun lên thân cây",
+                "Bón rải đều trên mặt ruộng rồi cày bừa vùi xuống đất",
+                "Hòa vào nước tưới nhỏ giọt"
+            ],
             correct: 2,
             explanation: "Bón lót (trước khi gieo trồng) thường dùng phân hữu cơ hoặc lân, bón rải và vùi sâu vào đất."
         },
@@ -60,11 +78,15 @@ window.quizData = {
         {
             type: "multiple",
             question: "Loại phân bón nào được sử dụng chủ yếu để bón thúc?",
-            options: ["Phân chuồng tươi", "Phân đạm và phân kali", "Phân xanh", "Phân rác"],
+            options: [
+                "Phân chuồng tươi",
+                "Phân đạm và phân kali",
+                "Phân xanh",
+                "Phân rác"
+            ],
             correct: 1,
             explanation: "Bón thúc cần cung cấp dinh dưỡng nhanh cho cây trong các thời kì sinh trưởng mạnh, nên dùng phân đạm, kali (dễ tan)."
         },
-        // ── SÂU BỆNH HẠI CÂY TRỒNG ────────────────────────────────────────
         {
             type: "multiple",
             question: "Nguyên nhân chủ yếu gây ra bệnh hại cây trồng là gì?",
@@ -149,177 +171,74 @@ window.quizData = {
             correct: 1,
             explanation: "Công nghệ sinh học nhân nuôi các vi sinh vật có ích để tiêu diệt sâu, nấm bệnh hại."
         },
-        // ── THU HOẠCH, BẢO QUẢN SẢN PHẨM TRỒNG TRỌT ────────────────────────
         {
-            type: "multiple",
-            question: "Mục đích chính của việc bảo quản sản phẩm trồng trọt là gì?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Mục đích chính của việc bảo quản sản phẩm trồng trọt là gì?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Tăng thêm độ chín của nông sản",
                 "Duy trì chất lượng, hạn chế hao hụt về số lượng và kéo dài thời gian sử dụng của nông sản",
                 "Tạo ra các sản phẩm mới có giá trị cao hơn",
                 "Làm cho nông sản nhẹ hơn để dễ vận chuyển"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Bảo quản giúp kìm hãm các quá trình sinh lí, sinh hóa và sự xâm nhập của vi sinh vật để giữ nông sản tươi lâu."
         },
         {
-            type: "multiple",
-            question: "Yêu cầu kĩ thuật quan trọng nhất đối với thu hoạch các loại hạt (lúa, ngô, đậu) là:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Yêu cầu kĩ thuật quan trọng nhất đối với thu hoạch các loại hạt (lúa, ngô, đậu) là:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Thu hoạch khi hạt còn xanh để dễ bảo quản",
                 "Thu hoạch đúng độ chín, phơi sấy đến độ ẩm an toàn (thường 12-14%)",
                 "Thu hoạch vào lúc trời mưa để hạt không bị nứt",
                 "Không cần phân loại hạt trước khi lưu kho"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Hạt phải khô (độ ẩm thấp) mới không bị mốc, mọt trong quá trình bảo quản."
         },
         {
-            type: "multiple",
-            question: "Phương pháp bảo quản lạnh (trong kho lạnh) thường được áp dụng cho loại nông sản nào?",
-            options: ["Lúa gạo", "Đậu tương", "Rau, củ, quả tươi", "Cà phê, hồ tiêu"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Phương pháp bảo quản lạnh (trong kho lạnh) thường được áp dụng cho loại nông sản nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Lúa gạo",
+                "Đậu tương",
+                "Rau, củ, quả tươi",
+                "Cà phê, hồ tiêu"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Rau quả tươi chứa nhiều nước, rất dễ hỏng nên cần bảo quản ở nhiệt độ thấp để ức chế hô hấp và vi sinh vật."
         },
         {
-            type: "multiple",
-            question: "Khi bảo quản nông sản bằng phương pháp kín (trong chum vại, kho xilo kín), yếu tố nào bị hạn chế đến mức tối đa?",
-            options: ["Ánh sáng", "Nhiệt độ", "Khí Oxygen (O2)", "Áp suất"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Khi bảo quản nông sản bằng phương pháp kín (trong chum vại, kho xilo kín), yếu tố nào bị hạn chế đến mức tối đa?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Ánh sáng",
+                "Nhiệt độ",
+                "Khí Oxygen (O2)",
+                "Áp suất"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Bảo quản kín làm giảm lượng O2 và tăng lượng CO2, khiến hạt nông sản chuyển sang hô hấp yếm khí mức độ nhẹ, kéo dài tuổi thọ."
         },
-        {
-            type: "multiple",
-            question: "Một trong những nguyên nhân sinh học làm hư hỏng nông sản trong quá trình bảo quản là do:",
-            options: ["Nhiệt độ trong kho quá thấp", "Sự hoạt động của vi sinh vật (nấm mốc, vi khuẩn) và côn trùng, chuột bọ", "Thiếu ánh sáng mặt trời", "Không có gió thông thoáng"],
-            correct: 1,
-            explanation: "Vi sinh vật và dịch hại là nguyên nhân trực tiếp làm thối hỏng, mốc nông sản."
-        },
-        {
-            type: "multiple",
-            question: "Phương pháp bảo quản CAS (Cells Alive System) có ưu điểm gì vượt trội?",
-            options: [
-                "Bảo quản bằng hóa chất siêu mạnh",
-                "Đóng băng nông sản nhưng không phá vỡ màng tế bào, giúp giữ nguyên hương vị và độ tươi ngon sau khi rã đông",
-                "Bảo quản trong môi trường chân không tuyệt đối",
-                "Sấy khô nông sản trong 1 giây"
-            ],
-            correct: 1,
-            explanation: "Công nghệ CAS sử dụng từ trường trong quá trình làm lạnh nhanh, giúp nước trong tế bào không tạo thành tinh thể băng lớn xé rách tế bào."
-        },
-        // ── CHẾ BIẾN SẢN PHẨM TRỒNG TRỌT ──────────────────────────────────
-        {
-            type: "multiple",
-            question: "Chế biến nông sản nhằm mục đích gì?",
-            options: [
-                "Làm tăng khối lượng của nông sản",
-                "Chuyển nông sản thành các sản phẩm khác biệt, tăng giá trị kinh tế, tiện lợi cho sử dụng và đa dạng hóa sản phẩm",
-                "Tiêu diệt hoàn toàn dinh dưỡng để bảo quản lâu",
-                "Giữ nông sản ở trạng thái tươi sống nguyên bản"
-            ],
-            correct: 1,
-            explanation: "Chế biến tạo ra các sản phẩm tinh (đồ hộp, sấy khô, nước ép) có giá trị gia tăng cao."
-        },
-        {
-            type: "multiple",
-            question: "Công nghệ sấy thăng hoa là phương pháp sấy:",
-            options: [
-                "Sấy bằng nhiệt độ cực cao (trên 200 độ C)",
-                "Làm lạnh đông sản phẩm rồi rút chân không để nước thăng hoa từ thể rắn sang thể khí",
-                "Phơi nắng trực tiếp",
-                "Sấy bằng quạt gió tự nhiên"
-            ],
-            correct: 1,
-            explanation: "Sấy thăng hoa giữ nguyên hình dáng, màu sắc và cấu trúc tế bào của sản phẩm, chất lượng cực kì cao."
-        },
-        {
-            type: "multiple",
-            question: "Trong công nghệ sản xuất nước quả, bước thanh trùng (Pasteurization) có tác dụng gì?",
-            options: [
-                "Tạo màu sắc đẹp cho nước quả",
-                "Tiêu diệt phần lớn các vi sinh vật gây hại, nấm men, nấm mốc để kéo dài thời gian bảo quản",
-                "Làm nước quả đặc lại",
-                "Tạo ga cho nước quả"
-            ],
-            correct: 1,
-            explanation: "Thanh trùng dùng nhiệt độ (khoảng 70-90 độ C) để diệt vi sinh vật nhưng ít làm mất đi hương vị tự nhiên."
-        },
-        {
-            type: "multiple",
-            question: "Sản xuất gạo đồ (parboiled rice) khác với gạo trắng thông thường ở công đoạn nào?",
-            options: [
-                "Lúa được ngâm nước, hấp chín bằng hơi nước rồi mới đem sấy khô và xát vỏ",
-                "Gạo được nhuộm màu hóa học",
-                "Lúa không cần xát vỏ trấu",
-                "Gạo được luộc chín rồi mang phơi"
-            ],
-            correct: 0,
-            explanation: "Gạo đồ giúp hạt gạo cứng hơn, giữ được nhiều vitamin ở lớp cám thấm vào trong hạt."
-        },
-        {
-            type: "multiple",
-            question: "Phương pháp muối chua (làm dưa, cà) dựa trên cơ sở khoa học nào?",
-            options: [
-                "Lên men rượu",
-                "Lên men lactic nhờ vi khuẩn lactic hoạt động trong môi trường kị khí, tạo axit ức chế vi khuẩn gây thối",
-                "Lên men axetic",
-                "Sự phân giải protein"
-            ],
-            correct: 1,
-            explanation: "Axit lactic sinh ra làm độ pH giảm, giúp bảo quản rau quả và tạo hương vị đặc trưng."
-        },
-        // ── KHÁC ─────────────────────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Việc sử dụng thiên địch (như ong mắt đỏ, bọ rùa) để tiêu diệt sâu hại gọi là phương pháp gì?",
-            options: ["Phòng trừ hóa học", "Phòng trừ vật lí", "Phòng trừ sinh học", "Phòng trừ thủ công"],
-            correct: 2,
-            explanation: "Sử dụng sinh vật có ích để kiểm soát sinh vật gây hại là cốt lõi của phòng trừ sinh học."
-        },
-        {
-            type: "multiple",
-            question: "Bẫy đèn, bẫy dính màu vàng được sử dụng để bắt côn trùng dựa trên nguyên lí nào?",
-            options: [
-                "Dùng mùi hương hóa học để thu hút",
-                "Dùng sóng âm thanh",
-                "Lợi dụng tính hướng sáng và hướng màu sắc của một số loài côn trùng",
-                "Lợi dụng tập tính tìm kiếm thức ăn"
-            ],
-            correct: 2,
-            explanation: "Đây là biện pháp vật lí - cơ giới, an toàn cho môi trường."
-        },
-        {
-            type: "multiple",
-            question: "Chế phẩm Bt (Bacillus thuringiensis) là một loại:",
-            options: ["Phân bón hóa học", "Thuốc trừ sâu sinh học (chứa vi khuẩn có lợi gây bệnh cho sâu)", "Chất điều hòa sinh trưởng", "Thuốc diệt cỏ"],
-            correct: 1,
-            explanation: "Vi khuẩn Bt sinh ra độc tố làm tê liệt hệ tiêu hóa của sâu bướm, rất an toàn với người và môi trường."
-        },
-        {
-            type: "multiple",
-            question: "Công nghệ đóng gói màng biến đổi khí quyển (MAP - Modified Atmosphere Packaging) dùng để:",
-            options: [
-                "Đóng gói gạo xuất khẩu",
-                "Thay đổi tỉ lệ các loại khí (giảm O2, tăng CO2 hoặc N2) bên trong bao bì để kéo dài tuổi thọ rau quả tươi",
-                "Hút chân không tuyệt đối",
-                "Bọc màng nhựa sinh học"
-            ],
-            correct: 1,
-            explanation: "MAP ức chế hô hấp của rau quả tươi, giữ chúng tươi lâu hơn trong siêu thị."
-        },
-        {
-            type: "multiple",
-            question: "Nhược điểm của phương pháp sấy khô bằng phơi nắng tự nhiên là gì?",
-            options: [
-                "Tốn nhiều chi phí điện năng",
-                "Phụ thuộc nhiều vào thời tiết, tốn diện tích sân phơi và dễ bị nhiễm bẩn",
-                "Nông sản bị chín quá mức",
-                "Không thể áp dụng cho hạt lúa"
-            ],
-            correct: 1,
-            explanation: "Phơi nắng rẻ tiền nhưng năng suất thấp, mất vệ sinh và không kiểm soát được độ ẩm."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Vì sao trong nông nghiệp hiện đại người ta khuyến khích tăng cường sử dụng phân bón hữu cơ và phân vi sinh, đồng thời hạn chế lạm dụng phân bón hóa học? Trình bày tác dụng của phân hữu cơ đối với đất trồng.",

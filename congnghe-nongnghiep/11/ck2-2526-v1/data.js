@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – CÔNG NGHỆ 11 (CHĂN NUÔI) – KNTT 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Phòng trị bệnh cho vật nuôi, Chuồng trại và bảo vệ môi trường, Bảo quản và chế biến sản phẩm chăn nuôi
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Chăn nuôi (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── PHÒNG TRỊ BỆNH CHO VẬT NUÔI ────────────────────────────────────
         {
             type: "multiple",
             question: "Nguyên nhân bên ngoài nào sau đây gây bệnh truyền nhiễm ở vật nuôi?",
@@ -86,7 +99,6 @@ window.quizData = {
             correct: 1,
             explanation: "Tồn dư kháng sinh ảnh hưởng trực tiếp đến sức khỏe con người và làm mất tác dụng chữa bệnh của thuốc."
         },
-        // ── CHUỒNG TRẠI VÀ BẢO VỆ MÔI TRƯỜNG CHĂN NUÔI ─────────────────────
         {
             type: "multiple",
             question: "Yêu cầu cơ bản về vị trí xây dựng chuồng trại chăn nuôi quy mô trang trại là:",
@@ -102,7 +114,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Hướng chuồng phổ biến và tốt nhất đối với điều kiện khí hậu nước ta là hướng nào?",
-            options: ["Hướng Bắc hoặc Tây Bắc", "Hướng Đông Bắc", "Hướng Nam hoặc Đông Nam", "Hướng Tây"],
+            options: [
+                "Hướng Bắc hoặc Tây Bắc",
+                "Hướng Đông Bắc",
+                "Hướng Nam hoặc Đông Nam",
+                "Hướng Tây"
+            ],
             correct: 2,
             explanation: "Hướng Nam hoặc Đông Nam giúp chuồng nhận được gió mát vào mùa hè, tránh nắng gắt buổi chiều và tránh gió mùa Đông Bắc lạnh giá."
         },
@@ -133,198 +150,95 @@ window.quizData = {
         {
             type: "multiple",
             question: "Vệ sinh phòng bệnh trong chăn nuôi tuân theo phương châm nào là tốt nhất?",
-            options: ["Phòng bệnh hơn chữa bệnh", "Chữa bệnh hơn phòng bệnh", "Mắc bệnh rồi mới phòng", "Chỉ tiêm phòng khi có dịch"],
+            options: [
+                "Phòng bệnh hơn chữa bệnh",
+                "Chữa bệnh hơn phòng bệnh",
+                "Mắc bệnh rồi mới phòng",
+                "Chỉ tiêm phòng khi có dịch"
+            ],
             correct: 0,
             explanation: "Phòng bệnh (bằng vệ sinh, vaccine) ít tốn kém và an toàn hơn nhiều so với việc để vật nuôi mắc bệnh rồi mới chữa."
         },
         {
             type: "multiple",
             question: "Trong quy trình vệ sinh chuồng trại, bước tiêu độc sát trùng thường sử dụng hóa chất nào?",
-            options: ["Nước cất", "Dung dịch formol, nước vôi trong, thuốc tím", "Nước mắm", "Dầu ăn"],
+            options: [
+                "Nước cất",
+                "Dung dịch formol, nước vôi trong, thuốc tím",
+                "Nước mắm",
+                "Dầu ăn"
+            ],
             correct: 1,
             explanation: "Nước vôi trong, formol, iodine... là các chất sát trùng phổ biến để tiêu diệt mầm bệnh trong môi trường."
         },
-        // ── BẢO QUẢN VÀ CHẾ BIẾN SẢN PHẨM CHĂN NUÔI ───────────────────────
         {
-            type: "multiple",
-            question: "Mục đích chính của việc bảo quản sản phẩm chăn nuôi (thịt, trứng, sữa) là:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Mục đích chính của việc bảo quản sản phẩm chăn nuôi (thịt, trứng, sữa) là:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Làm tăng khối lượng sản phẩm",
                 "Ngăn chặn sự phát triển của vi sinh vật gây thối rữa, duy trì độ tươi ngon và giá trị dinh dưỡng",
                 "Biến đổi hoàn toàn mùi vị gốc của sản phẩm",
                 "Tăng số lượng vi khuẩn có lợi"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Sản phẩm chăn nuôi (giàu đạm, nước) rất dễ hỏng nên cần bảo quản để ức chế vi sinh vật."
         },
         {
-            type: "multiple",
-            question: "Phương pháp bảo quản thịt lợn, thịt bò phổ biến nhất trong công nghiệp và gia đình hiện nay là:",
-            options: ["Ướp muối", "Sấy khô", "Bảo quản lạnh và lạnh đông", "Đóng hộp"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Phương pháp bảo quản thịt lợn, thịt bò phổ biến nhất trong công nghiệp và gia đình hiện nay là:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Ướp muối",
+                "Sấy khô",
+                "Bảo quản lạnh và lạnh đông",
+                "Đóng hộp"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Nhiệt độ thấp (tủ lạnh, kho lạnh) ức chế sự hoạt động của vi sinh vật và enzyme, giúp thịt tươi lâu."
         },
         {
-            type: "multiple",
-            question: "Sữa tươi sau khi vắt ra nếu chưa sử dụng ngay thì cần được bảo quản ở điều kiện nào?",
-            options: ["Nhiệt độ phòng (25-30 độ C)", "Bảo quản lạnh ở 2-4 độ C", "Đun sôi liên tục trên bếp", "Phơi dưới ánh nắng mặt trời"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Sữa tươi sau khi vắt ra nếu chưa sử dụng ngay thì cần được bảo quản ở điều kiện nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Nhiệt độ phòng (25-30 độ C)",
+                "Bảo quản lạnh ở 2-4 độ C",
+                "Đun sôi liên tục trên bếp",
+                "Phơi dưới ánh nắng mặt trời"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Sữa tươi rất giàu dinh dưỡng, vi khuẩn phát triển cực nhanh ở nhiệt độ phòng. Cần làm lạnh ngay ở 2-4 độ C."
         },
         {
-            type: "multiple",
-            question: "Công nghệ Pasteurization (Thanh trùng) thường được áp dụng chủ yếu cho sản phẩm nào?",
-            options: ["Thịt hun khói", "Trứng muối", "Sữa tươi", "Chả lụa"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Công nghệ Pasteurization (Thanh trùng) thường được áp dụng chủ yếu cho sản phẩm nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Thịt hun khói",
+                "Trứng muối",
+                "Sữa tươi",
+                "Chả lụa"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Thanh trùng (đun nóng sữa lên khoảng 72-85 độ C rồi làm lạnh đột ngột) giúp tiêu diệt mầm bệnh mà vẫn giữ hương vị tự nhiên của sữa."
         },
-        {
-            type: "multiple",
-            question: "Làm lạp xưởng, xúc xích, giò chả là ứng dụng của việc:",
-            options: [
-                "Bảo quản trứng",
-                "Chế biến thịt",
-                "Bảo quản sữa",
-                "Sản xuất thức ăn chăn nuôi"
-            ],
-            correct: 1,
-            explanation: "Chế biến thịt tạo ra các sản phẩm đa dạng, hương vị mới, có giá trị gia tăng cao và thời gian sử dụng lâu hơn."
-        },
-        {
-            type: "multiple",
-            question: "Phương pháp làm trứng muối (ngâm trứng trong dung dịch nước muối bão hòa) dựa trên nguyên lí nào?",
-            options: [
-                "Nhiệt độ cao tiêu diệt vi khuẩn",
-                "Áp suất thẩm thấu cao của muối làm vi sinh vật bị mất nước và chết, ức chế sự thối rữa",
-                "Muối tạo ra môi trường chân không",
-                "Muối lên men tạo ra rượu"
-            ],
-            correct: 1,
-            explanation: "Nước muối bão hòa có áp suất thẩm thấu rất mạnh, rút nước khỏi tế bào vi khuẩn khiến chúng không thể hoạt động."
-        },
-        // ── ỨNG DỤNG CÔNG NGHỆ CAO TRONG CHĂN NUÔI ────────────────────────
-        {
-            type: "multiple",
-            question: "Chăn nuôi thông minh (Smart farming) ứng dụng công nghệ nào để theo dõi sức khỏe vật nuôi?",
-            options: [
-                "Ghi chép bằng sổ tay thủ công",
-                "Gắn cảm biến (chip) trên cơ thể vật nuôi kết nối với hệ thống máy tính/điện thoại",
-                "Thuê nhiều người đứng quan sát 24/24",
-                "Chỉ dựa vào kinh nghiệm dân gian"
-            ],
-            correct: 1,
-            explanation: "Cảm biến điện tử có thể đo thân nhiệt, nhịp tim, lượng vận động... truyền về máy tính để phát hiện bệnh sớm."
-        },
-        {
-            type: "multiple",
-            question: "Mô hình chuồng kín (chuồng lạnh) có ưu điểm gì so với chuồng hở tự nhiên?",
-            options: [
-                "Chi phí đầu tư ban đầu cực kì rẻ",
-                "Kiểm soát hoàn toàn nhiệt độ, độ ẩm, ánh sáng và hạn chế tối đa dịch bệnh lây từ bên ngoài",
-                "Không tốn điện năng vận hành",
-                "Phụ thuộc hoàn toàn vào thời tiết"
-            ],
-            correct: 1,
-            explanation: "Chuồng kín (trang bị quạt hút, tấm làm mát) giúp tạo tiểu khí hậu lí tưởng, cho năng suất rất cao và an toàn sinh học."
-        },
-        {
-            type: "multiple",
-            question: "Phát biểu nào sau đây KHÔNG đúng về chăn nuôi VietGAP?",
-            options: [
-                "Đảm bảo an toàn thực phẩm, không tồn dư kháng sinh, chất cấm",
-                "Bảo vệ môi trường và sức khỏe người lao động",
-                "Sử dụng chất tạo nạc (Salbutamol) để heo nhanh lớn và nhiều thịt nạc",
-                "Có nguồn gốc xuất xứ rõ ràng (truy xuất nguồn gốc)"
-            ],
-            correct: 2,
-            explanation: "VietGAP nghiêm cấm tuyệt đối việc sử dụng chất cấm (như chất tạo nạc) trong chăn nuôi."
-        },
-        {
-            type: "multiple",
-            question: "Robot vắt sữa tự động mang lại lợi ích gì cho trang trại bò sữa?",
-            options: [
-                "Làm bò bị stress hơn",
-                "Giảm năng suất sữa",
-                "Tiết kiệm nhân công, bò được vắt sữa một cách thoải mái theo nhu cầu sinh lí tự nhiên",
-                "Làm tăng nguy cơ nhiễm trùng bầu vú"
-            ],
-            correct: 2,
-            explanation: "Robot vắt sữa tự động vệ sinh bầu vú, tự động vắt khi bò có nhu cầu, giúp giảm stress và tăng năng suất."
-        },
-        {
-            type: "multiple",
-            question: "Để giảm thiểu phát thải khí nhà kính từ chăn nuôi trâu bò (khí methane - CH4), người ta thường áp dụng biện pháp nào?",
-            options: [
-                "Chỉ cho bò ăn cỏ khô",
-                "Cải thiện khẩu phần ăn, bổ sung các chế phẩm sinh học giúp tiêu hóa tốt và xử lí chất thải bằng Biogas",
-                "Bỏ đói vật nuôi",
-                "Sử dụng quạt gió thổi khí CH4 ra ngoài tự nhiên"
-            ],
-            correct: 1,
-            explanation: "Thay đổi khẩu phần ăn giúp giảm sự lên men dạ cỏ sinh CH4; Biogas thu hồi CH4 từ phân để làm nhiên liệu."
-        },
-        // ── KHÁC ─────────────────────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Dấu hiệu nhận biết thịt lợn tươi, ngon và an toàn là:",
-            options: [
-                "Thịt có màu đỏ tươi, màng ngoài khô, ấn vào có độ đàn hồi tốt (không để lại vết lõm)",
-                "Thịt có màu đỏ bầm, chảy nhớt",
-                "Mỡ có màu vàng sậm, thịt nhão",
-                "Thịt có những đốm trắng nhỏ bằng hạt gạo trong thớ thịt"
-            ],
-            correct: 0,
-            explanation: "Đốm trắng là ấu trùng sán; thịt chảy nhớt là đã hỏng. Thịt tươi phải đàn hồi tốt."
-        },
-        {
-            type: "multiple",
-            question: "Sản phẩm thịt đóng hộp (thịt hộp) có thể bảo quản ở nhiệt độ phòng trong nhiều tháng vì:",
-            options: [
-                "Được ướp rất nhiều hóa chất độc hại",
-                "Được tiệt trùng ở nhiệt độ cao (trên 100 độ C) và đóng gói trong môi trường chân không, vi sinh vật không thể sống sót",
-                "Được làm từ thịt giả",
-                "Hộp thiếc tự động sinh ra khí bảo quản"
-            ],
-            correct: 1,
-            explanation: "Tiệt trùng ở nhiệt độ áp suất cao diệt toàn bộ nha bào vi khuẩn, cộng với môi trường kín khí (đóng hộp) giúp bảo quản lâu dài."
-        },
-        {
-            type: "multiple",
-            question: "Sữa chua (Yogurt) được tạo ra từ sữa tươi thông qua quá trình nào?",
-            options: [
-                "Lên men rượu",
-                "Lên men lactic nhờ vi khuẩn Streptococcus thermophilus và Lactobacillus bulgaricus",
-                "Đông tụ bằng hóa chất",
-                "Sấy khô thành bột"
-            ],
-            correct: 1,
-            explanation: "Vi khuẩn lactic lên men đường lactose thành axit lactic, làm giảm pH và gây đông tụ protein sữa tạo thành sữa chua."
-        },
-        {
-            type: "multiple",
-            question: "Trong phòng trừ bệnh kí sinh trùng (như giun, sán, ve, rận) cho vật nuôi, biện pháp nào cần làm định kì?",
-            options: [
-                "Tẩy giun sán định kì và vệ sinh, phun thuốc diệt ve rận",
-                "Tiêm vaccine phòng giun sán",
-                "Sử dụng kháng sinh liên tục",
-                "Cắt bỏ đuôi vật nuôi"
-            ],
-            correct: 0,
-            explanation: "Kí sinh trùng không phòng bằng vaccine, mà phải tẩy/xổ định kì kết hợp vệ sinh môi trường."
-        },
-        {
-            type: "multiple",
-            question: "Chất thải chăn nuôi nếu không được xử lí mà xả trực tiếp ra môi trường sẽ gây hậu quả gì?",
-            options: [
-                "Cung cấp nước sạch cho dòng sông",
-                "Ô nhiễm nguồn nước ngầm, nước mặt, phát sinh khí độc gây mùi hôi và lây lan dịch bệnh",
-                "Làm không khí trong lành hơn",
-                "Giúp cá dưới sông phát triển mạnh mẽ"
-            ],
-            correct: 1,
-            explanation: "Nước thải chăn nuôi chứa nhiều mầm bệnh và chất hữu cơ chưa phân giải, gây phú dưỡng hóa và ô nhiễm nghiêm trọng."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Trình bày lợi ích của việc ứng dụng công nghệ Biogas (hầm khí sinh học) trong chăn nuôi lợn quy mô nông hộ và trang trại.",

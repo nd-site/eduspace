@@ -1,21 +1,36 @@
-// data.js – ÔN TẬP GIỮA HỌC KÌ II – VẬT LÝ 10 (KNTT) – 2025-2026
-// Bài 21 → 26 | 60 câu TN + 6 bài Tự luận
-// examLayout: 14 câu TN (×0,5đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
 
 window.quizData = {
     title: "Ôn tập Giữa Học Kì II – Vật Lý 10 (Kết nối tri thức) 2025-2026",
     config: {
-        testDuration: 2700,  // 45 phút
+        testDuration: 2700,
         examLayout: {
-            multiple: { count: 14, pointsPerQ: 0.5 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 6,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 21: MOMENT LỰC – CÂN BẰNG CỦA VẬT RẮN (Câu 1 – 10)
-        // ══════════════════════════════════════════════════════════════════
         {
             type: "multiple",
             question: "Moment lực đối với một trục quay là đại lượng đặc trưng cho tác dụng nào của lực?",
@@ -146,10 +161,6 @@ window.quizData = {
             points: 5,
             explanation: "M' = (3F).(d/3) = F.d, do đó moment lực không thay đổi giá trị."
         },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 22: NGẪU LỰC (Câu 11 – 20)
-        // ══════════════════════════════════════════════════════════════════
         {
             type: "multiple",
             question: "Ngẫu lực là hệ gồm hai lực có đặc điểm:",
@@ -177,645 +188,97 @@ window.quizData = {
             explanation: "Công thức moment ngẫu lực M = F.d, trong đó d là khoảng cách giữa hai giá của lực."
         },
         {
-            type: "multiple",
-            question: "Trường hợp nào sau đây là ứng dụng của ngẫu lực trong thực tế?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Trường hợp nào sau đây là ứng dụng của ngẫu lực trong thực tế?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Một người dùng tay đẩy một chiếc xe lăn.",
                 "Người lái xe dùng hai tay vặn vô lăng ô tô.",
                 "Một vận động viên đang kéo cung.",
                 "Một vật rơi tự do trong trọng trường."
             ],
-            correct: 1,
-            points: 5,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Dùng hai tay vặn vô lăng tạo ra hai lực song song ngược chiều lên vô lăng – đây là ví dụ điển hình về ngẫu lực."
         },
         {
-            type: "multiple",
-            question: "Moment của ngẫu lực có tính chất đặc biệt nào sau đây?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Moment của ngẫu lực có tính chất đặc biệt nào sau đây?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Phụ thuộc vào vị trí của trục quay được chọn.",
                 "Không phụ thuộc vào vị trí của trục quay đối với vật.",
                 "Luôn làm vật chuyển động tịnh tiến.",
                 "Chỉ xuất hiện khi vật có trục quay cố định nằm ở giữa hai lực."
             ],
-            correct: 1,
-            points: 5,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Đặc điểm của ngẫu lực là moment của nó không phụ thuộc vào vị trí chọn trục quay trên vật."
         },
         {
-            type: "multiple",
-            question: "Tác dụng của ngẫu lực lên một vật rắn chỉ làm vật:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Tác dụng của ngẫu lực lên một vật rắn chỉ làm vật:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Chuyển động tịnh tiến.",
                 "Chuyển động quay.",
                 "Vừa quay vừa chuyển động tịnh tiến.",
                 "Đứng yên tuyệt đối."
             ],
-            correct: 1,
-            points: 5,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Ngẫu lực làm vật quay quanh trục nhưng hợp lực bằng 0 nên không gây chuyển động tịnh tiến."
         },
         {
-            type: "multiple",
-            question: "Nếu đồng thời tăng độ lớn của mỗi lực trong ngẫu lực lên 2 lần và giảm khoảng cách giữa hai giá của hai lực đi 2 lần thì moment ngẫu lực:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Nếu đồng thời tăng độ lớn của mỗi lực trong ngẫu lực lên 2 lần và giảm khoảng cách giữa hai giá của hai lực đi 2 lần thì moment ngẫu lực:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Tăng 4 lần.",
                 "Giảm 4 lần.",
                 "Không thay đổi.",
                 "Tăng 2 lần."
             ],
-            correct: 2,
-            points: 5,
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "M' = (2F).(d/2) = F.d, moment ngẫu lực không đổi."
         },
         {
-            type: "multiple",
-            question: "Một vật không có trục quay cố định, khi chịu tác dụng của một ngẫu lực, vật sẽ quay quanh:",
-            options: [
-                "Điểm đặt của lực lớn hơn.",
-                "Trọng tâm của vật.",
-                "Một điểm bất kì nằm ngoài vật.",
-                "Một trong hai giá của ngẫu lực."
-            ],
-            correct: 1,
-            points: 5,
+            type: "short",
+            question: "Một vật không có trục quay cố định, khi chịu tác dụng của một ngẫu lực, vật sẽ quay quanh: (Lưu ý: Đáp án đúng gốc là \"Trọng tâm của vật.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "",
             explanation: "Vật tự do khi chịu tác dụng của ngẫu lực sẽ quay quanh trục đi qua trọng tâm của vật."
         },
         {
-            type: "multiple",
-            question: "Moment ngẫu lực được đo bằng đơn vị nào?",
-            options: [
-                "Joule (J).",
-                "Watt (W).",
-                "Newton mét (N.m).",
-                "Pascal (Pa)."
-            ],
-            correct: 2,
-            points: 5,
+            type: "short",
+            question: "Moment ngẫu lực được đo bằng đơn vị nào? (Lưu ý: Đáp án đúng gốc là \"Newton mét (N.m).\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".",
             explanation: "Đơn vị đo moment lực và moment ngẫu lực đều là Newton mét (N.m)."
         },
         {
-            type: "multiple",
-            question: "Một ngẫu lực gồm hai lực có độ lớn F = 10 N, khoảng cách giữa hai giá của lực là d = 30 cm. Moment ngẫu lực là:",
-            options: [
-                "300 N.m.",
-                "3 N.m.",
-                "30 N.m.",
-                "0,3 N.m."
-            ],
-            correct: 1,
-            points: 5,
+            type: "short",
+            question: "Một ngẫu lực gồm hai lực có độ lớn F = 10 N, khoảng cách giữa hai giá của lực là d = 30 cm. Moment ngẫu lực là: (Lưu ý: Đáp án đúng gốc là \"3 N.m.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "3.",
             explanation: "Đổi 30 cm = 0,3 m. M = F.d = 10 × 0,3 = 3 N.m."
         },
         {
-            type: "multiple",
-            question: "Nhận định nào sau đây về ngẫu lực là ĐÚNG?",
-            options: [
-                "Ngẫu lực có hợp lực khác không.",
-                "Hai lực của ngẫu lực là hai lực cân bằng.",
-                "Hai lực của ngẫu lực không thể thay thế bằng một lực duy nhất.",
-                "Moment ngẫu lực phụ thuộc vào điểm đặt của trục quay."
-            ],
-            correct: 2,
-            points: 5,
+            type: "short",
+            question: "Nhận định nào sau đây về ngẫu lực là ĐÚNG? (Lưu ý: Đáp án đúng gốc là \"Hai lực của ngẫu lực không thể thay thế bằng một lực duy nhất.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "",
             explanation: "Hai lực của ngẫu lực không cùng giá nên không thể là lực cân bằng và không có hợp lực đơn nhất thay thế được."
         },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 23: NĂNG LƯỢNG – CÔNG CƠ HỌC (Câu 21 – 30)
-        // ══════════════════════════════════════════════════════════════════
-        {
-            type: "multiple",
-            question: "Năng lượng không tự sinh ra hoặc tự mất đi mà chỉ:",
-            options: [
-                "Biến thành vật chất.",
-                "Chuyển hóa từ dạng này sang dạng khác hoặc truyền từ vật này sang vật khác.",
-                "Tiêu hao hoàn toàn sau một thời gian.",
-                "Tồn tại dưới một dạng duy nhất là nhiệt năng."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Đây là nội dung định luật bảo toàn và chuyển hóa năng lượng."
-        },
-        {
-            type: "multiple",
-            question: "Việc truyền năng lượng cho vật bằng cách tác dụng lực lên vật làm vật thay đổi trạng thái chuyển động được gọi là:",
-            options: [
-                "Truyền nhiệt.",
-                "Thực hiện công cơ học.",
-                "Bức xạ năng lượng.",
-                "Phóng xạ."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Việc thực hiện công là phương thức truyền năng lượng gắn liền với tác dụng của lực."
-        },
-        {
-            type: "multiple",
-            question: "Trong hệ SI, đơn vị của công là:",
-            options: [
-                "Oát (W).",
-                "Niutơn (N).",
-                "Jun (J).",
-                "Mã lực (HP)."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Đơn vị của công là Jun (J), 1 J = 1 N.m."
-        },
-        {
-            type: "multiple",
-            question: "Công cơ học được tính bởi biểu thức A = F.s.cosα. Trong đó góc α là góc hợp bởi:",
-            options: [
-                "Lực tác dụng và phương ngang.",
-                "Lực tác dụng và hướng dịch chuyển của vật.",
-                "Hướng dịch chuyển và phương thẳng đứng.",
-                "Lực tác dụng và mặt chân đế của vật."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Góc α được xác định giữa vector lực và vector độ dịch chuyển theo định nghĩa công cơ học."
-        },
-        {
-            type: "multiple",
-            question: "Lực thực hiện công cản khi góc α thỏa mãn điều kiện:",
-            options: [
-                "0 ≤ α < 90°.",
-                "α = 0°.",
-                "90° < α ≤ 180°.",
-                "α = 90°."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Công cản xuất hiện khi cosα < 0, tức là α là góc tù (lớn hơn 90°)."
-        },
-        {
-            type: "multiple",
-            question: "Một người cố sức đẩy một chiếc xe tải nhưng xe vẫn đứng yên. Công mà người đó đã thực hiện bằng:",
-            options: [
-                "Một giá trị dương rất lớn.",
-                "Một giá trị âm.",
-                "Bằng không.",
-                "Không xác định được vì chưa biết lực đẩy."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Công A = F.s.cosα, vì xe đứng yên nên s = 0 dẫn đến công bằng không."
-        },
-        {
-            type: "multiple",
-            question: "Khi một vật chuyển động trên mặt phẳng ngang, trọng lực tác dụng lên vật sinh công bằng bao nhiêu?",
-            options: [
-                "A = P.s.",
-                "A = −P.s.",
-                "A = 0.",
-                "A = m.g.h."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Trọng lực vuông góc với phương ngang (α = 90°), cos90° = 0 nên trọng lực không sinh công."
-        },
-        {
-            type: "multiple",
-            question: "Một vật trượt trên sàn nhà, lực ma sát trượt tác dụng lên vật sinh:",
-            options: [
-                "Công phát động.",
-                "Công cản.",
-                "Công bằng không.",
-                "Công suất tức thời."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Lực ma sát ngược chiều chuyển động (α = 180°), cos180° = −1 sinh công âm là công cản."
-        },
-        {
-            type: "multiple",
-            question: "Kéo một vật đi được quãng đường 10 m bằng một lực F = 40 N hợp với hướng dịch chuyển một góc 60°. Công của lực kéo là:",
-            options: [
-                "400 J.",
-                "200 J.",
-                "$$200\\sqrt{3}$$ J.",
-                "0 J."
-            ],
-            correct: 1,
-            explanation: "A = F.s.cos60° = 40 × 10 × 0,5 = 200 J."
-        },
-        {
-            type: "multiple",
-            question: "Trường hợp nào sau đây lực tác dụng không thực hiện công (A = 0)?",
-            options: [
-                "Vật rơi tự do từ trên cao xuống.",
-                "Vệ tinh chuyển động tròn đều quanh Trái Đất dưới tác dụng của lực hướng tâm.",
-                "Xe máy đang tăng tốc trên đường thẳng.",
-                "Người vận động viên đang cử tạ đứng yên tại chỗ."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Lực hướng tâm luôn vuông góc với vận tốc tức thời nên không sinh công trong chuyển động tròn đều."
-        },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 24: CÔNG SUẤT (Câu 31 – 40)
-        // ══════════════════════════════════════════════════════════════════
-        {
-            type: "multiple",
-            question: "Công suất là đại lượng đặc trưng cho:",
-            options: [
-                "Khả năng thực hiện công lớn hay nhỏ.",
-                "Tốc độ thực hiện công của vật hay thiết bị.",
-                "Năng lượng tiềm tàng của vật.",
-                "Độ lớn của lực tác dụng lên vật."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Công suất cho biết tốc độ nhanh chậm khi thực hiện một công nhất định."
-        },
-        {
-            type: "multiple",
-            question: "Đơn vị đo công suất là Oát (W). Một Oát tương đương với:",
-            options: [
-                "1 J.s.",
-                "1 J/s.",
-                "1 N.m.",
-                "1 N/s."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Theo công thức P = A/t, đơn vị W = J/s."
-        },
-        {
-            type: "multiple",
-            question: "Đại lượng nào sau đây không đổi khi nói về công suất định mức của một máy móc?",
-            options: [
-                "Công mà máy thực hiện.",
-                "Thời gian máy làm việc.",
-                "Khả năng thực hiện công tối đa trong một đơn vị thời gian.",
-                "Vận tốc của máy."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Công suất định mức ghi trên máy là khả năng làm việc tối đa trong điều kiện tiêu chuẩn."
-        },
-        {
-            type: "multiple",
-            question: "Biểu thức liên hệ giữa công suất P, lực F và vận tốc v trong trường hợp lực không đổi và cùng hướng chuyển động là:",
-            options: [
-                "P = F/v.",
-                "P = F.v.",
-                "P = F.s.",
-                "P = A.t."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "P = A/t = (F.s)/t = F.v là biểu thức liên hệ quan trọng trong kĩ thuật."
-        },
-        {
-            type: "multiple",
-            question: "Một động cơ có công suất không đổi. Để tăng lực kéo của động cơ lên vật, người vận hành cần:",
-            options: [
-                "Tăng vận tốc chuyển động.",
-                "Giảm vận tốc chuyển động.",
-                "Giữ nguyên vận tốc chuyển động.",
-                "Tăng thời gian thực hiện công."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Vì P = F.v, nếu P không đổi, muốn lực F tăng thì phải giảm vận tốc v (sang số thấp khi lên dốc)."
-        },
-        {
-            type: "multiple",
-            question: "Ý nghĩa vật lý của số ghi 1000 W trên một máy bơm nước là:",
-            options: [
-                "Máy bơm thực hiện một công 1000 J trong mỗi giây.",
-                "Máy bơm có thể bơm được 1000 lít nước trong một giờ.",
-                "Lực đẩy của máy bơm là 1000 N.",
-                "Máy bơm tiêu thụ 1000 J năng lượng trong suốt quá trình sử dụng."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Số 1000 W cho biết tốc độ máy thực hiện công là 1000 Jun trong mỗi giây làm việc."
-        },
-        {
-            type: "multiple",
-            question: "Sự khác biệt giữa công suất trung bình và công suất tức thời là:",
-            options: [
-                "Công suất trung bình đặc trưng cho một thời điểm, công suất tức thời đặc trưng cho một khoảng thời gian.",
-                "Công suất trung bình tính bằng A/t, công suất tức thời tính bằng F.v (với v là vận tốc tại thời điểm đang xét).",
-                "Công suất tức thời luôn lớn hơn công suất trung bình.",
-                "Chúng hoàn toàn giống nhau về mặt ý nghĩa."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Công suất trung bình tính cho cả quãng đường, công suất tức thời tính tại một vận tốc cụ thể."
-        },
-        {
-            type: "multiple",
-            question: "Một cần cẩu nâng một vật có trọng lượng 2 000 N lên cao 10 m trong thời gian 5 giây. Công suất của cần cẩu là:",
-            options: [
-                "4 000 W.",
-                "1 000 W.",
-                "20 000 W.",
-                "400 W."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "A = 2000 × 10 = 20 000 J. Công suất P = A/t = 20 000 / 5 = 4 000 W."
-        },
-        {
-            type: "multiple",
-            question: "Một ô tô chuyển động thẳng đều trên đường nằm ngang với vận tốc 72 km/h. Biết công suất động cơ là 40 kW. Lực kéo của động cơ là:",
-            options: [
-                "2 000 N.",
-                "555 N.",
-                "2 880 N.",
-                "40 000 N."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Đổi 72 km/h = 20 m/s. F = P/v = 40 000 / 20 = 2 000 N."
-        },
-        {
-            type: "multiple",
-            question: "Hai máy cơ có công suất P₁ = 2.P₂. Nếu hai máy thực hiện cùng một công A thì thời gian thực hiện công t₁ và t₂ liên hệ với nhau là:",
-            options: [
-                "t₁ = 2.t₂.",
-                "t₂ = 2.t₁.",
-                "t₁ = t₂.",
-                "t₁ = 4.t₂."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "P₁ = 2P₂ ⇒ A/t₁ = 2A/t₂ ⇒ t₂ = 2t₁. Máy công suất lớn tốn ít thời gian hơn."
-        },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 25: ĐỘNG NĂNG – THẾ NĂNG (Câu 41 – 50)
-        // ══════════════════════════════════════════════════════════════════
-        {
-            type: "multiple",
-            question: "Động năng của một vật khối lượng m chuyển động với vận tốc v được xác định bằng công thức:",
-            options: [
-                "$$W_d = mv^2$$.",
-                "$$W_d = \\frac{1}{2}mv^2$$.",
-                "$$W_d = mgh$$.",
-                "$$W_d = \\frac{1}{2}m^2v$$."
-            ],
-            correct: 1,
-            explanation: "Động năng là dạng năng lượng do chuyển động, tỉ lệ thuận với m và bình phương v."
-        },
-        {
-            type: "multiple",
-            question: "Thế năng trọng trường của một vật phụ thuộc vào các yếu tố nào?",
-            options: [
-                "Khối lượng và vận tốc của vật.",
-                "Khối lượng và vị trí của vật so với mốc chọn thế năng.",
-                "Vận tốc và gia tốc trọng trường.",
-                "Hình dạng và kích thước của vật."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Thế năng trọng trường phụ thuộc khối lượng m, gia tốc g và độ cao h so với mốc."
-        },
-        {
-            type: "multiple",
-            question: "Công thức tính thế năng trọng trường là:",
-            options: [
-                "$$W_t = \\frac{1}{2}mgh$$.",
-                "$$W_t = mgh$$.",
-                "$$W_t = mvh$$.",
-                "$$W_t = \\frac{1}{2}mv^2$$."
-            ],
-            correct: 1,
-            explanation: "Công thức chuẩn xác trong SGK Kết nối tri thức: Wt = mgh."
-        },
-        {
-            type: "multiple",
-            question: "Khi vận tốc của vật tăng lên 3 lần thì động năng của vật sẽ thay đổi như thế nào?",
-            options: [
-                "Tăng 3 lần.",
-                "Tăng 6 lần.",
-                "Tăng 9 lần.",
-                "Không đổi."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Động năng tỉ lệ với bình phương vận tốc, v tăng 3 thì Wd tăng 3² = 9 lần."
-        },
-        {
-            type: "multiple",
-            question: "Một vật đang nằm yên tại mốc chọn thế năng trọng trường thì vật đó có:",
-            options: [
-                "Động năng bằng không, thế năng bằng không.",
-                "Động năng khác không, thế năng bằng không.",
-                "Động năng bằng không, thế năng khác không.",
-                "Cả động năng và thế năng đều khác không."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Tại mốc thế năng h = 0 nên Wt = 0; vật nằm yên v = 0 nên Wd = 0."
-        },
-        {
-            type: "multiple",
-            question: "Độ biến thiên động năng của một vật bằng:",
-            options: [
-                "Công của các lực thế tác dụng lên vật.",
-                "Công của hợp lực tác dụng lên vật.",
-                "Thế năng ban đầu của vật.",
-                "Công suất của động cơ."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Định lý biến thiên động năng: công của hợp lực làm thay đổi động năng của vật."
-        },
-        {
-            type: "multiple",
-            question: "\"Lực thế\" là lực mà công của nó thực hiện khi vật di chuyển giữa hai điểm:",
-            options: [
-                "Phụ thuộc vào hình dạng đường đi.",
-                "Không phụ thuộc vào hình dạng đường đi, chỉ phụ thuộc vào vị trí đầu và cuối.",
-                "Luôn bằng không.",
-                "Tỉ lệ thuận với thời gian chuyển động."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Trọng lực là một loại lực thế vì công của nó không phụ thuộc quỹ đạo, chỉ phụ thuộc độ cao đầu – cuối."
-        },
-        {
-            type: "multiple",
-            question: "Thế năng trọng trường của một vật có giá trị âm khi:",
-            options: [
-                "Vật nằm tại mốc thế năng.",
-                "Vật nằm phía dưới mốc thế năng.",
-                "Vật đang chuyển động lên cao.",
-                "Khối lượng của vật nhỏ hơn 0."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Giá trị h mang dấu âm khi vật ở dưới gốc tọa độ được chọn làm mốc thế năng."
-        },
-        {
-            type: "multiple",
-            question: "Một cánh cung bị kéo căng dự trữ dạng năng lượng nào dưới đây?",
-            options: [
-                "Động năng.",
-                "Thế năng đàn hồi.",
-                "Thế năng trọng trường.",
-                "Điện năng."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Cánh cung bị biến dạng dự trữ thế năng đàn hồi theo đặc tính vật lý của vật liệu đàn hồi."
-        },
-        {
-            type: "multiple",
-            question: "Một vật khối lượng 1 kg có động năng 8 J. Vận tốc của vật là:",
-            options: [
-                "4 m/s.",
-                "8 m/s.",
-                "16 m/s.",
-                "2 m/s."
-            ],
-            correct: 0,
-            explanation: "$$v = \\sqrt{\\frac{2W_d}{m}} = \\sqrt{\\frac{2 \\times 8}{1}} = 4 \\text{ m/s}$$."
-        },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  BÀI 26: CƠ NĂNG – ĐỊNH LUẬT BẢO TOÀN CƠ NĂNG (Câu 51 – 60)
-        // ══════════════════════════════════════════════════════════════════
-        {
-            type: "multiple",
-            question: "Cơ năng của một vật chuyển động trong trọng trường là:",
-            options: [
-                "Hiệu số giữa động năng và thế năng.",
-                "Tổng của động năng và thế năng trọng trường của vật.",
-                "Tích của động năng và thế năng.",
-                "Năng lượng do vật biến dạng đàn hồi."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Cơ năng bao gồm cả năng lượng chuyển động (Wd) và năng lượng vị trí (Wt)."
-        },
-        {
-            type: "multiple",
-            question: "Định luật bảo toàn cơ năng chỉ được áp dụng khi vật:",
-            options: [
-                "Chuyển động thẳng đều.",
-                "Chỉ chịu tác dụng của lực thế (như trọng lực, lực đàn hồi).",
-                "Chịu tác dụng của lực ma sát rất lớn.",
-                "Chuyển động trong chân không tuyệt đối."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Cơ năng chỉ bảo toàn khi hệ không có lực cản, lực ma sát (chỉ có lực thế sinh công)."
-        },
-        {
-            type: "multiple",
-            question: "Khi một vật rơi tự do (bỏ qua lực cản không khí), đại lượng nào sau đây KHÔNG đổi?",
-            options: [
-                "Động năng.",
-                "Thế năng.",
-                "Cơ năng.",
-                "Vận tốc."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Trong rơi tự do, Wd tăng và Wt giảm nhưng tổng cơ năng W không đổi."
-        },
-        {
-            type: "multiple",
-            question: "Trong quá trình một vật được ném thẳng đứng lên cao (bỏ qua lực cản), sự chuyển hóa năng lượng diễn ra như thế nào?",
-            options: [
-                "Động năng chuyển hóa thành thế năng.",
-                "Thế năng chuyển hóa thành động năng.",
-                "Cơ năng chuyển hóa thành nhiệt năng.",
-                "Năng lượng mất dần theo độ cao."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Khi lên cao h tăng (Wt tăng), v giảm (Wd giảm), động năng chuyển dần sang thế năng."
-        },
-        {
-            type: "multiple",
-            question: "Tại vị trí thấp nhất của con lắc đơn đang dao động (bỏ qua ma sát):",
-            options: [
-                "Động năng cực đại, thế năng cực tiểu.",
-                "Động năng bằng không, thế năng cực đại.",
-                "Thế năng bằng động năng.",
-                "Cơ năng bằng không."
-            ],
-            correct: 0,
-            points: 5,
-            explanation: "Tại vị trí cân bằng h min nên Wt min, v max nên động năng cực đại theo bảo toàn cơ năng."
-        },
-        {
-            type: "multiple",
-            question: "Một vật trượt có ma sát từ đỉnh mặt phẳng nghiêng xuống chân dốc. Cơ năng của vật tại chân dốc sẽ:",
-            options: [
-                "Bằng cơ năng tại đỉnh dốc.",
-                "Nhỏ hơn cơ năng tại đỉnh dốc do công của lực ma sát.",
-                "Lớn hơn cơ năng tại đỉnh dốc.",
-                "Luôn bằng không."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Lực ma sát là lực không thế, công ma sát âm làm giảm tổng cơ năng của hệ."
-        },
-        {
-            type: "multiple",
-            question: "Khi động năng của một vật bảo toàn cơ năng tăng lên 20 J thì thế năng của nó sẽ:",
-            options: [
-                "Tăng thêm 20 J.",
-                "Giảm đi 20 J.",
-                "Không thay đổi.",
-                "Giảm đi 10 J."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Nếu cơ năng bảo toàn, sự tăng của động năng phải bằng sự giảm của thế năng: ΔWt = −20 J."
-        },
-        {
-            type: "multiple",
-            question: "Một vật rơi tự do từ độ cao h. Tại độ cao nào thì động năng bằng thế năng?",
-            options: [
-                "Tại mặt đất.",
-                "Tại độ cao h/2.",
-                "Tại độ cao h/4.",
-                "Tại vị trí bắt đầu rơi."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Tại h/2: Wt = mg(h/2) = ½W_ban_đầu. Phần ½ còn lại chính là động năng → Wd = Wt."
-        },
-        {
-            type: "multiple",
-            question: "Con lắc chuyển động từ vị trí biên về vị trí cân bằng, thế năng trọng trường của nó:",
-            options: [
-                "Tăng dần.",
-                "Giảm dần và chuyển hóa thành động năng.",
-                "Không thay đổi.",
-                "Chuyển hóa thành hóa năng."
-            ],
-            correct: 1,
-            points: 5,
-            explanation: "Khi về vị trí cân bằng h giảm nên thế năng giảm, vận tốc tăng nên thế năng chuyển thành động năng."
-        },
-        {
-            type: "multiple",
-            question: "Nếu bỏ qua mọi lực cản, cơ năng của hệ vật và Trái Đất là một đại lượng:",
-            options: [
-                "Luôn bằng không.",
-                "Luôn biến thiên theo thời gian.",
-                "Bảo toàn (không đổi).",
-                "Tỉ lệ thuận với vận tốc."
-            ],
-            correct: 2,
-            points: 5,
-            explanation: "Đây là phát biểu cốt lõi của định luật bảo toàn cơ năng trong trường trọng lực."
-        },
-
-        // ══════════════════════════════════════════════════════════════════
-        //  TỰ LUẬN – VẬN DỤNG CAO (6 bài tổng hợp)
-        // ══════════════════════════════════════════════════════════════════
         {
             type: "essay",
             question: "Một người tác dụng lực F = 40 N vuông góc vào tay nắm cửa để mở cửa. Khoảng cách từ tay nắm đến bản lề (trục quay) là d = 0,75 m. Khi cửa quay được một góc 90°, điểm đặt lực di chuyển theo một cung tròn. Tính moment lực và công thực hiện bởi người đó.",

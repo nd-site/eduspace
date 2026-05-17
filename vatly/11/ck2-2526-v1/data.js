@@ -1,19 +1,36 @@
-// data.js – KIỂM TRA CUỐI KÌ II – VẬT LÝ 11 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung: Điện trường – Dòng điện – Từ trường – Cảm ứng điện từ
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 50 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Vật Lý 11 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 3000,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── ĐIỆN TRƯỜNG ───────────────────────────────────────────────────
         {
             type: "multiple",
             question: "Cường độ điện trường E tại một điểm được xác định bằng:",
@@ -41,7 +58,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Công của lực điện trường khi dịch chuyển điện tích q qua hiệu điện thế U là:",
-            options: ["A = U/q", "A = q.U", "A = q/U", "A = q².U"],
+            options: [
+                "A = U/q",
+                "A = q.U",
+                "A = q/U",
+                "A = q².U"
+            ],
             correct: 1,
             explanation: "Công lực điện: A = q.U = q(V₁ − V₂)."
         },
@@ -84,11 +106,15 @@ window.quizData = {
         {
             type: "multiple",
             question: "Hai điện tích q₁ = q₂ = 2×10⁻⁶ C đặt cách nhau 0,1 m trong chân không. Lực Cu-lông giữa chúng (k = 9×10⁹ N.m²/C²) là:",
-            options: ["3,6 N", "36 N", "0,36 N", "0,036 N"],
+            options: [
+                "3,6 N",
+                "36 N",
+                "0,36 N",
+                "0,036 N"
+            ],
             correct: 0,
             explanation: "F = kq₁q₂/r² = 9×10⁹×(2×10⁻⁶)²/0,01 = 9×10⁹×4×10⁻¹²/10⁻² = 3,6 N."
         },
-        // ── DÒNG ĐIỆN – MẠCH ĐIỆN ────────────────────────────────────────
         {
             type: "multiple",
             question: "Định luật Ôm cho đoạn mạch: cường độ dòng điện I qua đoạn mạch tỉ lệ thuận với:",
@@ -116,7 +142,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Công suất điện tiêu thụ trên điện trở R khi có dòng I chạy qua là:",
-            options: ["P = I/R", "P = I²R", "P = IR", "P = R/I²"],
+            options: [
+                "P = I/R",
+                "P = I²R",
+                "P = IR",
+                "P = R/I²"
+            ],
             correct: 1,
             explanation: "P = I²R = U²/R = UI."
         },
@@ -135,180 +166,107 @@ window.quizData = {
         {
             type: "multiple",
             question: "Nguồn điện có ξ = 12 V, r = 1 Ω, mắc với R = 5 Ω. Cường độ dòng điện mạch chính là:",
-            options: ["2 A", "12 A", "2,4 A", "10 A"],
+            options: [
+                "2 A",
+                "12 A",
+                "2,4 A",
+                "10 A"
+            ],
             correct: 0,
             explanation: "I = ξ/(R+r) = 12/6 = 2 A."
         },
         {
-            type: "multiple",
-            question: "Nhiệt lượng tỏa ra trên điện trở R khi dòng I chạy qua trong thời gian t là:",
-            options: ["Q = I²Rt", "Q = IRt", "Q = I²R/t", "Q = IR²t"],
-            correct: 0,
+            type: "truefalse",
+            question: "Xét nhận định sau: Nhiệt lượng tỏa ra trên điện trở R khi dòng I chạy qua trong thời gian t là:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Q = I²Rt",
+                "Q = IRt",
+                "Q = I²R/t",
+                "Q = IR²t"
+            ],
+            correct: [
+                true,
+                false,
+                false,
+                false
+            ],
             explanation: "Định luật Jun-Lenxơ: Q = I²Rt."
         },
         {
-            type: "multiple",
-            question: "Mắc song song hai điện trở R₁ = 6 Ω và R₂ = 3 Ω. Điện trở tương đương là:",
-            options: ["9 Ω", "2 Ω", "4,5 Ω", "18 Ω"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Mắc song song hai điện trở R₁ = 6 Ω và R₂ = 3 Ω. Điện trở tương đương là:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "9 Ω",
+                "2 Ω",
+                "4,5 Ω",
+                "18 Ω"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "1/R = 1/6 + 1/3 = 1/2 → R = 2 Ω."
         },
-        // ── TỪ TRƯỜNG ────────────────────────────────────────────────────
         {
-            type: "multiple",
-            question: "Lực từ tác dụng lên đoạn dây dẫn mang dòng điện trong từ trường đều được tính theo công thức:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Lực từ tác dụng lên đoạn dây dẫn mang dòng điện trong từ trường đều được tính theo công thức:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "F = qvB",
                 "F = BIl.sinα",
                 "F = BIl.cosα",
                 "F = B²Il"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Lực Am-pe: F = BIl.sinα, α là góc giữa dây và véctơ B."
         },
         {
-            type: "multiple",
-            question: "Quy tắc xác định chiều lực từ tác dụng lên dây dẫn mang dòng điện là:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Quy tắc xác định chiều lực từ tác dụng lên dây dẫn mang dòng điện là:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Quy tắc vặn nút chai",
                 "Quy tắc bàn tay trái",
                 "Quy tắc bàn tay phải",
                 "Quy tắc đinh ốc"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Quy tắc bàn tay trái: đặt bàn tay trái sao cho B xuyên lòng bàn tay, 4 ngón theo chiều I → ngón cái chỉ chiều F."
         },
         {
-            type: "multiple",
-            question: "Cảm ứng từ B tại tâm vòng dây tròn bán kính R, mang dòng I là:",
-            options: [
-                "$$B = \\frac{\\mu_0 I}{2R}$$",
-                "$$B = \\frac{\\mu_0 I}{2\\pi R}$$",
-                "$$B = \\mu_0 I R$$",
-                "$$B = \\frac{\\mu_0 I}{4R}$$"
-            ],
-            correct: 0,
+            type: "short",
+            question: "Cảm ứng từ B tại tâm vòng dây tròn bán kính R, mang dòng I là: (Lưu ý: Đáp án đúng gốc là \"$$B = \\frac{\\mu_0 I}{2R}$$\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "02",
             explanation: "Cảm ứng từ tại tâm vòng dây: B = μ₀I/(2R)."
         },
         {
-            type: "multiple",
-            question: "Lực Lo-ren-xơ tác dụng lên điện tích q chuyển động với vận tốc v trong từ trường B là:",
-            options: [
-                "F = qvBcosα",
-                "F = qvBsinα",
-                "F = qB/v",
-                "F = mv²/B"
-            ],
-            correct: 1,
+            type: "short",
+            question: "Lực Lo-ren-xơ tác dụng lên điện tích q chuyển động với vận tốc v trong từ trường B là: (Lưu ý: Đáp án đúng gốc là \"F = qvBsinα\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Lực Lorentz: f = qvBsinα, vuông góc với v và B."
         },
         {
-            type: "multiple",
-            question: "Cảm ứng từ B trong lòng ống dây (solenoid) có n vòng/m, mang dòng I là:",
-            options: [
-                "B = μ₀nI",
-                "B = μ₀I/(2πr)",
-                "B = nI/μ₀",
-                "B = μ₀n/I"
-            ],
-            correct: 0,
+            type: "short",
+            question: "Cảm ứng từ B trong lòng ống dây (solenoid) có n vòng/m, mang dòng I là: (Lưu ý: Đáp án đúng gốc là \"B = μ₀nI\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Solenoid: B = μ₀nI, phân bố đều trong lòng ống."
         },
         {
-            type: "multiple",
-            question: "Từ thông Φ qua diện tích S trong từ trường đều B là:",
-            options: [
-                "Φ = B.S.sinα",
-                "Φ = B.S.cosα",
-                "Φ = B/S",
-                "Φ = B²S"
-            ],
-            correct: 1,
+            type: "short",
+            question: "Từ thông Φ qua diện tích S trong từ trường đều B là: (Lưu ý: Đáp án đúng gốc là \"Φ = B.S.cosα\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".",
             explanation: "Φ = B.S.cosα, α là góc giữa véctơ B và pháp tuyến mặt S."
         },
-        // ── CẢM ỨNG ĐIỆN TỪ ──────────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Định luật Fa-ra-đây về cảm ứng điện từ: suất điện động cảm ứng e bằng:",
-            options: [
-                "Độ biến thiên từ thông",
-                "Tốc độ biến thiên từ thông (về độ lớn)",
-                "Tích từ thông và thời gian",
-                "Từ thông chia điện trở"
-            ],
-            correct: 1,
-            explanation: "|e| = |ΔΦ/Δt|; chiều xác định bởi định luật Len-xơ."
-        },
-        {
-            type: "multiple",
-            question: "Định luật Len-xơ phát biểu: chiều dòng điện cảm ứng có tác dụng:",
-            options: [
-                "Tăng cường sự biến thiên từ thông",
-                "Cùng chiều với từ thông ban đầu",
-                "Chống lại sự biến thiên từ thông đã sinh ra nó",
-                "Vuông góc với từ thông"
-            ],
-            correct: 2,
-            explanation: "Định luật Len-xơ: dòng cảm ứng chống lại nguyên nhân sinh ra nó."
-        },
-        {
-            type: "multiple",
-            question: "Suất điện động tự cảm e trong cuộn cảm L khi dòng điện biến thiên ΔI/Δt là:",
-            options: [
-                "e = L.ΔI/Δt",
-                "e = −L.ΔI/Δt",
-                "e = L²ΔI/Δt",
-                "e = ΔI/(L.Δt)"
-            ],
-            correct: 1,
-            explanation: "e = −L.ΔI/Δt; dấu trừ thể hiện tính chống lại sự thay đổi dòng."
-        },
-        {
-            type: "multiple",
-            question: "Năng lượng từ trường tích trữ trong cuộn cảm L có dòng I là:",
-            options: [
-                "W = LI",
-                "W = ½LI²",
-                "W = LI²",
-                "W = ½L²I"
-            ],
-            correct: 1,
-            explanation: "Năng lượng từ trường: W = ½LI²."
-        },
-        {
-            type: "multiple",
-            question: "Máy biến áp lý tưởng có tỉ số biến áp n₁/n₂ = 5. Điện áp sơ cấp U₁ = 220 V. Điện áp thứ cấp U₂ là:",
-            options: ["44 V", "1 100 V", "22 V", "440 V"],
-            correct: 0,
-            explanation: "U₁/U₂ = n₁/n₂ → U₂ = U₁×n₂/n₁ = 220×1/5 = 44 V."
-        },
-        {
-            type: "multiple",
-            question: "Từ trường xoáy (không đổi theo thời gian) không thể sinh ra:",
-            options: [
-                "Lực từ lên dây dẫn",
-                "Điện trường xoáy",
-                "Dòng điện cảm ứng khi từ thông không đổi",
-                "Từ thông qua mạch kín"
-            ],
-            correct: 2,
-            explanation: "Dòng cảm ứng chỉ xuất hiện khi từ thông qua mạch BIẾN THIÊN (ΔΦ ≠ 0)."
-        },
-        {
-            type: "multiple",
-            question: "Khi từ thông qua một khung dây tăng đều từ 0,02 Wb đến 0,08 Wb trong 0,1 s. Suất điện động cảm ứng là:",
-            options: ["0,6 V", "6 V", "0,06 V", "60 V"],
-            correct: 0,
-            explanation: "|e| = |ΔΦ/Δt| = (0,08−0,02)/0,1 = 0,6 V."
-        },
-        {
-            type: "multiple",
-            question: "Cuộn cảm L = 0,2 H có dòng điện giảm đều từ 4 A xuống 0 trong 0,4 s. Suất điện động tự cảm là:",
-            options: ["2 V", "0,2 V", "8 V", "0,5 V"],
-            correct: 0,
-            explanation: "|e| = L|ΔI/Δt| = 0,2×(4/0,4) = 0,2×10 = 2 V."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Nguồn điện có suất điện động ξ = 12 V, điện trở trong r = 2 Ω mắc với điện trở ngoài R = 10 Ω.\n\na) Tính cường độ dòng điện trong mạch.\nb) Tính hiệu điện thế hai đầu nguồn (điện áp đầu cực).\nc) Tính công suất tỏa nhiệt trên R.",

@@ -1,7 +1,35 @@
-// data.js - Đề cương ôn tập Sinh học 10 - Cuối học kì I - Tạo bởi Grok
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
+
 window.quizData = {
     title: "ĐỀ CƯƠNG ÔN TẬP SINH HỌC 10 - CUỐI HỌC KÌ I TRƯỜNG THPT LỘC AN",
-    config: { testDuration: 3600 },
+    config: {
+        testDuration: 3600,
+        examLayout: {
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
+        }
+    },
     questions: [
         {
             type: "multiple",
@@ -163,203 +191,76 @@ window.quizData = {
             type: "truefalse",
             question: "Câu 1 (TRẮC NGHIỆM TRẢ LỜI NGẮN): Nhận định nào sau đây đúng về cấu trúc, vai trò của bào quan lục lạp của tế bào? (1- Lục lạp có 2 lớp màng; 2- Có enzyme quang hợp; 3- Là nơi thực hiện quang hợp tổng hợp chất hữu cơ; 4- Cung cấp nguồn năng lượng cho sinh giới).",
             points: 20,
-            correctAnswers: [true, true, true, true],
+            correctAnswers: [
+                true,
+                true,
+                true,
+                true
+            ],
             explanation: "Tất cả 4 nhận định đều đúng: lục lạp có 2 lớp màng, chứa enzyme quang hợp, thực hiện quang hợp và cung cấp năng lượng cho sinh giới."
         },
         {
             type: "truefalse",
             question: "Câu 2 (TRẮC NGHIỆM TRẢ LỜI NGẮN): Có bao nhiêu nhận định đúng về tế bào nhân thực: (a) Tế bào động vật có trung thể; (b) Tế bào thực vật có thành tế bào; (c) Nhân điều khiển mọi hoạt động sống.",
             points: 20,
-            correctAnswers: [true, true, true],
+            correctAnswers: [
+                true,
+                true,
+                true
+            ],
             explanation: "Cả 3 nhận định đều đúng."
         },
         {
-            type: "multiple",
-            question: "Câu 1: Một tế bào nhân tạo có nồng độ chất tan là 0,5M (NaCl). Dung dịch nào sau đây là môi trường đẳng trương của tế bào?",
-            points: 10,
-            options: [
-                "A. Dung dịch NaCl 0,5M.",
-                "B. Dung dịch NaCl 0,2M.",
-                "C. Dung dịch NaCl 0,1M.",
-                "D. Nước cất."
+            type: "truefalse",
+            question: "Câu 1 (TRẮC NGHIỆM ĐÚNG SAI): Về hiện tượng co nguyên sinh: a. Môi trường 1 (nước đi ra) là ưu trương. b. Ở môi trường nhược trương lâu sẽ làm vỡ tế bào thực vật. c. Rau sống ngâm nước muối loãng giống môi trường ưu trương.",
+            points: 20,
+            correctAnswers: [
+                true,
+                false,
+                true
             ],
-            correct: 0,
-            explanation: "Đẳng trương khi nồng độ chất tan bằng nhau hai phía màng."
+            explanation: "a Đúng (ưu trương → nước ra); b Sai (thành tế bào ngăn vỡ); c Đúng (nước muối loãng tạo môi trường ưu trương)."
         },
         {
-            type: "multiple",
-            question: "Câu 2: Nồng độ glucose trong máu là 1,2g/lít và trong nước tiểu là 0,9g/lít. Tế bào thận sẽ vận chuyển glucose bằng cách nào?",
-            points: 10,
-            options: [
-                "A. Nhập bào.",
-                "B. Thụ động.",
-                "C. Chủ động.",
-                "D. Xuất bào."
-            ],
-            correct: 2,
-            explanation: "Từ nồng độ thấp (nước tiểu) về cao (máu) → vận chuyển chủ động."
-        },
-        {
-            type: "multiple",
-            question: "Câu 3: Nhận định nào sau đây sai về phương thức vận chuyển các chất?",
-            points: 10,
-            options: [
-                "A. Xuất bào và nhập bào dựa trên sự biến dạng của màng.",
-                "B. Vận chuyển thụ động không tiêu tốn năng lượng.",
-                "C. Vận chuyển chủ động cần năng lượng để đi từ nơi nồng độ thấp đến nơi nồng độ cao.",
-                "D. Sự vận chuyển các chất qua màng chủ yếu nhờ phương thức thụ động."
-            ],
-            correct: 3,
-            explanation: "Vận chuyển qua màng có cả thụ động và chủ động, không phải chủ yếu thụ động."
-        },
-        {
-            type: "multiple",
-            question: "Câu 4: Vì sao bón quá nhiều phân cho cây sẽ làm cho cây héo, chết?",
-            points: 10,
+            type: "truefalse",
+            question: "Xét nhận định sau: Câu 4: Vì sao bón quá nhiều phân cho cây sẽ làm cho cây héo, chết?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "A. Cây phát triển quá mạnh.",
                 "B. Bộ lá phát triển gây chết.",
                 "C. Nồng độ chất tan ở đất cao hơn trong rễ, nước trong rễ thẩm thấu ra ngoài.",
                 "D. Lông hút bị chết hàng loạt do nồng độ quá cao."
             ],
-            correct: 2,
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Đất ưu trương → nước từ rễ ra ngoài → cây mất nước, héo."
         },
         {
-            type: "multiple",
-            question: "Câu 5: Ngâm tế bào thực vật vào môi trường A thấy có hiện tượng co nguyên sinh. Sau đó chuyển sang môi trường B thấy phân co nguyên sinh. A và B là:",
-            points: 10,
-            options: [
-                "A. A nhược trương, B ưu trương.",
-                "B. A ưu trương, B nhược trương.",
-                "C. A đẳng trương, B nhược trương.",
-                "D. A nhược trương, B đẳng trương."
-            ],
-            correct: 1,
+            type: "short",
+            question: "Câu 5: Ngâm tế bào thực vật vào môi trường A thấy có hiện tượng co nguyên sinh. Sau đó chuyển sang môi trường B thấy phân co nguyên sinh. A và B là: (Lưu ý: Đáp án đúng gốc là \"B. A ưu trương, B nhược trương.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".,",
             explanation: "Co nguyên sinh xảy ra trong môi trường ưu trương."
         },
         {
-            type: "multiple",
-            question: "Câu 6: Trong môi trường nhược trương, tế bào nào sau đây dễ bị vỡ nhất?",
-            points: 10,
-            options: [
-                "A. Tế bào hồng cầu.",
-                "B. Tế bào nấm men.",
-                "C. Tế bào thực vật.",
-                "D. Tế bào vi khuẩn."
-            ],
-            correct: 0,
+            type: "short",
+            question: "Câu 6: Trong môi trường nhược trương, tế bào nào sau đây dễ bị vỡ nhất? (Lưu ý: Đáp án đúng gốc là \"A. Tế bào hồng cầu.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".",
             explanation: "Tế bào hồng cầu không có thành tế bào nên dễ bị vỡ khi hút nước trong môi trường nhược trương."
         },
         {
-            type: "truefalse",
-            question: "Câu 1 (TRẮC NGHIỆM ĐÚNG SAI): Về hiện tượng co nguyên sinh: a. Môi trường 1 (nước đi ra) là ưu trương. b. Ở môi trường nhược trương lâu sẽ làm vỡ tế bào thực vật. c. Rau sống ngâm nước muối loãng giống môi trường ưu trương.",
-            points: 20,
-            correctAnswers: [true, false, true],
-            explanation: "a Đúng (ưu trương → nước ra); b Sai (thành tế bào ngăn vỡ); c Đúng (nước muối loãng tạo môi trường ưu trương)."
-        },
-        {
-            type: "multiple",
-            question: "Câu 1: \"Đồng tiền năng lượng của tế bào\" là:",
-            points: 10,
-            options: [
-                "A. NADPH.",
-                "B. ATP.",
-                "C. ADP.",
-                "D. FADH2."
-            ],
-            correct: 1,
+            type: "short",
+            question: "Câu 1: \"Đồng tiền năng lượng của tế bào\" là: (Lưu ý: Đáp án đúng gốc là \"B. ATP.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".",
             explanation: "ATP là phân tử mang năng lượng cao, được sử dụng trực tiếp trong tế bào."
         },
         {
-            type: "multiple",
-            question: "Câu 2: Năng lượng của ATP tích lũy chủ yếu ở:",
-            points: 10,
-            options: [
-                "A. Cả 3 nhóm phosphat.",
-                "B. Hai liên kết gần đường.",
-                "C. Hai liên kết giữa 2 nhóm phosphat ngoài cùng.",
-                "D. Chỉ 1 liên kết ngoài cùng."
-            ],
-            correct: 2,
+            type: "short",
+            question: "Câu 2: Năng lượng của ATP tích lũy chủ yếu ở: (Lưu ý: Đáp án đúng gốc là \"C. Hai liên kết giữa 2 nhóm phosphat ngoài cùng.\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: ".2",
             explanation: "Năng lượng chủ yếu lưu trữ ở liên kết phosphat cao năng lượng (liên kết pyrophosphat)."
-        },
-        {
-            type: "multiple",
-            question: "Câu 3: Thành phần cơ bản của enzyme là:",
-            points: 10,
-            options: [
-                "A. Lipid.",
-                "B. Axit nucleic.",
-                "C. Cacbohydrat.",
-                "D. Protein."
-            ],
-            correct: 3,
-            explanation: "Enzyme chủ yếu là protein (một số là ribozyme - RNA)."
-        },
-        {
-            type: "multiple",
-            question: "Câu 4: Khi enzyme xúc tác phản ứng, cơ chất liên kết với:",
-            points: 10,
-            options: [
-                "A. Cofactor.",
-                "B. Protein.",
-                "C. Coenzyme.",
-                "D. Trung tâm hoạt động."
-            ],
-            correct: 3,
-            explanation: "Cơ chất liên kết đặc hiệu với trung tâm hoạt động của enzyme."
-        },
-        {
-            type: "multiple",
-            question: "Câu 5: Tại sao ăn thịt bò khô với nộm đu đủ dễ tiêu hóa hơn?",
-            points: 10,
-            options: [
-                "A. Đu đủ có enzyme phân giải protein (papain).",
-                "B. Đu đủ có nhiều vitamin.",
-                "C. Đu đủ nhiều nước.",
-                "D. Đu đủ có chất xơ kích thích tiêu hóa."
-            ],
-            correct: 0,
-            explanation: "Papain trong đu đủ là enzyme proteaza, phân giải protein."
-        },
-        {
-            type: "multiple",
-            question: "Câu 1: Chất nào không phải sản phẩm pha sáng?",
-            points: 10,
-            options: [
-                "A. ATP.",
-                "B. NADPH.",
-                "C. O2.",
-                "D. C6H12O6."
-            ],
-            correct: 3,
-            explanation: "C6H12O6 (glucose) là sản phẩm pha tối (tổng hợp hữu cơ)."
-        },
-        {
-            type: "multiple",
-            question: "Câu 2: Nguồn gốc oxi thoát ra từ quang hợp:",
-            points: 10,
-            options: [
-                "A. Từ nước (H2O).",
-                "B. Từ CO2.",
-                "C. Từ ATP.",
-                "D. Từ APG."
-            ],
-            correct: 0,
-            explanation: "O2 được giải phóng từ quá trình phân tách nước trong pha sáng."
-        },
-        {
-            type: "multiple",
-            question: "Câu 3: Trật tự đúng của hô hấp tế bào:",
-            points: 10,
-            options: [
-                "A. Chu trình Krebs -> Đường phân -> Chuỗi truyền electron.",
-                "B. Đường phân -> Chu trình Krebs -> Chuỗi truyền electron.",
-                "C. Chuỗi truyền electron -> Đường phân -> Chu trình Krebs."
-            ],
-            correct: 1,
-            explanation: "Hô hấp tế bào: Đường phân (chất nền) → Chu trình Krebs → Chuỗi truyền electron."
         },
         {
             type: "essay",

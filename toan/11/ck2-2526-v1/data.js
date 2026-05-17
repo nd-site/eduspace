@@ -1,30 +1,57 @@
-// data.js – KIỂM TRA CUỐI KÌ II – TOÁN 11 (KNTT) – 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Đạo hàm – Quan hệ vuông góc trong không gian – Xác suất
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 90 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Có trả lời ngắn (MCQ, TF, Short, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Toán 11 (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 5400,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 0.5,
+                partialScoring: [
+                    0.05,
+                    0.125,
+                    0.25,
+                    0.5
+                ]
+            },
+            short: {
+                count: 4,
+                pointsPerQ: 0.5
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── ĐẠO HÀM ───────────────────────────────────────────────────────
         {
             type: "multiple",
             question: "Đạo hàm của hàm số y = x³ − 3x² + 2x − 1 là:",
-            options: ["y' = 3x² − 6x + 2", "y' = x² − x + 2", "y' = 3x² − 3x + 2", "y' = 3x² − 6x − 1"],
+            options: [
+                "y' = 3x² − 6x + 2",
+                "y' = x² − x + 2",
+                "y' = 3x² − 3x + 2",
+                "y' = 3x² − 6x − 1"
+            ],
             correct: 0,
             explanation: "y' = (x³)' − (3x²)' + (2x)' − (1)' = 3x² − 6x + 2."
         },
         {
             type: "multiple",
             question: "Đạo hàm của hàm số y = sin x là:",
-            options: ["y' = cos x", "y' = −cos x", "y' = sin x", "y' = −sin x"],
+            options: [
+                "y' = cos x",
+                "y' = −cos x",
+                "y' = sin x",
+                "y' = −sin x"
+            ],
             correct: 0,
             explanation: "(sin x)' = cos x."
         },
@@ -79,11 +106,15 @@ window.quizData = {
         {
             type: "multiple",
             question: "Đạo hàm cấp hai của hàm số y = x⁴ − 2x² là:",
-            options: ["y'' = 12x² − 4", "y'' = 4x³ − 4x", "y'' = 12x² + 4", "y'' = 4x³ + 4x"],
+            options: [
+                "y'' = 12x² − 4",
+                "y'' = 4x³ − 4x",
+                "y'' = 12x² + 4",
+                "y'' = 4x³ + 4x"
+            ],
             correct: 0,
             explanation: "y' = 4x³ − 4x; y'' = 12x² − 4."
         },
-        // ── QUAN HỆ VUÔNG GÓC TRONG KHÔNG GIAN ──────────────────────────
         {
             type: "multiple",
             question: "Đường thẳng d vuông góc với mặt phẳng (P) khi:",
@@ -102,19 +133,10 @@ window.quizData = {
             options: [
                 "SA ⊥ BC",
                 "BC ⊥ (SAB)",
-                "SC ⊥ BD",
-                "AC ⊥ BD"
-            ],
-            correct: 2,
-            explanation: "Ta có BD ⊥ AC và BD ⊥ SA → BD ⊥ (SAC) → BD ⊥ SC (khẳng định C đúng). A,B,D đúng, vậy hỏi câu nào SAI? Khoan, SA ⊥ BC (đúng vì SA⊥ABCD). BC ⊥ AB và BC ⊥ SA → BC ⊥ (SAB) (đúng). BD ⊥ AC và SA → BD ⊥ (SAC) → BD ⊥ SC (đúng). Chờ đã, khẳng định nào sai? Sửa lại: A, B, D đều đúng. C cũng đúng. Vậy cho phương án C: SB ⊥ CD.",
-            // Điều chỉnh đáp án do suy luận trên
-            options: [
-                "SA ⊥ BC",
-                "BC ⊥ (SAB)",
                 "SB ⊥ CD",
                 "AC ⊥ BD"
             ],
-            correct: 2, // SB ⊥ CD sai vì CD ⊥ (SAD) nên CD ⊥ SD, chứ không ⊥ SB.
+            correct: 2,
             explanation: "CD ⊥ AD, CD ⊥ SA → CD ⊥ (SAD) → CD ⊥ SD. SB không vuông góc với CD."
         },
         {
@@ -132,7 +154,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Cho hình lập phương ABCD.A'B'C'D'. Góc giữa hai đường thẳng AB và B'C' là:",
-            options: ["90°", "0°", "45°", "60°"],
+            options: [
+                "90°",
+                "0°",
+                "45°",
+                "60°"
+            ],
             correct: 0,
             explanation: "B'C' // BC. Góc giữa AB và B'C' bằng góc giữa AB và BC. Vì ABCD là hình vuông nên góc bằng 90°."
         },
@@ -149,150 +176,97 @@ window.quizData = {
             explanation: "(P) ⊥ (Q) khi góc bằng 90°, tương đương mp này chứa 1 đường thẳng vuông góc với mp kia."
         },
         {
-            type: "multiple",
-            question: "Cho hình chóp S.ABC có SA ⊥ (ABC), tam giác ABC vuông tại B. Khẳng định nào ĐÚNG?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Cho hình chóp S.ABC có SA ⊥ (ABC), tam giác ABC vuông tại B. Khẳng định nào ĐÚNG?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "(SBC) ⊥ (SAB)",
                 "(SBC) ⊥ (SAC)",
                 "(SAB) ⊥ (SAC)",
                 "(ABC) ⊥ (SBC)"
             ],
-            correct: 0,
+            correct: [
+                true,
+                false,
+                false,
+                false
+            ],
             explanation: "BC ⊥ AB, BC ⊥ SA → BC ⊥ (SAB). Mà BC ⊂ (SBC) → (SBC) ⊥ (SAB)."
         },
         {
-            type: "multiple",
-            question: "Khoảng cách giữa hai đường thẳng chéo nhau a và b là:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Khoảng cách giữa hai đường thẳng chéo nhau a và b là:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Độ dài đoạn vuông góc chung của a và b",
                 "Khoảng cách từ một điểm trên a đến b",
                 "Khoảng cách từ a đến mặt phẳng chứa b",
                 "Bằng 0"
             ],
-            correct: 0,
+            correct: [
+                true,
+                false,
+                false,
+                false
+            ],
             explanation: "Định nghĩa: khoảng cách giữa 2 đường chéo nhau bằng độ dài đoạn vuông góc chung."
         },
-        // ── XÁC SUẤT ──────────────────────────────────────────────────────
         {
-            type: "multiple",
-            question: "Gieo đồng thời hai con xúc xắc cân đối. Xác suất để tổng số chấm bằng 7 là:",
-            options: ["1/6", "1/12", "1/36", "7/36"],
-            correct: 0,
+            type: "truefalse",
+            question: "Xét nhận định sau: Gieo đồng thời hai con xúc xắc cân đối. Xác suất để tổng số chấm bằng 7 là:. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "1/6",
+                "1/12",
+                "1/36",
+                "7/36"
+            ],
+            correct: [
+                true,
+                false,
+                false,
+                false
+            ],
             explanation: "Các kết quả (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) có 6 kết quả. Số phần tử KG mẫu là 36. P = 6/36 = 1/6."
         },
         {
-            type: "multiple",
-            question: "Hai biến cố A và B độc lập nếu:",
+            type: "truefalse",
+            question: "Xét nhận định sau: Hai biến cố A và B độc lập nếu:. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "P(AB) = P(A) + P(B)",
                 "P(AB) = P(A).P(B)",
                 "P(A ∪ B) = P(A) + P(B)",
                 "A và B không cùng xảy ra"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Định nghĩa: A, B độc lập ↔ P(A∩B) = P(A).P(B)."
         },
         {
-            type: "multiple",
-            question: "Cho A và B là hai biến cố độc lập, P(A) = 0,4; P(B) = 0,5. P(A ∪ B) bằng:",
-            options: ["0,9", "0,7", "0,2", "0,1"],
-            correct: 1,
+            type: "short",
+            question: "Cho A và B là hai biến cố độc lập, P(A) = 0,4; P(B) = 0,5. P(A ∪ B) bằng: (Lưu ý: Đáp án đúng gốc là \"0,7\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "0,7",
             explanation: "P(AB) = 0,4×0,5 = 0,2. P(A∪B) = P(A) + P(B) − P(AB) = 0,4 + 0,5 − 0,2 = 0,7."
         },
         {
-            type: "multiple",
-            question: "Một hộp có 4 bi đỏ và 6 bi xanh. Rút ngẫu nhiên lần lượt 2 bi (có hoàn lại). Xác suất để cả 2 bi đều đỏ là:",
-            options: ["16/100", "12/90", "4/10", "2/5"],
-            correct: 0,
+            type: "short",
+            question: "Một hộp có 4 bi đỏ và 6 bi xanh. Rút ngẫu nhiên lần lượt 2 bi (có hoàn lại). Xác suất để cả 2 bi đều đỏ là: (Lưu ý: Đáp án đúng gốc là \"16/100\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1610",
             explanation: "Rút có hoàn lại là độc lập. P = (4/10) × (4/10) = 16/100 = 4/25 = 0,16."
         },
         {
-            type: "multiple",
-            question: "Xác suất có điều kiện P(A|B) được tính bởi công thức:",
-            options: [
-                "P(A|B) = P(A ∩ B) / P(A)",
-                "P(A|B) = P(A ∩ B) / P(B)",
-                "P(A|B) = P(A) / P(B)",
-                "P(A|B) = P(A) . P(B)"
-            ],
-            correct: 1,
+            type: "short",
+            question: "Xác suất có điều kiện P(A|B) được tính bởi công thức: (Lưu ý: Đáp án đúng gốc là \"P(A|B) = P(A ∩ B) / P(B)\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "1",
             explanation: "Công thức xác suất có điều kiện: P(A|B) = P(AB)/P(B) (với P(B)>0)."
         },
-        // ── TỔNG HỢP / NÂNG CAO NHẸ ──────────────────────────────────────
         {
-            type: "multiple",
-            question: "Cho hàm số f(x) = sin(2x). f''(π/4) bằng:",
-            options: ["0", "−4", "4", "2"],
-            correct: 1,
+            type: "short",
+            question: "Cho hàm số f(x) = sin(2x). f''(π/4) bằng: (Lưu ý: Đáp án đúng gốc là \"−4\". Hãy nhập số hoặc giá trị thích hợp)",
+            correct: "4",
             explanation: "f'(x) = 2cos(2x); f''(x) = −4sin(2x). f''(π/4) = −4sin(π/2) = −4."
         },
-        {
-            type: "multiple",
-            question: "Hình chóp tứ giác đều S.ABCD có tất cả các cạnh bằng a. Côsin góc giữa SA và (ABCD) là:",
-            options: ["1/2", "$$\\sqrt{2}/2$$", "$$\\sqrt{3}/2$$", "$$\\sqrt{2}/3$$"],
-            correct: 1,
-            explanation: "Gọi O là tâm đáy. Góc là ∠SAO. AO = a√2/2. cos∠SAO = AO/SA = (a√2/2)/a = √2/2."
-        },
-        {
-            type: "multiple",
-            question: "Đạo hàm của hàm số $$y = \\ln(x^2+1)$$ là:",
-            options: [
-                "$$y' = \\frac{1}{x^2+1}$$",
-                "$$y' = \\frac{2x}{x^2+1}$$",
-                "$$y' = 2x\\ln(x^2+1)$$",
-                "$$y' = \\frac{x}{x^2+1}$$"
-            ],
-            correct: 1,
-            explanation: "y' = u'/u = (x²+1)'/(x²+1) = 2x/(x²+1)."
-        },
-        {
-            type: "multiple",
-            question: "Hình hộp chữ nhật ABCD.A'B'C'D' có AB=a, AD=b, AA'=c. Độ dài đường chéo AC' là:",
-            options: ["√(a²+b²+c²)", "a+b+c", "√(a²+b²)", "√(a²+c²)"],
-            correct: 0,
-            explanation: "Độ dài đường chéo hình hộp chữ nhật: d = √(a²+b²+c²)."
-        },
-        {
-            type: "multiple",
-            question: "Gieo 3 con xúc xắc. Xác suất để tổng số chấm bằng 18 là:",
-            options: ["1/216", "1/36", "1/18", "3/216"],
-            correct: 0,
-            explanation: "Chỉ có 1 trường hợp (6,6,6). Không gian mẫu 6³ = 216. P = 1/216."
-        },
-        {
-            type: "multiple",
-            question: "Đạo hàm của hàm số y = e^(2x) là:",
-            options: ["2e^(2x)", "e^(2x)", "2xe^(2x)", "e^(2x)/2"],
-            correct: 0,
-            explanation: "(e^u)' = u'.e^u = 2.e^(2x)."
-        },
-        {
-            type: "multiple",
-            question: "Khoảng cách từ một điểm M đến mặt phẳng (P) là:",
-            options: [
-                "Độ dài đoạn thẳng MM' với M' là hình chiếu vuông góc của M trên (P)",
-                "Độ dài đoạn nối M với một điểm bất kì trên (P)",
-                "Không xác định được",
-                "Khoảng cách từ M đến một đường thẳng trong (P)"
-            ],
-            correct: 0,
-            explanation: "Định nghĩa khoảng cách từ điểm đến mặt phẳng."
-        },
-        {
-            type: "multiple",
-            question: "Trong một hộp có 3 quả cầu đỏ, 4 quả cầu xanh. Rút ngẫu nhiên 2 quả. Xác suất để rút được 2 quả cùng màu là:",
-            options: ["3/7", "9/21", "3/21 + 6/21 = 9/21 = 3/7", "4/7"],
-            correct: 0,
-            explanation: "Tổng 7 quả. n(Ω) = C(7,2) = 21. Cùng đỏ: C(3,2)=3. Cùng xanh: C(4,2)=6. Tổng kết quả thuận lợi: 9. P = 9/21 = 3/7."
-        },
-        {
-            type: "multiple",
-            question: "Phương trình tiếp tuyến của y = x³ tại O(0;0) là:",
-            options: ["y = 0", "y = x", "x = 0", "y = 3x"],
-            correct: 0,
-            explanation: "y' = 3x² → y'(0) = 0. PT: y = 0(x−0) + 0 → y = 0 (trục Ox)."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Cho hàm số f(x) = x³ − 3x² + 2.\n\na) Tính đạo hàm f'(x).\nb) Viết phương trình tiếp tuyến của đồ thị (C) tại điểm có hoành độ x₀ = 1.",

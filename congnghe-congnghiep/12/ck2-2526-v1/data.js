@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – CÔNG NGHỆ 12 (ĐIỆN - ĐIỆN TỬ) – KNTT 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Linh kiện điện tử (Diode, Transistor, IC), Vi điều khiển cơ bản, Hệ thống điện quốc gia, Mạng điện sản xuất quy mô nhỏ
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Công nghệ 12 Điện - Điện tử (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── LINH KIỆN ĐIỆN TỬ CƠ BẢN ──────────────────────────────────────
         {
             type: "multiple",
             question: "Điện trở (Resistor) có công dụng chính là gì trong mạch điện tử?",
@@ -29,7 +42,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Linh kiện điện tử nào có khả năng tích lũy năng lượng dưới dạng điện trường?",
-            options: ["Điện trở", "Cuộn cảm", "Tụ điện", "Diode"],
+            options: [
+                "Điện trở",
+                "Cuộn cảm",
+                "Tụ điện",
+                "Diode"
+            ],
             correct: 2,
             explanation: "Tụ điện (Capacitor) tích lũy năng lượng điện trường, có tác dụng ngăn dòng một chiều (DC) và cho dòng xoay chiều (AC) đi qua."
         },
@@ -48,7 +66,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Transistor loại BJT (Bipolar Junction Transistor) có mấy cực?",
-            options: ["2 cực (A, K)", "3 cực (B, C, E)", "3 cực (G, S, D)", "4 cực"],
+            options: [
+                "2 cực (A, K)",
+                "3 cực (B, C, E)",
+                "3 cực (G, S, D)",
+                "4 cực"
+            ],
             correct: 1,
             explanation: "Transistor BJT có 3 cực: Base (B - Cực nền), Collector (C - Cực góp), Emitter (E - Cực phát)."
         },
@@ -76,7 +99,6 @@ window.quizData = {
             correct: 1,
             explanation: "IC giúp thu nhỏ kích thước thiết bị điện tử, tăng độ tin cậy và giảm giá thành."
         },
-        // ── VI ĐIỀU KHIỂN & MẠCH ĐIỆN TỬ CHUYÊN DỤNG ───────────────────────
         {
             type: "multiple",
             question: "Vi điều khiển (Microcontroller) khác với Vi xử lí (Microprocessor) ở điểm cơ bản nào?",
@@ -116,11 +138,15 @@ window.quizData = {
         {
             type: "multiple",
             question: "Trong mạch tạo xung đa hài tự dao động dùng transistor, người ta dùng linh kiện nào để tạo ra thời gian trễ (chu kì dao động)?",
-            options: ["Điện trở và Cuộn cảm", "Điện trở và Tụ điện (Mạch RC)", "Chỉ dùng Diode", "Biến áp"],
+            options: [
+                "Điện trở và Cuộn cảm",
+                "Điện trở và Tụ điện (Mạch RC)",
+                "Chỉ dùng Diode",
+                "Biến áp"
+            ],
             correct: 1,
             explanation: "Sự nạp và phóng điện của tụ điện qua điện trở quyết định thời gian luân phiên đóng cắt của 2 transistor (tạo xung vuông)."
         },
-        // ── HỆ THỐNG ĐIỆN QUỐC GIA ────────────────────────────────────────
         {
             type: "multiple",
             question: "Hệ thống điện quốc gia bao gồm các thành phần chính nào?",
@@ -146,134 +172,73 @@ window.quizData = {
             explanation: "Công suất hao phí tỏa nhiệt tỉ lệ nghịch với bình phương điện áp truyền tải. Điện áp càng cao, dòng điện càng nhỏ, hao phí tỏa nhiệt (I^2.R) càng giảm."
         },
         {
-            type: "multiple",
-            question: "Lưới điện truyền tải ở Việt Nam thường có điện áp từ bao nhiêu trở lên?",
-            options: ["220V và 380V", "Từ 110 kV đến 500 kV", "Từ 22 kV đến 35 kV", "Dưới 1000V"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Lưới điện truyền tải ở Việt Nam thường có điện áp từ bao nhiêu trở lên?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "220V và 380V",
+                "Từ 110 kV đến 500 kV",
+                "Từ 22 kV đến 35 kV",
+                "Dưới 1000V"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Lưới điện phân phối có cấp điện áp từ 35kV trở xuống, lưới điện truyền tải (đi xa) là 110kV, 220kV, 500kV."
         },
         {
-            type: "multiple",
-            question: "Trong máy biến áp điện lực 3 pha, nếu muốn lấy ra cả nguồn 3 pha (380V) và nguồn 1 pha (220V) cho sinh hoạt, cuộn thứ cấp thường được nối theo hình gì?",
-            options: ["Nối hình tam giác", "Nối hình sao có dây trung tính (Y/yo)", "Nối nối tiếp", "Nối song song"],
-            correct: 1,
+            type: "truefalse",
+            question: "Xét nhận định sau: Trong máy biến áp điện lực 3 pha, nếu muốn lấy ra cả nguồn 3 pha (380V) và nguồn 1 pha (220V) cho sinh hoạt, cuộn thứ cấp thường được nối theo hình gì?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Nối hình tam giác",
+                "Nối hình sao có dây trung tính (Y/yo)",
+                "Nối nối tiếp",
+                "Nối song song"
+            ],
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Nối hình sao có dây trung tính (dây mát) cho phép lấy ra điện áp dây (380V, giữa 2 dây pha) và điện áp pha (220V, giữa 1 dây pha và dây trung tính)."
         },
-        // ── MẠCH ĐIỆN SẢN XUẤT QUY MÔ NHỎ ─────────────────────────────────
         {
-            type: "multiple",
-            question: "Mạng điện sản xuất quy mô nhỏ thường nhận điện năng từ lưới điện phân phối có điện áp là bao nhiêu?",
-            options: ["500 kV", "220 kV", "Từ 22 kV đến 35 kV, sau đó hạ áp xuống 380V/220V", "12V"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Mạng điện sản xuất quy mô nhỏ thường nhận điện năng từ lưới điện phân phối có điện áp là bao nhiêu?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "500 kV",
+                "220 kV",
+                "Từ 22 kV đến 35 kV, sau đó hạ áp xuống 380V/220V",
+                "12V"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Các cơ sở sản xuất nhỏ thường dùng trạm biến áp hạ áp riêng biệt, nhận điện trung thế (22kV) hạ xuống hạ thế (380V 3 pha) cho máy móc."
         },
         {
-            type: "multiple",
-            question: "Trong tủ điện phân phối của xưởng sản xuất, thiết bị nào có chức năng đóng cắt nguồn điện tổng và bảo vệ ngắn mạch, quá tải?",
-            options: ["Khởi động từ (Contactor)", "Rơ le nhiệt", "Cầu dao tự động (Aptomat/ MCCB, MCB)", "Cầu chì"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Trong tủ điện phân phối của xưởng sản xuất, thiết bị nào có chức năng đóng cắt nguồn điện tổng và bảo vệ ngắn mạch, quá tải?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Khởi động từ (Contactor)",
+                "Rơ le nhiệt",
+                "Cầu dao tự động (Aptomat/ MCCB, MCB)",
+                "Cầu chì"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Aptomat (CB) là thiết bị đóng cắt tự động khi dòng điện vượt ngưỡng an toàn."
         },
-        {
-            type: "multiple",
-            question: "Động cơ điện không đồng bộ 3 pha có cấu tạo gồm 2 phần chính là gì?",
-            options: [
-                "Bugi và Piston",
-                "Stator (phần đứng yên) và Rotor (phần quay)",
-                "Cuộn sơ cấp và cuộn thứ cấp",
-                "Cổ góp và chổi than"
-            ],
-            correct: 1,
-            explanation: "Đây là cấu tạo cơ bản của mọi động cơ điện AC."
-        },
-        {
-            type: "multiple",
-            question: "Ưu điểm lớn nhất của động cơ điện không đồng bộ 3 pha rôto lồng sóc là:",
-            options: [
-                "Cấu tạo đơn giản, giá rẻ, vận hành bền bỉ, dễ bảo trì",
-                "Dễ dàng điều chỉnh tốc độ bằng điện trở phụ",
-                "Sử dụng dòng điện một chiều DC",
-                "Có mômen khởi động lớn nhất trong các loại động cơ"
-            ],
-            correct: 0,
-            explanation: "Nhờ kết cấu rôto lồng sóc (không có chổi than, vành trượt), động cơ này cực kì bền, rẻ và được dùng rộng rãi nhất trong công nghiệp."
-        },
-        {
-            type: "multiple",
-            question: "Thiết bị nào thường được dùng kết hợp với Aptomat để bảo vệ động cơ 3 pha khỏi bị cháy khi quá tải lâu dài?",
-            options: ["Cầu chì", "Khởi động từ (Contactor)", "Rơ le nhiệt", "Tụ điện"],
-            correct: 2,
-            explanation: "Rơ le nhiệt có thanh lưỡng kim, khi quá tải sinh nhiệt làm thanh kim loại cong đi, ngắt mạch điều khiển để dừng động cơ."
-        },
-        {
-            type: "multiple",
-            question: "Để đổi chiều quay của động cơ điện không đồng bộ 3 pha, ta thực hiện thao tác nào?",
-            options: [
-                "Tăng điện áp nguồn",
-                "Đổi chiều cắm phích điện",
-                "Đổi vị trí 2 trong 3 pha điện cấp vào stator của động cơ",
-                "Lắp thêm tụ điện"
-            ],
-            correct: 2,
-            explanation: "Khi đổi vị trí 2 dây pha bất kì, từ trường quay trong stator sẽ đảo chiều, kéo theo rotor quay ngược lại."
-        },
-        // ── AN TOÀN ĐIỆN VÀ KHÁC ──────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Biện pháp 'nối đất bảo vệ' (tiếp địa) vỏ kim loại của thiết bị điện có tác dụng gì?",
-            options: [
-                "Tiết kiệm điện năng",
-                "Đưa dòng điện rò rỉ truyền xuống đất, giữ điện áp ở vỏ máy ở mức an toàn, bảo vệ người khi chạm vào không bị điện giật",
-                "Làm tăng công suất của máy",
-                "Bảo vệ thiết bị không bị sét đánh"
-            ],
-            correct: 1,
-            explanation: "Nối đất vỏ máy tạo ra một điện trở rất nhỏ nối song song với người, dòng điện rò sẽ đi qua dây nối đất thay vì đi qua cơ thể người."
-        },
-        {
-            type: "multiple",
-            question: "Cảm biến (Sensor) trong các hệ thống tự động hóa có vai trò giống với bộ phận nào của con người?",
-            options: ["Não bộ", "Cơ bắp", "Các giác quan (mắt, tai, da...)", "Hệ tiêu hóa"],
-            correct: 2,
-            explanation: "Cảm biến thu nhận thông tin từ môi trường (nhiệt độ, ánh sáng, vật cản...) chuyển thành tín hiệu điện gửi về bộ điều khiển."
-        },
-        {
-            type: "multiple",
-            question: "Trong kĩ thuật số, cổng logic AND cho tín hiệu đầu ra ở mức CAO (1) khi nào?",
-            options: [
-                "Khi có ít nhất 1 đầu vào ở mức 1",
-                "Khi tất cả các đầu vào đều ở mức CAO (1)",
-                "Khi các đầu vào đều ở mức 0",
-                "Khi các đầu vào khác nhau"
-            ],
-            correct: 1,
-            explanation: "Cổng AND thực hiện phép nhân logic: 1 AND 1 = 1. Các trường hợp khác đều bằng 0."
-        },
-        {
-            type: "multiple",
-            question: "Mạch điện tử điều khiển là mạch:",
-            options: [
-                "Chỉ dùng để biến đổi nguồn xoay chiều thành một chiều",
-                "Xử lí các tín hiệu điện tử để đưa ra lệnh điều khiển hoạt động của các máy móc, thiết bị (ví dụ: board mạch máy giặt)",
-                "Tạo ra dòng điện xoay chiều tần số cao",
-                "Dẫn điện 3 pha"
-            ],
-            correct: 1,
-            explanation: "Mạch điều khiển là 'bộ não' của các thiết bị điện tử hiện đại, sử dụng IC, vi điều khiển để tự động hóa công việc."
-        },
-        {
-            type: "multiple",
-            question: "Dòng điện xoay chiều 3 pha có đặc điểm gì?",
-            options: [
-                "Gồm 3 dòng điện một chiều đi trên 3 dây",
-                "Gồm 3 dòng điện xoay chiều 1 pha cùng biên độ, cùng tần số nhưng lệch pha nhau góc 120 độ (2π/3)",
-                "Gồm 1 dòng điện nhưng đi qua 3 dây khác nhau",
-                "Tần số của 3 pha khác nhau"
-            ],
-            correct: 1,
-            explanation: "Đây là định nghĩa chuẩn của dòng điện xoay chiều 3 pha sinh ra từ máy phát điện 3 pha."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Hãy phân biệt dòng điện xoay chiều (AC) và dòng điện một chiều (DC) về đặc điểm, nguồn tạo ra và ứng dụng cơ bản.",

@@ -1,19 +1,32 @@
-// data.js – KIỂM TRA CUỐI KÌ II – CÔNG NGHỆ 11 (CƠ KHÍ ĐỘNG LỰC) – KNTT 2025-2026
-// Chương trình GDPT 2018 | Sách Kết Nối Tri Thức với Cuộc Sống
-// Nội dung HK2: Các hệ thống của động cơ đốt trong (Bôi trơn, làm mát, cung cấp nhiên liệu, đánh lửa, khởi động), Khái quát về Ô tô (Truyền lực, phanh, lái, treo)
-// 28 câu TN (×0,25đ = 7đ) + 3 câu TL (×1đ = 3đ) | 45 phút
+// FILE DỮ LIỆU ĐÃ ĐƯỢC CHUẨN HÓA THEO CẤU TRÚC GDPT 2018 (CV 7991)
+// Nhóm môn: Không có trả lời ngắn (MCQ, TF, Essay)
 
 window.quizData = {
     title: "Kiểm tra Cuối Học Kì II – Công nghệ 11 Cơ khí động lực (Kết nối tri thức) 2025-2026",
     config: {
         testDuration: 2700,
         examLayout: {
-            multiple: { count: 28, pointsPerQ: 0.25 },
-            essay: { count: 3, pointsPerQ: 1.0 }
+            multiple: {
+                count: 12,
+                pointsPerQ: 0.25
+            },
+            truefalse: {
+                count: 4,
+                pointsPerQ: 1,
+                partialScoring: [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1
+                ]
+            },
+            essay: {
+                count: 3,
+                pointsPerQ: 1
+            }
         }
     },
     questions: [
-        // ── HỆ THỐNG BÔI TRƠN VÀ LÀM MÁT ──────────────────────────────────
         {
             type: "multiple",
             question: "Nhiệm vụ chính của hệ thống bôi trơn trong động cơ đốt trong là gì?",
@@ -29,7 +42,12 @@ window.quizData = {
         {
             type: "multiple",
             question: "Trong hệ thống bôi trơn cưỡng bức, chi tiết nào có nhiệm vụ tạo ra áp suất để đẩy dầu đi bôi trơn?",
-            options: ["Cacte dầu", "Bầu lọc dầu", "Bơm dầu", "Két làm mát dầu"],
+            options: [
+                "Cacte dầu",
+                "Bầu lọc dầu",
+                "Bơm dầu",
+                "Két làm mát dầu"
+            ],
             correct: 2,
             explanation: "Bơm dầu (thường dẫn động từ trục khuỷu) hút dầu từ cacte và nén với áp suất cao đưa vào các đường ống."
         },
@@ -72,15 +90,24 @@ window.quizData = {
         {
             type: "multiple",
             question: "Bộ phận nào của hệ thống làm mát bằng không khí có tác dụng tăng diện tích tiếp xúc với không khí để tản nhiệt nhanh hơn?",
-            options: ["Quạt gió", "Cánh tản nhiệt đúc trên thân xilanh và nắp máy", "Két nước", "Bơm nước"],
+            options: [
+                "Quạt gió",
+                "Cánh tản nhiệt đúc trên thân xilanh và nắp máy",
+                "Két nước",
+                "Bơm nước"
+            ],
             correct: 1,
             explanation: "Các cánh tản nhiệt làm tăng diện tích bề mặt, giúp truyền nhiệt từ vách xilanh ra không khí tốt hơn (xe máy thường dùng loại này)."
         },
-        // ── HỆ THỐNG CUNG CẤP NHIÊN LIỆU VÀ KHÔNG KHÍ ─────────────────────
         {
             type: "multiple",
             question: "Ở động cơ xăng dùng bộ chế hòa khí, hòa khí (hỗn hợp xăng và không khí) được hình thành ở đâu?",
-            options: ["Trong xilanh động cơ", "Ở bầu lọc gió", "Tại bộ chế hòa khí (trên đường ống nạp)", "Ở vòi phun xăng"],
+            options: [
+                "Trong xilanh động cơ",
+                "Ở bầu lọc gió",
+                "Tại bộ chế hòa khí (trên đường ống nạp)",
+                "Ở vòi phun xăng"
+            ],
             correct: 2,
             explanation: "Bộ chế hòa khí hòa trộn xăng và không khí theo tỉ lệ thích hợp tạo thành hòa khí trước khi nạp vào xilanh."
         },
@@ -111,15 +138,24 @@ window.quizData = {
         {
             type: "multiple",
             question: "Bộ phận tạo ra áp suất rất cao để phun tơi nhiên liệu Diesel vào xilanh là:",
-            options: ["Bơm chuyển nhiên liệu", "Bơm cao áp", "Bầu lọc tinh", "Bầu lọc thô"],
+            options: [
+                "Bơm chuyển nhiên liệu",
+                "Bơm cao áp",
+                "Bầu lọc tinh",
+                "Bầu lọc thô"
+            ],
             correct: 1,
             explanation: "Bơm cao áp nén dầu lên áp suất rất lớn (vài trăm bar) để vòi phun phun dầu tơi như sương."
         },
-        // ── HỆ THỐNG ĐÁNH LỬA & KHỞI ĐỘNG ─────────────────────────────────
         {
             type: "multiple",
             question: "Hệ thống đánh lửa được trang bị trên loại động cơ nào?",
-            options: ["Động cơ Diesel", "Động cơ Xăng", "Cả động cơ xăng và Diesel", "Động cơ điện"],
+            options: [
+                "Động cơ Diesel",
+                "Động cơ Xăng",
+                "Cả động cơ xăng và Diesel",
+                "Động cơ điện"
+            ],
             correct: 1,
             explanation: "Động cơ xăng cần bugi để bật tia lửa điện đốt cháy hòa khí. Động cơ Diesel thì tự bốc cháy do nén ở áp suất và nhiệt độ cao."
         },
@@ -136,144 +172,73 @@ window.quizData = {
             explanation: "Bugi nhận điện cao áp từ bô bin và phóng tia lửa điện giữa 2 điện cực."
         },
         {
-            type: "multiple",
-            question: "Chi tiết nào trong hệ thống đánh lửa có chức năng biến dòng điện một chiều điện áp thấp (12V) thành các xung điện cao áp (hàng chục nghìn vôn)?",
-            options: ["Bugi", "Ắc quy", "Bô bin (Cuộn dây đánh lửa)", "Đĩa từ"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Chi tiết nào trong hệ thống đánh lửa có chức năng biến dòng điện một chiều điện áp thấp (12V) thành các xung điện cao áp (hàng chục nghìn vôn)?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Bugi",
+                "Ắc quy",
+                "Bô bin (Cuộn dây đánh lửa)",
+                "Đĩa từ"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Bô bin hoạt động như một máy biến áp để tăng áp lực điện lên mức đủ lớn để phóng tia lửa qua khe hở bugi."
         },
         {
-            type: "multiple",
-            question: "Hệ thống khởi động bằng động cơ điện (củ đề) hoạt động dựa vào nguồn năng lượng nào?",
-            options: ["Nhiên liệu xăng", "Năng lượng khí nén", "Điện năng từ ắc quy (dòng điện một chiều)", "Sức người"],
-            correct: 2,
+            type: "truefalse",
+            question: "Xét nhận định sau: Hệ thống khởi động bằng động cơ điện (củ đề) hoạt động dựa vào nguồn năng lượng nào?. Các phát biểu dưới đây đúng hay sai?",
+            options: [
+                "Nhiên liệu xăng",
+                "Năng lượng khí nén",
+                "Điện năng từ ắc quy (dòng điện một chiều)",
+                "Sức người"
+            ],
+            correct: [
+                false,
+                false,
+                true,
+                false
+            ],
             explanation: "Động cơ khởi động trên ô tô, xe máy sử dụng điện từ bình ắc quy để làm quay trục khuỷu."
         },
         {
-            type: "multiple",
-            question: "Cơ cấu truyền động của máy khởi động điện có đặc điểm gì?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Cơ cấu truyền động của máy khởi động điện có đặc điểm gì?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Bánh răng khởi động luôn luôn ăn khớp với vành răng bánh đà",
                 "Chỉ ăn khớp truyền động một chiều từ máy khởi động sang vành răng bánh đà khi khởi động, sau đó tự động tách ra",
                 "Truyền động bằng dây đai",
                 "Truyền động bằng xích"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Khớp truyền động một chiều (khớp bendix) giúp động cơ điện làm quay trục khuỷu, nhưng khi nổ máy thì trục khuỷu quay nhanh hơn không truyền ngược lại làm hỏng động cơ điện."
         },
-        // ── KHÁI QUÁT VỀ Ô TÔ (TRUYỀN LỰC, PHANH, LÁI, TREO) ──────────────
         {
-            type: "multiple",
-            question: "Hệ thống truyền lực trên ô tô có nhiệm vụ gì?",
+            type: "truefalse",
+            question: "Xét nhận định sau: Hệ thống truyền lực trên ô tô có nhiệm vụ gì?. Các phát biểu dưới đây đúng hay sai?",
             options: [
                 "Cung cấp năng lượng điện cho xe",
                 "Truyền mômen quay từ động cơ tới các bánh xe chủ động",
                 "Điều khiển hướng chuyển động của xe",
                 "Giảm xóc khi xe đi qua đường gồ ghề"
             ],
-            correct: 1,
+            correct: [
+                false,
+                true,
+                false,
+                false
+            ],
             explanation: "Hệ thống truyền lực (gồm li hợp, hộp số, truyền lực các đăng, truyền lực chính, vi sai...) đưa công suất từ động cơ xuống bánh xe để xe chạy."
         },
-        {
-            type: "multiple",
-            question: "Bộ phận nào của hệ thống truyền lực dùng để cắt hoặc nối truyền động từ động cơ đến hộp số?",
-            options: ["Hộp số", "Truyền lực các đăng", "Li hợp (Côn)", "Cầu chủ động"],
-            correct: 2,
-            explanation: "Li hợp (côn) giúp ngắt truyền động khi sang số hoặc khi phanh dừng xe, và nối truyền động êm dịu khi khởi hành."
-        },
-        {
-            type: "multiple",
-            question: "Nhiệm vụ của hộp số ô tô là gì?",
-            options: [
-                "Chỉ để truyền lực đi xa",
-                "Thay đổi tỉ số truyền nhằm thay đổi mômen và tốc độ của bánh xe chủ động phù hợp với điều kiện cản của đường; cho phép xe lùi và dừng lâu mà không cần tắt máy",
-                "Phân phối mômen đều cho hai bánh xe",
-                "Khởi động động cơ"
-            ],
-            correct: 1,
-            explanation: "Hộp số có các cấp số khác nhau (số 1 kéo khỏe đi chậm, số cao chạy nhanh) và có số lùi."
-        },
-        {
-            type: "multiple",
-            question: "Bộ vi sai trên ô tô có tác dụng gì?",
-            options: [
-                "Giúp ô tô chạy lùi",
-                "Cho phép hai bánh xe chủ động (trên cùng một cầu) quay với tốc độ khác nhau khi ô tô đi vào đường vòng (khi vào cua)",
-                "Ngắt truyền động hoàn toàn",
-                "Tăng tốc độ tối đa của xe"
-            ],
-            correct: 1,
-            explanation: "Khi vào cua, bánh xe bên ngoài phải đi quãng đường dài hơn nên phải quay nhanh hơn bánh xe bên trong. Vi sai giải quyết vấn đề này."
-        },
-        {
-            type: "multiple",
-            question: "Hệ thống phanh trên ô tô có chức năng gì?",
-            options: [
-                "Giảm tốc độ, dừng xe và giữ xe đứng yên trên dốc",
-                "Thay đổi hướng chuyển động",
-                "Tăng mômen kéo",
-                "Giảm chấn động"
-            ],
-            correct: 0,
-            explanation: "Hệ thống phanh đảm bảo an toàn giao thông, giúp giảm tốc và dừng đỗ."
-        },
-        {
-            type: "multiple",
-            question: "ABS (Anti-lock Braking System) trên ô tô là hệ thống gì?",
-            options: [
-                "Hệ thống lái tự động",
-                "Hệ thống chống bó cứng phanh, giúp bánh xe không bị trượt lết khi phanh gấp, giữ được khả năng điều khiển lái",
-                "Hệ thống treo khí nén",
-                "Hệ thống phun xăng điện tử"
-            ],
-            correct: 1,
-            explanation: "ABS tự động nhấp nhả phanh liên tục giúp lốp xe bám đường tốt hơn khi phanh khẩn cấp."
-        },
-        {
-            type: "multiple",
-            question: "Hệ thống lái ô tô làm nhiệm vụ gì?",
-            options: [
-                "Giữ ô tô đứng yên",
-                "Truyền lực từ hộp số đến bánh xe",
-                "Thay đổi hướng chuyển động hoặc giữ ô tô chuyển động theo hướng quỹ đạo xác định",
-                "Kết nối động cơ với hệ thống treo"
-            ],
-            correct: 2,
-            explanation: "Thông qua vô lăng, người lái điều khiển góc quay của các bánh xe dẫn hướng."
-        },
-        {
-            type: "multiple",
-            question: "Hệ thống treo trên ô tô có chức năng gì?",
-            options: [
-                "Kết nối đàn hồi giữa khung/vỏ xe với các cầu trục, dập tắt dao động, giúp xe chạy êm dịu",
-                "Làm mát cho phanh",
-                "Tạo ra dòng điện xoay chiều",
-                "Dừng động cơ"
-            ],
-            correct: 0,
-            explanation: "Hệ thống treo (lò xo, nhíp, giảm chấn) hấp thụ các cú sốc từ mặt đường gồ ghề truyền lên thân xe."
-        },
-        // ── KHÁC ─────────────────────────────────────────────────────────
-        {
-            type: "multiple",
-            question: "Hệ thống nào giúp cung cấp nguồn điện cho toàn bộ các thiết bị điện trên ô tô khi động cơ đang hoạt động và nạp điện lại cho ắc quy?",
-            options: ["Bô bin đánh lửa", "Bugi", "Máy phát điện (Alternator)", "Máy khởi động"],
-            correct: 2,
-            explanation: "Máy phát điện được dẫn động bởi trục khuỷu, tạo ra điện năng cung cấp cho xe khi máy đã nổ."
-        },
-        {
-            type: "multiple",
-            question: "Dầu bôi trơn trong cacte động cơ sau một thời gian sử dụng phải được thay mới vì:",
-            options: [
-                "Dầu bị bốc hơi hết",
-                "Dầu bị biến chất, mất khả năng bôi trơn và lẫn nhiều cặn bẩn, mạt kim loại",
-                "Dầu chuyển thành nước",
-                "Màu dầu không còn đẹp"
-            ],
-            correct: 1,
-            explanation: "Nhiệt độ cao và ma sát làm dầu nhớt suy giảm chất lượng, cần thay định kì."
-        },
-        // ── TỰ LUẬN ──────────────────────────────────────────────────────
         {
             type: "essay",
             question: "Nêu nhiệm vụ của hệ thống bôi trơn trên động cơ đốt trong. Trình bày đường đi của dầu bôi trơn trong hệ thống bôi trơn cưỡng bức ở trạng thái hoạt động bình thường.",
