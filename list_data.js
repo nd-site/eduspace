@@ -59,7 +59,7 @@ const quizList = [
 
     // ── THI THỬ THPT 2026 (Cấu trúc mới) ─────────────
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Toán",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Toán (Bản 1)",
         url: "/eduspace/toan/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán theo cấu trúc mới của Bộ GD&ĐT (Trắc nghiệm I, II, III).",
         tag: "THPT 2026",
@@ -69,7 +69,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Ngữ văn",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Toán (Bản 2)",
+        url: "/eduspace/toan/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán (Bản 2) chuẩn GDPT 2018 (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Toán",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Ngữ văn (Bản 1)",
         url: "/eduspace/nguvan/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Ngữ văn với cấu trúc Đọc hiểu và Viết (Tự luận).",
         tag: "THPT 2026",
@@ -79,7 +89,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tiếng Anh",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Ngữ văn (Bản 2)",
+        url: "/eduspace/nguvan/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Ngữ văn (Bản 2) - Ngữ liệu và Đề bài hoàn toàn mới chuẩn GDPT 2018.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Ngữ Văn",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tiếng Anh (Bản 1)",
         url: "/eduspace/tienganh/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Tiếng Anh (40 câu trắc nghiệm).",
         tag: "THPT 2026",
@@ -89,7 +109,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Vật lý",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tiếng Anh (Bản 2)",
+        url: "/eduspace/tienganh/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Tiếng Anh (Bản 2) - Cập nhật dạng bài đọc điền, sắp xếp đoạn văn chuẩn xác.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Tiếng Anh",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Vật lý (Bản 1)",
         url: "/eduspace/vatly/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Vật lý theo cấu trúc mới (Trắc nghiệm I, II, III).",
         tag: "THPT 2026",
@@ -99,7 +129,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Hóa học",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Vật lý (Bản 2)",
+        url: "/eduspace/vatly/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Vật lý (Bản 2) - Cập nhật nội dung Vật lý nhiệt, khí lí tưởng chuẩn xác.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Vật Lý",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Hóa học (Bản 1)",
         url: "/eduspace/hoahoc/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Hóa học theo cấu trúc mới (Trắc nghiệm I, II, III).",
         tag: "THPT 2026",
@@ -109,7 +149,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Sinh học",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Hóa học (Bản 2)",
+        url: "/eduspace/hoahoc/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Hóa học (Bản 2) - Thực nghiệm hóa học, phức chất và hóa học ứng dụng xanh.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Hóa Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Sinh học (Bản 1)",
         url: "/eduspace/sinhhoc/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Sinh học theo cấu trúc mới (Trắc nghiệm I, II, III).",
         tag: "THPT 2026",
@@ -119,7 +169,17 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Lịch sử",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Sinh học (Bản 2)",
+        url: "/eduspace/sinhhoc/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Sinh học (Bản 2) - Cập nhật nội dung di truyền học tế bào và sinh thái thực tiễn.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Sinh Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Lịch sử (Bản 1)",
         url: "/eduspace/lichsu/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Lịch sử theo cấu trúc mới (Trắc nghiệm I, II).",
         tag: "THPT 2026",
@@ -129,23 +189,95 @@ const quizList = [
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn Địa lý",
-        url: "/eduspace/dialy/12/thptqg-2026-v1/",
-        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Địa lý theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Lịch sử (Bản 2)",
+        url: "/eduspace/lichsu/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Lịch sử (Bản 2) - Cung cấp sử liệu gốc, đánh giá năng lực tư duy lịch sử.",
         tag: "THPT 2026",
         type: "quiz",
         class: "12",
-        subject: "Địa Lý",
+        subject: "Lịch Sử",
         isHot: true
     },
     {
-        title: "Thi thử tốt nghiệp THPT 2026 - Môn KT & PL",
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Địa lí (Bản 1)",
+        url: "/eduspace/diali/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Địa lí theo cấu trúc mới (Trắc nghiệm I, II, III).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Địa lí",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Địa lí (Bản 2)",
+        url: "/eduspace/diali/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Địa lí (Bản 2) - Rèn luyện kỹ năng Atlat, bảng số liệu địa lí thực tế.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Địa lí",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn KT & PL (Bản 1)",
         url: "/eduspace/ktpl/12/thptqg-2026-v1/",
         description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Giáo dục Kinh tế và Pháp luật theo cấu trúc mới.",
         tag: "THPT 2026",
         type: "quiz",
         class: "12",
         subject: "Kinh Tế và Pháp Luật",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn KT & PL (Bản 2)",
+        url: "/eduspace/ktpl/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn KT & PL (Bản 2) - Tình huống kinh tế vĩ mô và pháp lý gắn liền với thực tiễn.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Kinh Tế và Pháp Luật",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tin học (Bản 1)",
+        url: "/eduspace/tinhoc/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Tin học (Bản 1) - Chuẩn cấu trúc GDPT 2018 (AI, CSDL, Python, Network).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Tin Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Tin học (Bản 2)",
+        url: "/eduspace/tinhoc/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Tin học (Bản 2) - Chuẩn cấu trúc GDPT 2018 (AI, CSDL, Python, Network).",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Tin Học",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Công nghệ (Bản 1)",
+        url: "/eduspace/congnghe-nongnghiep/12/thptqg-2026-v1/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Công nghệ Nông nghiệp (Bản 1) - Canh tác công nghệ cao và an toàn sinh học.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
+        isHot: true
+    },
+    {
+        title: "Thi thử tốt nghiệp THPT 2026 - Môn Công nghệ (Bản 2)",
+        url: "/eduspace/congnghe-nongnghiep/12/thptqg-2026-v2/",
+        description: "Đề thi thử tốt nghiệp THPT năm 2026 môn Công nghệ Nông nghiệp (Bản 2) - Canh tác công nghệ cao và an toàn sinh học.",
+        tag: "THPT 2026",
+        type: "quiz",
+        class: "12",
+        subject: "Công Nghệ",
+        subSubject: "Nông Nghiệp",
         isHot: true
     },
 
@@ -249,11 +381,11 @@ const quizList = [
         subject: "Vật Lý"
     },
     {
-        title: "Đề cương Địa Lý 10 - Học kỳ 1 năm học 2025-2026.",
-        url: "/eduspace/dialy/10/on-tap-hk1-2526-v1/index.html",
-        tag: "Địa Lý",
+        title: "Đề cương Địa lí 10 - Học kỳ 1 năm học 2025-2026.",
+        url: "/eduspace/diali/10/on-tap-hk1-2526-v1/index.html",
+        tag: "Địa lí",
         type: "quiz",
-        subject: "Địa Lý",
+        subject: "Địa lí",
         class: "10",
     },
     {
