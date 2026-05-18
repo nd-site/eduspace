@@ -1,5 +1,5 @@
 window.quizData = {
-    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Công nghệ Nông nghiệp (Bản 1)",
+    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Công Nghệ Nông Nghiệp (Bản 1)",
     config: {
         testDuration: 3000,
         examLayout: {

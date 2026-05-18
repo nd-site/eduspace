@@ -1,5 +1,5 @@
 window.quizData = {
-    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Hóa học (Bản 2)",
+    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Hóa Học (Bản 2)",
     config: {
         testDuration: 3000,
         examLayout: {

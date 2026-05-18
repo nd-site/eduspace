@@ -1,5 +1,5 @@
 window.quizData = {
-    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Sinh học (Bản 2)",
+    title: "Đề thi thử tốt nghiệp THPT 2026 - Môn Sinh Học (Bản 2)",
     config: { testDuration: 3000, examLayout: { multiple: { count: 18, pointsPerQ: 0.25 }, truefalse: { count: 4, pointsPerQ: 1.0 }, short: { count: 6, pointsPerQ: 0.25 } } },
     questions: [
         // --- PHẦN I: MCQ ---
